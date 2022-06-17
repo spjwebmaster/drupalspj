@@ -1,0 +1,33 @@
+<?php 
+/**
+ * Implements hook_theme().
+ */
+function spjcalendar_theme() {
+    return [
+      'spj_calendar_block' => [
+        'variables' => [
+          'data' => [],
+        ],
+      ],
+    ];
+  }
+
+
+ function readRSS($url, $max){
+    $feed = simplexml_load_file($url);
+
+    $count = 0;
+    $obj = array();
+    foreach ($feed->channel->item as $item) {
+        if($count<$max){
+            $obj[$count]['title'] = (string) $item->title;
+            $obj[$count]['description'] = (string) $item->description;
+            $obj[$count]['eventstart'] = (string) $item->eventstart;
+            $obj[$count]['eventend'] = (string) $item->eventend;
+            $obj[$count]['link'] = (string) $item->link;
+        }
+        $count++;
+    }
+    return $obj;
+
+}

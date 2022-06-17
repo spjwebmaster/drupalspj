@@ -1,0 +1,13 @@
+name = Impexium SSO
+description = The module allow users to get register/login into site with Impexium credentials via it's REST API console. 
+package = Impexium
+core = 7.x
+files[] = impexauth.install
+files[] = impexium.inc
+configure = admin/config/impexium/auth/settings
+
+; Information added by Drupal.org packaging script on 2019-06-27
+version = "7.x-2.0"
+core = "7.x"
+project = "impexauth"
+datestamp = "1561640886"

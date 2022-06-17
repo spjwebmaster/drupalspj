@@ -1,0 +1,10 @@
+name: Flickity
+type: module
+description: 'Provides Flickity library integration with Drupal.'
+package: Flickity
+core_version_requirement: ^8 || ^9
+
+# Information added by Drupal.org packaging script on 2021-05-10
+version: '3.0.0-alpha1'
+project: 'flickity'
+datestamp: 1620660338

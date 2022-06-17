@@ -1,0 +1,54 @@
+
+<div class="views view-spj-bios">
+{% for key,value in data %}
+  <h2>{{ key }}:</h2>
+
+ 
+    {% for bio in value.entities %}
+
+
+    <div class="views-row">
+      {% if(bio.field_role) %}
+        <h4>{{bio.field_role}}</h4>
+      {% endif %}
+      <h3>
+          {{bio.title}}
+      </h3>
+      
+      <div class="node__content">
+        <div class="layout layout--twocol-section layout--twocol-section--67-33">
+          <div class="layout__region layout__region--first">
+            <div class="field-title">
+              <span>{{bio.field_title}}</span>
+            </div>
+            
+            <div class="body">
+              {{bio.body | raw}}
+            </div>
+            <div class="field-email">
+              <a href="mailto:{{bio.field_email}}">{{bio.field_email}}</a>
+            </div>
+            <div class="field-twitter">
+              <a href="https://twitter.com/{{bio.field_twitter}}" target="_blank">{{bio.field_twitter}}</a>
+            </div>
+            
+          
+          </div>
+          <div class="layout__region layout__region--second">
+              <figure>
+                <figcaption><img src="{{bio.field_profile}}" loading="lazy" alt="{{bio.title}} Profile" /></figcaption>
+              </figure>
+          </div>
+        </div>
+      </div>
+
+ 
+      
+    </div>
+   
+
+    {% endfor%}
+  
+  
+{% endfor%}
+</div>

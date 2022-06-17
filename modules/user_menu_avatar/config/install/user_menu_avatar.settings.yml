@@ -1,0 +1,9 @@
+link_text: ''
+custom_anonymous_text: ''
+langcode: en
+dependencies:
+  module:
+    - user_menu_avatar
+  enforced:
+    module:
+      - user_menu_avatar

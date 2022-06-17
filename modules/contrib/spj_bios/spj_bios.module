@@ -1,0 +1,13 @@
+<?php 
+/**
+ * Implements hook_theme().
+ */
+function spj_bios_theme() {
+  return [
+    'spj_bios_block' => [
+      'variables' => [
+        'data' => [],
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,5 @@
+user_menu_avatar.config:
+  title: 'User Menu Avatar'
+  base_route_name: user_menu_avatar.config
+  names:
+    - 'user_menu_avatar.settings'

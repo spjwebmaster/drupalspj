@@ -1,0 +1,9 @@
+customImport.load:
+  path: 'customimport/{type}'
+  defaults:
+    _controller: '\Drupal\spj_customimport\Controller\CustomImportController::import'
+    _title: 'Content Import'
+    type: "choose"
+  requirements:
+    _permission:  'access content'
+    _role: 'administrator'

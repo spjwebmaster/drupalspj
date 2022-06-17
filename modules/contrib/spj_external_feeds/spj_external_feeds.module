@@ -1,0 +1,70 @@
+<?php 
+
+
+ function getUrl(){
+
+    $current_uri = \Drupal::request()->getRequestUri();
+    $current_uri = str_replace("/", "", $current_uri);
+    return $current_uri;
+}
+
+function spj_ext_feed_makeMarkup($data){
+        $first = $data['data'][0];
+        $ret = "<a href='" . $first["link"] . "' target='_blank'>";
+        $ret .="<img src='" . $first["featuredimage"] . "' alt='" . $first["title"] . "' />";
+        $ret .= "<br />";
+        $ret .= "<strong>" . $first["title"] . "</strong>";
+        $ret .= "</a>";
+        
+        $ret .= "<div class='item-list'><ul>";
+        $counter = 0;
+        foreach($data['data'] as $entry){
+            if($counter>0){
+                $ret .= "<li>";
+                $ret .= "<a href='" . $entry['link'] . "' target='_blank'>";
+                $ret .= $entry["title"];
+                $ret .= "</h3>";
+                //$ret .= "<a href='" . $entry['link'] . "' target='_blank'>";
+                //$ret .= "<img src='" . $entry["featuredimage"] . "' alt='" . $entry['link'] . "' /><br />";
+                //$ret .= "<p>" . $entry['description'] . "</p>";
+                //$ret .= "</a>";
+                $ret .= "</li>";
+            }
+            $counter++;
+
+        }
+        $ret .= "</ul></div>";
+        return $ret;
+}
+
+function getFeedData($url){
+    if($url!=null){
+    $feed = simplexml_load_file($url);
+
+    $max = 5;
+    $count = 0;
+    $data = array();
+    $data["description"] = $feed->channel->title;
+    $data["data"] = [];
+    foreach ($feed->channel->item as $item) {
+        if($count<$max){
+            $entry = array();
+            $title = (string) $item->title;
+            $description = (string) $item->description;
+            $link = (string) $item->link;
+            $image = (string) $item->featuredimage;
+
+            $entry["title"] = $title;
+            $entry["description"] = $description;
+            $entry["link"] = $link;
+            $entry["featuredimage"] = $image;
+            $data['data'][] = $entry;
+            
+        }
+        $count++;
+    }
+    return $data;
+    }
+
+
+}

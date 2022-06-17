@@ -1,0 +1,47 @@
+<?php 
+/**
+ * Implements hook_theme().
+ */
+function spj_readingroom_theme() {
+    return [
+      'spj_readingroom_block' => [
+        'variables' => [
+          'data' => [],
+        ],
+      ],
+    ];
+  }
+
+function getRrFeedData($url){
+    if($url!=null){
+    $feed = simplexml_load_file($url);
+
+    $count = 0;
+    $data = array();
+    $data["description"] = $feed->channel->title;
+    $data["data"] = [];
+    foreach ($feed->channel->item as $item) {
+
+            $entry = array();
+            $title = (string) $item->title;
+            $description = (string) $item->description;
+            $link = (string) $item->link;
+            $image = (string) $item->featuredimage;
+            $pubDate = (string) $item->pubDate;
+
+            $entry["title"] = $title;
+            $entry["description"] = $description;
+            $entry["link"] = $link;
+            $entry["featuredimage"] = $image;
+            $entry["pubDate"] = $pubDate;
+
+            $data['data'][] = $entry;
+            
+        
+        $count++;
+    }
+    return $data;
+    }
+
+
+}

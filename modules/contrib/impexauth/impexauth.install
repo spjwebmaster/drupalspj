@@ -1,0 +1,70 @@
+<?php
+/**
+ * Author : Vinek T.
+ * Description : Install, update and uninstall functions for the Impexium SSO module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function impexauth_schema() {
+	$schema['fs_impexium_auth'] = array[
+	    'description' => 'To set the impexium configuration with sso settings.',
+	    'fields' => array[
+			'id' => array[
+				'type' => 'serial',
+				'length' => 11,
+				'not null' => TRUE,
+			],
+			'uid' => array[
+				'type' => 'int',
+				'length' => 11,
+				'not null' => FALSE,
+			],
+			'userId' => array[
+				'type' => 'varchar',
+				'length' => 500,
+				'not null' => FALSE,
+			],
+			'member_type' => array[
+				'type' => 'varchar',
+				'length' => 100,
+				'not null' => FALSE,
+			],
+			'userToken' => array[
+				'type' => 'varchar',
+				'length' => 500,
+				'not null' => FALSE,
+			],
+		],
+		'primary key' => array['id'],
+		'auto increment' => 1,
+	];
+	return $schema;
+} 
+
+
+/**
+ * Install the module and insert the record into the table if neccessory.
+ */
+function impexauth_install() {
+	drupal_set_message(t('Impexium module schema has been successfully installed.'));
+}
+
+
+/**
+ * Uninstal the Drupal module and clear out all variables/fields from database tabel.
+ */
+function impexauth_uninstall() {
+	variable_del('api_app_name');
+	variable_del('api_app_key');
+	variable_del('client_api_url');
+	variable_del('client_api_app_id');
+	variable_del('client_api_app_pass');
+	variable_del('client_api_user_email');
+	variable_del('client_api_user_pass');
+	variable_del('site_url');
+	variable_del('logout_option');
+	variable_del('site_logout_url');
+	drupal_set_message(t('Impexium module schema has been successfully uninstalled.'));
+}

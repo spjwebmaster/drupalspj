@@ -97,7 +97,8 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "wikimedia/composer-merge-plugin": true,
-            "cweagans/composer-patches": true
+            "cweagans/composer-patches": true,
+            "drupal/core-vendor-hardening": true
         }
     },
     "extra": {

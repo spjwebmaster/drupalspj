@@ -1,0 +1,5 @@
+name: SPJ Slider
+description: Showing SPJ Slider with Swiper.js
+package: Custom
+type: module
+core_version_requirement: ^9

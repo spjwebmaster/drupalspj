@@ -1,0 +1,9 @@
+user_menu_avatar.config:
+  path: '/admin/config/people/user-menu-avatar'
+  defaults:
+    _form: '\Drupal\user_menu_avatar\Form\UserMenuAvatarConfigurationForm'
+    _title: 'User Menu Avatar Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

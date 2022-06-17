@@ -1,0 +1,7 @@
+name: SPJ Swiper Display Plugin
+type: module
+description: 'Provides a View display style that renders a swiper js layout'
+package: Views
+core_version_requirement: ^9
+dependencies:
+  - drupal:views

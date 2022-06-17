@@ -1,0 +1,15 @@
+name: User Menu Avatar
+type: module
+description: 'Replaces a menu defined "link title" with the current user picture and/or the username. '
+package: 'Tinsel Suite'
+core: 8.x
+core_version_requirement: ^8 || ^9
+hidden: false
+dependencies:
+  - drupal:user
+configure: user_menu_avatar.settings
+
+# Information added by Drupal.org packaging script on 2020-06-16
+version: '6.0.0-rc1'
+project: 'user_menu_avatar'
+datestamp: 1592268853

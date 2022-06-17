@@ -1,0 +1,19 @@
+<div class="views view-spj-readingroom">
+{% if data.data %}
+    {% for row in data.data %}
+
+    <div class="views-row">
+    <h4>
+    {{row.pubDate|date("U")|format_date("news_display")}}
+    </h4>
+        <h3><a href="{{row.link}}" target="_blank" alt="Quill Article">{{row.title}}</a></h3>
+        <p>
+        {{row.description}}
+        </p>
+    </div>
+
+    {% endfor %}
+{% else %}
+    <div class="alert alert-warning">No feed available</div>
+{% endif %}
+</div>

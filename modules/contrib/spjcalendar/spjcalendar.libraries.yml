@@ -1,0 +1,7 @@
+fullcal:
+  css: 
+    theme:
+      /libraries/fullcalendar/lib/main.css: {}
+  js:
+      /libraries/fullcalendar/lib/main.js: {}
+      js/spjfullcalendar.js: {}

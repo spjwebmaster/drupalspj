@@ -1,0 +1,10 @@
+user_menu_avatar.settings:
+  type: config_object
+  label: 'Configuration translation settings'
+  mapping:
+    link_text:
+      type: text
+      label: 'Link text'
+    custom_anonymous_text:
+      type: text
+      label: 'Custom anonymous text'

@@ -1,0 +1,5 @@
+name: SPJ Bios
+description: Showing a Bios by Taxonomy Heirarchy
+package: Custom
+type: module
+core_version_requirement: ^9

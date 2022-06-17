@@ -1,0 +1,7 @@
+name: Swiper Fields
+description: Adds a display mode in Fields for Swiper
+core_version_requirement: ^9
+package: Swiper
+dependencies:
+  - drupal:swiper
+type: module

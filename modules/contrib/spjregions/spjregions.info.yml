@@ -1,0 +1,5 @@
+name: SPJ Regions Display
+description: Showing SPJ Regions and Map
+package: Custom
+type: module
+core_version_requirement: ^9

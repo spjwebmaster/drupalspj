@@ -1,0 +1,7 @@
+name: SPJ Theme Switcher Block
+description: Adds a block that allows the user to toggle themes
+package: Custom
+type: module
+core_version_requirement: ^9
+dependencies:
+  - block

@@ -1,0 +1,15 @@
+<?php 
+/**
+ * Implements hook_theme().
+ */
+function spjslider_theme() {
+  return [
+    'slider_block' => [
+      'variables' => [
+        'single' => false,
+        'data' => [],
+        'markup'=>"",
+      ],
+    ],
+  ];
+}

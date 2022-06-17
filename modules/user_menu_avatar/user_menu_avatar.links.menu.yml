@@ -1,0 +1,5 @@
+user_menu_avatar.config:
+  title: 'User Menu Avatar Settings'
+  parent: user.admin_index
+  description: 'Adjust the settings for the user menu avatar module. '
+  route_name: user_menu_avatar.config

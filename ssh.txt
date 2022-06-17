@@ -1,1 +1,3 @@
 ssh -p 18765 u689-mywdg3dt2yhp@ssh.spjnetwork.org
+
+ssh://u689-mywdg3dt2yhp@spj.spjnetwork.org:18765/~/www/spj.spjnetwork.org/spj.git
