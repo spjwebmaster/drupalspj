@@ -1,0 +1,15 @@
+<section data-section="bio-embedded-inline" {{ attributes }}>
+
+  {{ title_prefix }}
+  {% if label and not page %}
+    <div{{ title_attributes }}>
+      <strong data-href="{{ url }}">{{ label }}</strong>
+    </div>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div{{ content_attributes }} data-container="flex">
+    {{ content }}
+  </div>
+
+</section>

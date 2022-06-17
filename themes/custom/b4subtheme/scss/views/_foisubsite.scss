@@ -1,0 +1,139 @@
+body {
+
+    &.page-node-type-foi-subsite{
+        
+        .region-breadcrumb {
+            margin-top: 4.4em!important;
+
+            .block-system {
+                position: absolute;
+                top: -999em;
+            }
+            .block-page-title-block {
+                position: absolute;
+                top: -999em;
+            }
+        }
+        
+
+    }
+    &.path--algorithms {
+
+        main {
+            padding-top: 0;
+            >.container {
+               
+                padding: 1em;
+            }
+
+            .navigation {
+               
+                margin: 1em -2em;
+                padding: 0;
+
+                .navbar-nav {
+                    flex-direction: row;
+                    li {
+                        flex: 1 auto;
+                    }
+                }
+            }
+            
+        }
+    }
+    &.path--gagged  {  
+        .breadcrumb {
+            margin:0;
+        }
+
+        main {
+            padding-top: 0;
+            >.container {
+                padding: 1em;
+            }
+
+            .navigation {
+                height: 8em;
+                line-height: 4em;
+                margin: 1em -2em;
+                padding: 0;
+
+                .navbar-nav {
+                    flex-direction: row;
+                    li {
+                        flex: 1 auto;
+                    }
+                }
+            }
+            
+        }
+    }
+    &.path--smack {
+        .smack_nav {
+            .navigation {
+                ul {
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+        }
+        .menu_smack {
+            display: block;
+        }
+        .smack_header {
+            background-color: #7c4040!important;
+
+            &.smack_header_bayonet {
+                background-color: #a3d7ef!important;
+            }
+            &.smack_header_jteam {
+                background-color: #2b4079!important;
+            }
+        }
+
+        
+    }
+    &.path--ethicsweek {
+
+        .block-views-blockwebinar-slider-block-1 {
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+    &.path--whistleblower {
+        .whistleblower_header {
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            max-height: 410px;
+            height: 410px;
+
+            h1 {
+                text-align: center;
+                color: #EFCC44;
+                text-shadow: 0px 0px 10px #000;
+                font-size: 5em;
+            }
+            h2 {
+                text-align: center;
+                font-weight: 900;
+                margin-top: 0.2em;
+                text-shadow: 0px 0px 10px #000; 
+            }
+        }
+
+        .block-views-blockfreelance-guides-block-1 {
+            border-radius: 5px;
+            padding: 0.75em;
+
+            .views-row {
+                padding-bottom: 0;
+                margin-bottom: 4px;
+            }
+            h3 {
+                margin-top: 0.75em;
+            }
+        }
+    }
+}

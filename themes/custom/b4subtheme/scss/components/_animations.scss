@@ -1,0 +1,22 @@
+
+@keyframes wipe-enter {
+	0% {
+		transform: scale(0, .025);
+	}
+	50% {
+		transform: scale(1, .025);
+	}
+}
+
+
+@keyframes fadeInAndSlide {
+	0% {
+		transform: translateY(4em);
+        opacity: 0.1;
+	}
+	50% {
+		transform: translateY(0);
+        opacity: 1;
+	}
+    
+}

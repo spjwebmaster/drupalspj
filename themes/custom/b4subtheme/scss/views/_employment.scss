@@ -1,0 +1,25 @@
+#block-employmentdisclaimer {
+    margin-top: 4em;
+}
+
+.view-employment-opportunities {
+    .views-row {
+        margin-bottom: 4em;
+        border-bottom: 1px solid $SPJlightgrey;
+        padding-bottom: 4em;
+
+        .views-field-field-application-deadline {
+            font-size: 1.4em;
+            >* {
+                display: inline-block;
+
+                &.views-label-field-application-deadline {
+                    font-weight: bold;
+                }
+            }
+            .boldlabel {
+                margin-left: 7px;
+            }
+        }
+    }
+}

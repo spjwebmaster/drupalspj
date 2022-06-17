@@ -1,0 +1,34 @@
+$theme: "light";
+@import 'themes/global'; 
+
+$SPJdarkgrey: #efefef;
+$SPJlightgrey: #eee;
+
+$bodybg: #fff;
+$navShadow: #333;
+$mainShadow: #fff;
+$navLinkcolor: #333;
+$bodytext: #333;
+
+$topNav: #eee;
+$topNavColor: #333;
+$navBG: #fff;
+
+$primaryBtn: $SPJblue;
+$primaryBtnText: #fff;
+
+$sectionBG: #eee;
+$sidebarNav: aliceblue;
+
+$linkColor: $SPJblue;
+$linkHover: #336688;
+
+$footerBG: $topNav;
+$footerBot: #444;
+$footerText: $bodytext;
+
+$toggler: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e";
+
+
+@import '../variables_bootstrap';
+@import "themes/themeMain"; 

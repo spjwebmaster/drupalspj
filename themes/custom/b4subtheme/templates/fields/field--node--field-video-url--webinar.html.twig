@@ -1,0 +1,8 @@
+<div class="video-url-embed-custom">
+TODO: Get the thumbnail as video poster<br />
+{% for item in items %}
+      <video controls {{ item.attributes }} style="width: 100%">
+        <source src="{{ item.content }}">
+      </video>
+    {% endfor %}
+</div>

@@ -1,0 +1,13 @@
+.block-spjchaptersearch {
+    padding: 2em 0;
+
+    background-color: rgb(218, 103, 122);
+    
+    .chaptersearch_wrapper {
+        max-width: $wideBreakpoint;
+        margin: auto;
+        font-size: 1.5em;
+        
+        color: $white;
+    }
+}

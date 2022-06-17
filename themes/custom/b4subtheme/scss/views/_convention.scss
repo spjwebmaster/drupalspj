@@ -1,0 +1,95 @@
+#block-conventionheader {
+    .topBrandingMediaFest {
+        background-color: #26486c;
+        background-image: url(https://spj.org/images/convention/2022/flag.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left;
+    }
+
+    #topmenuitems {
+        display: flex;
+        text-align: center;
+
+        .navbar-nav {
+            flex-direction: row;
+            margin: auto;
+        }
+    }
+
+    a:link.hashtag {
+        color:#f1626a;
+    }
+    
+}
+
+.view-contention-sub-pages {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    .view-content {
+        display: table;
+        margin: 10px auto;
+        div {
+            display: table-cell;
+            padding: 1em;
+        }
+    }
+}
+
+
+.page-node-type-convention-page, .path-convention {
+
+    h2 {
+        color: #8bb0d2;
+        font-weight: bold;
+        font-family: 'Libre Franklin', sans-serif;
+        font-size: 4em;
+    }
+    .banner {
+        background-size: contain;
+        background-position: left;
+        background-color: #26486c;
+        text-align: center;
+
+        @include respond-below(md){
+            background-position: center;
+            background-size: cover;
+        }
+
+        .banner-content {
+            text-align: center;
+            display: flex;
+            height: 100%;
+
+
+            a {
+                display: flex;
+                width: 100%;
+
+                
+
+                img {
+                    margin: auto;
+                    width: 90%;
+                    max-width: 1000px;
+
+                    @include respond-below(md){
+                        background-color: #333;
+                        border-radius: 10px;
+                    }
+
+    
+                }
+            }
+            
+        }
+    }
+
+    #header {
+        .navbar {
+            background-color: rgba(255,255,255,0.7)!important;
+            backdrop-filter: blur(6px) saturate(58%);
+        }
+    }
+}

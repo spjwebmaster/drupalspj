@@ -1,0 +1,79 @@
+.page-node-type-landing-page {
+    main {
+        padding-bottom: 7em;
+        padding-top: 145px;
+        .field--name-title {
+            display: none;
+        }
+        #block-b4subtheme-breadcrumbs {
+            display: none;
+        }
+
+        .node--type-landing-page {
+            font-size: 1.4em;
+
+            
+        }
+    }
+
+    &.quo-vadis-democracy-in-an-age-of-disinformation {
+        .wpfd-blue-bg {
+            background-color: #0e507a!important;
+            background-size: auto 100%;
+            box-shadow: inset 0px -10px 200px 50px #002e55;
+            color: #fff;
+            >* {
+                color: #fff; 
+            }
+            a {
+                color: #fff!important;
+            }
+        }
+        .wpfd-gold-border {
+            border: 10px solid #debb78;
+        }
+        iframe {
+            width: 100%;
+            margin: auto;
+            height: auto;
+            min-height: 650px;
+        }
+    }
+
+    &.the-first-amendment-is-under-attack-fight-back-with-us {
+        .defend-top {
+            padding-top: 0!important;
+            padding-bottom: 0!important;
+            margin-bottom: 2em;
+            .g-section-wrapper {
+                padding: 0;
+
+                .defend-topblack {
+                    background: #13120e!important;
+                    color: #fff;
+                }
+                .defend-topred {
+                    background: #bf413d!important;
+                    width: 100%;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    &.paper-money {
+       .wp-block-media-text {
+           margin-bottom: 1em;
+       } 
+       h1 {
+        font-size: 3.5em;
+        color: #189604;
+        }
+        h2 {
+            font-size: 2.5em;
+        }
+        .has-large-font-size {
+            font-size: 1.5em;
+        }
+    }
+}

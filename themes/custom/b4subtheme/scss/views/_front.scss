@@ -1,0 +1,218 @@
+body.path-frontpage {
+
+
+    #block-welcome {
+        background-image:url("/sites/default/files/SPJ_Circle_White.png");
+        background-position: 104% 161%;
+        background-size: 261px;
+        background-repeat: no-repeat;
+
+        ul {
+            &.animation{
+                animation-name: wipe-enter;
+                animation-duration: 1s;
+                animation-iteration-count: 1;
+            }
+          }
+    }
+
+    &.maintenance-page {
+        .layout-container {
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 2em;
+            position: static;
+            display: flex;
+
+            a {
+                img {
+                    height: 60px;
+                }
+                flex: 1 99%;
+            }
+            .name-and-slogan {
+                flex: 1 1%;
+                white-space: nowrap;
+               h1 {
+                position: relative;
+                top: -0.2em;
+               }
+            }
+        }
+        main {
+            padding-left: 2em;
+            padding-right: 2em;
+
+            min-height: calc(100vh - 145px);
+        }
+    }
+
+    .page-title {
+        display: none;
+    }
+
+    .region-slideshow {
+        max-height: 999em; 
+    }
+
+   
+
+    #block-home-random-banner {
+        .views-field-field-slider-image {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    #block-views-block-news-block-1-2 {
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        max-width: 100vw;
+        width: calc(100vw - 10px);
+        padding: 0 10px;
+        margin-top: 3em;
+        margin-bottom: 3em;
+        
+    }
+    #block-b4subtheme-content {
+        margin: auto;
+        max-width: 900px;
+        text-align: center;
+        margin-bottom: 3em;
+
+        p {
+            text-align: justify;
+        }
+    }
+
+    .block-spj-calendar-block3 {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    #block-core-4-simple {
+        h2 {
+            text-align: center;
+
+            &.field-content {
+                font-size: 1.2em;
+                text-transform: uppercase;
+            }
+        }
+        .view-content {
+            display: flex;
+            flex-wrap: wrap;
+
+            .views-row {
+                padding: 1em;
+                text-align: center;
+                flex: 1 100%;
+
+                @include respond-above(md){
+                    flex: 1 50%;
+                }
+                @include respond-above(lg){
+                    flex: 1 25%;
+                }
+            }
+        }
+        margin-bottom: 4em;
+
+    }
+
+    .view-core-4 {
+
+        .views-row {
+            &.animation {
+                animation: fadeInAndSlide 2s 1;
+            }
+        }
+        .fontawesome-icon {
+            font-size: 2em;
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 50%;
+            width: 2em;
+            margin-bottom: 10px;
+        }
+        .views-field-body {
+            min-height: 140px;
+           
+        }
+
+        .views-field-view-node {
+            a {
+                display: inline-block;
+                
+            }
+        }
+    }
+    .view-id-core_4_old {
+        margin: auto;
+        margin-bottom: 3em;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 3em;
+        max-width: 1200px;
+
+
+        .views-row {
+            position: relative;
+            display: flex;
+            padding-top: 5em;
+            margin: 3em 0;
+
+            .views-field-title{
+                flex: 1 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .views-field-field-featured-images {
+                flex: 1 20%;
+            }
+
+            .views-field-body {
+                flex: 1 80%;
+            }
+        }
+        
+    }
+}
+
+
+.view-id-core_4.view-display-id-page_1 {
+    .views-row {
+        display: flex;
+        position: relative;
+        padding-top: 5em;
+        > * {
+            flex: 1 auto;
+        }
+        .views-field-title {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .views-field-field-featured-images {
+            max-width: 250px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+    }
+}

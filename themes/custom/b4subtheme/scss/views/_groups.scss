@@ -1,0 +1,21 @@
+.group--community {
+    >div>.layout>.layout__region:not(.layout__region--second) {
+        .navbar-nav {
+            flex-direction: row;
+
+            padding: 1em;
+            background-color: #eee;
+            margin-bottom: 2em;
+        }
+    }
+}
+.field--name-field-join-link {
+    a {
+        display: block;
+        background: $SPJblue;
+        color: #fff!important;
+        padding: 1em;
+        border-radius: 5px;
+        
+    }
+}

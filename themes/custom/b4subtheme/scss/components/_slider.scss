@@ -1,0 +1,300 @@
+$smSliderHeight: calc(100vh - 200px);
+$mdSliderHeight: calc(100vh - 150px);
+
+
+/* swiper */
+.swiper {
+    position: relative;
+
+    &.multi {
+        position: static;
+        margin: 0 4em;
+
+        ul {
+            &.swiper-wrapper {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                li {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+        .swiper-wrapper {
+            padding-bottom: 4em;
+        }
+        .swiper-pagination {
+            background: rgba(255,255,255,0.8);
+        }
+    }
+    &:not(.multi){
+
+        .swiper-wrapper {
+            max-height: $slideShowMax;
+            .swiper-slide {
+                height: auto;
+                @include respond-above(sm){
+                    height: $smSliderHeight;
+                }
+                @include respond-above(md){
+                    height: $mdSliderHeight;
+                }
+
+                img {
+                    width: 100%;
+                    height:auto;
+                }
+                max-height: $slideShowMax;
+            }
+        }
+        
+        
+    }
+    
+    
+}
+
+.block-spjslider {
+    .banner {
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-height: $slideShowMax;
+        height: 410px;
+    }
+}
+
+
+
+/* banner */
+.toolbar-fixed {
+    .block {
+        &.banner {
+
+            .view-slider {
+                .view-content {
+
+                    @include respond-above(md){
+                        height: calc(100vh - 280px);
+                    }
+                  
+
+                   .views-row {
+                        @include respond-above(md){
+                            max-height: calc(100vh - 280px);
+                        }
+                   }
+                }
+            }
+        }
+    }
+    .swiper {
+        &:not(.multi){
+
+            .swiper-wrapper {
+                .swiper-slide {
+                    height: auto;
+                    @include respond-above(sm){
+                        height: calc(100vh - 280px);
+                    }
+                    @include respond-above(md){
+                        height: calc(100vh - 280px);
+                    }
+                    max-height: $slideShowMax;
+                }
+            }
+        }
+
+    
+    }
+}
+
+.swiper-multi {
+    position: relative;
+}
+
+.block {
+    &.banner {
+
+        .view-slider {
+
+            .view-content {
+                position: relative;
+                height: auto;
+                @include respond-above(sm){
+                    height: $smSliderHeight;
+                }
+                @include respond-above(md){
+                    height: $mdSliderHeight;
+                }
+
+
+                .views-field-title {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    
+                }
+            }
+        }
+    }
+    .view-slider {
+        position: relative;
+        border-bottom: 1px solid #000;
+        margin-bottom: 0;
+
+        .view-content {
+       
+           
+            overflow-y: hidden;
+            .views-row {
+                position: relative;
+                max-height: $smSliderHeight;
+                @include respond-above(md) {
+                    max-height: $mdSliderHeight;
+                }
+    
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+                
+            }
+            .views-field-body {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0,0,0,0.4);
+                color: #fff;
+                padding: 1em 3em;
+                display: none;
+            }
+
+            .views-field-field-slider-image {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    
+
+
+        .views_slideshow_cycle_teaser_section, 
+        .views_slideshow_cycle_slide {
+            height: auto !important;
+            width: 100% !important;
+            min-height: $smSliderHeight;
+            @include respond-above(md){
+                min-height: $mdSliderHeight;
+            }
+        }
+    }
+}
+
+
+.view-id-slider {
+
+    .views-slideshow-controls-bottom {
+
+        @include respond-above(md) {
+           
+            position: absolute;
+            bottom: 0;
+            z-index: 654;
+            
+            
+        }
+
+        .item-list {
+            ul li::before {
+                content: none;
+            }
+        }
+        .item-list2 {
+
+            @include respond-above(md) {
+                background: rgba(255,255,255,0.5);
+                padding: 10px;
+                width: auto;
+                float: right;
+                ul li::before {
+                    content: none;
+                }
+                .views-slideshow-pager-bullets {
+                    float: right;
+                    width: 25px;
+                    margin: 0;
+                    li {
+                        width: 13px;
+                    }
+                }
+            }
+        }
+        .views_slideshow_controls_text {
+            margin: auto;
+            text-align: center;
+        }
+        .views_slideshow_controls_text_bak {
+            clear: both;
+            
+            .views_slideshow_controls_text_previous {
+               display: none;
+                width: 30px;
+
+                a {
+                    display: block;
+                    text-indent: 99em;
+                    background: #333;
+                }
+            }
+            .views_slideshow_controls_text_next {
+                display: none;
+                width: 30px;
+                a {
+                    display: block;
+                    text-indent: 99em;
+                    background: #666;
+                }
+            }
+            .views_slideshow_controls_text_pause {
+                a {
+                    display: block;
+                    text-indent: 99em;
+                    position: relative;
+                    width: 47px;
+                    clear: both;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    height: 47px;
+
+                }
+                a::before {
+                    display: block;
+                    content: "||";
+                    text-indent: 0;
+                    position: absolute;
+                    width: 46px;
+                    right: 0;
+                    top: 0;
+                    font-size: 2em;
+                    text-align: center;
+
+
+                }
+                &.views-slideshow-controls-text-status-pause {
+
+                    a::before {
+                        content: ">";
+                        
+                    }
+                }
+            }
+        }
+    }
+}

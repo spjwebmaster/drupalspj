@@ -1,0 +1,43 @@
+#block-views-block-related-content-block-1 {
+    .view-content {
+        display: flex;
+        flex-direction: column;
+        @include respond-above(md){
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+        .views-row {
+            flex: 1 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            align-content: flex-start;
+            
+    
+
+            padding: 1em;
+            border-radius: 10px;
+
+
+            .views-field-title {
+                flex: 1 100%;
+
+            }
+            .views-field-field-thumb {
+                flex: 1 50%;
+                max-width: 200px;
+                overflow: hidden;
+                max-width: 200px;
+                min-width: 119px;
+
+            }
+
+            @include respond-above(md){
+                flex: 1 48%;
+                margin: 1%;
+    
+            }
+        }
+        
+    }
+}

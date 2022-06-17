@@ -1,0 +1,957 @@
+/* Gathering all theme files denoted by a class/attr */
+/* default theme */
+html.theme_default body {
+  background-color: #fff;
+  color: #333;
+}
+html.theme_default body a, html.theme_default body a:link, html.theme_default body a:visited, html.theme_default body a:focus, html.theme_default body a:link.button-action {
+  color: #004990;
+}
+html.theme_default body a:hover {
+  color: #336688;
+}
+html.theme_default body blockquote {
+  margin: 1rem;
+  border-left: 4px solid;
+  padding-left: 1rem;
+}
+html.theme_default body .cta {
+  font-size: 1.2em;
+  padding: 0.667em 1.333em;
+  border: 2px solid #333;
+  border-radius: 9999px;
+  color: #333;
+  margin: 0.3em 0;
+  display: inline-block;
+}
+html.theme_default body .view-bluebox-by-page {
+  background: #004990;
+  color: #fff;
+}
+html.theme_default body .view-bluebox-by-page a {
+  color: #8bc63e;
+}
+html.theme_default body a.wp-block-button__link {
+  color: #004990;
+  background: #fff;
+}
+html.theme_default body a.wp-block-button__link:hover {
+  color: #336688;
+}
+html.theme_default body .toolbar-tab .toolbar-tray a, html.theme_default body .toolbar-tab .toolbar-tray a:link, html.theme_default body .toolbar-tab .toolbar-tray a:visited, html.theme_default body .toolbar-tab .toolbar-tray a:focus {
+  color: #333;
+}
+html.theme_default body .dropdown-menu {
+  background-color: #fff;
+}
+html.theme_default body.path--algorithms {
+  background-color: #000;
+}
+html.theme_default body.path--algorithms main {
+  padding-top: 0;
+  box-shadow: none;
+}
+html.theme_default body.path--algorithms main > .container {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+}
+html.theme_default body.path--algorithms main .col-content a {
+  color: #ff3a58;
+  font-weight: 600;
+  text-decoration: none;
+}
+html.theme_default body.path--algorithms main .col-content a:hover {
+  color: #fffdde;
+  text-shadow: 0 0 8px #ff3a58;
+  transition: all 0.2s ease-in-out;
+}
+html.theme_default body.path--algorithms main .block-field-blocknodefoi-subsitebody .navigation {
+  display: block;
+}
+html.theme_default body.path--gagged {
+  background-color: #333;
+  background-image: url(https://spj.org/gagged/images/bg.jpg);
+  background-size: 20% 20%;
+}
+html.theme_default body.path--gagged .breadcrumb {
+  margin: 0;
+}
+html.theme_default body.path--gagged main {
+  padding-top: 0;
+  box-shadow: none;
+}
+html.theme_default body.path--gagged main > .container {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+}
+html.theme_default body.path--gagged main .col-content a {
+  color: #ccc;
+  border-bottom: 1px dashed #ddd;
+}
+html.theme_default body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation {
+  overflow: hidden;
+  text-align: center;
+  background-color: #ff3a58;
+  background-position: center;
+  overflow: hidden;
+  background-size: 50%;
+  box-shadow: inset 0 0 200px #000;
+  border-bottom: 15px solid #000;
+}
+html.theme_default body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar-nav li a {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #ff3a58;
+  text-shadow: 0px 0px 8px #000;
+  transition: all 0.2s ease-in-out;
+}
+html.theme_default body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar-nav li a:hover {
+  color: #fffdde;
+  text-shadow: 0 0 8px #ff3a58;
+  transition: all 0.2s ease-in-out;
+  text-decoration: line-through;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody {
+  width: 90%;
+  margin: auto;
+  max-width: 1200px;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header {
+  text-align: center;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-image {
+  flex: 1 100%;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons {
+  flex: 1 100%;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons .wp-block-button {
+  width: 100%;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2em;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav a {
+  color: #fff;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav {
+  max-width: 1000px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li {
+  flex: 1 auto;
+}
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li a {
+  color: #fbff85;
+}
+html.theme_default body.path--ethicsweek .bread {
+  visibility: hidden;
+  margin-top: -1em;
+}
+html.theme_default body #header {
+  box-shadow: 0 0 5px -2px #000;
+}
+html.theme_default body #header a {
+  color: #333;
+}
+html.theme_default body #header .contextual-links a {
+  color: #333;
+}
+html.theme_default body #header .topnav {
+  background-color: #004990;
+}
+html.theme_default body #header .topnav a {
+  color: #eee;
+}
+html.theme_default body #header .topnav .navbar-nav .nav-item a:link, html.theme_default body #header .topnav .navbar-nav .nav-item a:visited, html.theme_default body #header .topnav .navbar-nav .nav-item a:focus {
+  color: #eee;
+}
+html.theme_default body #header .topnav .navbar-nav .nav-item a:hover {
+  color: #8bc63e;
+}
+html.theme_default body #header .topnav .block-themeswitch .btn-group {
+  border: 0;
+}
+html.theme_default body #header .topnav .block-themeswitch .btn-group a {
+  border: 0;
+}
+html.theme_default body #header .topnav .block-themeswitch .btn-group a.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+html.theme_default body #header .language-switcher-language-url .links li::before {
+  color: #eee;
+}
+html.theme_default body #header .navbar.navbar-light {
+  background-color: #fff;
+  transition: all ease 0.3s;
+  box-shadow: 0 0 5px -2px #000;
+}
+html.theme_default body #header .navbar.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+html.theme_default body #header.transparent .navbar.navbar-light {
+  display: block;
+}
+html.theme_default body #header .navbar-nav .nav-item a:link, html.theme_default body #header .navbar-nav .nav-item a:visited, html.theme_default body #header .navbar-nav .nav-item a:focus {
+  color: #333;
+}
+html.theme_default body #header .navbar-nav .nav-item a:hover {
+  color: #8bc63e;
+}
+html.theme_default body #header .tb-megamenu .nav > li > a:focus,
+html.theme_default body #header .tb-megamenu .nav > li > a:hover,
+html.theme_default body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:focus,
+html.theme_default body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+html.theme_default body #header .region-nav-additional .nav-item {
+  background-color: #8bc63e;
+}
+html.theme_default body #header .region-nav-additional .nav-item a {
+  color: #fff !important;
+}
+html.theme_default body .banner .view-slider .view-content .views-field-title {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+html.theme_default body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, html.theme_default body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
+  background-color: #004990;
+  color: #fff;
+}
+html.theme_default body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1 a, html.theme_default body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 a {
+  color: #E6FF8B;
+  font-weight: bold;
+}
+html.theme_default body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1 .views-row, html.theme_default body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 .views-row {
+  border-bottom: 0;
+}
+html.theme_default body.path-frontpage #block-views-block-news-block-1-2, html.theme_default body.path-frontpage #block-views-block-homepage-news-block-1 {
+  background-color: #b72f22ed;
+  color: #fff;
+}
+html.theme_default body.path-frontpage #block-views-block-news-block-1-2 .view-content a, html.theme_default body.path-frontpage #block-views-block-homepage-news-block-1 .view-content a {
+  color: #fff;
+}
+html.theme_default body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_default body.path-frontpage #block-views-block-homepage-news-block-1 a {
+  color: #fff;
+}
+html.theme_default body main {
+  box-shadow: inset 0 0 300px #b7c7d2;
+}
+html.theme_default body main.landing {
+  box-shadow: none;
+}
+html.theme_default body main .view .views-row {
+  border-bottom: 2px dashed #ddd;
+}
+html.theme_default body main .view .view-filters {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1);
+}
+html.theme_default body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
+  background: rgba(0, 0, 0, 0.1);
+}
+html.theme_default body main .wp-block-cloudblocks-g-section {
+  background: #eee;
+}
+html.theme_default body main #block-views-block-related-content-block-1 .views-row {
+  box-shadow: 0 0 20px -8px #333;
+}
+html.theme_default body main #block-views-block-related-content-block-1 .views-row .views-field-field-thumb {
+  background-color: #eee;
+}
+html.theme_default body main .node__content .menu--main .navbar-nav {
+  background: aliceblue;
+}
+html.theme_default body main .node__content .menu--main .navbar-nav .nav-item .is-active {
+  font-weight: bold;
+}
+html.theme_default body .region-sidebar-second {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+@media (max-width: 991px) {
+  html.theme_default body .region-sidebar-second {
+    border-radius: 0;
+    border-top: 2px solid;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+html.theme_default body .region-sidebar-second .view .views-row {
+  border-bottom: 0px dashed #ddd;
+}
+html.theme_default body .region-sidebar-second .navbar-nav {
+  background: aliceblue;
+}
+html.theme_default body .region-sidebar-second .navbar-nav .nav-item.is-active {
+  font-weight: bold;
+}
+html.theme_default body .region-content-below {
+  background: #eee;
+}
+html.theme_default body footer.main-footer {
+  border-top: 1px solid #000;
+  color: #fff;
+  background-color: #333;
+}
+html.theme_default body footer.main-footer a {
+  color: #ddd;
+}
+html.theme_default body footer.main-footer a:hover {
+  opacity: 0.8;
+}
+html.theme_default body footer.main-footer .footer-bot {
+  background: #444;
+}
+
+/* dark theme */
+html.theme_dark body {
+  background-color: #111;
+  color: #eee;
+}
+html.theme_dark body a, html.theme_dark body a:link, html.theme_dark body a:visited, html.theme_dark body a:focus, html.theme_dark body a:link.button-action {
+  color: #ccc;
+}
+html.theme_dark body a:hover {
+  color: #eee;
+}
+html.theme_dark body blockquote {
+  margin: 1rem;
+  border-left: 4px solid;
+  padding-left: 1rem;
+}
+html.theme_dark body .cta {
+  font-size: 1.2em;
+  padding: 0.667em 1.333em;
+  border: 2px solid #eee;
+  border-radius: 9999px;
+  color: #eee;
+  margin: 0.3em 0;
+  display: inline-block;
+}
+html.theme_dark body .view-bluebox-by-page {
+  background: #004990;
+  color: #fff;
+}
+html.theme_dark body .view-bluebox-by-page a {
+  color: #8bc63e;
+}
+html.theme_dark body a.wp-block-button__link {
+  color: #ccc;
+  background: #181818;
+}
+html.theme_dark body a.wp-block-button__link:hover {
+  color: #eee;
+}
+html.theme_dark body .toolbar-tab .toolbar-tray a, html.theme_dark body .toolbar-tab .toolbar-tray a:link, html.theme_dark body .toolbar-tab .toolbar-tray a:visited, html.theme_dark body .toolbar-tab .toolbar-tray a:focus {
+  color: #333;
+}
+html.theme_dark body .dropdown-menu {
+  background-color: #181818;
+}
+html.theme_dark body.path--algorithms {
+  background-color: #000;
+}
+html.theme_dark body.path--algorithms main {
+  padding-top: 0;
+  box-shadow: none;
+}
+html.theme_dark body.path--algorithms main > .container {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+}
+html.theme_dark body.path--algorithms main .col-content a {
+  color: #ff3a58;
+  font-weight: 600;
+  text-decoration: none;
+}
+html.theme_dark body.path--algorithms main .col-content a:hover {
+  color: #fffdde;
+  text-shadow: 0 0 8px #ff3a58;
+  transition: all 0.2s ease-in-out;
+}
+html.theme_dark body.path--algorithms main .block-field-blocknodefoi-subsitebody .navigation {
+  display: block;
+}
+html.theme_dark body.path--gagged {
+  background-color: #333;
+  background-image: url(https://spj.org/gagged/images/bg.jpg);
+  background-size: 20% 20%;
+}
+html.theme_dark body.path--gagged .breadcrumb {
+  margin: 0;
+}
+html.theme_dark body.path--gagged main {
+  padding-top: 0;
+  box-shadow: none;
+}
+html.theme_dark body.path--gagged main > .container {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+}
+html.theme_dark body.path--gagged main .col-content a {
+  color: #ccc;
+  border-bottom: 1px dashed #ddd;
+}
+html.theme_dark body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation {
+  overflow: hidden;
+  text-align: center;
+  background-color: #ff3a58;
+  background-position: center;
+  overflow: hidden;
+  background-size: 50%;
+  box-shadow: inset 0 0 200px #000;
+  border-bottom: 15px solid #000;
+}
+html.theme_dark body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar-nav li a {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #ff3a58;
+  text-shadow: 0px 0px 8px #000;
+  transition: all 0.2s ease-in-out;
+}
+html.theme_dark body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar-nav li a:hover {
+  color: #fffdde;
+  text-shadow: 0 0 8px #ff3a58;
+  transition: all 0.2s ease-in-out;
+  text-decoration: line-through;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody {
+  width: 90%;
+  margin: auto;
+  max-width: 1200px;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header {
+  text-align: center;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-image {
+  flex: 1 100%;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons {
+  flex: 1 100%;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons .wp-block-button {
+  width: 100%;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2em;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav a {
+  color: #fff;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav {
+  max-width: 1000px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li {
+  flex: 1 auto;
+}
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li a {
+  color: #fbff85;
+}
+html.theme_dark body.path--ethicsweek .bread {
+  visibility: hidden;
+  margin-top: -1em;
+}
+html.theme_dark body #header {
+  box-shadow: 0 0 5px -2px #000;
+}
+html.theme_dark body #header a {
+  color: #fff;
+}
+html.theme_dark body #header .contextual-links a {
+  color: #333;
+}
+html.theme_dark body #header .topnav {
+  background-color: #000;
+}
+html.theme_dark body #header .topnav a {
+  color: #ddd;
+}
+html.theme_dark body #header .topnav .navbar-nav .nav-item a:link, html.theme_dark body #header .topnav .navbar-nav .nav-item a:visited, html.theme_dark body #header .topnav .navbar-nav .nav-item a:focus {
+  color: #ddd;
+}
+html.theme_dark body #header .topnav .navbar-nav .nav-item a:hover {
+  color: #8bc63e;
+}
+html.theme_dark body #header .topnav .block-themeswitch .btn-group {
+  border: 0;
+}
+html.theme_dark body #header .topnav .block-themeswitch .btn-group a {
+  border: 0;
+}
+html.theme_dark body #header .topnav .block-themeswitch .btn-group a.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+html.theme_dark body #header .language-switcher-language-url .links li::before {
+  color: #ddd;
+}
+html.theme_dark body #header .navbar.navbar-light {
+  background-color: #181818;
+  transition: all ease 0.3s;
+  box-shadow: 0 0 5px -2px #000;
+}
+html.theme_dark body #header .navbar.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+html.theme_dark body #header.transparent .navbar.navbar-light {
+  display: block;
+}
+html.theme_dark body #header .navbar-nav .nav-item a:link, html.theme_dark body #header .navbar-nav .nav-item a:visited, html.theme_dark body #header .navbar-nav .nav-item a:focus {
+  color: #fff;
+}
+html.theme_dark body #header .navbar-nav .nav-item a:hover {
+  color: #8bc63e;
+}
+html.theme_dark body #header .tb-megamenu .nav > li > a:focus,
+html.theme_dark body #header .tb-megamenu .nav > li > a:hover,
+html.theme_dark body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:focus,
+html.theme_dark body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+html.theme_dark body #header .region-nav-additional .nav-item {
+  background-color: #8bc63e;
+}
+html.theme_dark body #header .region-nav-additional .nav-item a {
+  color: #fff !important;
+}
+html.theme_dark body .banner .view-slider .view-content .views-field-title {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+html.theme_dark body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, html.theme_dark body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
+  background-color: #004990;
+  color: #fff;
+}
+html.theme_dark body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1 a, html.theme_dark body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 a {
+  color: #E6FF8B;
+  font-weight: bold;
+}
+html.theme_dark body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1 .views-row, html.theme_dark body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 .views-row {
+  border-bottom: 0;
+}
+html.theme_dark body.path-frontpage #block-views-block-news-block-1-2, html.theme_dark body.path-frontpage #block-views-block-homepage-news-block-1 {
+  background-color: #b72f22ed;
+  color: #fff;
+}
+html.theme_dark body.path-frontpage #block-views-block-news-block-1-2 .view-content a, html.theme_dark body.path-frontpage #block-views-block-homepage-news-block-1 .view-content a {
+  color: #fff;
+}
+html.theme_dark body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_dark body.path-frontpage #block-views-block-homepage-news-block-1 a {
+  color: #fff;
+}
+html.theme_dark body main {
+  box-shadow: inset 0 0 300px #000;
+}
+html.theme_dark body main.landing {
+  box-shadow: none;
+}
+html.theme_dark body main .view .views-row {
+  border-bottom: 2px dashed #ddd;
+}
+html.theme_dark body main .view .view-filters {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1);
+}
+html.theme_dark body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
+  background: rgba(0, 0, 0, 0.1);
+}
+html.theme_dark body main .wp-block-cloudblocks-g-section {
+  background: #444;
+}
+html.theme_dark body main #block-views-block-related-content-block-1 .views-row {
+  box-shadow: 0 0 20px -8px #333;
+}
+html.theme_dark body main #block-views-block-related-content-block-1 .views-row .views-field-field-thumb {
+  background-color: #eee;
+}
+html.theme_dark body main .node__content .menu--main .navbar-nav {
+  background: aliceblue;
+}
+html.theme_dark body main .node__content .menu--main .navbar-nav .nav-item .is-active {
+  font-weight: bold;
+}
+html.theme_dark body .region-sidebar-second {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+@media (max-width: 991px) {
+  html.theme_dark body .region-sidebar-second {
+    border-radius: 0;
+    border-top: 2px solid;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+html.theme_dark body .region-sidebar-second .view .views-row {
+  border-bottom: 0px dashed #ddd;
+}
+html.theme_dark body .region-sidebar-second .navbar-nav {
+  background: #292929;
+}
+html.theme_dark body .region-sidebar-second .navbar-nav .nav-item.is-active {
+  font-weight: bold;
+}
+html.theme_dark body .region-content-below {
+  background: #eee;
+}
+html.theme_dark body footer.main-footer {
+  border-top: 1px solid #000;
+  color: #fff;
+  background-color: #222;
+}
+html.theme_dark body footer.main-footer a {
+  color: #fff;
+}
+html.theme_dark body footer.main-footer a:hover {
+  opacity: 0.8;
+}
+html.theme_dark body footer.main-footer .footer-bot {
+  background: #292929;
+}
+html.theme_dark body #header .navbar-brand a {
+  filter: grayscale(1) brightness(1.5);
+}
+
+/* light theme */
+html.theme_light body {
+  background-color: #fff;
+  color: #333;
+}
+html.theme_light body a, html.theme_light body a:link, html.theme_light body a:visited, html.theme_light body a:focus, html.theme_light body a:link.button-action {
+  color: #004990;
+}
+html.theme_light body a:hover {
+  color: #336688;
+}
+html.theme_light body blockquote {
+  margin: 1rem;
+  border-left: 4px solid;
+  padding-left: 1rem;
+}
+html.theme_light body .cta {
+  font-size: 1.2em;
+  padding: 0.667em 1.333em;
+  border: 2px solid #333;
+  border-radius: 9999px;
+  color: #333;
+  margin: 0.3em 0;
+  display: inline-block;
+}
+html.theme_light body .view-bluebox-by-page {
+  background: #004990;
+  color: #fff;
+}
+html.theme_light body .view-bluebox-by-page a {
+  color: #8bc63e;
+}
+html.theme_light body a.wp-block-button__link {
+  color: #004990;
+  background: #fff;
+}
+html.theme_light body a.wp-block-button__link:hover {
+  color: #336688;
+}
+html.theme_light body .toolbar-tab .toolbar-tray a, html.theme_light body .toolbar-tab .toolbar-tray a:link, html.theme_light body .toolbar-tab .toolbar-tray a:visited, html.theme_light body .toolbar-tab .toolbar-tray a:focus {
+  color: #333;
+}
+html.theme_light body .dropdown-menu {
+  background-color: #fff;
+}
+html.theme_light body.path--algorithms {
+  background-color: #000;
+}
+html.theme_light body.path--algorithms main {
+  padding-top: 0;
+  box-shadow: none;
+}
+html.theme_light body.path--algorithms main > .container {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+}
+html.theme_light body.path--algorithms main .col-content a {
+  color: #ff3a58;
+  font-weight: 600;
+  text-decoration: none;
+}
+html.theme_light body.path--algorithms main .col-content a:hover {
+  color: #fffdde;
+  text-shadow: 0 0 8px #ff3a58;
+  transition: all 0.2s ease-in-out;
+}
+html.theme_light body.path--algorithms main .block-field-blocknodefoi-subsitebody .navigation {
+  display: block;
+}
+html.theme_light body.path--gagged {
+  background-color: #333;
+  background-image: url(https://spj.org/gagged/images/bg.jpg);
+  background-size: 20% 20%;
+}
+html.theme_light body.path--gagged .breadcrumb {
+  margin: 0;
+}
+html.theme_light body.path--gagged main {
+  padding-top: 0;
+  box-shadow: none;
+}
+html.theme_light body.path--gagged main > .container {
+  background: #000;
+  color: #fff;
+  padding: 1em;
+}
+html.theme_light body.path--gagged main .col-content a {
+  color: #ccc;
+  border-bottom: 1px dashed #ddd;
+}
+html.theme_light body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation {
+  overflow: hidden;
+  text-align: center;
+  background-color: #ff3a58;
+  background-position: center;
+  overflow: hidden;
+  background-size: 50%;
+  box-shadow: inset 0 0 200px #000;
+  border-bottom: 15px solid #000;
+}
+html.theme_light body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar-nav li a {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #ff3a58;
+  text-shadow: 0px 0px 8px #000;
+  transition: all 0.2s ease-in-out;
+}
+html.theme_light body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar-nav li a:hover {
+  color: #fffdde;
+  text-shadow: 0 0 8px #ff3a58;
+  transition: all 0.2s ease-in-out;
+  text-decoration: line-through;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody {
+  width: 90%;
+  margin: auto;
+  max-width: 1200px;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header {
+  text-align: center;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-image {
+  flex: 1 100%;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons {
+  flex: 1 100%;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons .wp-block-button {
+  width: 100%;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2em;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav a {
+  color: #fff;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav {
+  max-width: 1000px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li {
+  flex: 1 auto;
+}
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li a {
+  color: #fbff85;
+}
+html.theme_light body.path--ethicsweek .bread {
+  visibility: hidden;
+  margin-top: -1em;
+}
+html.theme_light body #header {
+  box-shadow: 0 0 5px -2px #333;
+}
+html.theme_light body #header a {
+  color: #333;
+}
+html.theme_light body #header .contextual-links a {
+  color: #333;
+}
+html.theme_light body #header .topnav {
+  background-color: #eee;
+}
+html.theme_light body #header .topnav a {
+  color: #333;
+}
+html.theme_light body #header .topnav .navbar-nav .nav-item a:link, html.theme_light body #header .topnav .navbar-nav .nav-item a:visited, html.theme_light body #header .topnav .navbar-nav .nav-item a:focus {
+  color: #333;
+}
+html.theme_light body #header .topnav .navbar-nav .nav-item a:hover {
+  color: #8bc63e;
+}
+html.theme_light body #header .topnav .block-themeswitch .btn-group {
+  border: 0;
+}
+html.theme_light body #header .topnav .block-themeswitch .btn-group a {
+  border: 0;
+}
+html.theme_light body #header .topnav .block-themeswitch .btn-group a.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+html.theme_light body #header .language-switcher-language-url .links li::before {
+  color: #333;
+}
+html.theme_light body #header .navbar.navbar-light {
+  background-color: #fff;
+  transition: all ease 0.3s;
+  box-shadow: 0 0 5px -2px #333;
+}
+html.theme_light body #header .navbar.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+html.theme_light body #header.transparent .navbar.navbar-light {
+  display: block;
+}
+html.theme_light body #header .navbar-nav .nav-item a:link, html.theme_light body #header .navbar-nav .nav-item a:visited, html.theme_light body #header .navbar-nav .nav-item a:focus {
+  color: #333;
+}
+html.theme_light body #header .navbar-nav .nav-item a:hover {
+  color: #8bc63e;
+}
+html.theme_light body #header .tb-megamenu .nav > li > a:focus,
+html.theme_light body #header .tb-megamenu .nav > li > a:hover,
+html.theme_light body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:focus,
+html.theme_light body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+html.theme_light body #header .region-nav-additional .nav-item {
+  background-color: #8bc63e;
+}
+html.theme_light body #header .region-nav-additional .nav-item a {
+  color: #fff !important;
+}
+html.theme_light body .banner .view-slider .view-content .views-field-title {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+html.theme_light body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, html.theme_light body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
+  background-color: #004990;
+  color: #fff;
+}
+html.theme_light body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1 a, html.theme_light body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 a {
+  color: #E6FF8B;
+  font-weight: bold;
+}
+html.theme_light body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1 .views-row, html.theme_light body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 .views-row {
+  border-bottom: 0;
+}
+html.theme_light body.path-frontpage #block-views-block-news-block-1-2, html.theme_light body.path-frontpage #block-views-block-homepage-news-block-1 {
+  background-color: #b72f22ed;
+  color: #fff;
+}
+html.theme_light body.path-frontpage #block-views-block-news-block-1-2 .view-content a, html.theme_light body.path-frontpage #block-views-block-homepage-news-block-1 .view-content a {
+  color: #fff;
+}
+html.theme_light body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_light body.path-frontpage #block-views-block-homepage-news-block-1 a {
+  color: #fff;
+}
+html.theme_light body main {
+  box-shadow: inset 0 0 300px #fff;
+}
+html.theme_light body main.landing {
+  box-shadow: none;
+}
+html.theme_light body main .view .views-row {
+  border-bottom: 2px dashed #ddd;
+}
+html.theme_light body main .view .view-filters {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1);
+}
+html.theme_light body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
+  background: rgba(0, 0, 0, 0.1);
+}
+html.theme_light body main .wp-block-cloudblocks-g-section {
+  background: #eee;
+}
+html.theme_light body main #block-views-block-related-content-block-1 .views-row {
+  box-shadow: 0 0 20px -8px #333;
+}
+html.theme_light body main #block-views-block-related-content-block-1 .views-row .views-field-field-thumb {
+  background-color: #eee;
+}
+html.theme_light body main .node__content .menu--main .navbar-nav {
+  background: aliceblue;
+}
+html.theme_light body main .node__content .menu--main .navbar-nav .nav-item .is-active {
+  font-weight: bold;
+}
+html.theme_light body .region-sidebar-second {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+@media (max-width: 991px) {
+  html.theme_light body .region-sidebar-second {
+    border-radius: 0;
+    border-top: 2px solid;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+html.theme_light body .region-sidebar-second .view .views-row {
+  border-bottom: 0px dashed #ddd;
+}
+html.theme_light body .region-sidebar-second .navbar-nav {
+  background: aliceblue;
+}
+html.theme_light body .region-sidebar-second .navbar-nav .nav-item.is-active {
+  font-weight: bold;
+}
+html.theme_light body .region-content-below {
+  background: #eee;
+}
+html.theme_light body footer.main-footer {
+  border-top: 1px solid #000;
+  color: #fff;
+  background-color: #eee;
+}
+html.theme_light body footer.main-footer a {
+  color: #333;
+}
+html.theme_light body footer.main-footer a:hover {
+  opacity: 0.8;
+}
+html.theme_light body footer.main-footer .footer-bot {
+  background: #444;
+}

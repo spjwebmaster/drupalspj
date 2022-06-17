@@ -1,0 +1,18 @@
+.view-membership-benefits {
+    .views-row {
+        display: flex;
+        flex-wrap: wrap;
+
+
+            .views-field-title {
+                flex: 1 100%;
+            }
+            .views-field-body {
+                flex: 1 80%;
+            }
+            .views-field-field-benefit-logo {
+                flex: 1 20%;
+                min-width: 220px;
+            }
+    }
+}

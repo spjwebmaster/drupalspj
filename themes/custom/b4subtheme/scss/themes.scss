@@ -1,0 +1,22 @@
+/* Gathering all theme files denoted by a class/attr */
+@import 'variables_theme'; 
+
+
+
+/* default theme */
+html.theme_default { 
+    @import "themes/default";                                               
+
+} 
+ 
+ 
+/* dark theme */ 
+html.theme_dark {     
+    @import "themes/dark";                                              
+
+}
+ 
+/* light theme */
+html.theme_light {   
+    @import "themes/light";                          
+}

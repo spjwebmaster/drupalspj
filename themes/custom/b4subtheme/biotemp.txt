@@ -1,0 +1,71 @@
+<div{{ attributes }}>
+  
+    
+    <div class="row">
+      <div class="col-lg-9">
+        {{ title_prefix }}
+        {% if label and not page %}
+          <h2{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+          </h2>
+        {% endif %}
+        {{ title_suffix }}
+
+         <h3><em>{{ content.field_title }}</em></h3>
+      </div>
+      <div class="col-lg-3 text-right">
+         
+      </div>
+    </div>
+
+    <div {{content_attributes}}>
+      <div class="row">
+        <div class="col-lg-3">
+        <div class="bio_profile_220">
+          {{ content.field_profile }}
+        </div>
+        
+
+        </div>
+        <div class="col-lg-9">
+          
+          <div class="bioBody">
+            {{ content.body }}
+
+
+            <div class="bioContact">
+
+              
+              {% if content.field_email %}
+              <div class="contactItem">
+                {{ content.field_email }}
+              </div>
+              {% endif %}
+
+              {% if content.field_phone_number %}
+              <div class="contactItem ">
+                {{ content.field_phone_number }}
+
+                {% if content.field_phone_ext %}
+                {{ content.field_phone_ext }}
+                {% endif %}
+              </div>
+              {% endif %}
+              {% if content.field_twitter %}
+              <div class="contactItem ">
+                {{ content.field_twitter }}
+              </div>
+              {% endif %}
+              {% if content.field_instagram %}
+              <div class="contactItem ">
+                {{ content.field_instagram }}
+              </div>
+              {% endif %}
+            
+          </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+</div>
