@@ -12262,8 +12262,8 @@ body header .menu--account .nav .nav-item [data-drupal-link-system-path=user]::b
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-top: 9px;
-  -webkit-mask: url(/themes/bfd/assets/icon/user.svg);
-  mask: url(/themes/bfd/assets/icon/user.svg);
+  -webkit-mask: url(/themes/custom/b4subtheme/images/icon/user.svg);
+  mask: url(/themes/custom/b4subtheme/images/icon/user.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
 }
@@ -12280,8 +12280,8 @@ body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/lo
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-top: 9px;
-  -webkit-mask: url(/themes/bfd/assets/icon/logout.svg);
-  mask: url(/themes/bfd/assets/icon/logout.svg);
+  -webkit-mask: url(/themes/custom/b4subtheme/images/icon/logout.svg);
+  mask: url(/themes/custom/b4subtheme/images/icon/logout.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
 }
@@ -12298,8 +12298,8 @@ body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/lo
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-top: 9px;
-  -webkit-mask: url(/themes/bfd/assets/icon/login.svg);
-  mask: url(/themes/bfd/assets/icon/login.svg);
+  -webkit-mask: url(/themes/custom/b4subtheme/images/login.svg);
+  mask: url(/themes/custom/b4subtheme/images/login.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
 }
@@ -12316,8 +12316,8 @@ body header .menu--account .nav .show-user-name-only::before {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-top: 6px;
-  -webkit-mask: url(/themes/bfd/assets/icon/user.svg);
-  mask: url(/themes/bfd/assets/icon/user.svg);
+  -webkit-mask: url(/themes/custom/b4subtheme/images/icon/user.svg);
+  mask: url(/themes/custom/b4subtheme/images/icon/user.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
 }
