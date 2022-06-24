@@ -29,6 +29,7 @@ sites/*/private
 sites/simpletest
 
 themes/custom/spj/node_modules/
+themes/custom/b4subtheme/node_modules/
 modules/contrib/impex/
 
 # If you prefer to store your .gitignore file in the sites/ folder, comment
