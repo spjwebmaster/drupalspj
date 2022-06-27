@@ -1,4 +1,8 @@
 #block-views-block-related-content-block-1 {
+    @include respond-below(md){
+        margin: 0 -1em;
+    }
+
     .view-content {
         display: flex;
         flex-direction: column;
@@ -9,9 +13,11 @@
         }
         .views-row {
             flex: 1 100%;
+            @include respond-above(md){
             display: flex;
             flex-wrap: nowrap;
             align-content: flex-start;
+            }
             
     
 
@@ -24,11 +30,13 @@
 
             }
             .views-field-field-thumb {
+                @include respond-above(md){
                 flex: 1 50%;
                 max-width: 200px;
                 overflow: hidden;
                 max-width: 200px;
                 min-width: 119px;
+                }
 
             }
 

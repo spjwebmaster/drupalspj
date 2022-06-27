@@ -15,7 +15,6 @@
         }
     ],
     "require": {
-        "drupal/core-vendor-hardening": "^9.3",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7",
         "drupal/addanother": "^1.1",
@@ -31,6 +30,7 @@
         "drupal/core-composer-scaffold": "^9.3",
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
+        "drupal/core-vendor-hardening": "^9.3",
         "drupal/devel": "^4.1",
         "drupal/drupal_slider": "^2.0",
         "drupal/editor_advanced_link": "2.0",
@@ -82,7 +82,7 @@
         "drupal/we_megamenu": "^1.13",
         "drupal/webform": "^6.1",
         "drupal/xmlsitemap": "^1.2",
-        "drush/drush": "11.*",
+        "drush/drush": "^11.0",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "conflict": {

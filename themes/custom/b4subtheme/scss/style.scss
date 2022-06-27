@@ -609,7 +609,7 @@ body {
         /* block styles */
         @import 'views/employment';   
         @import 'views/news'; 
-        @import 'views/bios';     
+        @import 'views/bios';        
 
 
         .block {
@@ -625,11 +625,22 @@ body {
         }
         .region-content-below {
             padding: 1em;
-            display: flex;
 
-            .block {
-                flex: 1 33%;
+            @include respond-below(md){
+                margin: 1em -1em;
             }
+            .block {
+                margin-bottom: 2em;
+            }
+            @include respond-above(md){
+
+                display: flex;
+                .block {
+                    flex: 1 33%;
+                }
+            }
+
+           
         }
         .region-content-above, .region-breadcrumb {
             >.block-menu {
@@ -650,15 +661,20 @@ body {
 
         .region-sidebar-second {
             text-align: left;
-            padding: 3em;
 
-            .container {
-                display: flex;
+            @include respond-above(md){
+                padding: 3em;
+            }
 
-                .view-news {
-                    flex-wrap: wrap;
-                    .view-content {
-                        flex: 1 100%;
+            @include respond-above(md){
+                .container {
+                    display: flex;
+
+                    .view-news {
+                        flex-wrap: wrap;
+                        .view-content {
+                            flex: 1 100%;
+                        }
                     }
                 }
             }
@@ -727,16 +743,27 @@ body {
             
             .region-footer-bot {
                 padding: 2em 0;
-                display: flex;
 
-                .navbar-nav {
-                    flex: 1 auto;
-                    li {
-                        flex: 1 auto;
-                    }
+                @include respond-above(md){
+                    display: flex;
                 }
-                .block {
-                    flex: 1 auto;
+
+                .navbar-nav, .block {
+                    margin-bottom: 2em;
+                }
+
+                @include respond-above(md){
+                    .navbar-nav {
+                        flex: 1 auto;
+                        li {
+                            flex: 1 auto;
+                        }
+                        
+                    }
+                    .block {
+                        flex: 1 auto;
+
+                    }
                 }
             }
         }
