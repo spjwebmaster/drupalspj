@@ -10,6 +10,7 @@
 @import '../../../bootstrap4/scss/style';                                                      
 
 $slideShowMax: 410px;
+$slideShowMaxMobile: 210px; 
 
 @import 'mediaquery/mediafunctions';                     
 @import 'components/animations';
@@ -73,7 +74,7 @@ ol.breadcrumb {
     background: $SPJblue;
     color: #fff;
     margin-top: 2em;
-    margin-bottom: 2em;   
+    margin-bottom: 2em;    
 
     @include respond-above(md) {
         padding: 3em 11em;
@@ -93,12 +94,14 @@ ol.breadcrumb {
 
 .layout--twocol-section {
  .layout__region {
+    @include respond-above(md) {
      &.layout__region--first {
         padding-right: 1em;
      }
      &.layout__region--second{
         padding-left: 1em;
      }
+    }
      
  }
 }
@@ -286,6 +289,15 @@ body {
 
                 nav {
                     order: 2;
+                }
+
+                .themeswitcher {
+                    a {
+                        height: 35px;
+                        @include respond-above(md){
+                            height: 41px;
+                        }
+                    }
                 }
 
                 .block-themeswitch-block {
@@ -585,7 +597,11 @@ body {
     .region-slideshow {   
         margin-top: 124px;
         position: relative; 
-        max-height: $slideShowMax;
+       
+        max-height: $slideShowMaxMobile;
+        @include respond-above(sm){
+            max-height: $slideShowMax;
+        }
         overflow: hidden;
     }
     

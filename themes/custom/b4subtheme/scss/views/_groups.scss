@@ -1,7 +1,11 @@
 .group--community {
     >div>.layout>.layout__region:not(.layout__region--second) {
         .navbar-nav {
-            flex-direction: row;
+            flex-wrap: wrap;
+            @include respond-above(md) {
+                flex-wrap: nowrap;
+                flex-direction: row;
+            }
 
             padding: 1em;
             background-color: #eee;
