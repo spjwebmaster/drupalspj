@@ -28,7 +28,7 @@ sites/*/private
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
 
-
+php_errorlog
 ssh.txt
 themes/custom/spj/node_modules/
 themes/custom/b4subtheme/node_modules/
