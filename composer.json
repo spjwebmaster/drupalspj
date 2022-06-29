@@ -107,6 +107,11 @@
                 "web-root": "./"
             }
         },
+        "merge-plugin": {
+            "include": [
+                "modules/contrib/webform/composer.libraries.json"
+            ]
+        },
         "installer-paths": {
             "core": [
                 "type:drupal-core"
