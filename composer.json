@@ -60,6 +60,7 @@
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drupal/prlp": "^1.7",
+        "drupal/recaptcha": "3.0",
         "drupal/redirect": "^1.7",
         "drupal/responsive_menu": "4.4",
         "drupal/restui": "1.20",
