@@ -6,7 +6,7 @@ dependencies:
   - drupal:menu_link_content
   - jsonapi_menu_items:jsonapi_menu_items
 
-# Information added by Drupal.org packaging script on 2021-04-18
-version: '1.2.0'
+# Information added by Drupal.org packaging script on 2021-05-02
+version: '1.2.1'
 project: 'jsonapi_menu_items'
-datestamp: 1618724747
+datestamp: 1619993275

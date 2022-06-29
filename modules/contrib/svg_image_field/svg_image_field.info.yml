@@ -11,7 +11,7 @@ libraries-extend:
   media_library/style:
     - svg_image_field/media_library
 
-# Information added by Drupal.org packaging script on 2020-11-21
-version: '2.0.0-beta1'
+# Information added by Drupal.org packaging script on 2022-02-28
+version: '2.1.1'
 project: 'svg_image_field'
-datestamp: 1605983110
+datestamp: 1646078282

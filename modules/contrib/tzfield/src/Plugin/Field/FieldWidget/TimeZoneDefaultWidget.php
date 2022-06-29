@@ -26,7 +26,7 @@ class TimeZoneDefaultWidget extends WidgetBase {
     $element['value'] = $element + [
       '#type' => 'select',
       '#options' => system_time_zones(!$element['#required'], TRUE),
-      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
+      '#default_value' => $items[$delta]->value ?? NULL,
     ];
     return $element;
   }

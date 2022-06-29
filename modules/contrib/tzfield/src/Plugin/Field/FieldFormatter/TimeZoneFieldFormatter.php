@@ -34,6 +34,9 @@ class TimeZoneFieldFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $element = [];
     foreach ($items as $delta => $item) {
+      if (!isset($item->value)) {
+        continue;
+      }
       // Render each element as markup.
       $dateTime = new DrupalDateTime();
       $dateTime->setTimezone(new \DateTimeZone($item->value));

@@ -6,7 +6,7 @@ core_version_requirement: ^8 || ^9
 package: Menu
 configure: entity.tb_megamenu.collection
 
-# Information added by Drupal.org packaging script on 2021-11-08
-version: '8.x-1.6'
+# Information added by Drupal.org packaging script on 2022-03-25
+version: '8.x-1.7'
 project: 'tb_megamenu'
-datestamp: 1636411557
+datestamp: 1648215870
