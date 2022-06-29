@@ -1,0 +1,6 @@
+impex.admin:
+  title: "Impex"
+  description: "Impexium Credentials"
+  parent: system.admin_config_development
+  route_name: impex.creds
+  weight: 100

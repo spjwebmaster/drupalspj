@@ -1,0 +1,24 @@
+impex.redirect:
+  path: '/membershipredirect'
+  defaults:
+    _controller: Drupal\impex\Controller\ImpexController::membershipredirect
+    _title: 'Membership'
+  requirements:
+    _permission: 'access content'
+
+impex.greeting_form:
+  path: '/admin/config/salutation-configuration'
+  defaults:
+    _form: Drupal\impex\Form\SalutationConfigurationForm
+    _title: 'Salutation Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+
+impex.creds:
+  path: '/admin/config/impex-cred-configuration'
+  defaults:
+    _form: Drupal\impex\Form\ImpexCredsConfigurationForm
+    _title: 'Impexium Credentials Configuration'
+  requirements:
+    _permission: 'administer site configuration'

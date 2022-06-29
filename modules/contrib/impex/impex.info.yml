@@ -1,0 +1,5 @@
+name: Impexium
+description: "Impexium Module"
+type: module
+core_version_requirement: ^9
+package: Custom

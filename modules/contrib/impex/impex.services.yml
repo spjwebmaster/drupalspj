@@ -1,0 +1,5 @@
+services:
+  impex.salutation:
+    class: Drupal\impex\ImpexSalutation
+  impex.creds:
+    class: Drupal\impex\ImpexCreds
