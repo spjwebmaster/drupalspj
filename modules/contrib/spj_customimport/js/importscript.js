@@ -31,6 +31,9 @@ var customimport = {
 
         console.log ("Hello Import");
         this.binding();
+        if(document.querySelector(".closeWindow")){
+            window.close();
+        }
     },
     postData: function(url, type){
 
@@ -384,16 +387,61 @@ var customimport = {
         let resultContainer = document.getElementById("loadData");
             resultContainer.innerHTML = JSON.stringify(customimport.masterList);
     },
+    fetchNews: function(url, nodeid){
+        console.log(url, nodeid);
+        let ref= url.substring(url.indexOf("?")+4, url.length);
+        let fetchUrl = "/customimport/fetchnews?ref" + ref + "&nid=" + nodeid;
+        console.log(fetchUrl)
+
+
+        
+        jQuery.ajax({
+            url: fetchUrl,
+            success: function(res){
+                
+                let temp = document.createElement("div");
+
+                temp.innerHTML = res;
+                let body = temp.querySelector("textarea.form-control").innerText;
+                //console.log(body)
+                let temp2 = document.createElement("div");
+                temp2.innerHTML = body;
+                let inner = temp2.querySelector(".newsBody").innerHTML
+                console.log(inner);
+
+                let tar = document.getElementById("node_" +nodeid);
+                let bodyInput = tar.closest("td").querySelector("form textarea[name='body']");
+                bodyInput.innerHTML = inner;
+                tar.closest("td").querySelector("form").submit();
+
+            }, 
+            error: function(e){
+
+            }
+        })
+        
+    },
+
     binding: function(){
         if(document.querySelector(".loadScrape")!=null){
-        document.querySelector(".loadScrape").addEventListener("click", function(e){
-            e.preventDefault();
-            let type = e.target.getAttribute("data-type");
-            let url  = e.target.href;
-            customimport.postData(url, type)
-            
+            document.querySelector(".loadScrape").addEventListener("click", function(e){
+                e.preventDefault();
+                let type = e.target.getAttribute("data-type");
+                let url  = e.target.href;
+                customimport.postData(url, type)
+                
 
-        })
+            })
+
+            document.querySelectorAll(".fetchNews").forEach(function(el){
+                el.onclick = function(){
+                    let nid = el.attribute("data-nid");
+                    let url = el.attribute("data-ref");
+                    customimport.fetchNews(url, nid)
+                    
+                }
+
+            })
         }
     }
 }

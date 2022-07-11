@@ -1,0 +1,5 @@
+name: SPJ Youtube feed display
+description: Showing SPJ youtube feeds on the site
+package: Custom
+type: module
+core_version_requirement: ^9

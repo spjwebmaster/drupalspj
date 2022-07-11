@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ff72dd5fe32e7739a89096dff7c63c1",
+    "content-hash": "e965c386a9cd344bd6cf58eead76e2ea",
     "packages": [
         {
             "name": "algolia/places",
@@ -4859,6 +4859,67 @@
             }
         },
         {
+            "name": "drupal/jsonapi_hypermedia",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jsonapi_hypermedia.git",
+                "reference": "8.x-1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jsonapi_hypermedia-8.x-1.7.zip",
+                "reference": "8.x-1.7",
+                "shasum": "02726ac9629e3304198ca2f8a56a2641fa47ac81"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.7",
+                    "datestamp": "1651244596",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriel SULLICE",
+                    "homepage": "https://www.drupal.org/user/3616626",
+                    "email": "gabriel@sullice.com"
+                },
+                {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                },
+                {
+                    "name": "e0ipso",
+                    "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "gabesullice",
+                    "homepage": "https://www.drupal.org/user/2287430"
+                },
+                {
+                    "name": "zrpnr",
+                    "homepage": "https://www.drupal.org/user/1448368"
+                }
+            ],
+            "description": "Complements the JSON API module with Hypermedia as the Engine of Application State",
+            "homepage": "https://www.drupal.org/project/jsonapi_hypermedia",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jsonapi_hypermedia"
+            }
+        },
+        {
             "name": "drupal/jsonapi_menu_items",
             "version": "1.2.0",
             "source": {
@@ -5403,6 +5464,79 @@
             "homepage": "http://drupal.org/project/next",
             "support": {
                 "source": "https://git.drupalcode.org/project/next"
+            }
+        },
+        {
+            "name": "drupal/node_revision_delete",
+            "version": "1.0.0-rc4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/node_revision_delete.git",
+                "reference": "8.x-1.0-rc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/node_revision_delete-8.x-1.0-rc4.zip",
+                "reference": "8.x-1.0-rc4",
+                "shasum": "b7245a70f13373f80cf4f110f488232bb96e968d"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-rc4",
+                    "datestamp": "1651723334",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Cid Almaguer (adriancid)",
+                    "homepage": "https://www.drupal.org/u/adriancid",
+                    "email": "adriancid@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Diosbel Mezquía (diosbelmezquia)",
+                    "homepage": "https://www.drupal.org/u/diosbelmezquia",
+                    "email": "dmezquiam@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Robert Ngo (Robert Ngo)",
+                    "homepage": "https://www.drupal.org/u/robert-ngo",
+                    "email": "robertngo.18@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "kaushalkishorejaiswal",
+                    "homepage": "https://www.drupal.org/user/2228850"
+                }
+            ],
+            "description": "Track and prune node revisions.",
+            "homepage": "https://www.drupal.org/project/node_revision_delete",
+            "keywords": [
+                "Drupal",
+                "Nodes",
+                "Revisions"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/node_revision_delete",
+                "issues": "https://www.drupal.org/project/issues/node_revision_delete"
             }
         },
         {
@@ -13347,7 +13481,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/block_field": 5
+        "drupal/block_field": 5,
+        "drupal/node_revision_delete": 5
     },
     "prefer-stable": true,
     "prefer-lowest": false,
