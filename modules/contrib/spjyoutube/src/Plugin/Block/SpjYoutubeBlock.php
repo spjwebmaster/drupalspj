@@ -2,7 +2,6 @@
 namespace Drupal\spjyoutube\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
-
 /**
  * Provides a 'SPJ Youtube Feed' block.
  *
@@ -21,7 +20,8 @@ class SpjYoutubeBlock extends BlockBase  {
                 //diversity
                 $feedUrl = "https://feeds.feedburner.com/quill/diversity"; 
                 break;
-           
+                default: 
+                $feedUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=UCxudDPp37SBDBTNI9IJJB5w";
         }
         return $feedUrl;
     }
@@ -35,14 +35,28 @@ class SpjYoutubeBlock extends BlockBase  {
         $data["author"] = [];
         $data["author"]["name"] = $feed->author->name;
         $data["author"]["uri"] = $feed->author->uri;
+        $data['thumb'] = null;
         $data['entries'] = [];
+
+        $feed->registerXPathNamespace('yt', 'http://www.youtube.com/xml/schemas/2015');
+
+        $counter = 1;
+        $max = 5;
         foreach($feed->entry as $entry){
-            $ob = [];
-            $ob["title"] = $entry->title;
-            $ob["id"] = $entry->id;
-            $ob["url"] = "";
-            $data['entries'][] = $ob;
-            
+            if($counter<$max){
+                $id = str_replace("yt:video:", "",$entry->id);
+                $ob = [];
+                if($counter==1){
+                    $data['thumb']  = "https://i4.ytimg.com/vi/" . $id . "/hqdefault.jpg";
+                } 
+                $ob["title"] = $entry->title;
+                $ob["id"] = $id;
+                $ob["url"] = "https://www.youtube.com/watch?v=" . $id;
+                
+                $data['entries'][] = $ob;
+            }
+            $counter++;
+           
         }        
 
 

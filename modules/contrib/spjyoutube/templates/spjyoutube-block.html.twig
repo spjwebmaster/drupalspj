@@ -1,5 +1,26 @@
 
 <div class="views view-spj-youtube-block">
-{% for key,value in data %}
-  <h2>{{ key }}:</h2>
+<h2>{{data.author.name}} </h2>
+<a href="{{data.author.uri}}" target="_blank">
+    <img src="{{data.thumb }}" width="200" />
+</a>
+<p class="blurb-text">
+Since 2020, the IC has held the #ICTalks to connect journalists and experts to our community 
+at a time when it was difficult to do so in person. 
+We have continued to host talks monthly that also include our #ICShorts. 
+Check it out here if you missed tuning in live.
+
+</p>
+<div class="item-list">
+<ul>
+     {% for vid in data.entries %}
+        <li>
+            <a href="{{vid.url }}" target="_blank">{{vid.title}}</a><br />
+
+           
+        </li>
+     {% endfor %}
+</ul>
+<a href="{{data.author.uri}}" target="_blank">View more</a>
+</div>
 </div>

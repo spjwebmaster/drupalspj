@@ -11543,6 +11543,14 @@ body .region-sidebar-second {
   margin-right: 1em;
   margin-bottom: 1em;
 }
+.field--name-field-community-image img, .views-field-field-community-image img {
+  width: 100%;
+  height: auto;
+}
+
+.layout__region--third .navbar-nav {
+  flex-direction: column !important;
+}
 
 .page-node-type-award .node--type-award time {
   font-size: 1.5em;
@@ -11696,14 +11704,14 @@ body .region-sidebar-second {
   padding: 0;
 }
 
-.group--community > div > .layout > .layout__region:not(.layout__region--second) .navbar-nav {
+.group--community > div > .layout > .layout__region:not(.layout__region--second):not(.layout__region--third) .navbar-nav {
   flex-wrap: wrap;
   padding: 1em;
   background-color: #eee;
   margin-bottom: 2em;
 }
 @media (min-width: 992px) {
-  .group--community > div > .layout > .layout__region:not(.layout__region--second) .navbar-nav {
+  .group--community > div > .layout > .layout__region:not(.layout__region--second):not(.layout__region--third) .navbar-nav {
     flex-wrap: nowrap;
     flex-direction: row;
   }

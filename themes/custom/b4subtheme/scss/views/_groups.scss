@@ -1,5 +1,5 @@
 .group--community {
-    >div>.layout>.layout__region:not(.layout__region--second) {
+    >div>.layout>.layout__region:not(.layout__region--second):not(.layout__region--third) {
         .navbar-nav {
             flex-wrap: wrap;
             @include respond-above(md) {

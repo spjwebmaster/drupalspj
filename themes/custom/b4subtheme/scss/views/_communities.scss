@@ -8,4 +8,16 @@
     float: left;
     margin-right: 1em;
     margin-bottom: 1em;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+.layout__region--third {
+    .navbar-nav {
+        flex-direction: column!important;
+    }
 }
