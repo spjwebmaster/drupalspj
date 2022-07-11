@@ -15,6 +15,7 @@ class SpjYoutubeBlock extends BlockBase  {
 
     private function getFeedUrl($path) {
         $feedUrl ="";
+        
         switch($path){
             case "9": 
                 //diversity
@@ -22,8 +23,21 @@ class SpjYoutubeBlock extends BlockBase  {
                 break;
                 default: 
                 $feedUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=UCxudDPp37SBDBTNI9IJJB5w";
+                
         }
         return $feedUrl;
+    }
+    private function getMessage($path){
+
+        // instead of hardcoding - get a $config object and form set up like the impex module
+        $message = "";
+        switch($path){
+            default:  
+
+            $message = "Since 2020, the IC has held the #ICTalks to connect journalists and experts to our community at a time when it was difficult to do so in person. We have continued to host talks monthly that also include our #ICShorts. Check it out here if you missed tuning in live.";
+            break;
+        }
+        return $message;
     }
     public function build() {
         $path = getUrl();
@@ -37,6 +51,9 @@ class SpjYoutubeBlock extends BlockBase  {
         $data["author"]["uri"] = $feed->author->uri;
         $data['thumb'] = null;
         $data['entries'] = [];
+
+        $data["message"] = $this->getMessage($path);
+        // or render a view for multilingual support?
 
         $feed->registerXPathNamespace('yt', 'http://www.youtube.com/xml/schemas/2015');
 
