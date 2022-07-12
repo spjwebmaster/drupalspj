@@ -339,8 +339,10 @@ body {
                 }
             }
             #block-mainnavigation {
-                max-height: calc(100vh - 230px);
-                overflow: auto;
+                @include respond-below(md){ 
+                    max-height: calc(100vh - 230px);
+                    overflow: auto;
+                }
             }
             @include respond-below(md){  
                 .navbar-collapse {

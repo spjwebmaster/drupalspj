@@ -5,6 +5,6 @@ package: Testing
 # version: 3.x
 
 # Information added by Drupal.org packaging script on 2022-07-01
-version: '8.x-3.8'
+version: '4.0.0'
 project: 'ctools'
-datestamp: 1656633726
+datestamp: 1656635483

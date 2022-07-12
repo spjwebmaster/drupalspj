@@ -5,9 +5,7 @@ namespace Drupal\Tests\ctools\Kernel;
 use Drupal\ctools\Testing\EntityCreationTrait;
 use Drupal\KernelTests\KernelTestBase;
 
-/**
- *
- */
+
 abstract class RelationshipsTestBase extends KernelTestBase {
   use EntityCreationTrait;
 
@@ -39,7 +37,7 @@ abstract class RelationshipsTestBase extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installSchema('system', ['sequences']);

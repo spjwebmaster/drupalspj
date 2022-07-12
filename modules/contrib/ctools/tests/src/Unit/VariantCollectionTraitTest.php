@@ -27,7 +27,7 @@ class VariantCollectionTraitTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $container = new ContainerBuilder();
     $this->manager = $this->prophesize(PluginManagerInterface::class);
@@ -153,9 +153,7 @@ class VariantCollectionTraitTest extends UnitTestCase {
   }
 
 }
-/**
- *
- */
+
 class TestVariantCollectionTrait {
   use VariantCollectionTrait;
 
