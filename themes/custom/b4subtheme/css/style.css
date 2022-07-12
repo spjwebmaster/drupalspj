@@ -12143,9 +12143,11 @@ body header .navbar .navbar-collapse .nav_wrapper {
   display: flex;
   flex: 1 100%;
 }
-body header .navbar #block-mainnavigation {
-  max-height: calc(100vh - 230px);
-  overflow: auto;
+@media (max-width: 991px) {
+  body header .navbar #block-mainnavigation {
+    max-height: calc(100vh - 230px);
+    overflow: auto;
+  }
 }
 @media (max-width: 991px) {
   body header .navbar .navbar-collapse .nav_wrapper {
