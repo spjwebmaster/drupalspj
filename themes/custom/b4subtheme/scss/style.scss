@@ -291,16 +291,16 @@ body {
                     order: 2;
                 }
 
-                .themeswitcher {
+                .themeswitcher {  
                     a {
                         height: 35px;
                         @include respond-above(md){
                             height: 41px;
                         }
                     }
-                }
+                } 
 
-                .block-themeswitch-block {
+                .block-themeswitch-block {   
                     margin-right: 10px;
                     order: 1;
                     .themeswitcher {
@@ -317,6 +317,7 @@ body {
                 }
                
             }
+           
             .navbar-nav {
                 width: 100%;
                 display: block;
@@ -337,7 +338,11 @@ body {
                     flex: 1 100%;
                 }
             }
-            @include respond-below(md){
+            #block-mainnavigation {
+                max-height: calc(100vh - 230px);
+                overflow: auto;
+            }
+            @include respond-below(md){  
                 .navbar-collapse {
                     
                     .nav_wrapper {
@@ -353,7 +358,7 @@ body {
                     }
                     
                 }
-            }
+            }  
             .region-nav-main {
                 .navbar-nav {
                     .nav-item {
@@ -427,7 +432,7 @@ body {
                     .sfhover {
                        > ul {
                            top: 81px;
-                           background: $navBG;
+                           background: $navBG;  
                        }
                     }
                 }

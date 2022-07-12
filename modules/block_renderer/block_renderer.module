@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains block_renderer.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function block_renderer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the block_renderer module.
+    case 'help.page.block_renderer':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Block Renderer') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function block_renderer_theme() {
+  return [
+    'block_renderer' => [
+      'variables' => [
+        'content' => [],
+        'attributes' => [],
+      ],
+    ],
+  ];
+}

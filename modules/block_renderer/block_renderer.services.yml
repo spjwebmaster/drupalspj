@@ -1,0 +1,4 @@
+services:
+  block_renderer:
+    class: Drupal\block_renderer\BlockRenderer
+    arguments: ['@entity_type.manager', '@plugin.manager.block', '@current_user']

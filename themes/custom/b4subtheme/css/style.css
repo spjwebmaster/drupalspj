@@ -11385,135 +11385,58 @@ body.path--whistleblower .block-views-blockfreelance-guides-block-1 h3 {
   margin-top: 0.75em;
 }
 
-.path-frontpage .main-row .col-content,
-.page-node-type-student-event .main-row .col-content,
-.path-membership .main-row .col-content,
-.page-node-type-convention-page .main-row .col-content,
-.page-node-type-award .main-row .col-content,
-.page-node-type-freelance-guide .main-row .col-content,
-body.join .main-row .col-content,
-body.page--node-410 .main-row .col-content,
-body.page--node-405 .main-row .col-content,
-body.page--node-224 .main-row .col-content,
-body.page--node-225 .main-row .col-content,
-.page-node-type-what-we-do .main-row .col-content,
 body .main-row .col-content {
   flex: 1 100%;
   max-width: 100%;
 }
-.path-frontpage .main-row .col-sidebar,
-.page-node-type-student-event .main-row .col-sidebar,
-.path-membership .main-row .col-sidebar,
-.page-node-type-convention-page .main-row .col-sidebar,
-.page-node-type-award .main-row .col-sidebar,
-.page-node-type-freelance-guide .main-row .col-sidebar,
-body.join .main-row .col-sidebar,
-body.page--node-410 .main-row .col-sidebar,
-body.page--node-405 .main-row .col-sidebar,
-body.page--node-224 .main-row .col-sidebar,
-body.page--node-225 .main-row .col-sidebar,
-.page-node-type-what-we-do .main-row .col-sidebar,
 body .main-row .col-sidebar {
   flex: 1 100%;
   max-width: 100%;
   padding-top: 3em;
   margin-top: 3em;
 }
-.path-frontpage .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-student-event .main-row .col-sidebar .region-sidebar-second,
-.path-membership .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-convention-page .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-award .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-freelance-guide .main-row .col-sidebar .region-sidebar-second,
-body.join .main-row .col-sidebar .region-sidebar-second,
-body.page--node-410 .main-row .col-sidebar .region-sidebar-second,
-body.page--node-405 .main-row .col-sidebar .region-sidebar-second,
-body.page--node-224 .main-row .col-sidebar .region-sidebar-second,
-body.page--node-225 .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-what-we-do .main-row .col-sidebar .region-sidebar-second,
-body .main-row .col-sidebar .region-sidebar-second {
+body .main-row .col-sidebar .region-sidebar-second > .container {
   display: flex;
+  padding-left: 0;
+  padding-right: 0;
   flex-direction: column;
 }
 @media (min-width: 992px) {
-  .path-frontpage .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-student-event .main-row .col-sidebar .region-sidebar-second,
-.path-membership .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-convention-page .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-award .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-freelance-guide .main-row .col-sidebar .region-sidebar-second,
-body.join .main-row .col-sidebar .region-sidebar-second,
-body.page--node-410 .main-row .col-sidebar .region-sidebar-second,
-body.page--node-405 .main-row .col-sidebar .region-sidebar-second,
-body.page--node-224 .main-row .col-sidebar .region-sidebar-second,
-body.page--node-225 .main-row .col-sidebar .region-sidebar-second,
-.page-node-type-what-we-do .main-row .col-sidebar .region-sidebar-second,
-body .main-row .col-sidebar .region-sidebar-second {
-    flex-direction: row;
-    flex-wrap: wrap;
+  body .main-row .col-sidebar .region-sidebar-second > .container {
+    padding-right: 15px;
+    padding-left: 15px;
   }
-  .path-frontpage .main-row .col-sidebar .region-sidebar-second > div,
-.page-node-type-student-event .main-row .col-sidebar .region-sidebar-second > div,
-.path-membership .main-row .col-sidebar .region-sidebar-second > div,
-.page-node-type-convention-page .main-row .col-sidebar .region-sidebar-second > div,
-.page-node-type-award .main-row .col-sidebar .region-sidebar-second > div,
-.page-node-type-freelance-guide .main-row .col-sidebar .region-sidebar-second > div,
-body.join .main-row .col-sidebar .region-sidebar-second > div,
-body.page--node-410 .main-row .col-sidebar .region-sidebar-second > div,
-body.page--node-405 .main-row .col-sidebar .region-sidebar-second > div,
-body.page--node-224 .main-row .col-sidebar .region-sidebar-second > div,
-body.page--node-225 .main-row .col-sidebar .region-sidebar-second > div,
-.page-node-type-what-we-do .main-row .col-sidebar .region-sidebar-second > div,
-body .main-row .col-sidebar .region-sidebar-second > div {
+}
+body .main-row .col-sidebar .region-sidebar-second > .container > div {
+  box-shadow: inset 0px 0px 73px -44px #333;
+  border-radius: 23px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+@media (min-width: 992px) {
+  body .main-row .col-sidebar .region-sidebar-second > .container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  body .main-row .col-sidebar .region-sidebar-second > .container > div {
     flex: 1 auto;
+    padding: 1.5em;
+    margin: 0 1em;
+  }
+  body .main-row .col-sidebar .region-sidebar-second > .container > div h2 {
+    white-space: nowrap;
   }
 }
 @media (min-width: 992px) {
-  .path-frontpage main,
-.page-node-type-student-event main,
-.path-membership main,
-.page-node-type-convention-page main,
-.page-node-type-award main,
-.page-node-type-freelance-guide main,
-body.join main,
-body.page--node-410 main,
-body.page--node-405 main,
-body.page--node-224 main,
-body.page--node-225 main,
-.page-node-type-what-we-do main,
-body main {
+  body main {
     padding-bottom: 0;
   }
 }
-.path-frontpage .region-sidebar-second .block-spj-calendar-block-awards,
-.page-node-type-student-event .region-sidebar-second .block-spj-calendar-block-awards,
-.path-membership .region-sidebar-second .block-spj-calendar-block-awards,
-.page-node-type-convention-page .region-sidebar-second .block-spj-calendar-block-awards,
-.page-node-type-award .region-sidebar-second .block-spj-calendar-block-awards,
-.page-node-type-freelance-guide .region-sidebar-second .block-spj-calendar-block-awards,
-body.join .region-sidebar-second .block-spj-calendar-block-awards,
-body.page--node-410 .region-sidebar-second .block-spj-calendar-block-awards,
-body.page--node-405 .region-sidebar-second .block-spj-calendar-block-awards,
-body.page--node-224 .region-sidebar-second .block-spj-calendar-block-awards,
-body.page--node-225 .region-sidebar-second .block-spj-calendar-block-awards,
-.page-node-type-what-we-do .region-sidebar-second .block-spj-calendar-block-awards,
 body .region-sidebar-second .block-spj-calendar-block-awards {
   margin-top: 0;
 }
 @media (min-width: 992px) {
-  .path-frontpage .region-sidebar-second,
-.page-node-type-student-event .region-sidebar-second,
-.path-membership .region-sidebar-second,
-.page-node-type-convention-page .region-sidebar-second,
-.page-node-type-award .region-sidebar-second,
-.page-node-type-freelance-guide .region-sidebar-second,
-body.join .region-sidebar-second,
-body.page--node-410 .region-sidebar-second,
-body.page--node-405 .region-sidebar-second,
-body.page--node-224 .region-sidebar-second,
-body.page--node-225 .region-sidebar-second,
-.page-node-type-what-we-do .region-sidebar-second,
-body .region-sidebar-second {
+  body .region-sidebar-second {
     position: relative;
     left: 50%;
     right: 50%;
@@ -11550,6 +11473,10 @@ body .region-sidebar-second {
 
 .layout__region--third .navbar-nav {
   flex-direction: column !important;
+}
+
+.block-spj-youtube-feed-block {
+  margin: 2em 0;
 }
 
 .page-node-type-award .node--type-award time {
@@ -12215,6 +12142,10 @@ body header .topnav .navbar-nav .nav-item {
 body header .navbar .navbar-collapse .nav_wrapper {
   display: flex;
   flex: 1 100%;
+}
+body header .navbar #block-mainnavigation {
+  max-height: calc(100vh - 230px);
+  overflow: auto;
 }
 @media (max-width: 991px) {
   body header .navbar .navbar-collapse .nav_wrapper {

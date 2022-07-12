@@ -1,15 +1,3 @@
-.path-frontpage,
-.page-node-type-student-event,
-.path-membership,
-.page-node-type-convention-page,
-.page-node-type-award,
-.page-node-type-freelance-guide,
-body.join,
-body.page--node-410,
-body.page--node-405,
-body.page--node-224,
-body.page--node-225,
-.page-node-type-what-we-do,
 body
  {
     .main-row {
@@ -27,18 +15,43 @@ body
             margin-top: 3em;
 
             .region-sidebar-second {
+               
+
+
+                >.container {
                 display: flex;
-
-                flex-direction: column;
+                padding-left: 0;
+                padding-right: 0;
                 @include respond-above(md){
-                    flex-direction: row;
-                    flex-wrap: wrap;
-
-                    >div {
-                        flex: 1 auto;
-                    }
+                    padding-right: 15px;
+                    padding-left: 15px;
                 }
 
+                flex-direction: column;
+
+                    >div {
+                        box-shadow: inset 0px 0px 73px -44px #333;
+                        border-radius: 23px;
+                        padding: 1em;
+                        margin-bottom: 1em;
+                    }
+                    @include respond-above(md){
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+
+                        >div {
+                            flex: 1 auto;
+                            padding: 1.5em;
+                            
+                            margin: 0 1em;
+
+                            h2 {
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+
+                }
             }
         }
     }
