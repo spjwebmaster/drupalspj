@@ -2860,26 +2860,26 @@
         },
         {
             "name": "drupal/consumers",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/consumers.git",
-                "reference": "8.x-1.12"
+                "reference": "8.x-1.13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.12.zip",
-                "reference": "8.x-1.12",
-                "shasum": "c81a7533d3892288becd780f598afbac4665014e"
+                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.13.zip",
+                "reference": "8.x-1.13",
+                "shasum": "6cb3a738e09698c539c0cf77c651fe4384eb359f"
             },
             "require": {
-                "drupal/core": "^8 || ^9"
+                "drupal/core": "^8 || ^9 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.12",
-                    "datestamp": "1646690558",
+                    "version": "8.x-1.13",
+                    "datestamp": "1657809825",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5245,17 +5245,17 @@
         },
         {
             "name": "drupal/metatag",
-            "version": "1.20.0",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/metatag.git",
-                "reference": "8.x-1.20"
+                "reference": "8.x-1.21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.20.zip",
-                "reference": "8.x-1.20",
-                "shasum": "f9b0019bad629a734da588f64839abdcb076f3d8"
+                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.21.zip",
+                "reference": "8.x-1.21",
+                "shasum": "677ff7384b557390d4d1a36f335452e8172f741d"
             },
             "require": {
                 "drupal/core": "^9",
@@ -5274,8 +5274,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.20",
-                    "datestamp": "1657649277",
+                    "version": "8.x-1.21",
+                    "datestamp": "1657971667",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5525,8 +5525,8 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "kaushalkishorejaiswal",
-                    "homepage": "https://www.drupal.org/user/2228850"
+                    "name": "Robert Ngo",
+                    "homepage": "https://www.drupal.org/user/610230"
                 }
             ],
             "description": "Track and prune node revisions.",
@@ -7671,20 +7671,16 @@
             ],
             "authors": [
                 {
-                    "name": "Dave Reid",
-                    "homepage": "https://www.drupal.org/user/53892"
-                },
-                {
-                    "name": "RenatoG",
-                    "homepage": "https://www.drupal.org/user/3326031"
-                },
-                {
                     "name": "amateescu",
                     "homepage": "https://www.drupal.org/user/729614"
                 },
                 {
                     "name": "andrei.dincu",
                     "homepage": "https://www.drupal.org/user/2628879"
+                },
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
                     "name": "juampynr",
@@ -7697,6 +7693,10 @@
                 {
                     "name": "pifagor",
                     "homepage": "https://www.drupal.org/user/2375692"
+                },
+                {
+                    "name": "RenatoG",
+                    "homepage": "https://www.drupal.org/user/3326031"
                 },
                 {
                     "name": "tadityar",
