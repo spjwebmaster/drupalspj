@@ -66,7 +66,12 @@ ol.breadcrumb {
 
 }
 
-   
+.dropdown-toggle {
+    white-space: break-spaces;
+    @include respond-above(md) {
+        white-space: nowrap;
+    }
+}
 
 
 .highlight_blue {  
@@ -100,6 +105,16 @@ ol.breadcrumb {
      }
      &.layout__region--second{
         padding-left: 1em;
+
+        
+            .navbar-nav {
+                li {
+                    a {
+                        white-space: break-spaces;
+                    }
+                }
+            }
+        
      }
     }
      
@@ -759,6 +774,22 @@ body {
 
             >* {
                 flex: 1 auto;
+            }
+
+            @include respond-below(md){  
+                flex-wrap: wrap;
+
+                .view-content {
+                    justify-content: center;       
+                }
+
+                >* {
+                    &.flexSearch {
+                        flex: 1 100%;
+
+                      
+                    }
+                }
             }
         }
         .footer-bot { 

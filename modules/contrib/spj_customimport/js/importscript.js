@@ -400,7 +400,7 @@ var customimport = {
             success: function(res){
                 
                 let temp = document.createElement("div");
-
+                //console.log(res)
                 temp.innerHTML = res;
                 let body = temp.querySelector("textarea.form-control").innerText;
                 //console.log(body)
@@ -408,6 +408,12 @@ var customimport = {
                 temp2.innerHTML = body;
                 let inner = temp2.querySelector(".newsBody").innerHTML
                 console.log(inner);
+                //inner = inner.replace("INDIANAPOLIS ", "INDIANA POLIS -");
+
+                const reg = "INDIANAPOLIS"
+                const str = inner;
+                const newStr = str.replace(reg, "-");
+                console.log(newStr)
 
                 let tar = document.getElementById("node_" +nodeid);
                 let bodyInput = tar.closest("td").querySelector("form textarea[name='body']");

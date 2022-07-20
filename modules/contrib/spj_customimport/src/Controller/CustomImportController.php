@@ -524,7 +524,7 @@ class CustomImportController extends ControllerBase {
                     $ret .= "<br / >with body:" . $_REQUEST['body'] . " replacing: <br />";
                     $ret .=$tnode->body->value;
                     $tnode->body->value =  $_REQUEST['body'];
-                    $tnode->save();
+                    //$tnode->save();
                 }
                 $ret .= "<div class='closeWindow'></div>";
 
@@ -541,7 +541,7 @@ class CustomImportController extends ControllerBase {
 
                             
             //&ref=REF=999&nid=4654
-            $ref = "https://spj.org/news.asp?REF=" . $_REQUEST['ref'];
+            $ref = "https://spj.org/newsLoad.asp?REF=" . $_REQUEST['ref'];
             $nid = $_REQUEST['nid'];
             //$res = "<textarea>" . file_get_contents($ref) . "</textarea>";
             $urlToload = $ref;
@@ -612,6 +612,7 @@ class CustomImportController extends ControllerBase {
                             $nodes->sort('field_legacy_uri', 'DESC');
                             $nids = $nodes->execute();
                             
+                            $count=1;
                             foreach($nids as $nid){
                                 if($nid){
                                     $tnode = Node::load($nid);
@@ -620,12 +621,14 @@ class CustomImportController extends ControllerBase {
                                     if(trim($body=="TBD")){
 
                                         $ret .="<tr>";
-                                        $ret .="<td>" .  $tnode->title->value . "</td>";
+                                        $ret .="<td>" . $count . ") " .  $tnode->title->value . "</td>";
                                         
                                         $ret .="<td>" . $tnode->field_legacy_uri->value . "</td>";
                                         $ret .="<td><a id='node_" . $nid . "' href=\"javascript:customimport.fetchNews('". $tnode->field_legacy_uri->value ."','" . $nid . "')\" class='fetchNews' data-ref='" . $tnode->field_legacy_uri->value . "' data-nid=" . $nid ."'>" .  $nid  . "</a>";
                                         $ret .= "<form action='/customimport/fetchnews' target='_blank' method='post'><input type='hidden' name='post' value='true' /><input type='hidden' name='nid' value='" . $nid . "' /><textarea name='body'></textarea></form></td>";
                                         $ret .="</tr>";
+
+                                        $count++;
                                     }
                                 }
                             }
