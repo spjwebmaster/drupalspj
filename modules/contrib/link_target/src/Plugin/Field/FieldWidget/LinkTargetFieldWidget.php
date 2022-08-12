@@ -124,11 +124,11 @@ class LinkTargetFieldWidget extends LinkWidget {
    */
   public function getSelectedOptions($default_all = FALSE) {
     $defaults = $this->getTargets();
+    $targets_available = [];
 
     // If a subset of targets have been specified, use them.
     $targets_conf = $this->getSetting('available_targets');
     if ($targets_conf) {
-      $targets_available = [];
       foreach ($targets_conf as $key) {
         if (isset($defaults[$key])) {
           $targets_available[$key] = $defaults[$key];

@@ -259,8 +259,6 @@ body {
     }
 
     .region-sidebar-second {
-        background-color: rgba(255,255,255,.1);
-        border-radius: 10px;
 
         @include respond-below(md){
             border-radius: 0;

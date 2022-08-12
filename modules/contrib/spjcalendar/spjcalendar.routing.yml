@@ -1,0 +1,21 @@
+spjcalendar.calendarhome:
+  path: '/calendarjson/home'
+  defaults:
+    _controller: 'Drupal\spjcalendar\Controller\SpjCalendarController::HomeCalendarJson'
+  requirements: 
+    _permission: 'access content'
+
+spjcalendar.calendarhomegen:
+  path: '/calendarjson/homegen'
+  defaults:
+    _controller: 'Drupal\spjcalendar\Controller\SpjCalendarController::HomeCalendarGenJson'
+  requirements: 
+    _permission: 'access content'
+
+spjcalendar.calendar:
+  path: '/calendarjson/all'
+  defaults:
+    _controller: 'Drupal\spjcalendar\Controller\SpjCalendarController::CalendarJson'
+  requirements: 
+    _permission: 'access content'
+

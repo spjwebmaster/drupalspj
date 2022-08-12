@@ -33,6 +33,8 @@ ssh.txt
 themes/custom/spj/node_modules/
 themes/custom/b4subtheme/node_modules/
 
+/backups/
+
 
 # If you prefer to store your .gitignore file in the sites/ folder, comment
 # or delete the previous settings and uncomment the following ones, instead.

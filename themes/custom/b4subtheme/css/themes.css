@@ -279,10 +279,6 @@ html.theme_default body main .node__content .menu--main .navbar-nav {
 html.theme_default body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
 }
-html.theme_default body .region-sidebar-second {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
 @media (max-width: 991px) {
   html.theme_default body .region-sidebar-second {
     border-radius: 0;
@@ -596,10 +592,6 @@ html.theme_dark body main .node__content .menu--main .navbar-nav {
 }
 html.theme_dark body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
-}
-html.theme_dark body .region-sidebar-second {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
 }
 @media (max-width: 991px) {
   html.theme_dark body .region-sidebar-second {
@@ -917,10 +909,6 @@ html.theme_light body main .node__content .menu--main .navbar-nav {
 }
 html.theme_light body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
-}
-html.theme_light body .region-sidebar-second {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
 }
 @media (max-width: 991px) {
   html.theme_light body .region-sidebar-second {
