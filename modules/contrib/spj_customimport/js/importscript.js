@@ -392,9 +392,10 @@ var customimport = {
         let ref= url.substring(url.indexOf("?")+4, url.length);
         let fetchUrl = "/customimport/fetchnews?ref" + ref + "&nid=" + nodeid;
         console.log(fetchUrl)
+        window.open("https://spj.org/news.asp?REF="+ref, "news");
+        window.open("http://drupal/node/" + nodeid + "/edit", "edit");
 
-
-        
+        /*
         jQuery.ajax({
             url: fetchUrl,
             success: function(res){
@@ -425,6 +426,7 @@ var customimport = {
 
             }
         })
+        */
         
     },
 

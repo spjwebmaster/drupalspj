@@ -307,12 +307,12 @@ class CustomImportController extends ControllerBase {
                 )
             );
 
-            //dpm($dataArray);
-            $node = Node::create($dataArray);
-            $node->save();
-            $nid = $node->id();
-            $retId = $nid;
-            dpm($retId);
+            dpm($dataArray);
+            //$node = Node::create($dataArray);
+            //$node->save();
+            //$nid = $node->id();
+            //$retId = $nid;
+            //dpm($retId);
         } else if($type=="news"){
             $machineType = "news_item";
             $title = trim($data['title']);
@@ -438,7 +438,7 @@ class CustomImportController extends ControllerBase {
 
                                 //$nodes->condition('type', 'news_item');
                                 //$nodes->condition('field_legacy_uri', );
-                                //$nodes->condition('title', '%' . $title . '%', "like");
+                                //$nodesAll->condition('title', '%' . $title . '%', "like");
                                 $nodesAll->condition('title', $title);
                                 $nodes = $nodesAll->execute();
 
@@ -455,7 +455,7 @@ class CustomImportController extends ControllerBase {
                                 
                                 $tnode = Node::load($nid);
                                 $tnode->field_legacy_uri = $link;
-                                $tnode->save();
+                                //$tnode->save();
                                 
                                 
                             }
@@ -618,7 +618,7 @@ class CustomImportController extends ControllerBase {
                                     $tnode = Node::load($nid);
 
                                     $body = $tnode->body->value;
-                                    if(trim($body=="TBD")){
+                                    if(trim($tnode->field_legacy_uri->value)==""){
 
                                         $ret .="<tr>";
                                         $ret .="<td>" . $count . ") " .  $tnode->title->value . "</td>";

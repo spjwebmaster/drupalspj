@@ -14,7 +14,7 @@ configure: miniorange_saml.sp_setup
 # version: '8.x-2.22'
 # project: 'miniorange_saml'
 # datestamp: 1612635426
-# Information added by Drupal.org packaging script on 2022-06-02
-version: '8.x-2.26'
+# Information added by Drupal.org packaging script on 2022-08-10
+version: '8.x-2.27'
 project: 'miniorange_saml'
-datestamp: 1654171026
+datestamp: 1660115291

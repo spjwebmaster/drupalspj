@@ -254,7 +254,7 @@ class miniorange_samlController extends ControllerBase {
         $header    = isset($_REQUEST['download']) && boolval($_REQUEST['download']) ? 'Content-Disposition: attachment; filename="Metadata.xml"' : 'Content-Type: text/xml';
         header($header);
         echo '<?xml version="1.0"?>
-                <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" validUntil="2022-08-04T23:59:59Z" cacheDuration="PT1446808792S" entityID="' . $entity_id . '">
+                <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" validUntil="2024-03-27T23:59:59Z" cacheDuration="PT1446808792S" entityID="' . $entity_id . '">
                   <md:SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
                     <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat>
                     <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="' . $acs_url . '" index="1"/>

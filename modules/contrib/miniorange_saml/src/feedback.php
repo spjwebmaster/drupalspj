@@ -64,29 +64,49 @@ class feedback
                 }
 
                 $(function () {
-                    $(".button").click(function () {
-                        document.getElementById('sp_loader').style.display = 'block';
-                        var reason = $("input[name='deactivate_plugin']:checked").val();
-                        var q_feedback = document.getElementById("query_feedback").value;
-                        var email = "";
-                        <?php if(empty(\Drupal::config('miniorange_saml.settings')->get('miniorange_saml_customer_admin_email'))) { ?>
-                        email = document.getElementById("miniorange_feedback_email").value;
-                        <?php } ?>
-                        $.ajax({
+                    $(".button").click(function(e) {
+                        var get_value = $(this).attr('id');
+                        if(get_value === 'submit_button')
+                        {
+                          document.getElementById('sp_loader').style.display = 'block';
+                          var reason = $("input[name='deactivate_plugin']:checked").val();
+                          var q_feedback = document.getElementById("query_feedback").value;
+                          var email = "";
+                          <?php if(empty(\Drupal::config('miniorange_saml.settings')->get('miniorange_saml_customer_admin_email'))) { ?>
+                          email = document.getElementById("miniorange_feedback_email").value;
+                          <?php } ?>
+                          $.ajax({
                             type: 'POST',
                             url: '<?php echo $feedback_url; ?>',
                             data: {
-                                reason: reason,
-                                q_feedback: q_feedback,
-                                email: email
+                              reason: reason,
+                              q_feedback: q_feedback,
+                              email: email
                             },
                             success: function (result) {
-                                document.getElementById('sp_loader').style.display = 'none';
-                                window.location = '<?php echo $base_url . '/admin/modules'; ?>';
+                              document.getElementById('sp_loader').style.display = 'none';
+                              window.location = '<?php echo $base_url . '/admin/modules'; ?>';
                             }
-                        });
+
+                          });
+                        }
+                        else {
+
+
+                          $.ajax({
+                            type: 'POST',
+                            url: '<?php echo $feedback_url; ?>',
+                            success: function (result) {
+                              document.getElementById('sp_loader').style.display = 'none';
+                              window.location = '<?php echo $base_url . '/admin/modules'; ?>';
+                            }
+                          });
+
+
+                          }
                         return false;
                     });
+
                 })
             </script>
         </head>
@@ -111,7 +131,7 @@ class feedback
                                         if (empty(\Drupal::config('miniorange_saml.settings')->get('miniorange_saml_customer_admin_email'))) { ?>
                                         <br>Email ID: <input onblur="validateEmail(this)" class="form-control"
                                                              type="email" id="miniorange_feedback_email"
-                                                             name="miniorange_feedback_email"/>
+                                                             name="miniorange_feedback_email" required=" true"/>
                                     <p style="display: none;color:red" id="email_error">Invalid Email</p>
                                     <?php
                                     } ?>
@@ -131,7 +151,7 @@ class feedback
                                         <div class="radio" style="vertical-align: middle;">
                                             <label for="<?php echo $deactivate_reasons; ?>">
                                                 <input type="radio" required="true" name="deactivate_plugin" id="deactivate_plugin"
-                                                       value="<?php echo $deactivate_reasons; ?>" >
+                                                       value="<?php echo $deactivate_reasons; ?>" required>
                                                 <?php echo $deactivate_reasons; ?>
                                             </label>
                                         </div>
@@ -147,8 +167,9 @@ class feedback
                                         <input type="submit" id="submit_button" name="miniorange_saml_feedback_submit"
                                                class="button btn btn-primary" value="Submit and Continue"
                                                style="margin: auto; display: block; font-size: 11px; float: left"/>
-                                      <input type="submit"
-                                             formnovalidate="formnovalidate"
+
+                                      <input type="submit" id="skip_button"
+                                             formnovalidate= "formnovalidate"
                                              style="margin: auto; display: block; font-size: 11px; float: right;"
                                              name="miniorange_saml_feedback_skip"
                                              class="button btn btn-link" value="Skip"/>
