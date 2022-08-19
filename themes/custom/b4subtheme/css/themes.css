@@ -267,12 +267,6 @@ html.theme_default body main .block-views .views-row:not(.com-list) .view-id-com
 html.theme_default body main .wp-block-cloudblocks-g-section {
   background: #eee;
 }
-html.theme_default body main #block-views-block-related-content-block-1 .views-row {
-  box-shadow: 0 0 20px -8px #333;
-}
-html.theme_default body main #block-views-block-related-content-block-1 .views-row .views-field-field-thumb {
-  background-color: #eee;
-}
 html.theme_default body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
 }
@@ -580,12 +574,6 @@ html.theme_dark body main .block-views .views-row:not(.com-list) .view-id-commit
 }
 html.theme_dark body main .wp-block-cloudblocks-g-section {
   background: #444;
-}
-html.theme_dark body main #block-views-block-related-content-block-1 .views-row {
-  box-shadow: 0 0 20px -8px #333;
-}
-html.theme_dark body main #block-views-block-related-content-block-1 .views-row .views-field-field-thumb {
-  background-color: #eee;
 }
 html.theme_dark body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
@@ -897,12 +885,6 @@ html.theme_light body main .block-views .views-row:not(.com-list) .view-id-commi
 }
 html.theme_light body main .wp-block-cloudblocks-g-section {
   background: #eee;
-}
-html.theme_light body main #block-views-block-related-content-block-1 .views-row {
-  box-shadow: 0 0 20px -8px #333;
-}
-html.theme_light body main #block-views-block-related-content-block-1 .views-row .views-field-field-thumb {
-  background-color: #eee;
 }
 html.theme_light body main .node__content .menu--main .navbar-nav {
   background: aliceblue;

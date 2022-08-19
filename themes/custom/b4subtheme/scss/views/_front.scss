@@ -188,6 +188,13 @@ body.path-frontpage {
         }
         
     }
+
+    .region-content {
+        > .block {
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+        }
+    }
 }
 
 
