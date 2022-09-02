@@ -1,0 +1,6 @@
+spjyoutube.main:
+  path: '/api/spjyoutube'
+  defaults:
+    _controller: 'Drupal\spjyoutube\Controller\SpjyoutubeController::index'
+  requirements: 
+    _permission: 'access content'

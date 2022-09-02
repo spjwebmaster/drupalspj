@@ -1,0 +1,5 @@
+name: SPJ Awards Module
+type: module
+description: Module for implementing custom form for awards submissions.
+core_version_requirement: ^8.8 || ^9
+package: custom

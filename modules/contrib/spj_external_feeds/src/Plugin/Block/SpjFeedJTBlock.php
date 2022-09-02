@@ -61,7 +61,7 @@ class SpjFeedJTBlock extends BlockBase  {
 
         \Drupal::service('page_cache_kill_switch')->trigger();
         $path = getUrl();
-        $feedUrl = SpjFeedJTBlock::getFeedUrl($path);
+        $feedUrl = getFeedUrl("JT");
         if($feedUrl!=null){
             $data = getFeedData($feedUrl);
 

@@ -8,6 +8,91 @@
     return $current_uri;
 }
 
+
+function getFeedUrl($type){
+
+    $path = "";
+    if(isset($_REQUEST['path'])){
+        $path = $_REQUEST['path'];
+    }
+    $feedUrl = "";
+    switch($type){
+        case "JT":
+            
+            switch($path){
+                case "diversity": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-diversity"; 
+                    break;
+                case "ethics":
+                    $feedUrl = "http://feeds.feedburner.com/jtb-ethics";
+                    break;
+                case "foi": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-foi";
+                    break;
+                case "freelance": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-freelance";
+                    break;
+                case "resourcestoolsfreelancers": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-freelance";
+                    break;
+                case "international": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-ij";
+                    break;
+                case "resourcestoolsteachers": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-jed";
+                    break;
+                case "resourcestoolsstudents": 
+                    $feedUrl = "http://feeds.feedburner.com/jtb-jed";
+                    break;
+                default:
+                    $feedUrl = "https://www.journaliststoolbox.org/feed/";
+                    break;
+            }
+            
+
+        break;
+        case "Quill":
+            switch($path){
+                case "diversity": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/diversity"; 
+                    break;
+                case "ethics":
+                    $feedUrl = "https://feeds.feedburner.com/quill/ethics";
+                    break;
+                case "foi": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/foi";
+                    break;
+                case "freelance": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/freelancing";
+                    break;
+                case "resourcestoolsfreelancers": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/freelancing";
+                    break;
+                case "international": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/ij";
+                    break;
+                case "resourcespublications": 
+                    $feedUrl = "https://feeds.feedburner.com/spj-quill";
+                    break;
+                case "resourcestoolsteachers": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/students";
+                    break;
+                case "resourcestoolsstudents": 
+                    $feedUrl = "https://feeds.feedburner.com/quill/students";
+                    break;
+                default:
+                    $feedUrl = "https://www.quillmag.com/feed/";
+                    break;
+            }
+
+        break;
+        case "QuillPres":
+            $feedUrl = "https://feeds.feedburner.com/presidentquill"; 
+        break;
+    }
+    return $feedUrl;
+}
+
 function spj_ext_feed_makeMarkup($data){
         $first = $data['data'][0];
         $ret = "<a href='" . $first["link"] . "' target='_blank'>";

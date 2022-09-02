@@ -1,0 +1,6 @@
+spjslider.jsonslider:
+  path: '/api/bannerjson'
+  defaults:
+    _controller: 'Drupal\spjslider\Controller\SpjSliderController::Index'
+  requirements: 
+    _permission: 'access content'

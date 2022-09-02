@@ -360,7 +360,7 @@ class CustomImportController extends ControllerBase {
                  //'uid' => $node->post_id,
                 'status' => 1,
                 'field_active_date' => $activeDate,
-                '$field_legacy_uri' => $field_legacy_uri,
+                'field_legacy_uri' => $field_legacy_uri,
                 'field_legacy_contact' => '',
                 'body' => array(
                     'value' => $data['description'],

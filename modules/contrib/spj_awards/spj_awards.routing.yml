@@ -1,0 +1,9 @@
+spj_awards.form:
+  path: 'awards/form/{name}'
+  defaults:
+    _form: '\Drupal\spj_awards\Form\AwardForm'
+    _title: 'Entry'
+    name: "MOE"
+  requirements:
+    _access: 'TRUE'
+

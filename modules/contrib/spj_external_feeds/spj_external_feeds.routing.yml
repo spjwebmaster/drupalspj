@@ -1,0 +1,7 @@
+spjexternalfeeds.main:
+  path: '/api/feed/{type}'
+  defaults:
+    _controller: 'Drupal\spj_external_feeds\Controller\SpjexternalfeedsController::Index'
+    type: "JT"
+  requirements: 
+    _permission: 'access content'
