@@ -1,0 +1,5 @@
+name: SPJ Chapter Data Import
+description: Custom migration module to import data from Impexium csv exports
+package: Migration
+type: module
+core_version_requirement: ^9

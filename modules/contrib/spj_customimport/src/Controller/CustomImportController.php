@@ -5,7 +5,7 @@ use Drupal\node\Entity\Node;
 use \Drupal\Core\File\FileSystemInterface;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
-
+use Drupal\taxonomy\Entity\Term;
 
 class CustomImportController extends ControllerBase {
 
@@ -39,6 +39,32 @@ class CustomImportController extends ControllerBase {
                 $newNid =  $this->createNode($data,$type);
                 return "[going to create '" . $title . "' in the future]" .  $newNid. "<br />";
             }
+        }
+    }
+
+    private function getOrMakeTerm($term, $vocab){
+
+        $properties['name'] = $term;
+        $properties['vid'] = $vocab;
+
+        $terms = \Drupal::entityManager()
+            ->getStorage('taxonomy_term')
+            ->loadByProperties($properties);
+        $term = reset($terms);
+    
+        $tid=( !empty($term) ? $term->id() : 0);
+
+        if($tid!=0){
+        } else {
+
+        $new_term = Term::create([
+            'vid' => $vocab,
+            'name' => $term,
+          ]);
+          
+          $new_term->enforceIsNew();
+          $new_term->save();
+          return $new_term->id();
         }
     }
 

@@ -24,7 +24,7 @@ class AwardForm extends FormBase {
     if (!empty($vid)) {
       $properties['vid'] = $vid;
     }
-    $terms = \Drupal::service('entity.repository')->getStorage('taxonomy_term')->loadByProperties($properties);
+    $terms = \Drupal::entityManager()->getStorage('taxonomy_term')->loadByProperties($properties);
     $term = reset($terms);
 
     return !empty($term) ? $term->id() : 0;
@@ -100,6 +100,23 @@ class AwardForm extends FormBase {
       '#title' => 'Award',
       '#default_value' => $awardName,
     ];
+
+    $form['file_upload_details'] = array(
+      '#markup' => t('<b>The File</b>'),
+    );
+	
+    $validators = array(
+      'file_validate_extensions' => array('pdf'),
+    );
+    $form['my_file'] = array(
+      '#type' => 'managed_file',
+      '#name' => 'my_file',
+      '#title' => t('File *'),
+      '#size' => 20,
+      '#description' => t('PDF format only'),
+      '#upload_validators' => $validators,
+      '#upload_location' => 'public://my_files/',
+    );
 
 
     /*

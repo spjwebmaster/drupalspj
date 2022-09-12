@@ -1,0 +1,8 @@
+chapterImport.load:
+  path: 'chapterimport'
+  defaults:
+    _form: '\Drupal\spj_chapterimport\Form\ChapterForm'
+    _title: 'Impexium Chapter Import'
+  requirements:
+    _permission:  'access content'
+    _role: 'administrator'

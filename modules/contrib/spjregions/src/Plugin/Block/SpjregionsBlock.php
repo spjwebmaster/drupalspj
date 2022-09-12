@@ -178,7 +178,12 @@ class SpjregionsBlock extends BlockBase  {
         $output .= '</ul>';
         return [
             '#type' => 'markup',
-            '#markup' => $output
+            '#markup' => $output,
+            '#attached' => [
+                'library' => [
+                  'spjregions/spjregions',
+                ],
+            ]
         ];
     }
 }
