@@ -247,6 +247,94 @@ body.path-frontpage #block-views-block-news-block-1-2 .view-content a, body.path
 body.path-frontpage #block-views-block-news-block-1-2 a, body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
 }
+body .region-map {
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 10px;
+  background: #525252;
+}
+body .region-map svg {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+body .region-map path {
+  stroke-width: 2px;
+  stroke: #000;
+  stroke-linejoin: round;
+}
+body .region-map path.hover, body .region-map circle.hover {
+  stroke: #000;
+  stroke-width: 2px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+body .region-map #path67, body .region-map .path67 {
+  fill: none !important;
+  stroke: #A9A9A9 !important;
+  cursor: default;
+}
+body .region-map #info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
+body .region-map .region1 {
+  fill: #f9d066;
+}
+body .region-map .region2, body .region-map #circle60 {
+  fill: #da8c62;
+}
+body .region-map .region3 {
+  fill: #7c5e5c;
+}
+body .region-map .region4 {
+  fill: #4c9467;
+}
+body .region-map .region5 {
+  fill: #548a9b;
+}
+body .region-map .region6 {
+  fill: #d4dd73;
+}
+body .region-map .region7 {
+  fill: #9e7d51;
+}
+body .region-map .region8 {
+  fill: #71747a;
+}
+body .region-map .region9 {
+  fill: #4d9769;
+}
+body .region-map .region10 {
+  fill: #9a9fa6;
+}
+body .region-map .region11 {
+  fill: #fcf46e;
+}
+body .region-map .region12 {
+  fill: #f8d6b3;
+}
+body .region-map .regionText {
+  font-weight: bold;
+  color: #000 !important;
+  font-size: 20pt;
+  fill: #000 !important;
+}
+body .region-map .regionTextWrapper {
+  cursor: pointer;
+}
+body .region-map .regionTextWrapper circle {
+  display: none;
+}
 body main {
   box-shadow: inset 0 0 300px #b7c7d2;
 }
@@ -11653,6 +11741,19 @@ body .region-sidebar-second .block-spj-calendar-block-awards {
   color: #fff !important;
   padding: 1em;
   border-radius: 5px;
+}
+
+.block-views-blockregion-detail-block-1 .view-grouping {
+  background: #eee;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+.block-views-blockregion-detail-block-1 .view-grouping h3 {
+  border-bottom: 1px solid #ccc;
+}
+.block-views-blockregion-detail-block-1 .view-grouping .view-grouping-header {
+  font-size: 3em;
 }
 
 /* global */

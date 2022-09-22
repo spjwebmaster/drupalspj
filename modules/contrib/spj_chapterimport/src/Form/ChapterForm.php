@@ -45,9 +45,12 @@ class ChapterForm extends FormBase {
 
                 foreach($nodes as $nod){
 
+
+                    dpm($data['address']);
                     $nod->field_region = array(
-                        'target_id' => $stateRegionID
+                        'target_id' => $stateRegionID,
                     );
+                    $nod->field_address = trim($data['address']);
                     $nod->save();
                 }
                 
@@ -396,7 +399,7 @@ class ChapterForm extends FormBase {
                 
                 $filename = "./sites/default/files/chapterimports/" . $file->get('filename')->value;
                 $dat = file_get_contents($filename);
-                
+                dpm($dat);
                 
                 $resArray = [];
                 $lines=explode("\n",$dat);
@@ -460,7 +463,7 @@ class ChapterForm extends FormBase {
                     
                     $memCodes = array();
                     foreach($arr as $loops){
-                        $address = $loops['address1'] . " " . $loops['address1'];
+                        $address = $loops['address1'] . " " . $loops['address2'];
                         $city = $loops['city'];
                         $zip = $loops['zip'];
                         $email = $loops['email'];

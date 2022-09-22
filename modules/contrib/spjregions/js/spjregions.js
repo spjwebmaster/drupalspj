@@ -9,7 +9,7 @@ var spjregions = {
         document.querySelectorAll("path, circle").forEach(function(el){
            
             el.addEventListener("mouseover", function(e){
-                console.log("in")
+               
                 let classes = e.target.classList;
                 let region = classes[0];
                 document.querySelectorAll("." + region).forEach(function(el){
@@ -17,14 +17,59 @@ var spjregions = {
                 })
             })
             el.addEventListener("mouseout", function(e){
-                console.log("out")
+              
                 let classes = e.target.classList;
                 let region = classes[0];
                 document.querySelectorAll("." + region).forEach(function(el){
                     el.classList.remove("hover");
                 })
             })
+            el.addEventListener("click", function(e){
+                let tar = e.target;
+                
+                tar.classList.remove("hover");
+                let region = tar.classList[0];
+                region = region.replace("region","")
+                let state = tar.id;
+                console.log("click", region, state);
+
+                if(document.getElementById("edit-field-region-target-id")){
+                    let sel = document.getElementById("edit-field-region-target-id");
+                    let value = "";
+                    sel.querySelectorAll("option").forEach(function(op){
+                        let text = op.innerText;
+                        text = text.replace("Region ", "");
+                        //console.log(text);
+                        if(region==text){
+                            value= op.value
+                        }
+                    })
+                    sel.value = value;
+                    sel.closest("form").submit();
+
+
+                }
+            })
         })
+
+        document.querySelectorAll(".regionTextWrapper").forEach(function(el){
+
+            el.addEventListener("mouseover", function(e){
+                let region = e.target.getAttribute("data-region");
+    
+                document.querySelectorAll(".region" + region).forEach(function(el){
+                    el.classList.add("hover");
+                })
+            })
+            el.addEventListener("mouseout", function(e){
+                let region = e.target.getAttribute("data-region");
+    
+                document.querySelectorAll(".region" + region).forEach(function(el){
+                    el.classList.remove("hover");
+                })
+            })
+            
+        });
        
 
 

@@ -248,6 +248,94 @@ html.theme_default body.path-frontpage #block-views-block-news-block-1-2 .view-c
 html.theme_default body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_default body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
 }
+html.theme_default body .region-map {
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 10px;
+  background: #525252;
+}
+html.theme_default body .region-map svg {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+html.theme_default body .region-map path {
+  stroke-width: 2px;
+  stroke: #000;
+  stroke-linejoin: round;
+}
+html.theme_default body .region-map path.hover, html.theme_default body .region-map circle.hover {
+  stroke: #000;
+  stroke-width: 2px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+html.theme_default body .region-map #path67, html.theme_default body .region-map .path67 {
+  fill: none !important;
+  stroke: #A9A9A9 !important;
+  cursor: default;
+}
+html.theme_default body .region-map #info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
+html.theme_default body .region-map .region1 {
+  fill: #f9d066;
+}
+html.theme_default body .region-map .region2, html.theme_default body .region-map #circle60 {
+  fill: #da8c62;
+}
+html.theme_default body .region-map .region3 {
+  fill: #7c5e5c;
+}
+html.theme_default body .region-map .region4 {
+  fill: #4c9467;
+}
+html.theme_default body .region-map .region5 {
+  fill: #548a9b;
+}
+html.theme_default body .region-map .region6 {
+  fill: #d4dd73;
+}
+html.theme_default body .region-map .region7 {
+  fill: #9e7d51;
+}
+html.theme_default body .region-map .region8 {
+  fill: #71747a;
+}
+html.theme_default body .region-map .region9 {
+  fill: #4d9769;
+}
+html.theme_default body .region-map .region10 {
+  fill: #9a9fa6;
+}
+html.theme_default body .region-map .region11 {
+  fill: #fcf46e;
+}
+html.theme_default body .region-map .region12 {
+  fill: #f8d6b3;
+}
+html.theme_default body .region-map .regionText {
+  font-weight: bold;
+  color: #000 !important;
+  font-size: 20pt;
+  fill: #000 !important;
+}
+html.theme_default body .region-map .regionTextWrapper {
+  cursor: pointer;
+}
+html.theme_default body .region-map .regionTextWrapper circle {
+  display: none;
+}
 html.theme_default body main {
   box-shadow: inset 0 0 300px #b7c7d2;
 }
@@ -555,6 +643,94 @@ html.theme_dark body.path-frontpage #block-views-block-news-block-1-2 .view-cont
 }
 html.theme_dark body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_dark body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
+}
+html.theme_dark body .region-map {
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 10px;
+  background: #525252;
+}
+html.theme_dark body .region-map svg {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+html.theme_dark body .region-map path {
+  stroke-width: 2px;
+  stroke: #000;
+  stroke-linejoin: round;
+}
+html.theme_dark body .region-map path.hover, html.theme_dark body .region-map circle.hover {
+  stroke: #000;
+  stroke-width: 2px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+html.theme_dark body .region-map #path67, html.theme_dark body .region-map .path67 {
+  fill: none !important;
+  stroke: #A9A9A9 !important;
+  cursor: default;
+}
+html.theme_dark body .region-map #info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
+html.theme_dark body .region-map .region1 {
+  fill: #f9d066;
+}
+html.theme_dark body .region-map .region2, html.theme_dark body .region-map #circle60 {
+  fill: #da8c62;
+}
+html.theme_dark body .region-map .region3 {
+  fill: #7c5e5c;
+}
+html.theme_dark body .region-map .region4 {
+  fill: #4c9467;
+}
+html.theme_dark body .region-map .region5 {
+  fill: #548a9b;
+}
+html.theme_dark body .region-map .region6 {
+  fill: #d4dd73;
+}
+html.theme_dark body .region-map .region7 {
+  fill: #9e7d51;
+}
+html.theme_dark body .region-map .region8 {
+  fill: #71747a;
+}
+html.theme_dark body .region-map .region9 {
+  fill: #4d9769;
+}
+html.theme_dark body .region-map .region10 {
+  fill: #9a9fa6;
+}
+html.theme_dark body .region-map .region11 {
+  fill: #fcf46e;
+}
+html.theme_dark body .region-map .region12 {
+  fill: #f8d6b3;
+}
+html.theme_dark body .region-map .regionText {
+  font-weight: bold;
+  color: #000 !important;
+  font-size: 20pt;
+  fill: #000 !important;
+}
+html.theme_dark body .region-map .regionTextWrapper {
+  cursor: pointer;
+}
+html.theme_dark body .region-map .regionTextWrapper circle {
+  display: none;
 }
 html.theme_dark body main {
   box-shadow: inset 0 0 300px #000;
@@ -866,6 +1042,94 @@ html.theme_light body.path-frontpage #block-views-block-news-block-1-2 .view-con
 }
 html.theme_light body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_light body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
+}
+html.theme_light body .region-map {
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 10px;
+  background: #525252;
+}
+html.theme_light body .region-map svg {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+html.theme_light body .region-map path {
+  stroke-width: 2px;
+  stroke: #000;
+  stroke-linejoin: round;
+}
+html.theme_light body .region-map path.hover, html.theme_light body .region-map circle.hover {
+  stroke: #000;
+  stroke-width: 2px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+html.theme_light body .region-map #path67, html.theme_light body .region-map .path67 {
+  fill: none !important;
+  stroke: #A9A9A9 !important;
+  cursor: default;
+}
+html.theme_light body .region-map #info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
+html.theme_light body .region-map .region1 {
+  fill: #f9d066;
+}
+html.theme_light body .region-map .region2, html.theme_light body .region-map #circle60 {
+  fill: #da8c62;
+}
+html.theme_light body .region-map .region3 {
+  fill: #7c5e5c;
+}
+html.theme_light body .region-map .region4 {
+  fill: #4c9467;
+}
+html.theme_light body .region-map .region5 {
+  fill: #548a9b;
+}
+html.theme_light body .region-map .region6 {
+  fill: #d4dd73;
+}
+html.theme_light body .region-map .region7 {
+  fill: #9e7d51;
+}
+html.theme_light body .region-map .region8 {
+  fill: #71747a;
+}
+html.theme_light body .region-map .region9 {
+  fill: #4d9769;
+}
+html.theme_light body .region-map .region10 {
+  fill: #9a9fa6;
+}
+html.theme_light body .region-map .region11 {
+  fill: #fcf46e;
+}
+html.theme_light body .region-map .region12 {
+  fill: #f8d6b3;
+}
+html.theme_light body .region-map .regionText {
+  font-weight: bold;
+  color: #000 !important;
+  font-size: 20pt;
+  fill: #000 !important;
+}
+html.theme_light body .region-map .regionTextWrapper {
+  cursor: pointer;
+}
+html.theme_light body .region-map .regionTextWrapper circle {
+  display: none;
 }
 html.theme_light body main {
   box-shadow: inset 0 0 300px #fff;
