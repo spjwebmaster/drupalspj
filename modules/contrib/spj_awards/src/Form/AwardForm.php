@@ -7,6 +7,8 @@ namespace Drupal\spj_awards\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
 
 class AwardForm extends FormBase {
   /**
@@ -14,6 +16,42 @@ class AwardForm extends FormBase {
    */
   public function getFormId() {
     return 'spj_award_form';
+  }
+
+  public function formSelectCallback(array $form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+  
+    $form['year']['#description'] = "New year desc";
+    $response->addCommand(new ReplaceCommand('#field-year', $form['year']));
+
+    $form['month']['#description'] = "New month desc";
+    $response->addCommand(new ReplaceCommand('#field-month', $form['month']));
+  
+    return $response;
+  }
+
+  public function myAjaxCallback(array &$form, FormStateInterface $form_state) {
+    // Prepare our textfield. check if the example select field has a selected option.
+    if ($selectedValue = $form_state->getValue('main_category')) {
+        // Get the text of the selected option.
+
+        $response = new AjaxResponse();
+        //$selectedText = $form['cat']['main_category']['#options'][$selectedValue];
+
+        $vals = $this->getTaxonomyTermsByParent($selectedValue);
+        
+        //$form['cat']['main_category']['#description'] = $vals['description'][$selectedValue];
+        //$form['cat']['main_category']['#title'] = "Update";
+        //$response->addCommand(new ReplaceCommand('#field-main-cat', $form['cat']['main_category']));
+        
+        $form['cat']['sub_category']['#options'] = $vals['data'];
+        $response->addCommand(new ReplaceCommand('#field-sub-cat', $form['cat']['sub_category']));
+        
+      
+        return $response;
+    }
+    
+    //return $form['cat']['sub_category']; 
   }
 
   function getTidByName($name = NULL, $vid = NULL) {
@@ -28,6 +66,33 @@ class AwardForm extends FormBase {
     $term = reset($terms);
 
     return !empty($term) ? $term->id() : 0;
+  }
+
+  function getTaxonomyTermsByParent($parentID = NULL, $vid = NULL) {
+
+
+    $vid = 'award_submission_categories';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    $term_data = array();
+    $desc_array = array();
+    foreach ($terms as $term) {
+      //dpm($term);
+      if($term->parents[0] && $term->parents[0]==$parentID){
+        $term_data[$term->tid] = $term->name;
+        $desc_array[$term->tid] = $term->description__value;
+        
+      }
+      
+    }
+    //$terms = \Drupal::entityManager()->getStorage('taxonomy_term');
+    $returnArray = array();
+    $returnArray['data'] = $term_data;
+    $returnArray['description'] = $desc_array;
+
+    //dpm($returnArray);
+
+    return $returnArray;
+
   }
 
   function getTaxonomyID($name=NULL){
@@ -51,6 +116,13 @@ class AwardForm extends FormBase {
 
   }
 
+  public function yearSelectCallback(array $form, FormStateInterface $form_state) {
+    return $form['month'];
+  }
+  public function monthSelectCallback(array $form, FormStateInterface $form_state) {
+    return $form['day'];
+  }
+
   
   public function buildForm(array $form, FormStateInterface $form_state) {
 
@@ -64,9 +136,52 @@ class AwardForm extends FormBase {
     $awardName = $paths[count($paths)-1];
 
     $tax = $this->getTaxonomyID($awardName);
-    dpm($tax);
+    
+    $terms = $this->getTaxonomyTermsByParent($tax);
+    $main_cat = $terms['data'];
 
 
+    $years = range(2019, 2050);
+    $years = array_combine($years, $years);
+    $year = $form_state->getValue('year');
+
+    $form['year'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Year'),
+      '#description' => "Year",
+      '#options' => $years,
+      '#empty_option' => $this->t('- Select year -'),
+      '#default_value' => $year,
+      '#required' => TRUE,
+      '#prefix' => '<div id="field-year">',
+      '#suffix' => '</div>',
+      '#ajax' => [
+        'event' => 'change',
+        'callback' => '::formSelectCallback',
+        'wrapper' => 'field-month',
+      ],
+    ];
+
+    $months = [1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec'];
+    $month = $form_state->getValue('month');
+
+    $form['month'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Month'),
+      '#options' => $months,
+      '#empty_option' => $this->t('- Select month -'),
+      '#default_value' => $month,
+      '#required' => TRUE,
+      '#description' => "Month",
+      '#states' => [
+        '!visible' => [
+          ':input[name="year"]' => ['value' => ''],
+        ],
+      ],
+      '#prefix' => '<div id="field-month">',
+      '#suffix' => '</div>',
+
+    ];
 
     $price = [];
     switch($awardName){
@@ -82,13 +197,7 @@ class AwardForm extends FormBase {
       break;
 
     }
-    
-
-    $main_cat =[
-        'Cat1' => t('Category 1'),
-		    'Cat2' => t('Category 2'),
-        'Cat3' => t('Category 3'),
-    ];
+  
 
     $form['title'] = [
       '#type' => 'fieldset',
@@ -112,10 +221,10 @@ class AwardForm extends FormBase {
       '#type' => 'managed_file',
       '#name' => 'my_file',
       '#title' => t('File *'),
-      '#size' => 20,
+      '#multiple' => TRUE,
       '#description' => t('PDF format only'),
       '#upload_validators' => $validators,
-      '#upload_location' => 'public://my_files/',
+      '#upload_location' => 'public://awards/'
     );
 
 
@@ -191,22 +300,35 @@ class AwardForm extends FormBase {
               PDFs should have the same name as the title of the story. PDFs should be combined into one file, when possible. The cover letter and supporting material should be separated from the main entry. Please note non-Sunday circulation for print publications and specific if your publication is online only. <br /><br /> 
               Supporting material is limited to 5 pages. '),
           '#required' => TRUE,
-          '#options' => $main_cat
+          '#options' => $main_cat,
+          '#prefix' => '<div id="field-main-cat">',
+          '#suffix' => '</div>',
+          '#ajax' => [
+            'callback' => '::myAjaxCallback', // don't forget :: when calling a class method.
+            //'callback' => [$this, 'myAjaxCallback'], //alternative notation
+            'disable-refocus' => FALSE, // Or TRUE to prevent re-focusing on the triggering element.
+            'event' => 'change',
+            'wrapper' => 'sub-category', // This element is updated with this AJAX callback.
+            'progress' => [
+              'type' => 'throbber',
+              'message' => $this->t('Updating Category...'),
+            ],
+          ]
         );
+
+      
         $form['cat']['sub_category'] = array(
           '#type' => 'select',
           '#title' => t('Secondary Category:'),
-          '#description' => t('izes a reporter or team for deadline reporting of a single event. Entries must have been published in the issue that directly follows the event. Entry must be about a single breaking news event.
-          <br /><br />
-          Entrants should submit a link to the online article or a PDF of the newspaper page on which the story appeared in print. The date of publication should be visible. Word documents containing the work will not be accepted.
-          <br /><br />
-          Use non-Sunday circulation number unless it’s a Sunday-only publication. '),
+          '#description' => t('-'),
           '#required' => TRUE,
           '#options' => array(
             'Cat1' => t('Cat1'),
             'Cat2' => t('Cat2'),
             'Cat3' => t('Cat3'),
           ),
+          '#prefix' => '<div id="field-sub-cat">',
+          '#suffix' => '</div>',
         );
 
     $form['entry'] = [
@@ -421,16 +543,18 @@ class AwardForm extends FormBase {
     return $form;
   }
   
+  /*
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    /*
+ 
     if(strlen($form_state->getValue('student_rollno')) < 8) {
       $form_state->setErrorByName('student_rollno', $this->t('Please enter a valid Enrollment Number'));
     }
     if(strlen($form_state->getValue('student_phone')) < 10) {
       $form_state->setErrorByName('student_phone', $this->t('Please enter a valid Contact Number'));
     }
-    */
+ 
   }
+  */
   
   public function submitForm(array &$form, FormStateInterface $form_state) {
     \Drupal::messenger()->addMessage(t("Awards Submission Done!! Registered Values are:"));
