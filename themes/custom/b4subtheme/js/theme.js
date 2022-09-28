@@ -22,6 +22,18 @@
 
     window.onload = function(){
 
+      document.querySelector("#block-secondarynav .navbar-nav li:nth-child(1) a").addEventListener("click", function(e){
+        e.preventDefault();
+        console.log("show search");
+        let searcher = document.querySelector(".flexSearch");
+        if(searcher.classList.contains("open")){
+          searcher.classList.remove("open"); 
+        } else {
+          searcher.classList.add("open");
+          searcher.querySelector("input[data-drupal-selector='edit-keys']").focus();
+        }
+      })
+
 
       //edit-actions
       document.querySelectorAll("[data-drupal-selector='edit-actions']").forEach(function(el){

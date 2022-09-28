@@ -162,6 +162,9 @@ html.theme_default body.path--ethicsweek .bread {
   visibility: hidden;
   margin-top: -1em;
 }
+html.theme_default body .flexSearch {
+  background: rgba(0, 0, 0, 0.3);
+}
 html.theme_default body #header {
   box-shadow: 0 0 5px -2px #000;
 }
@@ -220,6 +223,13 @@ html.theme_default body #header .tb-megamenu .nav > li > span.tb-megamenu-no-lin
 }
 html.theme_default body #header .region-nav-additional .nav-item {
   background-color: #8bc63e;
+}
+html.theme_default body #header .region-nav-additional .nav-item:nth-child(1) {
+  background-color: transparent;
+  color: #333;
+}
+html.theme_default body #header .region-nav-additional .nav-item:nth-child(1) a {
+  color: #333;
 }
 html.theme_default body #header .region-nav-additional .nav-item a {
   color: #fff !important;
@@ -558,6 +568,9 @@ html.theme_dark body.path--ethicsweek .bread {
   visibility: hidden;
   margin-top: -1em;
 }
+html.theme_dark body .flexSearch {
+  background: rgba(0, 0, 0, 0.3);
+}
 html.theme_dark body #header {
   box-shadow: 0 0 5px -2px #000;
 }
@@ -616,6 +629,13 @@ html.theme_dark body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:h
 }
 html.theme_dark body #header .region-nav-additional .nav-item {
   background-color: #8bc63e;
+}
+html.theme_dark body #header .region-nav-additional .nav-item:nth-child(1) {
+  background-color: transparent;
+  color: #333;
+}
+html.theme_dark body #header .region-nav-additional .nav-item:nth-child(1) a {
+  color: #333;
 }
 html.theme_dark body #header .region-nav-additional .nav-item a {
   color: #fff !important;
@@ -957,6 +977,9 @@ html.theme_light body.path--ethicsweek .bread {
   visibility: hidden;
   margin-top: -1em;
 }
+html.theme_light body .flexSearch {
+  background: rgba(0, 0, 0, 0.3);
+}
 html.theme_light body #header {
   box-shadow: 0 0 5px -2px #333;
 }
@@ -1015,6 +1038,13 @@ html.theme_light body #header .tb-megamenu .nav > li > span.tb-megamenu-no-link:
 }
 html.theme_light body #header .region-nav-additional .nav-item {
   background-color: #8bc63e;
+}
+html.theme_light body #header .region-nav-additional .nav-item:nth-child(1) {
+  background-color: transparent;
+  color: #333;
+}
+html.theme_light body #header .region-nav-additional .nav-item:nth-child(1) a {
+  color: #333;
 }
 html.theme_light body #header .region-nav-additional .nav-item a {
   color: #fff !important;

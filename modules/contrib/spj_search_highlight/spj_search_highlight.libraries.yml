@@ -1,0 +1,4 @@
+highlight:
+  css:
+    theme:
+      assets/css/views_search_highlight.css: {}

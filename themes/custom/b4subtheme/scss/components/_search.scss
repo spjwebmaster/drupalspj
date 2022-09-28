@@ -1,6 +1,62 @@
+#block-secondarynav  {
+    .navbar-nav {
 
-.flexSearch {
-    margin: 0 1em;
+        li:nth-child(1) {
+            position: relative;
+            a {
+               
+                font-size: 0;
+                text-indent: 500px;
+                overflow: hidden;
+                display: inline-block;
+                width: 40px;
+                min-height: 30px;
+                overflow: visible;
+                &::after {
+                    background-color: transparent;
+                    content: "";
+                    -webkit-mask: url("../images/icon/search.svg");
+                    mask: url("../images/icon/search.svg");
+                    -webkit-mask-size: cover;
+                    mask-size: cover;
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+                    width: 30px;
+                    height: 30px;
+                    display: inline-block;
+                    background-color: #333;
+                    -webkit-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
+                    margin-left: 0.25rem;
+                    margin-top: 5px;
+                    position: absolute;
+                    top: -1px;
+                    left: -3px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+#header .flexSearch {
+    position: absolute;
+    top: -90px;
+    left: 0;
+    width: 100%;
+    z-index: 97;
+    padding: 1em;
+    transition: all ease 0.3s;
+    &.open {
+        top: 128px;
+    }
+    .js-form-wrapper {
+        background: #ddd;
+        height: 38px;
+        width: 35px;
+    }
+
+
     form {
         display: flex;
 
@@ -8,11 +64,18 @@
             flex: 1 90%;
         }
 
+        .form-autocomplete {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
         .form-actions {
             position: relative;
-            width: 30px;
+            width: 37px;
             display: inline-block;
-            height: 30px;
+            height: 37px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
 
             &::before {
                 content: '';
@@ -24,7 +87,7 @@
                 transition: all 0.2s ease-in-out;
                 margin-left: .25rem;
                 margin-top: 5px;
-
+                cursor: pointer;
 
                 -webkit-mask: url("../images/icon/search.svg");
                 mask: url("../images/icon/search.svg");

@@ -19,8 +19,9 @@
 
 {% block content %}
 
-  <div{{ content_attributes.addClass('content', 'container-inline flexSearch') }}>
-  
+  <div{{ content_attributes.addClass('content', 'container-inline text-center flexSearch') }}>
+    <div class="container">
     {{ content }}
+    </div>
   </div>
 {% endblock %}

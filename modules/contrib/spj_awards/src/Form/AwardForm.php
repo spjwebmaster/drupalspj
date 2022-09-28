@@ -19,15 +19,30 @@ class AwardForm extends FormBase {
   }
 
   public function formSelectCallback(array $form, FormStateInterface $form_state) {
-    $response = new AjaxResponse();
-  
-    $form['year']['#description'] = "New year desc";
-    $response->addCommand(new ReplaceCommand('#field-year', $form['year']));
+      $response = new AjaxResponse();
 
-    $form['month']['#description'] = "New month desc";
-    $response->addCommand(new ReplaceCommand('#field-month', $form['month']));
+      $selectedValue = $form_state->getValue('year');
   
-    return $response;
+      $form['year']['#description'] = "Year - " . $selectedValue;
+      $response->addCommand(new ReplaceCommand('#field-year', $form['year']));
+
+      $form['month']['#description'] = "New month desc - " . $selectedValue;
+      $response->addCommand(new ReplaceCommand('#field-month', $form['month']));
+    
+      return $response;
+    
+  }
+
+  public function subCatCallback(array &$form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+    if ($selectedValue = $form_state->getValue('sub_category')) {
+      
+      $currentDesc = $form['cat']['sub_category']['#description'];
+      $form['cat']['sub_category']['#description'] = $currentDesc . " 2";
+      $form['cat']['sub_category']['#title'] = $currentDesc . " 2";
+
+      $response->addCommand(new ReplaceCommand('#field-main-cat', $form['cat']['main_category']));
+    } 
   }
 
   public function myAjaxCallback(array &$form, FormStateInterface $form_state) {
@@ -40,13 +55,23 @@ class AwardForm extends FormBase {
 
         $vals = $this->getTaxonomyTermsByParent($selectedValue);
         
-        //$form['cat']['main_category']['#description'] = $vals['description'][$selectedValue];
-        //$form['cat']['main_category']['#title'] = "Update";
-        //$response->addCommand(new ReplaceCommand('#field-main-cat', $form['cat']['main_category']));
-        
+
+        $awardName = $this->getAwardName();
+        $awardName = substr($awardName, 0, strpos($awardName, "?"));
+        $tax = $this->getTaxonomyID($awardName);
+        $terms = $this->getTaxonomyTermsByParent($tax);
+
+       
         $form['cat']['sub_category']['#options'] = $vals['data'];
+
+        //$form['cat']['sub_category']['#prefix'] ='<div>' . $terms['description'][$selectedValue];
+        //$form['cat']['sub_category']['#suffix'] = "</div>";
+        $form['cat']['sub_category']['#description'] =  $terms['description'][$selectedValue] . "<hr />";
+
         $response->addCommand(new ReplaceCommand('#field-sub-cat', $form['cat']['sub_category']));
         
+        //$response->addCommand(new ReplaceCommand('#field-main-cat', $form['cat']['main_category']));
+        //$response->addCommand(new ReplaceCommand('#edit-main-cat-desc', ['#markup' => $terms['description'][$selectedValue]]));
       
         return $response;
     }
@@ -68,6 +93,48 @@ class AwardForm extends FormBase {
     return !empty($term) ? $term->id() : 0;
   }
 
+  function getTaxonomyTermsAndChildrenByParent($parentID = NULL, $vid = NULL) {
+
+      $awardName = $this->getAwardName();
+      $parentID = $this->getTaxonomyID($awardName);
+      $vid = 'award_submission_categories';
+      $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+      $term_data = array();
+      $levels= [];
+      foreach ($terms as $term) {
+        if($term->parents[0] && $term->parents[0]==$parentID){
+          $levels[] = $term->tid;
+          $term_data[$term->tid] = array("name"=>$term->name,"children"=> array());
+        }
+      }
+      foreach ($terms as $term) {
+    
+          if($term->parents[0] && in_array($term->parents[0],$levels)){
+            //$levels[] = $term->tid;
+            $term_data[$term->parents[0]]['children'][$term->tid] = [];
+            $term_data[$term->parents[0]]['children'][$term->tid]['name'] = $term->name;
+            $term_data[$term->parents[0]]['children'][$term->tid]['tid'] = $term->tid;
+            $term_data[$term->parents[0]]['children'][$term->tid]['parents'] = $term->parents[0];
+          }
+        
+      }
+
+      $dropdown = [];
+      foreach($term_data as $key=>$t){
+        $mainTid = $key;
+        $dropdown[$t['name']] = [];
+        foreach($t['children'] as $kids){
+          $dropdown[$t['name']][$kids['tid']] = $kids['name'];
+        }
+        
+       
+        
+      }
+
+      //dpm($dropdown);
+      return $dropdown;
+
+  }
   function getTaxonomyTermsByParent($parentID = NULL, $vid = NULL) {
 
 
@@ -123,9 +190,7 @@ class AwardForm extends FormBase {
     return $form['day'];
   }
 
-  
-  public function buildForm(array $form, FormStateInterface $form_state) {
-
+  private function getAwardName(){
     $url = $_SERVER['REQUEST_URI']; 
     $urlCheck = substr($url, -1);
     if($urlCheck=="/") {
@@ -134,16 +199,36 @@ class AwardForm extends FormBase {
     $paths = explode("/",$url);
 
     $awardName = $paths[count($paths)-1];
+    return $awardName;
+  }
+  
+  public function buildForm(array $form, FormStateInterface $form_state) {
+
+ 
+    $awardName = $this->getAwardName();
 
     $tax = $this->getTaxonomyID($awardName);
     
     $terms = $this->getTaxonomyTermsByParent($tax);
     $main_cat = $terms['data'];
 
+    $allterms = $this->getTaxonomyTermsAndChildrenByParent();
+    //dpm($allterms);
 
     $years = range(2019, 2050);
     $years = array_combine($years, $years);
+    //$years = $main_cat;
     $year = $form_state->getValue('year');
+
+
+    
+    $form['test'] = [
+      '#type' => 'select',
+      '#title' => "Test",
+      '#options' => $allterms,
+      '#empty_option' => $this->t('- Select things -'),
+      '#required' => TRUE
+    ];
 
     $form['year'] = [
       '#type' => 'select',
@@ -151,7 +236,6 @@ class AwardForm extends FormBase {
       '#description' => "Year",
       '#options' => $years,
       '#empty_option' => $this->t('- Select year -'),
-      '#default_value' => $year,
       '#required' => TRUE,
       '#prefix' => '<div id="field-year">',
       '#suffix' => '</div>',
@@ -295,10 +379,7 @@ class AwardForm extends FormBase {
         $form['cat']['main_category'] = array(
           '#type' => 'select',
           '#title' => t('Main Category:'),
-          '#description' => t('Entrants should submit a link to the online article or a PDF of the page on which the story appeared.
-              The date of publication should be visible. Word documents containing the work will not be accepted. (Cover letters submitted as Word documents are acceptable.)<br /><br />
-              PDFs should have the same name as the title of the story. PDFs should be combined into one file, when possible. The cover letter and supporting material should be separated from the main entry. Please note non-Sunday circulation for print publications and specific if your publication is online only. <br /><br /> 
-              Supporting material is limited to 5 pages. '),
+          '#description' => t('-'),
           '#required' => TRUE,
           '#options' => $main_cat,
           '#prefix' => '<div id="field-main-cat">',
@@ -316,19 +397,30 @@ class AwardForm extends FormBase {
           ]
         );
 
-      
+        $form['cat']['main_cat_desc'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Desc'),
+        );
         $form['cat']['sub_category'] = array(
           '#type' => 'select',
           '#title' => t('Secondary Category:'),
           '#description' => t('-'),
+          '#empty_option' => $this->t('- Select -'),
           '#required' => TRUE,
-          '#options' => array(
-            'Cat1' => t('Cat1'),
-            'Cat2' => t('Cat2'),
-            'Cat3' => t('Cat3'),
-          ),
+         
           '#prefix' => '<div id="field-sub-cat">',
           '#suffix' => '</div>',
+          '#ajax' => [
+            'callback' => '::subCatCallback', // don't forget :: when calling a class method.
+            //'callback' => [$this, 'myAjaxCallback'], //alternative notation
+            'disable-refocus' => FALSE, // Or TRUE to prevent re-focusing on the triggering element.
+            'event' => 'change',
+            'wrapper' => 'field-main-cat', // This element is updated with this AJAX callback.
+            'progress' => [
+              'type' => 'throbber',
+              'message' => $this->t('Updating Sub Category...'),
+            ],
+          ]
         );
 
     $form['entry'] = [

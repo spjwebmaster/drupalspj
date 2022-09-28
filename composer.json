@@ -70,6 +70,8 @@
         "drupal/responsive_menu": "4.4",
         "drupal/restui": "1.20",
         "drupal/search_api": "^1.25",
+        "drupal/search_api_autocomplete": "^1.6",
+        "drupal/search_autocomplete": "^2.0",
         "drupal/slick": "2.6",
         "drupal/slick_views": "2.6",
         "drupal/stage_file_proxy": "^1.2",
@@ -118,6 +120,11 @@
             "include": [
                 "modules/contrib/webform/composer.libraries.json"
             ]
+        },
+        "patches": {
+            "drupal/search_autocomplete": {
+                "value.autocomplete is not a function - https://www.drupal.org/i/3220334": "https://www.drupal.org/files/issues/2021-06-24/value-autocomplete-not-function-3220334-3.patch"
+            }
         },
         "installer-paths": {
             "core": [

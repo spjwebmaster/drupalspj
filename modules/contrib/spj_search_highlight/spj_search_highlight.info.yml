@@ -1,0 +1,5 @@
+name: 'Views Search Highlight'
+type: module
+description: 'Highlight keywords in views search results.'
+core_version_requirement: ^9
+

@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Contains code to implement highlighting exposed views filter values.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_preprocess_views_view_field().
+ *
+ * This function is called for each field in each row of each view result
+ *   (unless overridden by a more specific preprocessor elsewhere).
+ */
+function views_search_highlight_preprocess_views_view_field(&$variables) {
+
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+
+  /** @var \Drupal\views\Plugin\views\field\EntityField $field */
+  $field = $variables['field'];
+  dpm($view);
+  // Specify for which view(s) and field(s) you want to enable highlighting.
+  if ($view->id() == 'search_content_auto') {
+
+    $keyword = \Drupal::request()->get('search_api_fulltext');
+    
+
+    if (!is_null($keyword)) {
+
+      /** @var \Drupal\views\ResultRow $row */
+      $row = $variables['row'];
+
+      // Retrieve the field's rendered content.
+      $content = $field->advancedRender($row)->__tostring();
+
+      // Apply highlighting to field value.
+      $highlighted = views_search_highlight_apply_highlight($keyword, $content);
+
+      // Update field output (must be a Markup object, not a string of html).
+      $variables['output'] = Markup::create($highlighted);
+
+      // Attach css. Skip this if you're setting the style in your theme's css.
+      $view->element['#attached']['library'][] = 'spj_search_highlight/highlight';
+    }
+  }
+}
+
+/**
+ * Search for a given keyword in a given source string and wraps the keyword
+ * in  <mark></mark> tags.
+ *
+ * @param string $keyword
+ *   The keyword to highlight.
+ * @param string $source
+ *   The content in which to highlight the keyword.
+ *
+ * @return string
+ *   String with highlighted sections (if any).
+ */
+function views_search_highlight_apply_highlight($keyword, $source) {
+  $highlighted = str_replace($keyword, "<mark>{$keyword}</mark>", $source);
+  return $highlighted;
+}

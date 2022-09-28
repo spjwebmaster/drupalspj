@@ -58,6 +58,9 @@ body {
 
     @import 'partials/foisubsites';
 
+    .flexSearch {
+        background:  rgba(0,0,0,0.3);
+    }
 
     #header {
         box-shadow: 0 0 5px -2px $navShadow;
@@ -150,9 +153,19 @@ body {
             background-color: rgba(0,0,0,0.3);
         }
 
+ 
+
         .region-nav-additional {
+
             .nav-item {
                 background-color: $SPJgreen;
+                &:nth-child(1){
+                    background-color: transparent;
+                    color: #333;
+                    a {
+                        color: #333;
+                    }
+                }
                 a {
                     color: $white!important;
                 }
