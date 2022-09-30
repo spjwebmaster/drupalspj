@@ -1,4 +1,5 @@
 @import '../mediaquery/mediafunctions';
+@import 'partials/landing';
 body {
     background-color: $bodybg;
     color: $bodytext;
@@ -57,6 +58,7 @@ body {
     }
 
     @import 'partials/foisubsites';
+   
 
     .flexSearch {
         background:  rgba(0,0,0,0.3);
@@ -216,6 +218,19 @@ body {
         }
     }
 
+    .google-marketing-training.row {
+        >div {
+            margin-bottom: 2em;
+            
+            img {
+            box-shadow: 0 0 19px -2px #333;   
+            border-radius: 5px;
+            }
+        }
+    }
+    
+    
+
     .region-map {
         text-align: center;
         background-color: #fefefe;
@@ -347,6 +362,7 @@ body {
             .menu--main {
                 .navbar-nav {
                     background: aliceblue;
+                    margin-bottom: 2em;
                     
 
                     .nav-item {
@@ -386,7 +402,7 @@ body {
     }
 
     .region-content-below {
-        background: #eee;
+        border-top: 2px dotted #aaa;
     }
 
     footer.main-footer {

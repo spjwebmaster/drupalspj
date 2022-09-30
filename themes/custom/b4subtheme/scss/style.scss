@@ -115,6 +115,19 @@ ol.breadcrumb {
                     }
                 }
             }
+            
+
+            .navigation {
+                .dropdown-menu.nope {
+                    display: none!important;
+                    
+                }
+                .dropdown-toggle{
+                    &::after {
+                        content: none;
+                    }
+                }
+            }
         
      }
     }
@@ -213,7 +226,7 @@ ol.breadcrumb {
             padding: 0;
             list-style: none;
             margin-bottom: 2em;
-            padding-bottom: 2em; 
+            padding-bottom: 2em;  
         }
     }
 }
@@ -268,7 +281,7 @@ ol.breadcrumb {
 
 @import 'views/front';  
 @import 'components/donate';     
-@import 'components/languageswitch';  
+@import 'components/languageswitch';   
 @import 'components/themeswitch';   
 body {
 

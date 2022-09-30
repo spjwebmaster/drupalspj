@@ -1,5 +1,18 @@
 /* Gathering all theme files denoted by a class/attr */
 /* default theme */
+html.theme_default .race--gender-hotline .race-gender-title {
+  padding: 2em !important;
+  margin-bottom: 2em;
+}
+html.theme_default .race--gender-hotline .race-gender-title .page-title {
+  color: #fff;
+  text-align: center !important;
+}
+html.theme_default .race--gender-hotline h2 {
+  color: #9d2020;
+  font-weight: bold;
+  font-size: 1.9em;
+}
 html.theme_default body {
   background-color: #fff;
   color: #333;
@@ -258,6 +271,13 @@ html.theme_default body.path-frontpage #block-views-block-news-block-1-2 .view-c
 html.theme_default body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_default body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
 }
+html.theme_default body .google-marketing-training.row > div {
+  margin-bottom: 2em;
+}
+html.theme_default body .google-marketing-training.row > div img {
+  box-shadow: 0 0 19px -2px #333;
+  border-radius: 5px;
+}
 html.theme_default body .region-map {
   text-align: center;
   background-color: #fefefe;
@@ -367,6 +387,7 @@ html.theme_default body main .wp-block-cloudblocks-g-section {
 }
 html.theme_default body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
+  margin-bottom: 2em;
 }
 html.theme_default body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
@@ -388,7 +409,7 @@ html.theme_default body .region-sidebar-second .navbar-nav .nav-item.is-active {
   font-weight: bold;
 }
 html.theme_default body .region-content-below {
-  background: #eee;
+  border-top: 2px dotted #aaa;
 }
 html.theme_default body footer.main-footer {
   border-top: 1px solid #000;
@@ -406,6 +427,19 @@ html.theme_default body footer.main-footer .footer-bot {
 }
 
 /* dark theme */
+html.theme_dark .race--gender-hotline .race-gender-title {
+  padding: 2em !important;
+  margin-bottom: 2em;
+}
+html.theme_dark .race--gender-hotline .race-gender-title .page-title {
+  color: #fff;
+  text-align: center !important;
+}
+html.theme_dark .race--gender-hotline h2 {
+  color: #9d2020;
+  font-weight: bold;
+  font-size: 1.9em;
+}
 html.theme_dark body {
   background-color: #111;
   color: #eee;
@@ -664,6 +698,13 @@ html.theme_dark body.path-frontpage #block-views-block-news-block-1-2 .view-cont
 html.theme_dark body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_dark body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
 }
+html.theme_dark body .google-marketing-training.row > div {
+  margin-bottom: 2em;
+}
+html.theme_dark body .google-marketing-training.row > div img {
+  box-shadow: 0 0 19px -2px #333;
+  border-radius: 5px;
+}
 html.theme_dark body .region-map {
   text-align: center;
   background-color: #fefefe;
@@ -773,6 +814,7 @@ html.theme_dark body main .wp-block-cloudblocks-g-section {
 }
 html.theme_dark body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
+  margin-bottom: 2em;
 }
 html.theme_dark body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
@@ -794,7 +836,7 @@ html.theme_dark body .region-sidebar-second .navbar-nav .nav-item.is-active {
   font-weight: bold;
 }
 html.theme_dark body .region-content-below {
-  background: #eee;
+  border-top: 2px dotted #aaa;
 }
 html.theme_dark body footer.main-footer {
   border-top: 1px solid #000;
@@ -815,6 +857,19 @@ html.theme_dark body #header .navbar-brand a {
 }
 
 /* light theme */
+html.theme_light .race--gender-hotline .race-gender-title {
+  padding: 2em !important;
+  margin-bottom: 2em;
+}
+html.theme_light .race--gender-hotline .race-gender-title .page-title {
+  color: #fff;
+  text-align: center !important;
+}
+html.theme_light .race--gender-hotline h2 {
+  color: #9d2020;
+  font-weight: bold;
+  font-size: 1.9em;
+}
 html.theme_light body {
   background-color: #fff;
   color: #333;
@@ -1073,6 +1128,13 @@ html.theme_light body.path-frontpage #block-views-block-news-block-1-2 .view-con
 html.theme_light body.path-frontpage #block-views-block-news-block-1-2 a, html.theme_light body.path-frontpage #block-views-block-homepage-news-block-1 a {
   color: #fff;
 }
+html.theme_light body .google-marketing-training.row > div {
+  margin-bottom: 2em;
+}
+html.theme_light body .google-marketing-training.row > div img {
+  box-shadow: 0 0 19px -2px #333;
+  border-radius: 5px;
+}
 html.theme_light body .region-map {
   text-align: center;
   background-color: #fefefe;
@@ -1182,6 +1244,7 @@ html.theme_light body main .wp-block-cloudblocks-g-section {
 }
 html.theme_light body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
+  margin-bottom: 2em;
 }
 html.theme_light body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
@@ -1203,7 +1266,7 @@ html.theme_light body .region-sidebar-second .navbar-nav .nav-item.is-active {
   font-weight: bold;
 }
 html.theme_light body .region-content-below {
-  background: #eee;
+  border-top: 2px dotted #aaa;
 }
 html.theme_light body footer.main-footer {
   border-top: 1px solid #000;

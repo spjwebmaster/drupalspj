@@ -34,6 +34,23 @@
         }
       })
 
+      document.querySelectorAll(".layout__region--second .navigation .dropdown-toggle").forEach(function(el){
+
+        // remove dropdown menu for now?
+        if(el.closest("li").querySelector(".dropdown-menu")){
+          el.closest("li").querySelector(".dropdown-menu").classList.add("nope");
+        }
+
+          el.addEventListener("click", function(e){
+
+            let href = e.target.href;
+            window.location.href = href;
+          })
+        
+      })
+      
+
+
 
       //edit-actions
       document.querySelectorAll("[data-drupal-selector='edit-actions']").forEach(function(el){
