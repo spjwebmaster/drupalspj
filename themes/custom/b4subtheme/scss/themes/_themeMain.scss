@@ -78,6 +78,29 @@ body {
             a {
                 color: $topNavColor;
             }
+            .block-spj-themeswitch {
+                .themeswitcher {
+                    a {
+                        border-width: 0;
+                        &.btn-secondary {
+                            &.active {
+                                position: relative;
+                                background:transparent;
+                                &:after {
+                                    content: "";
+                                    display: block;
+                                    width: 100%;
+                                    position: absolute;
+                                    bottom: 2px;
+                                    left: 0;
+                                    height: 2px;
+                                    background-color:#33a1fd;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             .navbar-nav {
                 .nav-item {
                     a {
@@ -110,6 +133,19 @@ body {
             .links {
                 li::before {
                     color: $topNavColor;
+                }
+            }
+        }
+        #block-secondarynav  {
+            .navbar-nav {
+        
+                li:nth-child(1) {
+                    position: relative;
+                    a {
+                        &:after {
+                            background: $navLinkcolor;
+                        }
+                    }
                 }
             }
         }
@@ -361,7 +397,7 @@ body {
         .node__content {
             .menu--main {
                 .navbar-nav {
-                    background: aliceblue;
+                    background: $submenuBG;
                     margin-bottom: 2em;
                     
 

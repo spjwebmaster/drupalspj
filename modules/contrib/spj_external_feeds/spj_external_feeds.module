@@ -108,7 +108,7 @@ function spj_ext_feed_makeMarkup($data){
                 $ret .= "<li>";
                 $ret .= "<a href='" . $entry['link'] . "' target='_blank'>";
                 $ret .= $entry["title"];
-                $ret .= "</h3>";
+                $ret .= "</a>";
                 //$ret .= "<a href='" . $entry['link'] . "' target='_blank'>";
                 //$ret .= "<img src='" . $entry["featuredimage"] . "' alt='" . $entry['link'] . "' /><br />";
                 //$ret .= "<p>" . $entry['description'] . "</p>";

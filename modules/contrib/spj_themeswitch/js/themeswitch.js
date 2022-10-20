@@ -20,7 +20,8 @@
 
             setTheme(st.getItem("spj_theme"));
         }
-        $(document).on("click", ".block-spj-themeswitch-block a", function(){
+        $(document).on("click", ".block-spj-themeswitch-block a", function(e){
+            e.preventDefault();
             let thisTheme = $(this).attr("data-theme");
             setTheme(thisTheme);
             st.setItem("spj_theme", thisTheme);

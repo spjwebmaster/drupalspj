@@ -193,6 +193,23 @@ body #header .topnav {
 body #header .topnav a {
   color: #eee;
 }
+body #header .topnav .block-spj-themeswitch .themeswitcher a {
+  border-width: 0;
+}
+body #header .topnav .block-spj-themeswitch .themeswitcher a.btn-secondary.active {
+  position: relative;
+  background: transparent;
+}
+body #header .topnav .block-spj-themeswitch .themeswitcher a.btn-secondary.active:after {
+  content: "";
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background-color: #33a1fd;
+}
 body #header .topnav .navbar-nav .nav-item a:link, body #header .topnav .navbar-nav .nav-item a:visited, body #header .topnav .navbar-nav .nav-item a:focus {
   color: #eee;
 }
@@ -210,6 +227,12 @@ body #header .topnav .block-themeswitch .btn-group a.active {
 }
 body #header .language-switcher-language-url .links li::before {
   color: #eee;
+}
+body #header #block-secondarynav .navbar-nav li:nth-child(1) {
+  position: relative;
+}
+body #header #block-secondarynav .navbar-nav li:nth-child(1) a:after {
+  background: #333;
 }
 body #header .navbar.navbar-light {
   background-color: #fff;
@@ -10924,7 +10947,6 @@ body main {
   width: 30px;
   height: 30px;
   display: inline-block;
-  background-color: #333;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-left: 0.25rem;
@@ -11416,56 +11438,56 @@ body main {
   backdrop-filter: blur(6px) saturate(58%);
 }
 
-.path-conferences main, .page-node-type-regional-conference main {
+.regional-conferences main, .page-node-type-regional-conference main {
   background-color: #85bd3d;
   box-shadow: none !important;
 }
-.path-conferences .region-slideshow, .page-node-type-regional-conference .region-slideshow {
+.regional-conferences .region-slideshow, .page-node-type-regional-conference .region-slideshow {
   max-height: 999em;
 }
-.path-conferences .confHeaderInner, .page-node-type-regional-conference .confHeaderInner {
+.regional-conferences .confHeaderInner, .page-node-type-regional-conference .confHeaderInner {
   display: flex;
   width: 100%;
   align-items: center;
   max-width: 1400px;
   margin: auto;
 }
-.path-conferences .confHeader img, .page-node-type-regional-conference .confHeader img {
+.regional-conferences .confHeader img, .page-node-type-regional-conference .confHeader img {
   width: 100%;
   max-width: 900px;
   display: block;
   margin: 2em 0;
 }
-.path-conferences .confHeader .confLogo, .page-node-type-regional-conference .confHeader .confLogo {
+.regional-conferences .confHeader .confLogo, .page-node-type-regional-conference .confHeader .confLogo {
   flex: 1 60%;
 }
-.path-conferences .confHeader .confText, .page-node-type-regional-conference .confHeader .confText {
+.regional-conferences .confHeader .confText, .page-node-type-regional-conference .confHeader .confText {
   flex: 1 40%;
   padding: 1em 0 1em 1em;
   border-left: 1px solid #0e488b;
 }
-.path-conferences .confHeader h4, .page-node-type-regional-conference .confHeader h4 {
+.regional-conferences .confHeader h4, .page-node-type-regional-conference .confHeader h4 {
   color: #0e488b;
   text-align: left;
   font-size: 0.9em;
 }
-.path-conferences .block-spjslider .banner, .page-node-type-regional-conference .block-spjslider .banner {
+.regional-conferences .block-spjslider .banner, .page-node-type-regional-conference .block-spjslider .banner {
   background-position: bottom center;
   max-height: 500px;
   height: 500px;
 }
-.path-conferences .region-slideshow, .page-node-type-regional-conference .region-slideshow {
+.regional-conferences .region-slideshow, .page-node-type-regional-conference .region-slideshow {
   max-height: 500px;
   height: 500px;
 }
 @media (max-width: 991px) {
-  .path-conferences .confHeaderInner, .page-node-type-regional-conference .confHeaderInner {
+  .regional-conferences .confHeaderInner, .page-node-type-regional-conference .confHeaderInner {
     flex-wrap: wrap;
   }
-  .path-conferences .confHeader .confLogo, .page-node-type-regional-conference .confHeader .confLogo {
+  .regional-conferences .confHeader .confLogo, .page-node-type-regional-conference .confHeader .confLogo {
     flex: 1 100%;
   }
-  .path-conferences .confHeader .confText, .page-node-type-regional-conference .confHeader .confText {
+  .regional-conferences .confHeader .confText, .page-node-type-regional-conference .confHeader .confText {
     padding: 0.5em;
   }
 }
@@ -12280,11 +12302,21 @@ body.path-frontpage .region-content > .block {
   text-indent: 999em;
   display: block;
   width: 33px;
+  height: 35px;
+  line-height: 35px;
 }
 @media (min-width: 768px) {
   .language-switcher-language-url .links li a {
     width: auto;
     text-indent: 0;
+  }
+}
+@media (min-width: 992px) {
+  .language-switcher-language-url .links li a {
+    height: 41px;
+    line-height: 41px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 .language-switcher-language-url .links li:last-child a {
@@ -12293,7 +12325,18 @@ body.path-frontpage .region-content > .block {
   border-bottom-right-radius: 4px;
 }
 .language-switcher-language-url .links li.is-active a {
-  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  background-color: transparent;
+}
+.language-switcher-language-url .links li.is-active a:after {
+  content: "";
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background-color: #33a1fd;
 }
 
 .block-themeswitch {
@@ -12328,13 +12371,37 @@ body header .topnav .region-header {
 }
 body header .topnav .region-header nav {
   order: 2;
+  position: relative;
+  margin: 0 1rem;
+}
+body header .topnav .region-header nav:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: -0.5rem;
+  border-left: 2px dotted #555;
+  height: 80%;
+  top: 10%;
+}
+body header .topnav .region-header nav:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: -0.5rem;
+  border-right: 2px dotted #555;
+  height: 80%;
+  top: 10%;
 }
 body header .topnav .region-header .themeswitcher a {
+  border-radius: 0;
   height: 35px;
 }
 @media (min-width: 992px) {
   body header .topnav .region-header .themeswitcher a {
     height: 41px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 41px;
   }
 }
 body header .topnav .region-header .block-themeswitch-block {
@@ -12753,7 +12820,7 @@ body main .region-sidebar-second {
 body main .region-sidebar-second .navbar-nav a.nav-item {
   white-space: break-spaces;
 }
-body main .region-sidebar-second .navbar-nav a.nav-item.is-active {
+body main .region-sidebar-second .navbar-nav a.nav-item.is-active, body main .region-sidebar-second .navbar-nav a.nav-item.active {
   font-weight: bold;
 }
 @media (max-width: 991px) {

@@ -1,5 +1,5 @@
 // Sub theme styling.
-@import 'variables_theme';        
+@import 'variables_theme';         
 @import 'themes/default';                 
 
 // Bootstrap overriden variables.
@@ -116,6 +116,7 @@ ol.breadcrumb {
                 }
             }
             
+
 
             .navigation {
                 .dropdown-menu.nope {
@@ -305,6 +306,7 @@ body {
 
         .topnav {
 
+            
             height:35px;
             @include respond-above(sm){
                 height: 41px;
@@ -314,17 +316,41 @@ body {
 
             .region-header {
                 display: flex;
-                justify-content: end;
+                justify-content: end; 
 
-                nav {
+                nav { 
                     order: 2;
+                    position: relative;
+                    margin: 0 1rem;
+                    &:before {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        left: -.5rem;
+                        border-left: 2px dotted #555;
+                        height: 80%;
+                        top: 10%;
+                    }
+                    &:after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        right: -0.5rem;
+                        border-right: 2px dotted #555;  
+                        height: 80%;
+                        top: 10%;
+                    }
                 }
 
                 .themeswitcher {  
                     a {
+                        border-radius: 0;
                         height: 35px;
                         @include respond-above(md){
                             height: 41px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                            line-height: 41px;
                         }
                     }
                 } 
@@ -734,8 +760,8 @@ body {
             .navbar-nav {
                 a.nav-item {
                     white-space:break-spaces;  
-                    &.is-active {
-                        font-weight: bold;
+                    &.is-active, &.active {
+                        font-weight: bold;    
                     } 
                 }
             }
@@ -756,7 +782,7 @@ body {
                 .nav-item {
                     &.dropdown  {
                         ::after {
-                            content: none;
+                            content: none; 
                         }
 
                         .dropdown-menu {

@@ -49,10 +49,19 @@
                 text-indent: 999em;
                 display: block;
                 width: 33px;
+                height: 35px;
+                line-height: 35px;
                 @include respond-above(sm){
                     width: auto;
                     text-indent: 0;
                 }
+                @include respond-above(md){
+                    height: 41px;
+                    line-height: 41px;
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+
 
             }
             &:last-child {
@@ -64,7 +73,18 @@
             }
             &.is-active {
                 a {
-                    background-color: rgba(0,0,0,0.1);
+                    position: relative;
+                    &:after {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        bottom: 2px;
+                        left: 0;
+                        height: 2px;
+                        background-color: #33a1fd;
+                    }
+                    background-color: transparent;
                 }
             }
         }
