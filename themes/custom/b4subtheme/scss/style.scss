@@ -327,7 +327,7 @@ body {
                         display: inline-block;
                         position: absolute;
                         left: -.5rem;
-                        border-left: 2px dotted #555;
+                        border-left: 2px dotted #555; 
                         height: 80%;
                         top: 10%;
                     }
@@ -814,6 +814,33 @@ body {
 
             >* {
                 flex: 1 auto;
+            }
+
+            .flexSearch {
+                background: transparent;
+
+                .container {
+                    text-align: right;
+                }
+
+                form {
+                    display: flex;
+                    .form-item {
+                        flex: 1 99%;      
+
+                        .form-control {
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                        }
+                    
+                    }
+                    .form-actions {
+                        .btn {
+                            border-top-left-radius: 0;
+                            border-bottom-left-radius: 0;
+                        }
+                    }
+                }
             }
 
             @include respond-below(md){  

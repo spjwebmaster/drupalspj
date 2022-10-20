@@ -414,6 +414,7 @@ html.theme_default body main .node__content .menu--main .navbar-nav {
 }
 html.theme_default body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
+  color: #004990;
 }
 @media (max-width: 991px) {
   html.theme_default body .region-sidebar-second {
@@ -430,6 +431,7 @@ html.theme_default body .region-sidebar-second .navbar-nav {
 }
 html.theme_default body .region-sidebar-second .navbar-nav .nav-item.is-active {
   font-weight: bold;
+  color: #004990;
 }
 html.theme_default body .region-content-below {
   border-top: 2px dotted #aaa;
@@ -864,6 +866,7 @@ html.theme_dark body main .node__content .menu--main .navbar-nav {
 }
 html.theme_dark body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
+  color: #fff;
 }
 @media (max-width: 991px) {
   html.theme_dark body .region-sidebar-second {
@@ -880,6 +883,7 @@ html.theme_dark body .region-sidebar-second .navbar-nav {
 }
 html.theme_dark body .region-sidebar-second .navbar-nav .nav-item.is-active {
   font-weight: bold;
+  color: #fff;
 }
 html.theme_dark body .region-content-below {
   border-top: 2px dotted #aaa;
@@ -1317,6 +1321,7 @@ html.theme_light body main .node__content .menu--main .navbar-nav {
 }
 html.theme_light body main .node__content .menu--main .navbar-nav .nav-item .is-active {
   font-weight: bold;
+  color: #004990;
 }
 @media (max-width: 991px) {
   html.theme_light body .region-sidebar-second {
@@ -1333,6 +1338,7 @@ html.theme_light body .region-sidebar-second .navbar-nav {
 }
 html.theme_light body .region-sidebar-second .navbar-nav .nav-item.is-active {
   font-weight: bold;
+  color: #004990;
 }
 html.theme_light body .region-content-below {
   border-top: 2px dotted #aaa;

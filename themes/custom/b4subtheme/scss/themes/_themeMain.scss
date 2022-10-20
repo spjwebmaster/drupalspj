@@ -11,6 +11,7 @@ body {
         color: $linkHover;
     }
 
+
     blockquote {
         margin: 1rem;
         border-left: 4px solid;
@@ -404,6 +405,7 @@ body {
                     .nav-item {
                         .is-active {
                             font-weight: bold;
+                            color: $sideBarActive;
                         }
                     }
                 }
@@ -432,6 +434,7 @@ body {
             .nav-item {
                 &.is-active {
                     font-weight: bold;
+                    color: $sideBarActive;
                 }
             }
         }
