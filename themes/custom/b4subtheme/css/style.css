@@ -395,15 +395,21 @@ body main {
 body main.landing {
   box-shadow: none;
 }
+body main .view-spj-bios .views-row {
+  border-bottom: 2px dashed #ddd;
+}
 body main .view .views-row {
   border-bottom: 2px dashed #ddd;
 }
 body main .view .view-filters {
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.1);
+  background: #ddd;
 }
 body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
   background: rgba(0, 0, 0, 0.1);
+}
+body main .node--type-news-item .field--name-field-contacts {
+  background-color: #ddd;
 }
 body main .wp-block-cloudblocks-g-section {
   background: #eee;
@@ -11939,6 +11945,12 @@ ol.breadcrumb {
   width: 100% !important;
 }
 
+/* gutenberg editing */
+.interface-interface-skeleton__content {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+}
+
 @media (min-width: 992px) {
   .layout--twocol-section .layout__region.layout__region--first {
     padding-right: 1em;
@@ -12688,7 +12700,6 @@ body main .view-news .view-content .views-row {
   border-bottom: 1px solid #ddd;
 }
 body main .node--type-news-item .field--name-field-contacts {
-  background-color: #ddd;
   padding: 10px;
   border-radius: 5px;
 }
@@ -12698,6 +12709,7 @@ body main .node--type-news-item .field--name-field-active-date time {
 }
 body main .node--type-news-item section[data-section=bio-embedded-inline] {
   margin-bottom: 0.5em;
+  display: flex;
 }
 body main .node--type-news-item section[data-section=bio-embedded-inline] div[data-container=flex] {
   display: flex;
@@ -12706,11 +12718,16 @@ body main .node--type-news-item section[data-section=bio-embedded-inline] div[da
   display: flex;
 }
 body main .node--type-news-item section[data-section=bio-embedded-inline] div[data-container=flex] .layout__region > div {
-  margin-right: 5px;
+  margin-right: 8px;
+  margin-left: 8px;
+  position: relative;
 }
 body main .node--type-news-item section[data-section=bio-embedded-inline] div[data-container=flex] .layout__region > div::after {
   content: "|";
-  margin-left: 5px;
+  margin-left: -5px;
+  display: inline;
+  position: absolute;
+  top: 0;
 }
 body main .node--type-news-item section[data-section=bio-embedded-inline] div[data-container=flex] .layout__region > div.field--name-field-twitter::after {
   content: none;
@@ -12768,6 +12785,27 @@ body main .view-freelance-community-contacts .views-field-field-role h3 .item-li
 }
 body main .view-freelance-community-contacts .views-field-field-role h3 .item-list ul li::before {
   content: none;
+}
+body main .view-spj-bios .views-row {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+body main .view-spj-bios .node__content .layout--twocol-section--67-33 {
+  display: flex;
+}
+body main .view-spj-bios .node__content .layout--twocol-section--67-33 .layout__region--first {
+  padding-right: 1em;
+  flex: 1 67%;
+}
+body main .view-spj-bios .node__content .layout--twocol-section--67-33 .layout__region--second {
+  padding-left: 1em;
+  flex: 1 33%;
+}
+body main .view-committee-roster .view-header .taxonomy-term h2 a {
+  pointer-events: none;
+}
+body main .view-committee-roster .view-content {
+  display: none;
 }
 body main .block.block-spjcalendar {
   position: relative;

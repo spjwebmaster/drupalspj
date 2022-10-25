@@ -395,15 +395,21 @@ html.theme_default body main {
 html.theme_default body main.landing {
   box-shadow: none;
 }
+html.theme_default body main .view-spj-bios .views-row {
+  border-bottom: 2px dashed #ddd;
+}
 html.theme_default body main .view .views-row {
   border-bottom: 2px dashed #ddd;
 }
 html.theme_default body main .view .view-filters {
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.1);
+  background: #ddd;
 }
 html.theme_default body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
   background: rgba(0, 0, 0, 0.1);
+}
+html.theme_default body main .node--type-news-item .field--name-field-contacts {
+  background-color: #ddd;
 }
 html.theme_default body main .wp-block-cloudblocks-g-section {
   background: #eee;
@@ -847,15 +853,21 @@ html.theme_dark body main {
 html.theme_dark body main.landing {
   box-shadow: none;
 }
+html.theme_dark body main .view-spj-bios .views-row {
+  border-bottom: 2px dashed #ddd;
+}
 html.theme_dark body main .view .views-row {
   border-bottom: 2px dashed #ddd;
 }
 html.theme_dark body main .view .view-filters {
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.1);
+  background: #444;
 }
 html.theme_dark body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
   background: rgba(0, 0, 0, 0.1);
+}
+html.theme_dark body main .node--type-news-item .field--name-field-contacts {
+  background-color: #444;
 }
 html.theme_dark body main .wp-block-cloudblocks-g-section {
   background: #444;
@@ -1302,15 +1314,21 @@ html.theme_light body main {
 html.theme_light body main.landing {
   box-shadow: none;
 }
+html.theme_light body main .view-spj-bios .views-row {
+  border-bottom: 2px dashed #ddd;
+}
 html.theme_light body main .view .views-row {
   border-bottom: 2px dashed #ddd;
 }
 html.theme_light body main .view .view-filters {
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.1);
+  background: #eee;
 }
 html.theme_light body main .block-views .views-row:not(.com-list) .view-id-committees_taxonomy {
   background: rgba(0, 0, 0, 0.1);
+}
+html.theme_light body main .node--type-news-item .field--name-field-contacts {
+  background-color: #eee;
 }
 html.theme_light body main .wp-block-cloudblocks-g-section {
   background: #eee;

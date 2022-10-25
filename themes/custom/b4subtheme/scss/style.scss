@@ -42,10 +42,10 @@ svg.svgSPJlogo {
     max-width: 100px; 
 }
    
-ol.breadcrumb {
+ol.breadcrumb {  
     background: transparent;
     padding: 0;
-    margin: 0.5em 0;
+    margin: 0.5em 0;    
 }
  
 .full_width { 
@@ -96,6 +96,11 @@ ol.breadcrumb {
 .wp-block-separator {
     border-bottom: 2px dashed;
     width: 100%!important;
+}
+/* gutenberg editing */
+.interface-interface-skeleton__content {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
 }
 
 .layout--twocol-section {
@@ -183,7 +188,7 @@ ol.breadcrumb {
                     margin: 0;
                     padding: 0;
                     display: inline-block;
-                    padding: 0.2em;
+                    padding: 0.2em; 
                 }
             }
         }
@@ -194,10 +199,10 @@ ol.breadcrumb {
         padding-left: 0em;
         li {
             position: relative;
-            margin-left: 0.8em;  
+            margin-left: 0.8em;   
 
             
-            &::marker { content: "" }
+            &::marker { content: "" } 
             &::before {
                 content: "";
                 display: block;
@@ -210,7 +215,7 @@ ol.breadcrumb {
         }
         &.search-results {
             li {
-                border-bottom: 1px dashed;
+                border-bottom: 1px dashed; 
                 margin-bottom: 1em;
                 padding-bottom: 1em;
             }

@@ -13,7 +13,6 @@
 
 .node--type-news-item {
     .field--name-field-contacts {
-        background-color: $SPJlightgrey;
         padding: 10px; 
         border-radius: 5px;
     }
@@ -26,16 +25,22 @@
 
     section[data-section="bio-embedded-inline"] {
         margin-bottom: 0.5em;
+        display: flex;
 
         div[data-container='flex']{
             display: flex;
             .layout__region {
                 display: flex;
                 >div {
-                    margin-right: 5px;
+                    margin-right: 8px;
+                    margin-left: 8px;
+                    position: relative;
                     &::after {
                         content: "|";
-                        margin-left: 5px;
+                        margin-left: -5px;
+                        display: inline;
+                        position: absolute;
+                        top: 0;
                     }
                     &.field--name-field-twitter {
                         &::after {

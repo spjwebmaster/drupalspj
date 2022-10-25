@@ -15,10 +15,11 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
+<div class="awards_list">
 {% if title %}
   <h2 class="grouping">{{ title }}</h2>
 {% endif %}
-<div class="section">
+<div class="section grouped">
 {% for row in rows %}
   {%
     set row_classes = [
@@ -30,6 +31,6 @@
   </div>
 {% endfor %}
 </div>
-
+</div>
 
   

@@ -60,3 +60,39 @@
         }
     }
 }
+
+.view-spj-bios {
+    .views-row {
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+       
+    }
+    .node__content {
+        .layout--twocol-section--67-33 {
+            display: flex;
+            .layout__region--first {
+                padding-right: 1em;
+                flex: 1 67%;
+            }
+            .layout__region--second {
+                padding-left: 1em;
+                flex: 1 33%;
+            }
+        }
+    }
+}
+.view-committee-roster {
+    .view-header {
+        .taxonomy-term {
+            h2 {
+                a {
+                    pointer-events: none;
+                }
+            }
+            
+        }
+    }
+    .view-content {
+        display: none;
+    }
+}

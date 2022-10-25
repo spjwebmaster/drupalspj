@@ -370,6 +370,11 @@ body {
             box-shadow: none;
         }
         
+        .view-spj-bios {
+            .views-row {
+                border-bottom: 2px dashed #ddd;
+            }
+        }
         .view {
             .views-row {
                 border-bottom: 2px dashed #ddd;
@@ -377,7 +382,7 @@ body {
             .view-filters {
                 border-radius: 5px;
                 
-                background: rgba(0,0,0,0.1);
+                background: $offsetBG;
             }
         }
         .block-views {
@@ -385,6 +390,13 @@ body {
                 .view-id-committees_taxonomy {
                     background: rgba(0,0,0,0.1);
                 }   
+            }
+        }
+
+        .node--type-news-item {
+            .field--name-field-contacts {
+                background-color: $offsetBG;
+
             }
         }
         
