@@ -80,4 +80,25 @@
           })
         }
     }
+
+    if(document.querySelectorAll('.accordian_wrapper')!=null){
+      console.log("accordian")
+      document.querySelectorAll('.accordian_wrapper').forEach(function(el){
+        let trigger = el.querySelector(".accordian_trigger");
+        trigger.addEventListener("click", function(e){
+          e.preventDefault();
+          let wrap = e.target.closest(".accordian_wrapper");
+          let summary = wrap.querySelector(".accordian_summary");
+          let full =  wrap.querySelector(".accordian_full");
+          if(full.classList.contains("shown")){
+            full.classList.remove("shown");
+            summary.classList.add("shown");
+          } else {
+            full.classList.add("shown");
+            summary.classList.remove("shown");
+          }
+        })
+      })
+
+    }
   })(jQuery);

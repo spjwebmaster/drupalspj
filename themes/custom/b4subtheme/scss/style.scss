@@ -141,6 +141,26 @@ ol.breadcrumb {
  }
 }
 
+.accordian_wrapper {
+    .accordian_summary {
+        display: none;
+        &.shown {
+            display: block;
+            
+        }
+    }
+    .accordian_full{
+        display: none;
+        &.shown {
+            display: block;
+
+        }
+    }
+    .accordian_trigger {
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+}
 
 
 #block-sdxdonate {
