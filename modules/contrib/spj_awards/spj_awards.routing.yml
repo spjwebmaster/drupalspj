@@ -6,4 +6,12 @@ spj_awards.form:
     name: "MOE"
   requirements:
     _access: 'TRUE'
+spj_awards.tax:
+  path: 'awards/taxonomy/{name}'
+  defaults:
+    _title: 'Get Taxonomy'
+    _controller: '\Drupal\spj_awards\Controller\SpjAwardsController::index'
+    name: "MOE"
+  requirements:
+    _access: 'TRUE'
 

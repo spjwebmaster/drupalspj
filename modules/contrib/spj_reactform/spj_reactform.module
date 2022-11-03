@@ -1,0 +1,13 @@
+<?php 
+/**
+ * Implements hook_theme().
+ */
+function spj_reactform_theme() {
+    return [
+      'spj_readingroom_block' => [
+        'variables' => [
+          'data' => [],
+        ],
+      ],
+    ];
+  }

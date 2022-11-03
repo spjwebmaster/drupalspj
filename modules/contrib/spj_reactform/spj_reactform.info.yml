@@ -1,0 +1,5 @@
+name: SPJ Awards form in React
+description: Showing React form
+package: Custom
+type: module
+core_version_requirement: ^9

@@ -1,13 +1,17 @@
 
 <div class="views view-spj-bios">
 {% for key,value in data %}
+<div class="role-type">
   <h2>{{ key }}:</h2>
 
+  
  
     {% for bio in value.entities %}
 
 
     <div class="views-row">
+
+   
       {% if(bio.field_role) %}
         <h4>{{bio.field_role}}</h4>
       {% endif %}
@@ -23,22 +27,60 @@
             </div>
             
             <div class="body">
-              {{bio.body | raw}}
+            
+              {% if value.mainTid == 1105 %}
+                <div class="candidate_bio_wrapper accordian_wrapper">
+                  <div class="bio_summary accordian_panel accordian_summary shown">
+                  
+                    {{bio.field_candidate_bio_summary | raw }}
+
+                    
+                  </div>
+                  <div class="bio_full accordian_panel accordian_full">
+                 
+                    {{bio.field_candidate_bio | raw}}
+                  </div>
+                  <a href="#" class="accordian_trigger">View More</a>
+                </div>
+              {% else %}
+
+                {{bio.body | raw}}
+              {% endif %}
             </div>
+            {% if(bio.field_email) %}
             <div class="field-email">
-              <a href="mailto:{{bio.field_email}}">{{bio.field_email}}</a>
+              <a href="mailto:{{bio.field_email}}">
+              <i class="fa fa-envelope"></i>
+              {{bio.field_email}}
+              </a>
             </div>
+            {% endif %}
+            {% if(bio.field_twitter) %}
             <div class="field-twitter">
-              <a href="https://twitter.com/{{bio.field_twitter}}" target="_blank">{{bio.field_twitter}}</a>
+              <a href="https://twitter.com/{{bio.field_twitter}}" target="_blank">
+              <i class="fa fa-twitter"></i>
+              {{bio.field_twitter}}
+              </a>
             </div>
+            {% endif %}
+            {% if(bio.field_linkedin_url) %}
+            <div class="field-linkedin-url">
+              <a href="{{bio.field_linkedin_url}}" target="_blank">
+                <i class="fa fa-linkedin"></i>
+                LinkedIn
+              </a>
+            </div>
+            {% endif %}
             
           
           </div>
+          {% if(bio.field_profile) %}
           <div class="layout__region layout__region--second">
               <figure>
                 <figcaption><img src="{{bio.field_profile}}" loading="lazy" alt="{{bio.title}} Profile" /></figcaption>
               </figure>
           </div>
+           {% endif %}
         </div>
       </div>
 
@@ -49,6 +91,6 @@
 
     {% endfor%}
   
-  
+  </div>
 {% endfor%}
 </div>

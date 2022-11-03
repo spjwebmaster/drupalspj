@@ -19,16 +19,25 @@ use Drupal\image\Entity\ImageStyle;
 class SpjBiosBlock extends BlockBase  {
 
 
+    private function getTax(){
+            $query = \Drupal::entityQuery('taxonomy_term');
+            $query->condition('vid', "bio_role_association");
+            $query->sort("weight");
+            //$query->condition('parent', $tid);
+            $tids = $query->execute();
+            $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($tids);
+
+            return $terms;
+    }
     
     private function getBios($nids, $termIds, $heirarchyTerms, $tid){
         $ret = [];
 
-        //dpm($heirarchyTerms);
+
         //\Drupal::entityManager()->getStorage('node')->resetCache($nids);
         $nodes = Node::loadMultiple($nids);
         foreach($nodes as $node){
-            //dpm($node);
-
+    
 
             $profileId = $node->get("field_profile")->target_id;
             //$style = ImageStyle::load('sample_image_style');
@@ -68,50 +77,86 @@ class SpjBiosBlock extends BlockBase  {
                 }
             }
 
+            $body = $node->get("body")->value;
+            if(isset($_REQUEST['tid'])){
+                $body = "";
+                $imgurl = "";
+            }
+
             $thisNode = array(
                 "title"=>$node->get("title")->value,
                 "field_title"=>$node->get("field_title")->value,
                 "field_email"=>$node->get("field_email")->value,
                 "field_twitter"=>$node->get("field_twitter")->value,
                 "body"=>$node->get("body")->value,
+                "field_candidate_bio"=>$node->get("field_candidate_bio")->value,
+                "field_candidate_bio_summary"=>$node->get("field_candidate_bio")->summary,
                 "field_profile" => $imgurl,
-                "field_role"=>$roles
+                "field_role"=>$roles,
+                "field_linkedin_url"=>$node->get("field_linkedin_url")->value,
             );
 
-            //dpm($node->get("field_role"));
+
             $ret[] = $thisNode;
         }
 
-        //dpm($ret);
+
         return $ret;
     }
    
+    public function getCacheMaxAge() {
+        return 0;
+    }
+
     public function build() {
         \Drupal::service('page_cache_kill_switch')->trigger();
         $thisURL = $_SERVER['REQUEST_URI'];
 	    $splits = explode("/",$thisURL);
-        $tag = $splits[count($splits)-2];
-        $tid = 0;
-        $isRoot = false;
-        switch($tag){
-            case "spj": $tid = 6; $isRoot = true; break;
-            case "whistleblower": $tid = 248; break;
-            case "foundation": $tid = 172; break;
-        }
-        dpm($tag);
-        dpm($tid);
 
-        $query = \Drupal::entityQuery('taxonomy_term');
-        $query->condition('vid', "bio_role_association");
-        $query->sort("weight");
-        //$query->condition('parent', $tid);
-        $tids = $query->execute();
-        $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($tids);
+
+        $tag = $splits[count($splits)-2];
+        if($tag=="spj"){
+            if(strpos($thisURL, "staff")!==false){
+                $tag = "staff";
+            }
+        }
+        if($tag=="about"){
+            if(strpos($thisURL, "contact")!==false){
+                $tag = "staff";
+            }
+            if(strpos($thisURL, "regional")!==false){
+                $tag = "regional";
+            }
+        }
+
         $master = [];
         $data = [];
         $view = [];
         $termIds = [];
         $heirarchyTerms = [];
+
+        $tid = 0;
+        $isRoot = false;
+
+       
+            
+        switch($tag){
+            case "spj": $tid = 6; $isRoot = true; break;
+            case "whistleblower": $tid = 248; break;
+            case "foundation": $tid = 172; break;
+            case "staff": $tid = 4; break;
+            case "ethics": $tid = 156; break;
+            case "regional": $tid = 5; break;
+            case "elections": $tid = 1105; break;
+        }
+
+        if(isset($_REQUEST['tid'])){
+            $tid = $_REQUEST['tid'];
+        }
+
+
+        $terms = $this->getTax();
+
         //$heirarchyTerms[] = $tid;
 
         foreach($terms as $term){
@@ -133,7 +178,7 @@ class SpjBiosBlock extends BlockBase  {
             }
             
             
-        }
+        
 
         
         $dups = [];
@@ -144,7 +189,7 @@ class SpjBiosBlock extends BlockBase  {
             if(!in_array($thistid, $dups)){
                 $dups[] = $thistid;
             
-          
+        
             
                 // new query of bios with this tag
                 $query = \Drupal::entityQuery('node');
@@ -156,22 +201,20 @@ class SpjBiosBlock extends BlockBase  {
                 $bioData = SpjBiosBlock::getBios($tids, $termIds, $heirarchyTerms, $tid);
                 $dataArr = array(
                     "tid" => $thistid,
+                    "mainTid"=>$tid,
                     "entityids" => implode( ",",$tids),
                     "entities" => $bioData
                 );
                 $data[$thisname] = $dataArr;
-                //dpm($dataArr);
+               
             }
         }
+        }
         
-
-        //dpm($data);
-       
-        // send as data instead
         return [
             '#theme' => 'spj_bios_block',
-            '#data' => $data
-            
+            '#data' => $data,
+
         ];
     }
 }
