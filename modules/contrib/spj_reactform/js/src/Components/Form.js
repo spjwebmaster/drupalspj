@@ -6,6 +6,10 @@ function Form(props){
 
     let awardName = "sdx";
     let loc = window.location.href;
+    if(loc.toLowerCase().indexOf("/awards/form/")>-1){
+        let splits = loc.split("/");
+        awardName = splits[splits.length-1];
+    }
     const [awardCode, setAwardCode] = useState();
     
     const [mainCatSelected, setMainCatSelected] = useState("");
@@ -45,7 +49,6 @@ function Form(props){
       }, [awardCode]);
 
     return (<div>
-       <h2>{awardName} {awardCode}</h2>
 
         <Maincat change={mainCatChange} mainCatSelected={mainCatSelected} awardCode={awardCode} />
 
