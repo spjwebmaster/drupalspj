@@ -38,6 +38,7 @@ themes/custom/b4subtheme/node_modules/
 sites.default/default.settings.php
 
 /assets/
+/pdf/
 
 
 # If you prefer to store your .gitignore file in the sites/ folder, comment
