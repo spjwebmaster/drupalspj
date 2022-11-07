@@ -1,0 +1,15 @@
+<section data-section="board-meeting" {{ attributes }}>
+
+  {{ title_prefix }}
+  {% if label and not page %}
+    <div{{ title_attributes }}>
+      <h2 class="board-meeting-title">{{ label }}</h2>
+    </div>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div{{ content_attributes }} data-container="flex">
+    {{ content }}
+  </div>
+
+</section>

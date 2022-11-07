@@ -11887,6 +11887,11 @@ body .region-sidebar-second .block-spj-calendar-block-awards {
   font-size: 3em;
 }
 
+.board-meeting-list .views-row .views-field-field-replay-video iframe {
+  max-width: 500px;
+  height: 300px;
+}
+
 /* global */
 svg.svgSPJlogo {
   margin: auto;
