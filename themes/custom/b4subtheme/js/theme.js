@@ -81,6 +81,7 @@
         }
     }
 
+
     if(document.querySelectorAll('.accordian_wrapper')!=null){
       console.log("accordian")
       document.querySelectorAll('.accordian_wrapper').forEach(function(el){

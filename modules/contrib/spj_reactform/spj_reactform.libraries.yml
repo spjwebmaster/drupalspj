@@ -1,3 +1,4 @@
 reactform:
   js:
       js/public/index.js: {}
+      js/public/formlogic.js: {}

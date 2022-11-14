@@ -152,7 +152,7 @@ class SpjregionsBlock extends BlockBase  {
     }
     public function build() {
 
-        
+        $output= "";
         //$output  = $this->getRegionMap();
         $output = "<h2>Regions</h2>";
 
@@ -178,7 +178,7 @@ class SpjregionsBlock extends BlockBase  {
         $output .= '</ul>';
         return [
             '#type' => 'markup',
-            '#markup' => $output,
+            '#markup' => "",
             '#attached' => [
                 'library' => [
                   'spjregions/spjregions',

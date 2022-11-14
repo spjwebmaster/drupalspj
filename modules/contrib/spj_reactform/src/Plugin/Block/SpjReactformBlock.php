@@ -23,7 +23,7 @@ class SpjReactformBlock extends BlockBase  {
     function build(){
 
         return [
-            '#markup' => '<div id="reactform">Wee</div>',
+            '#markup' => '<div id="reactform2"></div>',
             '#attached' => [
                 'library' => [
                   'spj_reactform/reactform',

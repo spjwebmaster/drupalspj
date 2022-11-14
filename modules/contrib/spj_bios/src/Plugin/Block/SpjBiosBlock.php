@@ -129,6 +129,8 @@ class SpjBiosBlock extends BlockBase  {
             }
         }
 
+        
+
         $master = [];
         $data = [];
         $view = [];
@@ -148,12 +150,12 @@ class SpjBiosBlock extends BlockBase  {
             case "ethics": $tid = 156; break;
             case "regional": $tid = 5; break;
             case "elections": $tid = 1105; break;
+            case "smack": $tid = 1253; break;
         }
 
         if(isset($_REQUEST['tid'])){
             $tid = $_REQUEST['tid'];
         }
-
 
         $terms = $this->getTax();
 
