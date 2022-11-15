@@ -80,7 +80,7 @@ class PrlpController extends UserController {
     try {
       // Deconstruct the redirect url from the response.
       $parsed_url = parse_url($response->getTargetUrl());
-      $response_route = Url::fromUserInput($parsed_url['path']);
+      $response_route = Url::fromUserInput($this->stripSubdirectories($parsed_url['path']));
 
       // Check that the response route matches the "success" route from core and
       // if it does apply the password change and update the redirect
@@ -107,8 +107,9 @@ class PrlpController extends UserController {
         if (substr($login_destination, 0, 1) !== '/') {
           $login_destination = '/' . $login_destination;
         }
+        $internal_redirect_url = Url::fromUri('internal:' . $login_destination );
 
-        return new RedirectResponse($login_destination);
+        return new RedirectResponse($internal_redirect_url->toString());
       }
     }
     catch (\InvalidArgumentException $exception) {
@@ -122,6 +123,30 @@ class PrlpController extends UserController {
     }
 
     return $this->redirect('user.pass');
+  }
+
+  /**
+   * Strips subdirectories from a URI.
+   *
+   * URIs created by \Drupal\Core\Url::toString() always contain the
+   * subdirectories. When further processing needs to be done on a URI, the
+   * subdirectories need to be stripped before feeding the URI to
+   * \Drupal\Core\Url::fromUserInput().
+   *
+   * @param string $uri
+   *   A plain-text URI that might contain a subdirectory.
+   *
+   * @return string
+   *   A plain-text URI stripped of the subdirectories.
+   *
+   * @see \Drupal\Core\Url::fromUserInput()
+   */
+  private function stripSubdirectories($uri) {
+    $current_request = \Drupal::requestStack()->getCurrentRequest();
+    if ($current_request && !empty($current_request->getBasePath()) && strpos($uri, $current_request->getBasePath()) === 0) {
+      return substr($uri, mb_strlen($current_request->getBasePath()));
+    }
+    return $uri;
   }
 
 }

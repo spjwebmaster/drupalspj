@@ -18,7 +18,7 @@ class JsonPathReplacerTest extends UnitTestCase {
    */
   protected $sut;
 
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $this->sut = new JsonPathReplacer();
   }
@@ -143,7 +143,7 @@ class JsonPathReplacerTest extends UnitTestCase {
     $this->assertIsInt($actual[0]->body['You are number']);
     $this->assertIsString($actual[0]->body['Where am I']);
     $this->assertIsBool($actual[0]->body['World of number two']);
-    $this->assertIsString( $actual[0]->body['Question']);
+    $this->assertIsString($actual[0]->body['Question']);
     $this->assertIsFloat($actual[0]->body['Michael']);
   }
 

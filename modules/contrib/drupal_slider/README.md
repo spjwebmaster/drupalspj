@@ -52,9 +52,6 @@ This module requires slider pro library dependencies.
  * Layer in & out delay
  * Optional arrows, progress icon, autoplay, fullscreen.
 
- * Demo http://bqworks.com/slider-pro/
-
-
 ## MAINTAINERS
 
 Current maintainers:
