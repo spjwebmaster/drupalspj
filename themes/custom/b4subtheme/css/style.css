@@ -11711,6 +11711,45 @@ body .region-sidebar-second .block-spj-calendar-block-awards {
   max-width: 100%;
 }
 
+.block-views-blockbios-block-5 .view-id-bios li .views-field-title a {
+  pointer-events: none;
+}
+.block-views-blockbios-block-5 .view-id-bios li .views-field-field-title,
+.block-views-blockbios-block-5 .view-id-bios li .views-field-field-profile,
+.block-views-blockbios-block-5 .view-id-bios li .views-field-body {
+  display: none;
+}
+.block-views-blockbios-block-5 .view-id-bios li .views-field-title, .block-views-blockbios-block-5 .view-id-bios li .views-field-field-email {
+  flex: 1 100%;
+}
+.block-views-blockbios-block-5 .view-id-bios li .views-field-field-role {
+  font-weight: bold;
+}
+.block-views-blockbios-block-5 .view-id-bios li .views-field-field-role ul {
+  list-style: none;
+}
+.block-views-blockbios-block-5 .view-id-bios li .views-field-field-role ul li {
+  margin-left: 0;
+}
+.block-views-blockbios-block-5 .view-id-bios li .views-field-field-role ul li::before {
+  content: none;
+}
+
+.award-reports .container {
+  max-width: 999em;
+  width: 100%;
+}
+.award-reports .block-spj-toc-block {
+  display: none;
+}
+.award-reports .block-views-blockaward-submissions-block-1 .view-content {
+  overflow: auto;
+  width: 96vw;
+}
+.award-reports .block-views-blockaward-submissions-block-1 .view-content th {
+  white-space: nowrap;
+}
+
 .page-node-type-freelance-guide .block-field-blocknodefreelance-guidebody {
   padding-right: 1em;
 }

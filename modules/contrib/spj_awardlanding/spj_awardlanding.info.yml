@@ -1,0 +1,5 @@
+name: SPJ Awards Landing Page
+type: module
+description: Module for giving a landing page for award entry
+core_version_requirement: ^8.8 || ^9
+package: custom

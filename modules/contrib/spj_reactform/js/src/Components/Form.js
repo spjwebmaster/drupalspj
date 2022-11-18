@@ -10,6 +10,20 @@ function Form(props){
         let splits = loc.split("/");
         awardName = splits[splits.length-1];
     }
+    if(loc.toLowerCase().indexOf("/awards/add/")>-1){
+        let splits = loc.split("/");
+        awardName = splits[splits.length-1];
+    }
+    if(loc.toLowerCase().indexOf("/node/add/")>-1){
+        let splits = loc.split("/");
+        let awardNameBase = splits[splits.length-1];
+        switch(awardNameBase){
+            case "national_awards_entry": awardName="moe"; break;
+            case "national_awards_entry_sdx": awardName="sdx"; break;
+            case "national_awards_entry_naa": awardName="naa"; break;
+        }
+    }
+    console.log("awardName", awardName)
     const [awardCode, setAwardCode] = useState();
     
     const [mainCatSelected, setMainCatSelected] = useState("");

@@ -2,6 +2,11 @@
 /**
  * Implements hook_theme().
  */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 function spj_reactform_theme() {
     return [
       'spj_readingroom_block' => [
@@ -10,4 +15,26 @@ function spj_reactform_theme() {
         ],
       ],
     ];
+  }
+
+  function spj_reactform_node_postsave(EntityInterface $entity, $op) {
+    $id = $entity->id();
+    $bundle = $entity->bundle();
+    if($bundle=="national_awards_entry" || $bundle == "national_awards_entry_sdx" || $bundle=="national_awards_entry_naa"){
+      \Drupal::logger('spj_reactform_test')
+      ->info("Awards: React Form {$op}d node {$bundle} id is {$id} from " . __FUNCTION__);
+        
+        $url = Url::fromRoute('entity.node.canonical', ['node' => 1]);
+        $redirect = new RedirectResponse($url->toString());
+        $redirect->send();
+
+        $status = 302;
+        $route_name = "<front>";
+        $options['absolute'] = TRUE;
+        return new RedirectResponse(Url::fromRoute($route_name, $route_parameters=[], $options)
+        ->toString(), $status);
+    }
+
+  
+   
   }

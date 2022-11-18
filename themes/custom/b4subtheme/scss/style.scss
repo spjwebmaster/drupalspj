@@ -34,13 +34,13 @@ $slideShowMaxMobile: 210px;
 @import 'views/landingpages';                                    
 @import 'views/tools';    
 @import 'views/groups';      
-@import 'views/chapters';     
-@import 'views/boardmeeting';           
+@import 'views/chapters';      
+@import 'views/boardmeeting';                 
 
 /* global */
 svg.svgSPJlogo {  
     margin: auto;
-    max-width: 100px; 
+    max-width: 100px;  
 }
    
 ol.breadcrumb {  
@@ -215,9 +215,9 @@ ol.breadcrumb {
         }
     }
 }
-.item-list {
+.item-list {   
     ul, ol {
-        padding-left: 0em;
+        padding-left: 0em; 
         li {
             position: relative;
             margin-left: 0.8em;   
@@ -234,7 +234,7 @@ ol.breadcrumb {
                 position: absolute;
             }
         }
-        &.search-results {
+        &.search-results { 
             li {
                 border-bottom: 1px dashed; 
                 margin-bottom: 1em;

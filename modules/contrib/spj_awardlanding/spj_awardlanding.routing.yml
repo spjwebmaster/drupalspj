@@ -1,0 +1,9 @@
+
+spj_awardlanding.base:
+  path: 'awards/add/{name}'
+  defaults:
+    _controller: '\Drupal\spj_awardlanding\Controller\SpjAwardLandingController::landing'
+    _title: 'Awards Entry'
+    name: "moe"
+  requirements: 
+    _permission: 'access content'

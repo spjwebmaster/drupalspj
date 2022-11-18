@@ -16,3 +16,57 @@
 
 
 }
+
+.block-views-blockbios-block-5 {
+    .view-id-bios  {
+        li {
+            .views-field-title {
+                a {
+                    pointer-events: none;
+                }
+            }
+            .views-field-field-title, 
+            .views-field-field-profile, 
+            .views-field-body {
+                display: none;
+            }
+            .views-field-title, .views-field-field-email {
+                flex: 1 100%;
+            }
+            .views-field-field-role {
+                font-weight: bold;
+                ul {
+                list-style: none;
+                li {
+                    margin-left: 0;
+                    &::before {
+                        content: none;
+                    } 
+                }
+                
+                }
+            }
+        }
+    }
+}
+
+.award-reports {
+    .container {
+        max-width: 999em;
+        width: 100%;
+    }
+    .block-spj-toc-block {
+        display: none;
+    }
+    .block-views-blockaward-submissions-block-1 {
+        .view-content {
+            overflow: auto;
+            width: 96vw;
+
+            th {
+                white-space: nowrap;
+            }
+        }
+        
+    }
+}

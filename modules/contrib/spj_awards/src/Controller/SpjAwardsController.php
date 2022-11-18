@@ -9,5 +9,14 @@ class SpjAwardsController extends ControllerBase {
 
         return "hi";
     }
+    public function landing($name){
+
+        return [
+            '#type' => 'markup',
+            '#markup' => $this->t('<h1>This category @category and the award @name</h1>', [
+		        '@name' => $name
+		      ]),
+        ];
+    }
 
 }

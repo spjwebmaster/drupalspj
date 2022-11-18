@@ -14,7 +14,7 @@ function Maincat(props){
     
     useEffect(() => {
     
-        //console.log("props.awardCode", props.awardCode)
+        console.log("props.awardCode", props.awardCode)
         if(props.awardCode){
             fetch(`/jsonapi/taxonomy_term/award_submission_categories?filter[parent.meta.drupal_internal__target_id]=${props.awardCode}`)
             .then(response=>response.json())
