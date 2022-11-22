@@ -28,30 +28,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class Utilities {
 
-    public static function visual_tour_start(array &$form, FormStateInterface $form_state) {
-        $form['miniorange_saml_tour_button'] = array(
-            '#attached' => array(
-                'library' => array(
-                    'miniorange_saml/miniorange_saml.Vtour',
-                )
-            ),
-        );
-
-        $overAllTour = 'overAllTour';
-        $moTour = mo_saml_visualTour::genArray();
-        $overAllTour = mo_saml_visualTour::genArray($overAllTour);
-
-        $form['tourArray'] = array(
-            '#type' => 'hidden',
-            '#value' => $moTour,
-        );
-
-        $form['tabtourArray'] = array(
-            '#type' => 'hidden',
-            '#value' => $overAllTour,
-        );
-    }
-
     public static function spConfigGuide(array &$form, FormStateInterface $form_state) {
 
         $form['miniorange_idp_guide_link'] = array(
@@ -95,6 +71,7 @@ class Utilities {
         $header = array( array(
                 'data' => t('Identity Provider Setup Guides'),
                 'colspan' => 2,
+                'style' => 'text-align:center;',
             ),
         );
 
@@ -181,11 +158,10 @@ class Utilities {
     public static function send_support_query( $email, $phone, $query, $query_type )   {
         $support = new MiniorangeSamlSupport( $email, $phone, $query, $query_type );
         $support_response = $support->sendSupportQuery();
-        if ( $support_response ) {
-            \Drupal::messenger()->addMessage(t('Thanks for getting in touch! We will get back to you shortly.'));
-        } else {
-            \Drupal::messenger()->addMessage(t('Error submitting the support query. Please send us your query at <a href="mailto:info@xecurify.com">info@xecurify.com</a>.'), 'error');
-        }
+        if ( $support_response )
+          return true;
+        else
+          return false;
     }
 
     public static function isCustomerRegistered() {

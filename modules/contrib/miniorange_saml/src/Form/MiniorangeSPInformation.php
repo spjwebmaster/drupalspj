@@ -9,6 +9,7 @@ namespace Drupal\miniorange_saml\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\FormBase;
+use Drupal\Core\Url;
 use Drupal\miniorange_saml\Utilities;
 use Drupal\miniorange_saml\MetadataReader;
 use Drupal\miniorange_saml\MiniorangeSAMLConstants;
@@ -30,15 +31,14 @@ class MiniorangeSPInformation extends FormBase {
                     "miniorange_saml/miniorange_saml.test",
                     "miniorange_saml/miniorange_saml.admin",
                     "miniorange_saml/miniorange_saml.license",
+                    "miniorange_saml/miniorange_saml.button",
                 )
             )
         );
 
-        Utilities::visual_tour_start($form, $form_state);
-
         $form['miniorange_saml_IDP_tab'] = array(
             '#markup' => t('<div class="mo_saml_sp_table_layout_1"><div class="mo_saml_table_layout mo_saml_sp_container">&nbsp;&nbsp;&nbsp;
-                                <div class="mo_saml_font_for_heading">Service Provider Setup</div><a id="Restart_moTour" class="mo_btn mo_btn-primary mo_btn-sm mo_tour_button_float" onclick="Restart_moTour()">Take a Tour</a><p style="clear: both"></p><hr><br><div class="mo_saml_font_SP_setup_for_heading">Enter the information gathered from your Identity Provider</div>'),
+                                <div class="mo_saml_font_for_heading">Service Provider Setup</div><p style="clear: both"></p><hr><br><div class="mo_saml_font_SP_setup_for_heading">Enter the information gathered from your Identity Provider</div>'),
         );
 
 
@@ -225,22 +225,15 @@ class MiniorangeSPInformation extends FormBase {
         );
 
         $form['mo_saml_service_provider_metadata']['miniorange_saml_test_config_button'] = array(
-	        '#attached' => array ('library' => 'miniorange_saml/miniorange_saml.test',),
-            '#markup' => '<a id="testConfigButton" class="mo_btn mo_btn-success mo_btn-sm" onclick="testConfig();">Test Configuration</a>',
+            '#markup' => '<span id="testConfigButton" class="button">Test Configuration</span>',
         );
 
         $form['mo_saml_service_provider_metadata']['miniorange_saml_test_show_SAML_request_button'] = array(
-	        '#attached' => array(
-	            'library' => 'miniorange_saml/miniorange_saml.button',
-	        ),
-            '#markup' => t('<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="showSAMLrequestButton" class="mo_btn mo_btn-primary mo_btn-sm mo_btn_style" onclick="showSAMLRequest();">Show SAML Request</a>&nbsp;&nbsp;&nbsp;'),
+            '#markup' => '<span id="showSAMLrequestButton" class="button button--primary">SAML Request</span>',
         );
 
         $form['mo_saml_service_provider_metadata']['miniorange_saml_test_show_SAML_response_button'] = array(
-            '#attached' => array(
-                'library' => 'miniorange_saml/miniorange_saml.button',
-            ),
-            '#markup' => t('&nbsp;&nbsp;&nbsp;<a id="showSAMLresponseButton" class="mo_btn mo_btn-primary mo_btn-sm" onclick="showSAMLResponse();">Show SAML Response</a>'),
+            '#markup' => '<span id="showSAMLresponseButton" class="button button--primary">SAML Response</span>',
             '#suffix' => '</div><br><br>',
         );
 

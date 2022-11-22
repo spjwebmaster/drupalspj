@@ -10,6 +10,7 @@ namespace Drupal\miniorange_saml\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\miniorange_saml\Utilities;
 use Drupal\miniorange_saml\MiniorangeSAMLConstants;
 
@@ -22,8 +23,6 @@ class MiniorangeIDPSetup extends FormBase {
     public function buildForm(array $form, FormStateInterface $form_state) {
 
         $module_path = \Drupal::service('extension.list.module')->getPath('miniorange_saml');
-
-        Utilities::visual_tour_start($form, $form_state);
 
         $base_url = Utilities::getBaseUrl();
         $acs_url = $base_url . '/samlassertion';
@@ -45,7 +44,7 @@ class MiniorangeIDPSetup extends FormBase {
 
 
         $form['mo_saml_metadata_option'] = array(
-            '#markup' => t('<div class="mo_saml_font_for_heading">Service Provider Metadata</div><a id="Restart_moTour" class="mo_btn mo_btn-primary mo_btn-sm mo_tour_button_float" onclick="Restart_moTour()">Take a Tour</a><p style="clear: both"></p><hr>
+            '#markup' => t('<div class="mo_saml_font_for_heading">Service Provider Metadata</div><p style="clear: both"></p><hr>
                                 '),
         );
         $form['mo_saml_service_provider_metadata'] = array(
@@ -57,24 +56,32 @@ class MiniorangeIDPSetup extends FormBase {
         $form['mo_saml_service_provider_metadata']['markup_idp_sp_2'] = array(
             '#markup' => t('<br><div class="mo_saml_font_SP_setup_for_heading"><strong>Provide this module information to your Identity Provider team.<br> You can choose any one of the below options.</strong></div>
                           <br><b>a) Provide this metadata URL to your Identity Provider:</b><br><div>
-                            <div class="mo_saml_highlight_background_url_note" id="idp_metadata_url">
-                                <code><b>
+                          <div class="container-inline">
+                            <div id="idp_metadata_url">
+                               <code><b>
                                     <span>
-                                        <a target="_blank" href="' . $base_url . '/saml_metadata">' . $base_url . '/saml_metadata' . '</a>
+                                        <a target="_blank" href="' . $base_url . '/saml_metadata">' . $base_url . '/saml_metadata' . '</a>&nbsp;
                                     </span></b>
-                                </code>
-                            </div>
-                            <img class ="fa fa-fw fa-lg fa-copy mo_copy mo-margin" src="'. $base_url.'/'.$module_path . '/includes/images/copy-regular.svg">
+                                </code></div>
+                              <span class ="mo_copy button button--small">&#128461; Copy</span></div>
                         </div>'),
         );
 
-        $form['mo_saml_service_provider_metadata']['mo_saml_download_btn_title'] = array(
-            '#markup' => t('<br><br><div id="download_metadata_xml_file"><b>b) Download the Module XML metadata and upload it on your Identity Provider : </b>
-                        <span><a href="' . $base_url . '/saml_metadata?download=true" class="mo_btn mo_btn-danger">Download XML Metadata</a></span></div>
-                        <br><br><div><b>c) Provide the following information to your Identity Provider. Copy it and keep it handy.</b></div><br>'),
-        );
+      $form['mo_saml_service_provider_metadata']['mo_saml_download_btn']  = array(
+        '#type' => 'link',
+        '#prefix' => $this->t('<br><br><b>b) Download the Module XML metadata and upload it on your Identity Provider : </b>'),
+        '#url' => Url::fromUserInput('/saml_metadata?download=true'),
+        '#title' => $this->t('Download XML Metadata'),
+        '#attributes' => array('class' => 'button button--primary button--small'),
+      );
 
-        $copy_image = '<img class ="fa fa-fw fa-pull-right fa-lg fa-copy mo_copy" src="'. $base_url.'/'.$module_path . '/includes/images/copy-regular.svg">';
+      $form['mo_saml_service_provider_metadata']['mo_table_info'] =array(
+        '#markup' => '<br><br><div><b>c) Provide the following information to your Identity Provider. Copy it and keep it handy.</b></div><br>',
+      );
+
+
+
+        $copy_image = '<span class ="fa-pull-right mo_copy mo_copy button button--small">&#128461; Copy</span>';
 
         $SP_Entity = [
             'data' => Markup::create('<span id="issuer_id">' . Utilities::getIssuer() . '</span>'. $copy_image )
@@ -105,7 +112,7 @@ class MiniorangeIDPSetup extends FormBase {
             array( 'SP Entity ID/Issuer', $SP_Entity ),
             array( 'SP ACS URL',          $SP_ACS ),
             array( 'Audience URI',        $Audience ),
-            array( 'X.509 Certificate',    $X_509_certificate ),
+            array( 'X.509 Certificate',   $X_509_certificate ),
             array( 'Recipient URL',       $Recipient ),
             array( 'Destination URL',     $Destination ),
             array( 'Single Logout URL',   $SingleLogoutURL ),

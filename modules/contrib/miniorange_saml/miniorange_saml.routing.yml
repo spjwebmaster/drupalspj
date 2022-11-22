@@ -1,7 +1,7 @@
 miniorange_saml.customer_setup:
   path: /admin/config/people/miniorange_saml/customer_setup
   defaults:
-    _title: 'miniOrange SAML Customer Setup'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\MiniorangeSamlCustomerSetup
   requirements:
     _permission: 'administer site configuration'
@@ -9,7 +9,7 @@ miniorange_saml.customer_setup:
 miniorange_saml.sp_setup:
   path: /admin/config/people/miniorange_saml/sp_setup
   defaults:
-    _title: 'miniOrange SAML Service Provider Setup'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\MiniorangeSPInformation
   requirements:
     _permission: 'administer site configuration'
@@ -17,7 +17,7 @@ miniorange_saml.sp_setup:
 miniorange_saml.idp_setup:
   path: /admin/config/people/miniorange_saml/idp_setup
   defaults:
-    _title: 'miniOrange SAML Service Provider Metadata'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\MiniorangeIDPSetup
   requirements:
     _permission: 'administer site configuration'
@@ -25,7 +25,7 @@ miniorange_saml.idp_setup:
 miniorange_saml.login_options:
   path: /admin/config/people/miniorange_saml/signon_settings
   defaults:
-    _title: 'miniOrange SAML Sign-in Settings'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\MiniorangeSignonSettings
   requirements:
     _permission: 'administer site configuration'
@@ -33,7 +33,7 @@ miniorange_saml.login_options:
 miniorange_saml.mapping:
   path: /admin/config/people/miniorange_saml/Mapping
   defaults:
-    _title: 'miniOrange SAML Mapping'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\Mapping
   requirements:
     _permission: 'administer site configuration'
@@ -41,7 +41,7 @@ miniorange_saml.mapping:
 miniorange_saml.advance_settings:
   path: /admin/config/people/miniorange_saml/AdvanceSettings
   defaults:
-    _title: 'miniOrange SAML Advance Settings'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\MiniornageAdvanceSettings
   requirements:
     _permission: 'administer site configuration'
@@ -49,7 +49,7 @@ miniorange_saml.advance_settings:
 miniorange_saml.support:
     path: /admin/config/people/miniorange_saml/MiniorageSupport
     defaults:
-        _title: 'miniOrange SAML Support'
+        _title: 'Contact Us'
         _form: \Drupal\miniorange_saml\Form\MiniorangeSupport
     requirements:
         _permission: 'administer site configuration'
@@ -57,7 +57,7 @@ miniorange_saml.support:
 miniorange_saml.licensing:
   path: /admin/config/people/miniorange_saml/Licensing
   defaults:
-    _title: 'miniOrange SAML Upgrade Plans'
+    _title: 'miniOrange SAML  &nbsp;&nbsp;<a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="MiniorageSupport" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Contact Us</a><a class="button button--primary js-form-submit mo_top_bar_button form-submit use-ajax" href="trial" data-dialog-type = "modal" data-dialog-options="{&quot;width&quot;:&quot;50%&quot;}" >Request 7-days Trial</a>'
     _form: \Drupal\miniorange_saml\Form\MiniorangeLicensing
   requirements:
     _permission: 'administer site configuration'
@@ -70,7 +70,7 @@ miniorange_saml.saml_login:
     _access: 'TRUE'
 
 miniorange_saml.test_configuration:
-  path: /testConfig
+  path: /testSAMLConfig
   defaults:
     _controller: '\Drupal\miniorange_saml\Controller\miniorange_samlController::test_configuration'
   requirements:
@@ -130,5 +130,13 @@ miniorange_saml.modal_form:
   defaults:
     _title: 'miniorange SAML Remove License'
     _controller: '\Drupal\miniorange_saml\Controller\miniorange_samlController::openModalForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+miniorange_saml.trial:
+  path: /admin/config/people/miniorange_saml/trial
+  defaults:
+    _title: 'Request 7-Days Full Feature Trial License'
+    _form: \Drupal\miniorange_saml\Form\MiniorangeTrial
   requirements:
     _permission: 'administer site configuration'

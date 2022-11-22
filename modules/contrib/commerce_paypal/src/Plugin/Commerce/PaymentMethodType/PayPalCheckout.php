@@ -26,14 +26,4 @@ class PayPalCheckout extends CreditCard {
     return $this->t('PayPal');
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function buildFieldDefinitions() {
-    // Return an empty array of fields to ensure these do not get removed when
-    // commerce_paypal is uninstalled.
-    // The credit card fields are already installed/defined by commerce_payment.
-    return [];
-  }
-
 }

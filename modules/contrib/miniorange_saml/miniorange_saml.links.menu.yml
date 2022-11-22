@@ -46,8 +46,3 @@ miniorange_saml.licensing:
   description: 'Upgrade Plans Tab'
   parent: miniorange_saml.idp_setup
 
-miniorange_saml.support:
-    route_name: miniorange_saml.support
-    title: 'Support'
-    description: 'Support Tab'
-    parent: miniorange_saml.idp_setup

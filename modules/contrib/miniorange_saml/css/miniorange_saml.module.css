@@ -396,36 +396,7 @@ p.pricing-rate{
 .fa-pull-right {
 	float: right;
 }
-.fa-fw {
-	width: 1.28571429em !important;
-	text-align: center;
-}
-.fa-lg {
-	font-size: 1.33333333em;
-	line-height: .75em;
-	vertical-align: -15%;
-}
-.fa-lg {
-	 font-size: 1.33333333em;
-	 line-height: .75em;
-	 vertical-align: -15%;
- }
-.fa {
-	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
-	font-style: normal;
-	font-variant-ligatures: normal;
-	font-variant-caps: normal;
-	font-variant-numeric: normal;
-	font-variant-east-asian: normal;
-	font-weight: normal;
-	font-stretch: normal;
-	font-family: FontAwesome;
-	font-size: inherit;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
+
 .mo_copy {
 	padding: 1%;
 	cursor: pointer;
@@ -529,10 +500,6 @@ p.pricing-rate{
 }
 .mo_saml_hidden{
 	display:none;
-}
-
-.mo_tour_button_float{
-	float: right;
 }
 
 /***************Css for FAQ button**********/

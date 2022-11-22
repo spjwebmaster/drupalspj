@@ -17,7 +17,12 @@ class MiniOrangeAcs {
     if (array_key_exists('SAMLResponse', $post ) ) {
 		$saml_response = $post['SAMLResponse'];
     } else {
-      throw new Exception('Missing SAMLRequest or SAMLResponse parameter.');
+      $error_message = 'Missing SAMLRequest or SAMLResponse parameter. Please contact your administrator.';
+      \Drupal::logger('miniorange_saml')->error($error_message);
+
+      $error ='Could not process your request.';
+      $message='Please contact your administrator.';
+      Utilities::showErrorMessage($error,$message,'');
     }
 
 	$RelayState = $base_url;

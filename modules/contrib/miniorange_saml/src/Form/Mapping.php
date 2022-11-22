@@ -24,7 +24,6 @@ class Mapping extends FormBase {
 
   global $base_url;
 
-     Utilities::visual_tour_start($form, $form_state);
      $form['miniorange_saml_markup_library'] = array(
        '#attached' => array(
          'library' => array(
@@ -36,16 +35,16 @@ class Mapping extends FormBase {
      $form['markup_top'] = array(
          '#markup' => t('<div class="mo_saml_sp_table_layout_1"><div class="mo_saml_table_layout mo_saml_sp_container" >
                        <div class="mo_saml_font_for_heading" >Attribute/Role Mapping</div>
-                       <a id="Restart_moTour" class="mo_btn mo_btn-primary mo_btn-sm mo_tour_button_float" onclick="Restart_moTour()">Take a Tour</a><p style="clear: both"></p><hr>')
+                       <p style="clear: both"></p><hr>')
      );
 
      /**
       * Create container to hold @RoleMapping form elements.
       */
      $form['mo_saml_role_mapping'] = array(
-         '#type' => 'fieldset',
-         '#title' => t('Role Mapping'),
-         '#attributes' => array( 'style' => 'padding:2% 2% 4%; margin-bottom:2%' ),
+         '#type' => 'details',
+         '#title' => $this->t('Role Mapping'),
+         '#open' => TRUE,
      );
 
      $form['mo_saml_role_mapping']['miniorange_saml_enable_rolemapping'] = array(
@@ -54,7 +53,7 @@ class Mapping extends FormBase {
          '#default_value' => \Drupal::config('miniorange_saml.settings')->get('miniorange_saml_enable_rolemapping'),
          '#attributes' => array('class="mo_saml_checkbox"'),
          '#description' => t('<b style="color: red">Note:</b> Enable this checkbox first before using any of the feature below.'),
-         '#prefix' => t('<br><hr><br><div id="mo_saml_id_role_mapping_v_tour">'),
+         '#prefix' => t('<div>'),
          '#suffix' => t('</div>')
      );
 
@@ -94,13 +93,13 @@ class Mapping extends FormBase {
       * Create container to hold @moCustomRoleMapping form elements.
       */
      $form['mo_saml_custom_role_mapping'] = array(
-         '#type' => 'fieldset',
-         '#title' => t('Custom Role Mapping'),
-         '#attributes' => array( 'style' => 'padding:2% 2% 4%; margin-bottom:2%' ),
+         '#type' => 'details',
+         '#title' => $this->t('Custom Role Mapping'),
+         '#open' => TRUE,
      );
 
      $form['mo_saml_custom_role_mapping']['markup_custom_role_mapping'] = array(
-         '#markup' => t('<br><hr><br><div class="mo_saml_highlight_background_note_1">
+         '#markup' => t('<div class="mo_saml_highlight_background_note_1">
                             <b>Note: </b>Custom Role Mapping is configurable in <a href="' . $base_url . MiniorangeSAMLConstants::LICENSING_TAB_URL .'">Premium and Enterprise</a> versions of the module.</div>'),
      );
 
@@ -113,7 +112,7 @@ class Mapping extends FormBase {
      );
 
      $form['mo_saml_custom_role_mapping']['miniorange_saml_custom_role_buttons']=array(
-         '#markup'=> t('<h5 >Add Custom Role Mapping <a class="mo_btn mo_btn-primary" style="padding:0.4% 0.8% 0.4% 0.8% !important;">+</a><h3><table class="miniorange_saml_sp_attr_table"><tr><td>Drupal Role</td><td>Idp Role</td><td></td></tr>'),
+         '#markup'=> t('<b>Add Custom Role Mapping</b> <a class="mo_btn mo_btn-primary" style="padding:0.4% 0.8% 0.4% 0.8% !important;">+</a><table class="miniorange_saml_sp_attr_table"><tr><td>Drupal Role</td><td>Idp Role</td><td></td></tr>'),
      );
 
      $form['mo_saml_custom_role_mapping']['user_sp_role_name'] = array(
@@ -148,13 +147,13 @@ class Mapping extends FormBase {
       * Create container to hold @AttributeMapping form elements.
       */
      $form['mo_saml_attribute_mapping'] = array(
-         '#type' => 'fieldset',
-         '#title' => t('Attribute Mapping'),
-         '#attributes' => array( 'style' => 'padding:2% 2% 5%; margin-bottom:2%' ),
+         '#type' => 'details',
+         '#title' => $this->t('Attribute Mapping'),
+         '#open' => true,
      );
 
      $form['mo_saml_attribute_mapping']['Configure_Attribute_Mapping_End'] = array(
-         '#markup' => t('<br><hr><br><div id="configure_attribute_mapping_start"></div><div class="mo_saml_highlight_background_note_1" ><strong>Note: <code>Username Attribute</code> </strong> and <strong><code>Email Attribute</code></strong> are configurable in
+         '#markup' => t('<div id="configure_attribute_mapping_start"></div><div class="mo_saml_highlight_background_note_1" ><strong>Note: <code>Username Attribute</code> </strong> and <strong><code>Email Attribute</code></strong> are configurable in
                  <a href="' . $base_url . MiniorangeSAMLConstants::LICENSING_TAB_URL .'">Standard, Premium and Enterprise</a> versions of the module.</div>'),
      );
 
@@ -187,13 +186,13 @@ class Mapping extends FormBase {
       * Create container to hold @moCustomAttributeMapping form elements.
       */
      $form['mo_saml_custom_attribute_mapping'] = array(
-         '#type' => 'fieldset',
+         '#type' => 'details',
          '#title' => t('Custom Attribute Mapping'),
-         '#attributes' => array( 'style' => 'padding:2% 2% 4%; margin-bottom:2%' ),
+         '#open' => true,
      );
 
      $form['mo_saml_custom_attribute_mapping']['markup_cam_attr'] = array(
-        '#markup' => t('<br><hr><br><div class="mo_saml_highlight_background_note_1"><b>Note: </b>Custom Attribute Mapping is configurable in
+        '#markup' => t('<div class="mo_saml_highlight_background_note_1"><b>Note: </b>Custom Attribute Mapping is configurable in
                  <a href="' . $base_url . MiniorangeSAMLConstants::LICENSING_TAB_URL .'">Premium and Enterprise</a> versions of the module.</div>'),
      );
 
@@ -207,7 +206,7 @@ class Mapping extends FormBase {
       );
 
      $form['mo_saml_custom_attribute_mapping']['miniorange_saml_custom_attr_buttons']=array(
-          '#markup'=>t('<h3 >Add Custom Atrribute <a class="mo_btn btn-large mo_btn-primary" style="padding:0.4% 0.8% 0.4% 0.8% !important;">+</a><h3><table class="miniorange_saml_sp_attr_table"><tr><td>Drupal Attribute Machine Name</td><td>IdP Attribute Name</td><td></td></tr>'),
+          '#markup'=>t('<b>Add Custom Atrribute</b> <a class="mo_btn btn-large mo_btn-primary" style="padding:0.4% 0.8% 0.4% 0.8% !important;">+</a><table class="miniorange_saml_sp_attr_table"><tr><td>Drupal Attribute Machine Name</td><td>IdP Attribute Name</td><td></td></tr>'),
 
      );
 

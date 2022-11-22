@@ -18,17 +18,6 @@ miniorange_saml.button:
   js:
     js/saml.js: {}
 
-miniorange_saml.Vtour:
-  version: VERSION
-  css:
-      theme:
-        css/mo-card.css: {}
-  js:
-    js/dru_visual_tour.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupalSettings
-
 miniorange_saml_copy.icon:
   version: VERSION
   js:

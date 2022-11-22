@@ -196,7 +196,10 @@ class MiniorangeSamlCustomerSetup extends FormBase {
             );
 
             $form['mo_saml_registration_tab']['already_account_link'] = array(
-                '#markup' => t('<a href="'.$url.'/?tab=login" class="mo_btn mo_btn-sm mo_btn-danger"><b>Already have an account?</b></a>'),
+                '#type' => 'link',
+                '#title' => $this->t('Already have an account?'),
+                '#url' => Url::fromUserInput('/admin/config/people/miniorange_saml/customer_setup/?tab=login'),
+                '#attributes' => array('class' => 'button button--primary'),
                 '#prefix' => '<div class="ns_value">',
                 '#suffix' => '</div></div></div></div><br>'
             );
@@ -239,7 +242,10 @@ class MiniorangeSamlCustomerSetup extends FormBase {
             );
 
             $form['mo_saml_login_tab']['register_link'] = array(
-                '#markup' => t('<a href="'.$url.'" class="mo_btn mo_btn-sm mo_btn-danger"><b>Create an account?</b></a>'),
+                '#type' => 'link',
+                '#title' => $this->t('Create an account?'),
+                '#url' => Url::fromUserInput('/admin/config/people/miniorange_saml/customer_setup'),
+                '#attributes' => array('class' => 'button button--primary'),
                 '#prefix' => '<div class="ns_value">',
                 '#suffix' => '</div></div><br></div>'
             );

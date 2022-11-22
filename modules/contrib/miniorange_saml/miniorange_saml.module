@@ -5,7 +5,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 /* @file
  *Module file for miniOrange SAML Module.
- */
+*/
 
 function miniorange_saml_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
     $enable_saml_login = \Drupal::config('miniorange_saml.settings')->get('miniorange_saml_enable_login');
@@ -23,7 +23,7 @@ function miniorange_saml_form_alter(&$form, FormStateInterface &$form_state, $fo
 
 /**
  * Implements hook_help().
- */
+*/
 function miniorange_saml_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     case 'help.page.miniorange_saml':

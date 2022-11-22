@@ -21,7 +21,6 @@ class MiniornageAdvanceSettings extends FormBase
   {
       global $base_url;
 
-      Utilities::visual_tour_start($form, $form_state);
       $form['miniorange_saml_markup_library'] = array(
         '#attached' => array(
           'library' => array(
@@ -31,7 +30,7 @@ class MiniornageAdvanceSettings extends FormBase
       );
       $form['markup_top_1'] = array (
           '#markup' => t('<div class="mo_saml_sp_table_layout_1"><div class="mo_saml_table_layout mo_saml_sp_container">&nbsp;&nbsp;&nbsp;
-                    <div class="mo_saml_font_for_heading">Advance Settings</div>  <a id="Restart_moTour" class="mo_btn mo_btn-primary mo_btn-sm mo_tour_button_float" onclick="Restart_moTour()">Take a Tour</a><p style="clear: both"></p><hr/>')
+                    <div class="mo_saml_font_for_heading">Advance Settings</div><p style="clear: both"></p><hr/>')
       );
 
 

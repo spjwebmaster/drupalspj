@@ -34,12 +34,6 @@ miniorange_saml.licensing:
   weight: 60
   base_route: miniorange_saml.idp_setup
 
-miniorange_saml.support:
-    route_name: miniorange_saml.support
-    title: 'Support'
-    weight: 70
-    base_route: miniorange_saml.idp_setup
-
 miniorange_saml.customer_setup:
   route_name: miniorange_saml.customer_setup
   title: 'Register/Login'
