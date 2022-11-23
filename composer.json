@@ -84,6 +84,7 @@
         "drupal/slick": "2.6",
         "drupal/slick_views": "2.6",
         "drupal/stage_file_proxy": "^1.2",
+        "drupal/stripe_api": "^1.0",
         "drupal/subrequests": "^3.0",
         "drupal/super_login": "^1.7",
         "drupal/superfish": "^1.4",

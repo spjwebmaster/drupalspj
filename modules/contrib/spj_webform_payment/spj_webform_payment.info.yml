@@ -1,0 +1,5 @@
+name: SPJ Payment for Awards Webform
+description: Custom integration with Stripe API
+package: Custom
+type: module
+core_version_requirement: ^9

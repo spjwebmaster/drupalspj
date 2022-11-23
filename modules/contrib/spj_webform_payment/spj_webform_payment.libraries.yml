@@ -1,0 +1,3 @@
+import:
+  js:
+      js/importscript.js: {}

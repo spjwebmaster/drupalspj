@@ -1,0 +1,7 @@
+chapterImport.load:
+  path: '/awardpmt'
+  defaults:
+    _controller: '\Drupal\spj_webform_payment\Controller\SpjWebformPaymentController::index'
+    _title: 'Impexium Chapter Import'
+  requirements:
+    _permission:  'access content'
