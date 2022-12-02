@@ -829,6 +829,14 @@ body {
         padding: 1em .5em;
     }
 
+    .views-field-field-areas-of-expertise {
+        &::after {
+            content: none;
+            display: block;
+            font-weight: bold;
+        }
+    }
+
 
     footer.main-footer{
         padding: 0;
