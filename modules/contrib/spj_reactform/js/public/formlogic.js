@@ -48,7 +48,12 @@ var formlogic = {
             console.log("finding el", el);
 
             if(el.name=="mainCategory"){
-                let initTarget = document.getElementById("edit-field-main-category");
+                let initTarget = null;
+                if(document.getElementById("edit-field-main-category")){
+                    initTarget = document.getElementById("edit-field-main-category");
+                } else {
+                    initTarget = document.getElementById("edit-maincat");
+                }
                 console.log("initial value", initTarget.value)
                 initTarget.value = el.value;
             }
@@ -57,12 +62,29 @@ var formlogic = {
                 let target= null;
                 if(e.target.name=="mainCategory"){
                     console.log("react change for main");
-                    target = document.getElementById("edit-field-main-category");
+                    if(document.getElementById("edit-field-main-category")){
+                        target = document.getElementById("edit-field-main-category");
+                    } else {
+                        target = document.getElementById("edit-maincat");
+                    }
                 } else {
-                    target = document.getElementById("edit-field-sub-category");
+
+                    if(document.getElementById("edit-field-sub-category")){
+                        target = document.getElementById("edit-field-sub-category");
+                    } else {
+                        target = document.getElementById("edit-subcat");
+                    }
                 }
                 target.value = e.target.value;
             })
+
+
+            if(document.querySelector(".form-item-maincat")){
+                document.querySelector(".form-item-maincat").classList.add("formhidden")
+            }
+            if(document.querySelector(".form-item-subcat")){
+                document.querySelector(".form-item-subcat").classList.add("formhidden")
+            }
             
         });
 

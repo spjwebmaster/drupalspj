@@ -4,7 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('reactform'));
+let target = document.getElementById('reactform')
+let loc = window.location.href;
+if(loc.toLowerCase().indexOf("/awards/form/")<0 && loc.toLowerCase().indexOf("/form/")>-1){
+  target = document.querySelector(".form-item-main-category");
+}
+
+const root = ReactDOM.createRoot(target);
 root.render(
   <React.StrictMode>
     <App />

@@ -32,7 +32,7 @@ class SpjBiosBlock extends BlockBase  {
     
     private function getBios($nids, $termIds, $heirarchyTerms, $tid){
         $ret = [];
-
+        //dpm($termIds);
 
         //\Drupal::entityManager()->getStorage('node')->resetCache($nids);
         $nodes = Node::loadMultiple($nids);
@@ -69,7 +69,10 @@ class SpjBiosBlock extends BlockBase  {
                     foreach($list as $listItem){
                         if (!in_array($listItem, $heirarchyTerms)) {
                             
-                            $roles .= $termIds[$listItem];
+                            
+                            if(isset($termIds[$listItem])){
+                                $roles .= $termIds[$listItem];
+                            }
                         }
                         
                     }

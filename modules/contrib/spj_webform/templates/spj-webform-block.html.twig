@@ -1,0 +1,30 @@
+<div>
+<h3>Awards list</h3>
+    <table class="table table-bordered">
+    <thead>
+        <th>Title</th>
+        <th>Id</th>
+        <th>Region</th>
+        <th>Category</th>
+
+    </thead>
+    <tbody>
+    {% for entry in data %}
+        <tr>
+            <td>
+                <a href="{{entry.link}}">
+                    {{entry.data.title_of_entry}}
+                </a>
+            </td>
+            <td>
+                {{entry.id}}
+            </td>
+            <td>{{entry.data.region}}</td>
+            <td>
+                {{entry.data.main_category}}
+            </td>
+        </tr>
+    {% endfor%}
+    </tbody>
+    </table>
+</div>

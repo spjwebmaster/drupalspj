@@ -3,7 +3,7 @@
 {% for key,value in data %}
 <div class="role-type">
   <h2>{{ key }}:</h2>
-
+  <div class="content-wrap">
   
  
     {% for bio in value.entities %}
@@ -90,7 +90,7 @@
    
 
     {% endfor%}
-  
+  </div>
   </div>
 {% endfor%}
 </div>

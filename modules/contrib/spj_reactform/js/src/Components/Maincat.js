@@ -8,13 +8,13 @@ function Maincat(props){
     const [mainCatDesc, setMainCatDesc] = useState("");
     const [subCatSelected, setSubCatSelected] = useState("");
     const mainCatChange=(e)=> {
-        console.log("change", e.target.value)
+        //console.log("change", e.target.value)
         setMainCatSelected(e.target.value);
     }
     
     useEffect(() => {
     
-        console.log("props.awardCode", props.awardCode)
+        //console.log("props.awardCode", props.awardCode)
         if(props.awardCode){
             fetch(`/jsonapi/taxonomy_term/award_submission_categories?filter[parent.meta.drupal_internal__target_id]=${props.awardCode}`)
             .then(response=>response.json())

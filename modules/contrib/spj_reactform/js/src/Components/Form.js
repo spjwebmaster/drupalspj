@@ -4,11 +4,20 @@ import Maincat from "./Maincat";
 
 function Form(props){
 
-    let awardName = "sdx";
+    let awardName = "moe";
     let loc = window.location.href;
+    
     if(loc.toLowerCase().indexOf("/awards/form/")>-1){
         let splits = loc.split("/");
         awardName = splits[splits.length-1];
+    } else if(loc.toLowerCase().indexOf("/form/")>-1){
+        let splits = loc.split("/");
+        let awardNameBase = splits[splits.length-1];
+        switch(awardNameBase){
+            case "moeentry": awardName="moe"; break;
+            default: awardName="moe"; break;
+        }
+
     }
     if(loc.toLowerCase().indexOf("/awards/add/")>-1){
         let splits = loc.split("/");
@@ -23,7 +32,7 @@ function Form(props){
             case "national_awards_entry_naa": awardName="naa"; break;
         }
     }
-    console.log("awardName", awardName)
+    //console.log("awardName", awardName)
     const [awardCode, setAwardCode] = useState();
     
     const [mainCatSelected, setMainCatSelected] = useState("");
@@ -32,11 +41,11 @@ function Form(props){
     
 
     const mainCatChange=(e)=> {
-        console.log("change", e.target.value)
+        //console.log("change", e.target.value)
         setMainCatSelected(e.target.value);
     }
     const subCatChange=(e)=> {
-        console.log("change", e.target.value)
+        //console.log("change", e.target.value)
         setSubCatSelected(e.target.value);
     }
 

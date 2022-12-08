@@ -109,7 +109,7 @@ class CustomImportController extends ControllerBase {
 
         $retId = "";
         $dataArray = null;
-        if($type=="hq"||$type=="stc"||$type=="board"||$type=="rc" || $type=="foundation" || $type == "whistle"){
+        if($type=="hq"||$type=="stc"||$type=="board"||$type=="rc" || $type=="foundation" || $type == "whistle" || $type=="jed"){
             $machineType = "bio";
 
             $roleId = 12;
@@ -120,6 +120,7 @@ class CustomImportController extends ControllerBase {
                 case "rc": $roleId= 5; break;
                 case "foundation": $roleId= 172; break;
                 case "whistle": $roleId= 249; break;
+                case "jed" : $roleId=1262; break;
             }
             
 
@@ -141,6 +142,7 @@ class CustomImportController extends ControllerBase {
                     'value' => $data->body,
                     'format' => 'full_html',
                 )
+            
             );
 
 
@@ -303,20 +305,20 @@ class CustomImportController extends ControllerBase {
         }
         else if($type=="inetdiff"){
             $machineType = "news_item";
-            $title = trim($data['title']);
+            $title = trim($data->title);
 
-            $timestamp = strtotime($data['pubDate']);
+            $timestamp = strtotime($data->field_active_date);
             $activeDate = date('Y-m-d', $timestamp);
 
             $newBody = "";
             $legacyContact = "";
-            $pieces = explode("<br>", $data['description']);
-        
+            
+
             $canExtract = false;
             $maxLoop = 0;
             $counter = 0;
 
-            $field_legacy_uri = trim($data['link']);
+            $field_legacy_uri = trim($data->field_legacy_uri);
         
 
             $dataArray = array(
@@ -328,17 +330,17 @@ class CustomImportController extends ControllerBase {
                 'field_legacy_uri'=> $field_legacy_uri,
                 'field_active_date' => $activeDate,
                 'body' => array(
-                    'value' => $data['description'],
+                    'value' => '',
                     'format' => 'full_html',
                 )
             );
 
-            dpm($dataArray);
-            //$node = Node::create($dataArray);
-            //$node->save();
-            //$nid = $node->id();
-            //$retId = $nid;
-            //dpm($retId);
+            //dpm($dataArray);
+            $node = Node::create($dataArray);
+            $node->save();
+            $nid = $node->id();
+            $retId = $nid;
+            dpm($retId);
         } else if($type=="news"){
             $machineType = "news_item";
             $title = trim($data['title']);
@@ -517,7 +519,7 @@ class CustomImportController extends ControllerBase {
             case "news": $urlToload = "https://spj.org/rss_news.rss?T=S"; break;
             case "newsawards": $urlToload = "https://www.spj.org/rss_news.asp?T=A"; break;
             case "newsinet": $urlToload = "https://www.spj.org/newsImportXml.xml"; break;
-            case "inetdiff":  $isScrape = true; $urlToload = "https://www.spj.org/inetdups.csv"; break;
+            case "inetdiff":  $isScrape = true; $urlToload = "https://www.spj.org/InetImport.csv"; break;
             case "leads": $urlToload = "https://spj.org/rss_spjleads.asp?T=S"; break;
             case "ldf": $isScrape = true; $showSubmit=false; $urlToload = "https://www.spj.org/ldf-a.asp"; break;
             case "calendar": $urlToload = "http://calendar.spjnetwork.org/feed.php?ex="; break;
@@ -525,6 +527,7 @@ class CustomImportController extends ControllerBase {
             case "stc": $isScrape = true; $showSubmit=false; $urlToload = "https://spj.org/stc.asp"; break;
             case "rc": $isScrape = true; $showSubmit=false; $urlToload = "https://spj.org/regional-coordinators.asp"; break;
             case "board": $isScrape = true; $showSubmit=false; $urlToload = "https://spj.org/spjboard.asp"; break;
+            case "jed": $isScrape = true; $showSubmit=false; $urlToload = "https://www.spj.org/journalismed-database.asp"; break;
             case "foundation": $isScrape = true; $showSubmit=false; $urlToload = "https://www.spj.org/foundation-board.asp"; break;
             case "whistle": $isScrape = true; $showSubmit=false; $urlToload = "https://www.spj.org/whistleblower/credits.asp"; break;
             case "foi": $isScrape = true; $showSubmit=false; $urlToload = "https://www.spj.org/findfoi.asp"; break;
@@ -596,6 +599,7 @@ class CustomImportController extends ControllerBase {
                     if($type=="inetdiff"){
 
 
+                        
                         $ret .= "Match reach row with a record in the DB<br /><table class='table table-bordered'><tr><th>Title</th><th>ref</th><th>nid</th></tr>";
                         
                         /*
@@ -629,7 +633,7 @@ class CustomImportController extends ControllerBase {
                         */
 
                         
-
+                        /*
                         
                         $nodes = \Drupal::entityTypeManager()
                                         ->getStorage('node')->getQuery();
@@ -659,9 +663,10 @@ class CustomImportController extends ControllerBase {
                                 }
                             }
                             
+                        */
 
                         $ret .="</table>";
-                        /*
+                        
                         $ret .= "Load csv " . $urlToload;
                         $CSVfp = fopen($urlToload, "r");
                         $count = 0;
@@ -676,9 +681,25 @@ class CustomImportController extends ControllerBase {
                                 
                                 if($count>0){
                                     $title = $data[0];
-                                    $database = \Drupal::database();
+
+                                    $dat = (object)[];
+                                    $dat->title = $title;
+                                    $dat->field_active_date = $data[1];
+                                    $dat->field_legacy_uri = $data[2];
+                                    $dat->description = "TBD";
+
+                                    //dpm($dat);
+                                    if($title){
+                                    $ret .= "<strong> ". $this->checkIfNodeExists($dat, "inetdiff") . "</strong>";
+                                    //$database = \Drupal::database();
+                                    }
+                                }
+                                $count++;
+                            }
+                        }
+                        fclose($CSVfp);
                                     
-                                    
+                                    /*
                                     $sql = `SELECT "node_field_data"."langcode" AS "node_field_data_langcode", "users_field_data_node_field_data"."langcode" AS "users_field_data_node_field_data_langcode", "node_field_data"."nid" AS "nid", "users_field_data_node_field_data"."uid" AS "users_field_data_node_field_data_uid"
                                         FROM
                                         {node_field_data} "node_field_data"
@@ -750,13 +771,9 @@ class CustomImportController extends ControllerBase {
                                         $ret .="<hr />";
                                     }
                                     */
-                                /* 
-                                }
-                                $count++;
-                            }
-                        }
-                        fclose($CSVfp);
-                        */
+                                
+                        
+                        
 
                     } else {
 
@@ -847,6 +864,7 @@ class CustomImportController extends ControllerBase {
                             $ret .= "<li><a href='/customimport/foundation'>SPJ Foundation Bios</a></li>";
                             $ret .= "<li><a href='/customimport/stc'>Student Trustee Council Bios</a></li>";
                             $ret .= "<li><a href='/customimport/board'>Board of Directors Bios</a></li>";
+                            $ret .= "<li><a href='/customimport/jed'>Journalism Education Database</a></li>";
                             $ret .= "<li><a href='/customimport/rc'>Regional Coordinators Bios</a></li>";
                             $ret .= "<li><a href='/customimport/calendar'>Calendar Events</a></li>";
                             $ret .= "<li><a href='/customimport/foi'>FOI</a></li>";

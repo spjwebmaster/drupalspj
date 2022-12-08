@@ -300,6 +300,28 @@ var customimport = {
 
             });
         
+        } else if(type=="jed"){
+            nodeDiv.querySelector("#topnavigation").closest(".contentinner").querySelectorAll("p:not(.bumpminor):not(#topnavigation)").forEach(function(row){
+                console.log("row", row);
+
+                if(row.querySelector(".headline4.bold")){
+                let name = row.querySelector(".headline4.bold").innerHTML;
+                let tempdiv = document.createElement("div");
+                tempdiv.innerHTML = row.innerHTML;
+                tempdiv.querySelector(".headline4").remove()
+
+                let temp = {
+                    title: name,
+                    field_email: '',
+                    body: tempdiv.innerHTML,
+                    field_areas_of_expertise: ""
+                    
+
+                }
+                customimport.masterList.push(temp);
+                }
+            });
+
         } else if(type=="board" || type=="rc"){
             nodeDiv.querySelector("#topnavigation").closest(".contentinner").querySelectorAll(".table21, .table22").forEach(function(row){
 

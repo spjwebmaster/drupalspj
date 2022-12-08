@@ -1,0 +1,15 @@
+<?php 
+/**
+ * Implements hook_theme().
+ */
+
+
+function spj_webform_theme() {
+    return [
+      'spj_webform_block' => [
+        'variables' => [
+          'data' => [],
+        ],
+      ],
+    ];
+  }

@@ -7,7 +7,7 @@ function Subcat(props){
     const [subCatDesc, setSubCatDesc] = useState("");
 
     const subCatChange=(e)=> {
-        console.log("change", e.target.value)
+        //console.log("change", e.target.value)
         setSubCatSelected(e.target.value);
     }
 
@@ -22,7 +22,7 @@ function Subcat(props){
                 setSubCatSelected(secondary.data[0].attributes.drupal_internal__tid)
             }
             let filtered = secondary.data.filter(t=>t.attributes.drupal_internal__tid == subCatSelected);
-            console.log("filtered secondary", "selected:", subCatSelected, secondary.data, filtered)
+            //console.log("filtered secondary", "selected:", subCatSelected, secondary.data, filtered)
             if(filtered.length>0){
                 setSubCatDesc((filtered[0].attributes.description?filtered[0].attributes.description.value:""))
             } else{
