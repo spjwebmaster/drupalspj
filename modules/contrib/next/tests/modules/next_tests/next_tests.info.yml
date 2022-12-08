@@ -1,0 +1,12 @@
+name: Next.js tests
+description: Configures testing for Next.js
+type: module
+package: testing
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - next:next
+
+# Information added by Drupal.org packaging script on 2022-12-06
+version: '1.6.0'
+project: 'next'
+datestamp: 1670343131

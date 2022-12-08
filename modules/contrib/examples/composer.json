@@ -6,7 +6,7 @@
   "support": {
     "issues": "https://www.drupal.org/project/issues/examples",
     "documentation": "https://api.drupal.org/api/examples",
-    "source": "https://git.drupalcode.org/project/examples"
+    "source": "http://cgit.drupalcode.org/examples"
   },
   "suggest": {
     "drupal/devel": "Some modules will be able to pretty-print PHP with this module."

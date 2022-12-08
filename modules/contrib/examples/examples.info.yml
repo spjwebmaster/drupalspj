@@ -2,11 +2,12 @@ name: Examples for Developers
 type: module
 description: 'Provides example code for you to learn from.'
 package: Example modules
-core_version_requirement: ^8.7.7 || ^9
+core: 8.x
+core_version_requirement: ^8 || ^9
 dependencies:
   - drupal:toolbar
 
-# Information added by Drupal.org packaging script on 2021-10-07
-version: '3.0.3'
+# Information added by Drupal.org packaging script on 2020-05-27
+version: '3.0.0'
 project: 'examples'
-datestamp: 1633612832
+datestamp: 1590578966

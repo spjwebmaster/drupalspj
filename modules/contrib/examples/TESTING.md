@@ -71,7 +71,7 @@ Put Examples into the `modules/` folder of the Drupal installation. If you are
 doing development on Examples, you should have already checked out the git
 repository into `modules/`, like this:
 
-	$ git clone --branch 3.x https://git.drupalcode.org/project/examples.git modules/examples
+	$ git clone --branch 8.x-1.x https://git.drupal.org/project/examples.git modules/examples
 
 Now you can run `run-tests.sh`, which, despite having a `.sh` suffix is not a
 shell script. It's a PHP script.

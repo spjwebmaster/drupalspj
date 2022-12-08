@@ -74,12 +74,12 @@ class EntityResource extends JsonApiEntityResourse {
 
     $filters = array_merge(
       $default_filter,
-      $request->query->all('filter')
+      $request->query->get('filter', [])
     );
 
     $sort = [];
     if ($request->query->has('sort')) {
-      $sort = Sort::createFromQueryParameter($request->query->all('sort'))->fields();
+      $sort = Sort::createFromQueryParameter($request->query->get('sort'))->fields();
     }
     $sorting = array_merge($default_sorting, $sort);
 
@@ -101,6 +101,7 @@ class EntityResource extends JsonApiEntityResourse {
    * {@inheritdoc}
    */
   public function getIncludes(Request $request, $data) {
+    /** @var \Drupal\jsonapi_extras\ResourceType\ConfigurableResourceType $resourceConfig */
     if (
       ($resource_type = $request->get(Routes::RESOURCE_TYPE_KEY))
       && $resource_type instanceof ConfigurableResourceType
@@ -201,7 +202,7 @@ class EntityResource extends JsonApiEntityResourse {
    *
    * @param array $page_params
    *   The values of the page query parameter of the request.
-   * @param \Drupal\jsonapi_extras\Entity\JsonapiResourceConfig $resource_config
+   * @param Drupal\jsonapi_extras\Entity\JsonapiResourceConfig $resource_config
    *   This resource's config entity.
    *
    * @return int
@@ -228,7 +229,7 @@ class EntityResource extends JsonApiEntityResourse {
    */
   protected function setPageLimit(Request $request, JsonapiResourceConfig $resource_config, array &$params) {
     if ($request->query->has('page')) {
-      $page_params = $request->query->all('page');
+      $page_params = $request->query->get('page');
       $offset = array_key_exists(OffsetPage::OFFSET_KEY, $page_params) ? (int) $page_params[OffsetPage::OFFSET_KEY] : OffsetPage::DEFAULT_OFFSET;
       $params[OffsetPage::KEY_NAME] = new OffsetPage(
         $offset,
