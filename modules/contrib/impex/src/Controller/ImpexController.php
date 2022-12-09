@@ -52,9 +52,10 @@ class ImpexController extends ControllerBase {
 
                 $fetchsso = $session->get('usersso');
 
-                $site =  \Drupal::request()->getHost() . "/membership";
+                $site =  \Drupal::request()->getHost();
                 $port = $_SERVER['SERVER_PORT'] ? ':'.$_SERVER['SERVER_PORT'] : '';
                 $site .=$port;
+                $site .=  "/membership";
 
                 $redir = "https://my.spj.org/account/login.aspx?sso=" . $fetchsso . "&RedirectUrl=" .$site;
                 //$redirUrl = Url::fromUri($redir);

@@ -126,7 +126,12 @@ class SpjWebformPaymentController extends ControllerBase {
 
         $award = "moe";
         if($request->query->get("award")){
-            $action = $request->query->get("award");
+            $award = $request->query->get("award");
+        }
+
+        $type = "no";
+        if($request->query->get("type")){
+            $type = $request->query->get("type");
         }
 
         $title = "Title";
@@ -136,18 +141,21 @@ class SpjWebformPaymentController extends ControllerBase {
         $things = $request->getContent();
         //$things= str_replace("\u003E", "", $things);
         //$things= str_replace("\n", "", $things);
-        $allThings = explode("&", $things);
-
         $allData = [];
+        if(strpos($things, "&")!==false){
+            $allThings = explode("&", $things);
 
-        foreach($allThings as $param){
-            $paramsplit = explode("=", $param);
-            $allData[$paramsplit[0]] = $paramsplit[1];
+           
+
+            foreach($allThings as $param){
+                $paramsplit = explode("=", $param);
+                $allData[$paramsplit[0]] = $paramsplit[1];
+            }
         }
 
         $message = "Award PMT Controller Hit";
 
-        
+        if($action=="complete"){
 
         $productId = 2;
         // award fee product
@@ -163,14 +171,23 @@ class SpjWebformPaymentController extends ControllerBase {
         
         $product_variation_id = 0;
 
-        switch($award){
-            case "moe": 
-                if($allData["are_you_an_active_spj_member_"] == "yes"){
-                    $product_variation_id = 3;
-                } else {
-                    $product_variation_id = 4;
-                }
-                break;
+        if(isset($allData["are_you_an_active_spj_member_"])){
+            switch($award){
+                case "moe": 
+                    if($allData["are_you_an_active_spj_member_"] == "yes"){
+                        $product_variation_id = 3;
+                    } else {
+                        $product_variation_id = 4;
+                    }
+                    break;
+            }
+        } else {
+            if($type=="no"){
+                $product_variation_id = 4;
+            } else {
+                $product_variation_id = 3;
+            }
+            
         }
 
         $allData['product_variation_id'] = $product_variation_id;
@@ -195,7 +212,7 @@ class SpjWebformPaymentController extends ControllerBase {
         //    ->getStorage('commerce_order_item_type');
         $cart_manager = \Drupal::service('commerce_cart.cart_manager');
         
-        //$line_item = $cart_manager->addEntity($cart, $variationobj);
+        $line_item = $cart_manager->addEntity($cart, $variationobj);
         //$res = CartManager::addEntity($cart, $variationobj);
 
 
@@ -211,19 +228,23 @@ class SpjWebformPaymentController extends ControllerBase {
        
        */
 
-        $message .= " | action " . $action . " Title: " . $params;
+        $message .= " | action " . $action . "| award: " . $award  . "| Title: " . $params;
+
+        } else {
+            $message .= " | action " . $action .  "| award: " . $award;
+        }
         
         \Drupal::logger('spj_webform_payment')->warning($message);
 
         //return $response;
-        /*
+        
 
         return [
             '#markup' => t($message)
         ];
-        */
         
-        return new JsonResponse([ 'data' => $message, 'method' => 'GET', 'status'=> 200]);
+        
+        //return new JsonResponse([ 'data' => $message, 'method' => 'GET', 'status'=> 200]);
         
          
     }
