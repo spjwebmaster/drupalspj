@@ -11764,6 +11764,15 @@ body .region-sidebar-second .block-spj-calendar-block-awards {
   white-space: nowrap;
 }
 
+/* webforms */
+body:not(.testing-em-classplaceholdermoe-entry-em-webform) .webform-submission-moe-entry-form .js-form-item-maincat,
+body:not(.testing-em-classplaceholdermoe-entry-em-webform) .webform-submission-moe-entry-form .js-form-item-subcat {
+  font-size: 1px;
+  visibility: hidden;
+  position: absolute;
+  top: -999em;
+}
+
 .page-node-type-freelance-guide .block-field-blocknodefreelance-guidebody {
   padding-right: 1em;
 }
@@ -11943,6 +11952,11 @@ body .region-sidebar-second .block-spj-calendar-block-awards {
 .board-meeting-list .views-row .views-field-field-replay-video iframe {
   max-width: 500px;
   height: 300px;
+}
+
+.block-views-blockbylaws-and-documentation-block-1 h3 {
+  pointer-events: none;
+  color: inherit;
 }
 
 /* global */

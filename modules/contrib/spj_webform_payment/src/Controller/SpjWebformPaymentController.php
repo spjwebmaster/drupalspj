@@ -170,25 +170,26 @@ class SpjWebformPaymentController extends ControllerBase {
           
         
         $product_variation_id = 0;
+        
 
-        if(isset($allData["are_you_an_active_spj_member_"])){
-            switch($award){
-                case "moe": 
-                    if($allData["are_you_an_active_spj_member_"] == "yes"){
-                        $product_variation_id = 3;
-                    } else {
-                        $product_variation_id = 4;
-                    }
-                    break;
-            }
-        } else {
-            if($type=="no"){
-                $product_variation_id = 4;
-            } else {
-                $product_variation_id = 3;
-            }
-            
+      
+        switch($award){
+            case "moe": 
+                if($type  == "yes"){
+                    $product_variation_id = 3;
+                } else {
+                    $product_variation_id = 4;
+                }
+                break;
+            case "sdx": 
+                if($type  == "yes"){
+                    $product_variation_id = 5;
+                } else {
+                    $product_variation_id = 6;
+                }
+                break;
         }
+        
 
         $allData['product_variation_id'] = $product_variation_id;
 

@@ -278,6 +278,7 @@ class CustomImportController extends ControllerBase {
             $counter = 0;
 
             $field_legacy_uri = trim($data['link']);
+            $field_legacy_uri = str_replace("http:", "https:", $field_legacy_uri);
          
 
             $dataArray = array(
@@ -319,7 +320,7 @@ class CustomImportController extends ControllerBase {
             $counter = 0;
 
             $field_legacy_uri = trim($data->field_legacy_uri);
-        
+            $field_legacy_uri = str_replace("http:", "https:", $field_legacy_uri);
 
             $dataArray = array(
                 'type' => $machineType,
@@ -352,6 +353,7 @@ class CustomImportController extends ControllerBase {
             $legacyContact = "";
             $pieces = explode("<br>", $data['description']);
             $field_legacy_uri = trim($data['link']);
+            $field_legacy_uri = str_replace("http:", "https:", $field_legacy_uri);
 
            
             $canExtract = false;

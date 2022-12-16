@@ -16,7 +16,7 @@ $slideShowMaxMobile: 210px;
 @import 'components/animations';
 @import 'views/typography';         
 
-@import 'components/paragraphs';         
+@import 'components/paragraphs';            
 @import 'components/search';   
 @import 'components/slider';         
 @import 'components/chaptersearch';     
@@ -36,6 +36,7 @@ $slideShowMaxMobile: 210px;
 @import 'views/groups';      
 @import 'views/chapters';      
 @import 'views/boardmeeting';                 
+@import 'views/documentation';  
 
 /* global */
 svg.svgSPJlogo {  
