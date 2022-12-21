@@ -54,7 +54,10 @@ class ImpexController extends ControllerBase {
 
                 $site =  \Drupal::request()->getHost();
                 $port = $_SERVER['SERVER_PORT'] ? ':'.$_SERVER['SERVER_PORT'] : '';
-                $site .=$port;
+                //dpm($port);
+                if($port==":8080"){
+                    $site .=$port;
+                }
                 $site .=  "/membership";
 
                 $redir = "https://my.spj.org/account/login.aspx?sso=" . $fetchsso . "&RedirectUrl=" .$site;

@@ -12,7 +12,7 @@ use Drupal\filter\FilterProcessResult;
  *   id = "filter_current_year",
  *   title = @Translation("Current Year"),
  *   description = @Translation("This filter enables &year; to be replaced by the current year."),
- *   type = Drupal\filter\Plugin\FilterInterface::TYPE_MARKUP_LANGUAGE,
+ *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
  * )
  */
 class CurrentYearFilter extends FilterBase {
@@ -37,4 +37,10 @@ class CurrentYearFilter extends FilterBase {
     return $text;
   }
 
+  /**
+   * Callback function for input filter tips() method.
+   */
+  public function tips($long = FALSE) {
+    return $this->t('The token &year; will be replaced with the current year.');
+  }
 }

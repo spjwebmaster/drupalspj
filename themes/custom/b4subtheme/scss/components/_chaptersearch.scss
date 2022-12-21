@@ -11,3 +11,12 @@
         color: $white;
     }
 }
+
+.view-chapter-list {
+    .view-content {
+        @include respond-below(md){
+            width: calc(100vw - 7em);
+            overflow: auto;
+        }
+    }
+}

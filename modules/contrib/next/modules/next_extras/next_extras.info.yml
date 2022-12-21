@@ -6,7 +6,7 @@ package: Web services
 dependencies:
   - next:next
 
-# Information added by Drupal.org packaging script on 2022-12-06
-version: '1.6.0'
+# Information added by Drupal.org packaging script on 2022-12-21
+version: '1.6.1'
 project: 'next'
-datestamp: 1670343131
+datestamp: 1671603429

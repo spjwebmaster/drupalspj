@@ -29,16 +29,30 @@ function b4subtheme_preprocess_page_title(&$variables) {
   $route_match = \Drupal::routeMatch();
   $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
 
-  $css_title = \Drupal\Component\Utility\Html::cleanCssIdentifier($title);
+  $titleToUse = "";
+  if(is_string($title)){
+    $titleToUse = $title;
+  } else {
+    if(is_array($title)){
+      $titleToUse = $title['#markup'];
+    }
+    
+  }
+
+  $css_title = \Drupal\Component\Utility\Html::cleanCssIdentifier($titleToUse);
   $variables['title_attributes']['class'][] = 'page-title';
   $new_css_title = "";
 
   if(is_string($css_title)){
-    $new_css_title = $css_title;
+    $new_css_title .= " " . $css_title;
   } else {
-    $new_css_title = implode("_",$css_title);
+    
+    $nameArr = $css_title["#markup"];
+    $new_css_title .= "_" . $nameArr;
+    $variables['title_attributes']['class'][] = strtolower($nameArr);
+
   }
-  $variables['title_attributes']['class'][] = strtolower($new_css_title);
+  
 }
 
 /**
@@ -50,16 +64,23 @@ function b4subtheme_preprocess_html(&$variables) {
   $route_match = \Drupal::routeMatch();
   $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
 
-  $css_title = \Drupal\Component\Utility\Html::cleanCssIdentifier($title);
+  $titleToUse = "";
+  if(is_string($title)){
+    $titleToUse = $title;
+  } else {
+    if(is_array($title)){
+      $titleToUse = $title['#markup'];
+    }
+  }
+  $css_title = \Drupal\Component\Utility\Html::cleanCssIdentifier($titleToUse);
   if(is_string($css_title)){
     $variables['attributes']['class'][] = strtolower($css_title);
   } else {
-    $new_css_title="test";
-    foreach($css_title as $title){
-      $new_css_title .= "_" . $title;
-    }
+    $new_css_title = $css_title["#markup"];
+    if(is_string($new_css_title)){
+      $variables['attributes']['class'][] = strtolower($new_css_title);
+    } 
 
-    $variables['attributes']['class'][] = strtolower($new_css_title);
   }
 
   if (\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
@@ -71,7 +92,7 @@ function b4subtheme_preprocess_html(&$variables) {
   $internal = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
 
   // Assign it to body class 
-  $vars['attributes']['class'][] = str_replace("/", "", $internal);
+  $variables['attributes']['class'][] = str_replace("/", "", $internal);
 
 
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
@@ -97,6 +118,7 @@ function b4subtheme_preprocess_html(&$variables) {
       $variables['attributes']['class'][] = 'page--node-' . $nid;
     }
   }
+
 
 }
 

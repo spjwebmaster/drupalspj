@@ -166,8 +166,7 @@ ol.breadcrumb {
 
 
 #block-sdxdonate {
-    background-color: #eeeeee;
-    box-shadow: inset 0 0 20px #ccc;
+    
     text-align: left;
     font-size: 1em !important;
     padding: 20px;
@@ -175,22 +174,35 @@ ol.breadcrumb {
 
 
     .field--name-body {
-        display: flex;
-        padding-top: 3em;
-        position: relative;
 
-        h3 {
-            flex: 1 100%;
-            position: absolute;
-            top: 0.5em;
-        }
         p {
-            flex: 1 auto;
-
             img {
-                max-width: 200px;
+                max-width: 100%;
                 height: auto;
-                margin-top: -2em;
+            }
+        }
+        h2 {
+            margin-bottom: 0.5em;
+        }
+        @include respond-above(sm){
+            display: flex;
+            padding-top: 3em;
+            position: relative;
+        
+
+            h2 {
+                flex: 1 100%;
+                position: absolute;
+                top: 0.5em;
+            }
+            p {
+                flex: 1 auto;
+                margin-top: 0.75em;
+
+                img {
+                    max-width: 200px;
+                    margin-top: -2em;
+                }
             }
         }
 
@@ -258,6 +270,18 @@ ol.breadcrumb {
         }
     }
 }
+.pagination {
+    @include respond-below(md){
+        flex-wrap:wrap;
+    }
+}
+
+.image-responsive {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
  
 .view {
     .views-row {
@@ -273,6 +297,10 @@ ol.breadcrumb {
             >* {
                 margin: 0;
             }
+
+            @include respond-below(md){
+                flex-wrap:wrap; 
+            }
             .form-item {
                 display: flex;
                 align-items: center;
@@ -281,9 +309,18 @@ ol.breadcrumb {
                     white-space: nowrap;
                     padding-right: 10px;
                     margin: 0;
+
+                    @include respond-below(md){
+                        min-width:100px;
+                    }
                 }
+                
+
             }
         }
+
+
+        
     }
     &.view-id-committees_taxonomy {
         .views-row {
