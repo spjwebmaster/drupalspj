@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6630b98bfc21c0082efe77ed5345dd88",
+    "content-hash": "e23a97423ceb112468af23b7f8ebfedd",
     "packages": [
         {
             "name": "algolia/places",
@@ -17,6 +17,123 @@
             "extra": {
                 "installer-name": "algolia.places"
             }
+        },
+        {
+            "name": "apimatic/jsonmapper",
+            "version": "v3.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apimatic/jsonmapper.git",
+                "reference": "7f998fba2a5ad4a41d9c010e89c2f0922f249111"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apimatic/jsonmapper/zipball/7f998fba2a5ad4a41d9c010e89c2f0922f249111",
+                "reference": "7f998fba2a5ad4a41d9c010e89c2f0922f249111",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0",
+                "squizlabs/php_codesniffer": "^3.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "apimatic\\jsonmapper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "christian.weiske@netresearch.de",
+                    "homepage": "http://www.netresearch.de/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Mehdi Jaffery",
+                    "email": "mehdi.jaffery@apimatic.io",
+                    "homepage": "http://apimatic.io/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Map nested JSON structures onto PHP classes",
+            "support": {
+                "email": "mehdi.jaffery@apimatic.io",
+                "issues": "https://github.com/apimatic/jsonmapper/issues",
+                "source": "https://github.com/apimatic/jsonmapper/tree/v3.0.5"
+            },
+            "time": "2022-12-06T15:07:38+00:00"
+        },
+        {
+            "name": "apimatic/unirest-php",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apimatic/unirest-php.git",
+                "reference": "52e226fb3b7081dc9ef64aee876142a240a5f0f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apimatic/unirest-php/zipball/52e226fb3b7081dc9ef64aee876142a240a5f0f9",
+                "reference": "52e226fb3b7081dc9ef64aee876142a240a5f0f9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5 || ^6 || ^7 || ^8 || ^9"
+            },
+            "suggest": {
+                "ext-json": "Allows using JSON Bodies for sending and parsing requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Unirest\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mashape",
+                    "email": "opensource@mashape.com",
+                    "homepage": "https://www.mashape.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "APIMATIC",
+                    "email": "opensource@apimatic.io",
+                    "homepage": "https://www.apimatic.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Unirest PHP",
+            "homepage": "https://github.com/apimatic/unirest-php",
+            "keywords": [
+                "client",
+                "curl",
+                "http",
+                "https",
+                "rest"
+            ],
+            "support": {
+                "email": "opensource@apimatic.io",
+                "issues": "https://github.com/apimatic/unirest-php/issues",
+                "source": "https://github.com/apimatic/unirest-php/tree/2.3.0"
+            },
+            "time": "2022-06-15T08:29:49+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3842,6 +3959,62 @@
             "homepage": "https://www.drupal.org/project/commerce",
             "support": {
                 "source": "https://git.drupalcode.org/project/commerce"
+            }
+        },
+        {
+            "name": "drupal/commerce_square",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/commerce_square.git",
+                "reference": "8.x-1.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/commerce_square-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "902900b12d60d58704b6c6e478512cf303699fb1"
+            },
+            "require": {
+                "drupal/commerce": "~2.25",
+                "drupal/commerce_payment": "*",
+                "drupal/core": "^8.8 || ^9 || ^10",
+                "php": ">=7.2",
+                "square/square": "^17.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.5",
+                    "datestamp": "1649852935",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Centarro",
+                    "homepage": "https://www.drupal.org/user/3661446"
+                },
+                {
+                    "name": "jsacksick",
+                    "homepage": "https://www.drupal.org/user/972218"
+                },
+                {
+                    "name": "rszrama",
+                    "homepage": "https://www.drupal.org/user/49344"
+                }
+            ],
+            "description": "Provides Commerce integration for Square Connect.",
+            "homepage": "http://drupal.org/project/commerce_square",
+            "support": {
+                "source": "https://git.drupalcode.org/project/commerce_square"
             }
         },
         {
@@ -13447,6 +13620,63 @@
             "extra": {
                 "installer-name": "signature_pad"
             }
+        },
+        {
+            "name": "square/square",
+            "version": "17.3.0.20220316",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/square/square-php-sdk.git",
+                "reference": "c6a6740e4ecbc71568b1bb5f553d8a69b4a575d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/square/square-php-sdk/zipball/c6a6740e4ecbc71568b1bb5f553d8a69b4a575d7",
+                "reference": "c6a6740e4ecbc71568b1bb5f553d8a69b4a575d7",
+                "shasum": ""
+            },
+            "require": {
+                "apimatic/jsonmapper": "^3.0.0",
+                "apimatic/unirest-php": "^2.2.1",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.2 <8.2"
+            },
+            "require-dev": {
+                "phan/phan": "5.3.1",
+                "phpunit/phpunit": "^7.5 || ^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Square\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Square Developer Platform",
+                    "email": "developers@squareup.com",
+                    "homepage": "https://squareup.com/developers"
+                }
+            ],
+            "description": "Use Square APIs to manage and run business including payment, customer, product, inventory, and employee management.",
+            "homepage": "https://squareup.com/developers",
+            "keywords": [
+                "api",
+                "sdk",
+                "square"
+            ],
+            "support": {
+                "issues": "https://github.com/square/square-php-sdk/issues",
+                "source": "https://github.com/square/square-php-sdk/tree/17.3.0.20220316"
+            },
+            "time": "2022-03-15T22:06:00+00:00"
         },
         {
             "name": "stack/builder",
