@@ -34,6 +34,22 @@
     }
 }
 
+&.path--smack {
+    .navbar-nav {
+        background-color: transparent!important;
+        margin: 0 auto!important;
+    }
+}
+&.path--algorithms {
+    .subsite_header_algorithm {
+        background-color: #000!important;
+
+        .navbar-nav {
+            background-color: transparent!important;
+        }
+    }
+
+}
 &.path--gagged  {
 
     background-color: #333;
@@ -45,6 +61,13 @@
     }
 
     
+    .subsite_header_gagged {
+        background-color: #000!important;
+
+        .navbar-nav {
+            background-color: transparent!important;
+        }
+    }
     main {
         padding-top: 0;
         >.container {
@@ -102,13 +125,14 @@
     }
 }
 
-&.path--ethicsweek {
+&.path--ethicsweek, &.ethicsethicsweekorder {
     .block-field-blocknodefoi-subsitebody {
         width: 90%;
         margin: auto;
         max-width: 1200px;
 
         .ethicsweek_header {
+            background-color: #1e4387!important;
             text-align: center;
             .g-section-wrapper {
                 display: flex;
@@ -129,10 +153,25 @@
 
             }
         }
+
+        .ethicsweek_morelinks {
+            background-color: transparent!important;
+        }
+
+        .ethicsweek_whatcanyoudo {
+            background-color: transparent!important;
+
+            .wp-block-media-text__media {
+                background-color: #fff;
+            }
+        }
+
+        
         .ethicsweek_nav {
             text-align: center;
             color: #fff;
             margin-bottom: 2em;
+            background-color: #333!important;
             a {
                 color: #fff;
             }
@@ -142,12 +181,36 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 margin: auto;
+                background-color: transparent;
+                margin: 2em auto;
                 
-                li {
+                li.nav-item {
                     flex: 1 auto;
-                    a {
+                    font-size: 1.3em;
+                    a.nav-link {
                         color: #fbff85;
+                        border-right: 1px dotted yellow;
+
+                        &.is-active {
+                            color: #fbff85;
+                            text-decoration: underline;
+                            font-weight: bold;
+                            background-color: rgba(255,255,255,0.15);
+                        }
                     }
+                }
+            }
+        }
+
+        .ethicsweek_sidebar {
+            border: 2px solid $SPJblue;
+            border-radius: 10px;
+            background-color: transparent!important;
+
+            p.text-white.btn-block {
+                a {
+                    color: #fff!important;
+                    display: block;
                 }
             }
         }

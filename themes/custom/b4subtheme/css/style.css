@@ -82,6 +82,16 @@ body.path--algorithms main .col-content a:hover {
 body.path--algorithms main .block-field-blocknodefoi-subsitebody .navigation {
   display: block;
 }
+body.path--smack .navbar-nav {
+  background-color: transparent !important;
+  margin: 0 auto !important;
+}
+body.path--algorithms .subsite_header_algorithm {
+  background-color: #000 !important;
+}
+body.path--algorithms .subsite_header_algorithm .navbar-nav {
+  background-color: transparent !important;
+}
 body.path--gagged {
   background-color: #333;
   background-image: url(https://spj.org/gagged/images/bg.jpg);
@@ -89,6 +99,12 @@ body.path--gagged {
 }
 body.path--gagged .breadcrumb {
   margin: 0;
+}
+body.path--gagged .subsite_header_gagged {
+  background-color: #000 !important;
+}
+body.path--gagged .subsite_header_gagged .navbar-nav {
+  background-color: transparent !important;
 }
 body.path--gagged main {
   padding-top: 0;
@@ -128,50 +144,80 @@ body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar
   transition: all 0.2s ease-in-out;
   text-decoration: line-through;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody {
   width: 90%;
   margin: auto;
   max-width: 1200px;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_header {
+  background-color: #1e4387 !important;
   text-align: center;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-image {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-image, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-image {
   flex: 1 100%;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons {
   flex: 1 100%;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons .wp-block-button {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons .wp-block-button, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_header .g-section-wrapper .wp-block-buttons .wp-block-button {
   width: 100%;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_morelinks, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_morelinks {
+  background-color: transparent !important;
+}
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo {
+  background-color: transparent !important;
+}
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media {
+  background-color: #fff;
+}
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
   text-align: center;
   color: #fff;
   margin-bottom: 2em;
+  background-color: #333 !important;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav a {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav a, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav a {
   color: #fff;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav {
   max-width: 1000px;
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
+  background-color: transparent;
+  margin: 2em auto;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item {
   flex: 1 auto;
+  font-size: 1.3em;
 }
-body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li a {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item a.nav-link, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item a.nav-link {
   color: #fbff85;
+  border-right: 1px dotted yellow;
 }
-body.path--ethicsweek .bread {
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item a.nav-link.is-active, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item a.nav-link.is-active {
+  color: #fbff85;
+  text-decoration: underline;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_sidebar, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_sidebar {
+  border: 2px solid #004990;
+  border-radius: 10px;
+  background-color: transparent !important;
+}
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_sidebar p.text-white.btn-block a, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_sidebar p.text-white.btn-block a {
+  color: #fff !important;
+  display: block;
+}
+body.path--ethicsweek .bread, body.ethicsethicsweekorder .bread {
   visibility: hidden;
   margin-top: -1em;
 }
@@ -416,7 +462,7 @@ body main .node--type-news-item .field--name-field-contacts {
   background-color: #ddd;
 }
 body main .wp-block-cloudblocks-g-section {
-  background: #eee;
+  background: #eee !important;
 }
 body main .node__content .menu--main .navbar-nav {
   background: aliceblue;

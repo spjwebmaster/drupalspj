@@ -40,7 +40,7 @@
         "drupal/core-recommended": "^9.3",
         "drupal/core-vendor-hardening": "^9.3",
         "drupal/current_year": "^1.0",
-        "drupal/devel": "^4.1",
+        "drupal/devel": "^5.1",
         "drupal/drupal_slider": "^2.0",
         "drupal/editor_advanced_link": "2.0",
         "drupal/eva": "2.1",

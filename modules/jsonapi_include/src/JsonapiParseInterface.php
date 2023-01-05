@@ -3,7 +3,7 @@
 namespace Drupal\jsonapi_include;
 
 /**
- * Interface JsonapiParseInterface.
+ * Interface for parse Jsonapi content.
  *
  * @package Drupal\jsonapi_include
  */

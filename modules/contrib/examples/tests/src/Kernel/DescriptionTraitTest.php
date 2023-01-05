@@ -32,10 +32,10 @@ class DescriptionTraitTest extends KernelTestBase {
     // We cast to string, since renderPlain() returns a markup object.
     $output = (string) $this->container->get('renderer')->renderPlain($render_array);
     // Did the template load?
-    $this->assertContains('Template loaded!', $output);
+    $this->assertStringContainsString('Template loaded!', $output);
     // Were the variables resolved correctly?
-    $this->assertContains('Used in module: examples_description_test.', $output);
-    $this->assertContains('Our slogan for today: We aim to please.', $output);
+    $this->assertStringContainsString('Used in module: examples_description_test.', $output);
+    $this->assertStringContainsString('Our slogan for today: We aim to please.', $output);
   }
 
 }

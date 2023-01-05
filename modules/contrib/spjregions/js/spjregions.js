@@ -34,6 +34,7 @@ var spjregions = {
                 console.log("click", region, state);
 
                 if(document.getElementById("edit-field-region-target-id")){
+                    /*
                     let sel = document.getElementById("edit-field-region-target-id");
                     let value = "";
                     sel.querySelectorAll("option").forEach(function(op){
@@ -46,6 +47,17 @@ var spjregions = {
                     })
                     sel.value = value;
                     sel.closest("form").submit();
+                    */
+                   let info = el.getAttribute("data-info");
+
+                   let temp = document.createElement("div");
+                   temp.innerHTML = info;
+                   let st = temp.querySelector("div:first-child").innerHTML;
+                   st = st.replace("State: ","");
+                   
+                   let url = "/chapters/regions/region-" + region + "/?state=" + st;
+
+                   window.location.href=url;
 
 
                 }
@@ -67,6 +79,12 @@ var spjregions = {
                 document.querySelectorAll(".region" + region).forEach(function(el){
                     el.classList.remove("hover");
                 })
+            })
+
+            el.addEventListener("click", function(e){
+                let region = e.target.getAttribute("data-region");
+                let url = "/chapters/regions/region-" + region + "/";
+                window.location.href=url;
             })
             
         });

@@ -6,7 +6,7 @@ use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\NestedArray;
 
 /**
- * Class JsonapiParse.
+ * The class for parse Jsonapi content.
  *
  * @package Drupal\jsonapi_include
  */

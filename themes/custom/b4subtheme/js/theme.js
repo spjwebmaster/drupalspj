@@ -81,6 +81,8 @@
         }
     }
 
+    // get ?state=XXX preloader for region pages
+
 
     if(document.querySelectorAll('.accordian_wrapper')!=null){
       console.log("accordian")

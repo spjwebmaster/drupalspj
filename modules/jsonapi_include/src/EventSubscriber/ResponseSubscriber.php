@@ -8,11 +8,11 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\jsonapi\Routing\Routes;
 use Drupal\jsonapi_include\JsonapiParseInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Class ResponseSubscriber.
+ * The class handler response subscriber.
  */
 class ResponseSubscriber implements EventSubscriberInterface {
 
@@ -72,24 +72,23 @@ class ResponseSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The  route match service.
    */
-  public function setRouteMatch(RouteMatchInterface $route_match){
+  public function setRouteMatch(RouteMatchInterface $route_match) {
     $this->routeMatch = $route_match;
   }
 
   /**
    * This method is called the KernelEvents::RESPONSE event is dispatched.
    *
-   * @param \Symfony\Component\HttpKernel\Event\FilterResponseEvent $event
-   *   The filter event.
+   * @param \Symfony\Component\HttpKernel\Event\ResponseEvent $event
+   *   The response event.
    */
-  public function onResponse(FilterResponseEvent $event) {
+  public function onResponse(ResponseEvent $event) {
 
     if (!$this->routeMatch->getRouteObject()) {
       return;
     }
-
-    if (Routes::isJsonApiRequest($this->routeMatch->getRouteObject()->getDefaults())) {
-
+    $route_defaults = $this->routeMatch->getRouteObject()->getDefaults();
+    if (Routes::isJsonApiRequest($route_defaults) || !empty($route_defaults['_is_jsonapi'])) {
       $response = $event->getResponse();
       if ($response instanceof CacheableResponseInterface) {
         $response->getCacheableMetadata()->addCacheContexts(['url.query_args:jsonapi_include']);
@@ -100,7 +99,7 @@ class ResponseSubscriber implements EventSubscriberInterface {
       }
 
       if ($need_parse) {
-        $content = $event->getResponse()->getContent();
+        $content = $response->getContent();
         if (strpos($content, '{"jsonapi"') === 0) {
           $content = $this->jsonapiInclude->parse($content);
           $event->getResponse()->setContent($content);

@@ -41,7 +41,6 @@ class WebformOptions {
 //      return $element;
 //    }
 
-
     // For options with optgroup display a CodeMirror YAML editor.
     if (!empty($element['#yaml']) || (isset($element['#default_value']) && is_array($element['#default_value']) && static::hasOptGroup($element['#default_value']))) {
       $element['price'] = [
@@ -130,7 +129,7 @@ class WebformOptions {
     }
     else {
       foreach ($options as $key => $value) {
-        if (!empty($value['price'])) {
+        if (isset($value['price'])) {
           $option_value = $key;
           $option_text = $value['text'];
 
