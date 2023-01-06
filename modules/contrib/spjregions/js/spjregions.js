@@ -2,9 +2,83 @@ var spjregions = {
 
     init: function(){
         console.log("init");
-        spjregions.bindings();
+        spjregions.makeTabs();
+        
     },
+    makeTabs: function(){
+        let container = document.querySelector(".layout__region--first");
+        let newWrapper = document.createElement("div");
+        newWrapper.classList.add("region-map-tab-wrapper");
+        newWrapper.innerHTML = `
+        <ul class="nav nav-tabs regionTabToggler">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#tabRegionMap">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tabRegionList">Chapter List</a>
+            </li>
+        </ul>`;
+            
+
+
+        let sib = container.querySelector(".block-field-blocknodepagebody");
+        sib.after(newWrapper);
+
+        let mapNode = document.querySelector(".region-map").closest(".block-block-content");
+        mapNode.id = "tabRegionMap";
+        mapNode.classList.add("hidden");
+        let listNode = document.querySelector(".block-views-blockchapter-list-block-1");
+        listNode.id = "tabRegionList";
+        listNode.classList.add("hidden");
+
+        spjregions.bindings();
+
+
+    }, 
     bindings: function(){
+
+
+        document.querySelectorAll(".regionTabToggler li a").forEach(function(el){
+
+            if(window.location.href.indexOf("?field_region_target_id")>-1){
+                // it should load the list view
+                if(el.getAttribute("href")=="#tabRegionList"){
+                    el.classList.add("active");
+                } else {
+                    el.classList.remove("active");
+                }
+            } 
+            if(el.classList.contains("active")){
+                console.log( el, el.getAttribute("href"))
+                let tar = document.querySelector(el.getAttribute("href"));
+                
+                tar.classList.remove("hidden");
+            }
+            
+            el.addEventListener("click", function(e){
+                e.preventDefault();
+
+                let href = e.target.getAttribute("href").replace("#","");
+                console.log("href", href)
+                let tar = document.getElementById(href);
+                tar.classList.remove("hidden");
+
+                let otherTabWrapper = document.querySelector(".regionTabToggler");
+                otherTabWrapper.querySelectorAll("li a").forEach(function(el){
+                    let compareHref = el.getAttribute("href").replace("#","");
+                    if(compareHref==href) {
+                        //
+                        el.classList.add("active"); 
+                        document.getElementById(href).classList.remove("hidden")
+                    } else {
+                        el.classList.remove("active"); 
+                        document.getElementById(compareHref).classList.add("hidden");
+
+                    }
+                })
+
+            })
+        })
 
         document.querySelectorAll("path, circle").forEach(function(el){
            
@@ -156,4 +230,7 @@ var spjregions = {
 
     }
 }
-spjregions.init();
+
+window.addEventListener("load", function(){
+    spjregions.init();
+});

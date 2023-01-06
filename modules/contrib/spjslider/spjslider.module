@@ -55,6 +55,8 @@ function buildBanner($path){
                     $data[] = $temp;
                 }
             }
+
+          
         
         } else {
             // get a default one from the previous URL path level

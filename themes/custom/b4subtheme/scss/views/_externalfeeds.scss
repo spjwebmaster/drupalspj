@@ -1,6 +1,46 @@
 .block-spj-external-feeds {
     img {
-        max-width: 250px;
+        width: 100%;
         height: auto;
     }
+}
+
+
+#block-spjjtfeed,
+#block-spjquillfeed {
+    padding: .25em;
+    margin: 0.25em;
+    border: 1px solid #ccc;
+    h2 {
+        margin: -0.15em;
+        padding: 0.5em;
+        color: $white;
+        margin-bottom: .1em;
+
+    }
+    .featured {
+            margin: calc(-.25em + -1px);
+            margin-bottom: .1em;
+
+        figure {
+            max-height: 200px;
+            overflow: hidden;
+            
+        }
+        h3 {
+            padding: 0 .4em;
+        }
+        a {
+            display: block;
+        }
+    }
+    .item-list {
+        padding: 0 0.7em;
+    }
+} 
+#block-spjjtfeed h2 {
+    background-color: #9c0000;
+}
+#block-spjquillfeed h2 {
+    background-color: #134B8E;
 }

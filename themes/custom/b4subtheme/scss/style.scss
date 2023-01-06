@@ -1,6 +1,6 @@
 // Sub theme styling.
 @import 'variables_theme';              
-@import 'themes/default';                                  
+@import 'themes/default';                                   
 
 // Bootstrap overriden variables.  
 // @see https://getbootstrap.com/docs/4.6/getting-started/theming/#variable-defaults.
@@ -49,7 +49,13 @@ ol.breadcrumb {
     padding: 0;
     margin: 0.5em 0;    
 }
- 
+
+.bg_black_transparency {
+    background-color: rgba(0,0,0,0.8);       
+}
+.bg_white_transparency {
+    background-color: rgba(255,255,255,0.8);   
+}
 .full_width { 
     position: relative;
     left: 50%;
@@ -75,7 +81,7 @@ ol.breadcrumb {
         white-space: nowrap;
     }
 }
-
+  
 
 .highlight_blue {  
     padding: 3em 1em;
@@ -86,8 +92,10 @@ ol.breadcrumb {
 
     @include respond-above(md) {
         padding: 3em 11em;
-    }
+    } 
 }
+
+
 
 .navbar-nav{
     .dropdown-menu {
@@ -653,7 +661,7 @@ body {
                             mask-size: cover;
                         }
                     }
-                }
+                }  
 
                 .show-user-name-only {
                     font-size: 0;
@@ -661,7 +669,7 @@ body {
                         content: '';
                         margin-left: .25rem;
                         display: inline-block;
-                        background-color: #fff;
+                        background-color: #fff;    
                         width: 30px;
                         height: 30px;
                         -webkit-transition: all 0.2s ease-in-out;
@@ -718,7 +726,7 @@ body {
         
 
 
-    }
+    } 
 
     .region-slideshow {   
         margin-top: 124px;
@@ -743,7 +751,7 @@ body {
         }
         @include respond-below(md){
             padding-bottom: 0;
-        }
+        }  
         
 
           

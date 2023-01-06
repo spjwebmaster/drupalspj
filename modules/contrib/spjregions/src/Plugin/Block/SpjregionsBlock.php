@@ -158,8 +158,10 @@ class SpjregionsBlock extends BlockBase  {
 
         $vocabulary_name = 'Region';
         $query = \Drupal::entityQuery('taxonomy_term');
-        $query->condition('vid', $vocabulary_name);
-        //$query->OrderBy('revision_created', 'ASC');
+        $query->condition('vid', $vocabulary_name)
+        ->sort('weight', 'ASC');
+        //$query->orderBy('timestamp', 'ASC');
+
         $tids = $query->execute();
         $terms = Term::loadMultiple($tids);
         $output .= '<ul>';
@@ -173,12 +175,12 @@ class SpjregionsBlock extends BlockBase  {
           //$newLink = Link::fromTextAndUrl($name, $newUrl);
           $link = $link->toRenderable();
           //$newLink = $newLink->toRenderable();
-          $output .= '<li>' . render($link) .'</li>';
+          $output .= '<li><a href="/chapters/regions/'  .  str_replace(" ", "-", $name) . '">' .$name . '</a></li>';
         }
         $output .= '</ul>';
         return [
             '#type' => 'markup',
-            '#markup' => "",
+            '#markup' => $output,
             '#attached' => [
                 'library' => [
                   'spjregions/spjregions',

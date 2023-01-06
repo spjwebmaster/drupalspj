@@ -55,6 +55,32 @@ body.path-frontpage {
 
     .region-slideshow {
         max-height: 999em; 
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+
+            .swiperImage {
+                visibility: hidden;
+            }
+        }
+
+        .swiper-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+
+            .btn-info {
+               
+                color: $white;
+            }
+            
+        }
+
+        .banner_wrapper_padding_bottom {
+            padding-bottom: 3em;
+        }
     }
 
    

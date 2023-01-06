@@ -95,11 +95,11 @@ function getFeedUrl($type){
 
 function spj_ext_feed_makeMarkup($data){
         $first = $data['data'][0];
-        $ret = "<a href='" . $first["link"] . "' target='_blank'>";
-        $ret .="<img src='" . $first["featuredimage"] . "' alt='" . $first["title"] . "' />";
-        $ret .= "<br />";
-        $ret .= "<strong>" . $first["title"] . "</strong>";
-        $ret .= "</a>";
+        $ret = "<div class='featured'><a href='" . $first["link"] . "' target='_blank'>";
+        $ret .="<figure><img src='" . $first["featuredimage"] . "' alt='" . $first["title"] . "' />";
+        $ret .= "</figure></a>";
+        $ret .= "<h3><a href='" . $first["link"] . "' target='_blank'>" . $first["title"] . "</h3></a>";
+        $ret .= "</div>";
         
         $ret .= "<div class='item-list'><ul>";
         $counter = 0;

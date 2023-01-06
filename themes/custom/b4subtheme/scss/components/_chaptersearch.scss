@@ -15,8 +15,9 @@
 .view-chapter-list {
     .view-content {
         @include respond-below(md){
-            width: calc(100vw - 7em);
+            width: calc(100vw - 1px);
             overflow: auto;
+            margin: 0 -2em;
         }
     }
 }

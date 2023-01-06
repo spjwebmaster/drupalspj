@@ -38,11 +38,11 @@
       
 
           {% for val in data %}
-            <div class='swiper-slide'>
+            <div class='swiper-slide' style="background-image: url({{val.image}})">
 
-              <img src="{{val.image}}" style="width: 100%" />
+              <img src="{{val.image}}" style="width: 100%" title="" class="swiperImage" />
               <div class="swiper-content banner-content">
-                {{val.body}}
+                {{val.body | raw}}
               </div>
             
             </div>

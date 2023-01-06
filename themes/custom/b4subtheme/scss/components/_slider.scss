@@ -2,6 +2,9 @@ $smSliderHeight: calc(100vh - 200px);
 $mdSliderHeight: calc(100vh - 150px);
 
 
+body {
+
+
 /* swiper */
 .swiper {
     position: relative;
@@ -78,10 +81,30 @@ $mdSliderHeight: calc(100vh - 150px);
     }
 }
 
+&.path-frontpage {
+    .slideshow_wrapper {
+        .region-slideshow {
+            
 
+            .swiper {
+                &:not(.multi){
+        
+                    .swiper-wrapper {
+                        max-height: 650px;
+                        min-height: 500px;
+                        .swiper-slide {
+                            max-height: 650px;
+                            min-height: 500px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 /* banner */
-.toolbar-fixed {
+&.toolbar-fixed {
     .block {
         &.banner {
 
@@ -312,4 +335,6 @@ $mdSliderHeight: calc(100vh - 150px);
             }
         }
     }
+}
+
 }
