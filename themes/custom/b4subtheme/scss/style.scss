@@ -1,6 +1,6 @@
 // Sub theme styling.
 @import 'variables_theme';              
-@import 'themes/default';                                   
+@import 'themes/default';                                       
 
 // Bootstrap overriden variables.  
 // @see https://getbootstrap.com/docs/4.6/getting-started/theming/#variable-defaults.
@@ -33,7 +33,7 @@ $slideShowMaxMobile: 210px;
 @import 'views/memberbenefit'; 
 @import 'views/landingpages';                                    
 @import 'views/tools';    
-@import 'views/groups';      
+@import 'views/groups';       
 @import 'views/chapters';      
 @import 'views/boardmeeting';                 
 @import 'views/documentation';  
@@ -81,7 +81,25 @@ ol.breadcrumb {
         white-space: nowrap;
     }
 }
-  
+
+
+.layout__region--second .navigation {
+
+    .dropdown-toggle {
+        &::after {
+            content: none;
+        }
+    }
+    .nav-link {
+        &.active  {
+            font-weight: bold;
+           
+        }
+    }
+
+}
+
+
 
 .highlight_blue {  
     padding: 3em 1em;
@@ -112,7 +130,7 @@ ol.breadcrumb {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
 }
-
+navbar-n
 .layout--twocol-section {
  .layout__region {
     @include respond-above(md) {

@@ -85,6 +85,9 @@ class SpjBiosBlock extends BlockBase  {
                 $body = "";
                 $imgurl = "";
             }
+            if($tid==298){
+                $imgurl = "";
+            }
 
             $thisNode = array(
                 "title"=>$node->get("title")->value,
@@ -132,6 +135,12 @@ class SpjBiosBlock extends BlockBase  {
             }
         }
 
+        if($tag=="contact"){
+            if(strpos($thisURL, "freelance")!==false){
+                $tag="freelance";
+            }
+        }
+
         
 
         $master = [];
@@ -154,6 +163,7 @@ class SpjBiosBlock extends BlockBase  {
             case "regional": $tid = 5; break;
             case "elections": $tid = 1105; break;
             case "smack": $tid = 1253; break;
+            case "freelance": $tid = 298; break;
         }
 
         if(isset($_REQUEST['tid'])){

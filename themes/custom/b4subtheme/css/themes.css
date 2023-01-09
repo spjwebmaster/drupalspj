@@ -441,9 +441,13 @@ html.theme_default body .region-map .regionTextWrapper circle {
 }
 html.theme_default body main {
   box-shadow: inset 0 0 300px #b7c7d2;
+  /* main sidebar nav */
 }
 html.theme_default body main.landing {
   box-shadow: none;
+}
+html.theme_default body main .content-content .navigation.block-menu .navbar-nav {
+  background-color: aliceblue;
 }
 html.theme_default body main .view-spj-bios .views-row {
   border-bottom: 2px dashed #ddd;
@@ -949,9 +953,13 @@ html.theme_dark body .region-map .regionTextWrapper circle {
 }
 html.theme_dark body main {
   box-shadow: inset 0 0 300px #000;
+  /* main sidebar nav */
 }
 html.theme_dark body main.landing {
   box-shadow: none;
+}
+html.theme_dark body main .content-content .navigation.block-menu .navbar-nav {
+  background-color: #292929;
 }
 html.theme_dark body main .view-spj-bios .views-row {
   border-bottom: 2px dashed #ddd;
@@ -1460,9 +1468,13 @@ html.theme_light body .region-map .regionTextWrapper circle {
 }
 html.theme_light body main {
   box-shadow: inset 0 0 300px #fff;
+  /* main sidebar nav */
 }
 html.theme_light body main.landing {
   box-shadow: none;
+}
+html.theme_light body main .content-content .navigation.block-menu .navbar-nav {
+  background-color: aliceblue;
 }
 html.theme_light body main .view-spj-bios .views-row {
   border-bottom: 2px dashed #ddd;

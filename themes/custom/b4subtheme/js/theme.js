@@ -40,7 +40,10 @@
         if(el.closest("li").querySelector(".dropdown-menu")){
           el.closest("li").querySelector(".dropdown-menu").classList.add("nope");
         }
+        console.log("dropdown disable")
 
+          el.classList.remove("dropdown-toggle");
+          el.removeAttribute("data-toggle")
           el.addEventListener("click", function(e){
 
             let href = e.target.href;

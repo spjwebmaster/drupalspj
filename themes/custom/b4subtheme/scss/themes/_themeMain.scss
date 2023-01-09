@@ -374,6 +374,17 @@ body {
             box-shadow: none;
         }
         
+
+        /* main sidebar nav */
+        .content-content {
+            .navigation {
+                &.block-menu {
+                    .navbar-nav {
+                        background-color: $sidebarNav;
+                    }
+                }
+            }
+        }
         .view-spj-bios {
             .views-row {
                 border-bottom: 2px dashed #ddd;
