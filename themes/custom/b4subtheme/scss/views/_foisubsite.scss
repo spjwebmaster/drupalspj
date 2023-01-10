@@ -139,6 +139,40 @@ body {
 
    
 }
+.casper_header {
+    background-position: top;
+
+    ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        
+        @include respond-above(md){
+            width: 50%;
+        }
+        margin: auto;
+        flex-wrap: wrap;
+        li {
+            flex: 1 100%;
+            @include respond-above(md){
+                flex: 1 auto;
+            }
+            
+            text-align: center;
+            a {
+                color: #fff!important;
+                font-weight: bold;
+                font-size: 2em;
+                border: 1px solid #fff;
+                padding: 0.5em;
+                display: block;
+                background-color: rgba(0,0,0,0.6);
+            }
+        }
+    }
+}
 
 html.theme_default body main .wp-block-cloudblocks-g-section {
     &.safety_hero {

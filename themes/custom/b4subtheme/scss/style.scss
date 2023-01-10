@@ -69,11 +69,12 @@ ol.breadcrumb {
     &.content_container {
         .g-section-wrapper {
             max-width: 1200px;
-            margin: auto; 
+            margin: auto;  
         }
     }
 
 }
+
 
 .dropdown-toggle {
     white-space: break-spaces;
@@ -81,7 +82,18 @@ ol.breadcrumb {
         white-space: nowrap;
     }
 }
+ 
 
+
+.layout--twocol-section--75-25 {
+	.layout__region--first {
+		@include respond-above(md){
+            padding-right: 2em; 
+        }
+			
+		
+	}
+}
 
 .layout__region--second .navigation {
 

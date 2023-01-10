@@ -466,7 +466,7 @@ html.theme_default body main .node--type-news-item .field--name-field-contacts {
   background-color: #ddd;
 }
 html.theme_default body main .wp-block-cloudblocks-g-section {
-  background: #eee !important;
+  background-color: #eee;
 }
 html.theme_default body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
@@ -978,7 +978,7 @@ html.theme_dark body main .node--type-news-item .field--name-field-contacts {
   background-color: #444;
 }
 html.theme_dark body main .wp-block-cloudblocks-g-section {
-  background: #444 !important;
+  background-color: #444;
 }
 html.theme_dark body main .node__content .menu--main .navbar-nav {
   background: #333;
@@ -1493,7 +1493,7 @@ html.theme_light body main .node--type-news-item .field--name-field-contacts {
   background-color: #eee;
 }
 html.theme_light body main .wp-block-cloudblocks-g-section {
-  background: #eee !important;
+  background-color: #eee;
 }
 html.theme_light body main .node__content .menu--main .navbar-nav {
   background: aliceblue;

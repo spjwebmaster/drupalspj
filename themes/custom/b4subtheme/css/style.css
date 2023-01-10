@@ -466,7 +466,7 @@ body main .node--type-news-item .field--name-field-contacts {
   background-color: #ddd;
 }
 body main .wp-block-cloudblocks-g-section {
-  background: #eee !important;
+  background-color: #eee;
 }
 body main .node__content .menu--main .navbar-nav {
   background: aliceblue;
@@ -11713,6 +11713,42 @@ body.path--whistleblower .block-views-blockfreelance-guides-block-1 h3 {
   margin-top: 0.75em;
 }
 
+.casper_header {
+  background-position: top;
+}
+.casper_header ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+}
+@media (min-width: 992px) {
+  .casper_header ul {
+    width: 50%;
+  }
+}
+.casper_header ul li {
+  flex: 1 100%;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .casper_header ul li {
+    flex: 1 auto;
+  }
+}
+.casper_header ul li a {
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 2em;
+  border: 1px solid #fff;
+  padding: 0.5em;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 html.theme_default body main .wp-block-cloudblocks-g-section.safety_hero {
   background-color: #222 !important;
   margin-bottom: 2em;
@@ -12169,6 +12205,12 @@ ol.breadcrumb {
 @media (min-width: 992px) {
   .dropdown-toggle {
     white-space: nowrap;
+  }
+}
+
+@media (min-width: 992px) {
+  .layout--twocol-section--75-25 .layout__region--first {
+    padding-right: 2em;
   }
 }
 

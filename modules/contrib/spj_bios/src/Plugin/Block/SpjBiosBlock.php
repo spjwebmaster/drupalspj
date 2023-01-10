@@ -141,7 +141,10 @@ class SpjBiosBlock extends BlockBase  {
             }
         }
 
-        
+        // if it is not a two level url
+        if($tag=="" || $tag==null){
+           $tag = $splits[count($splits)-1];
+        }
 
         $master = [];
         $data = [];
@@ -164,11 +167,13 @@ class SpjBiosBlock extends BlockBase  {
             case "elections": $tid = 1105; break;
             case "smack": $tid = 1253; break;
             case "freelance": $tid = 298; break;
+            case "casperproject-session": $tid = 1267; break;
         }
 
         if(isset($_REQUEST['tid'])){
             $tid = $_REQUEST['tid'];
         }
+
 
         $terms = $this->getTax();
 
