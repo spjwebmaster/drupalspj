@@ -36,9 +36,10 @@ var toc = {
     buildTOCoshell: function(){
         let page = window.location.href;
         let listClass = "normal";
-        if(page.indexOf("foi-az")>-1){
+        if(page.indexOf("foi-az")>-1 || page.indexOf("foundation/grants")){
             listClass = "az";
         }
+        console.log(listClass, "class")
 
         let shell = document.createElement("div");
         shell.classList.add("spj_toc");

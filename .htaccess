@@ -67,6 +67,13 @@ AddEncoding gzip svgz
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
+  RewriteCond %{QUERY_STRING} ref=([0-9]+)
+  # Redirect by passing the ID to the new site - the ? at the end removes existing query string
+  RewriteRule news.asp /news?field_legacy_uri_value=https://www.spj.org/news.asp?REF=%1 [R=301,L,NC]
+
+
+  RedirectMatch 301 "(.*)\.asp$" "$1"
+
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
   # you don't bounce between http and https.

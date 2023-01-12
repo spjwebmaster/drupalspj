@@ -1,0 +1,5 @@
+name: SPJ Redirect
+description: Redirecting old asp urls to new content
+package: Custom
+type: module
+core_version_requirement: ^9

@@ -247,25 +247,40 @@ navbar-n
     }
 } 
 
-#block-spjtoc {
-    .spj_toc {
-        ul {
-            &.az {
+
+.spj_toc {
+    ul {
+        &.az {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+            li {
                 list-style: none;
                 margin: 0;
                 padding: 0;
-                display: block;
-                li {
-                    list-style: none;
-                    margin: 0;
-                    padding: 0;
-                    display: inline-block;
-                    padding: 0.2em; 
+                display: inline-block;
+                padding: 0.2em; 
+                position: relative;
+                padding-right: 0.7em;
+                font-weight: bold;
+                &::after {
+                    content: "";
+                    display: block;
+                    height: .3em;
+                    width: .3em;
+                    border-radius: 100%;
+                    background: $bodytext;
+                    position: absolute;
+                    right:.1em;
+                    top: calc(50% - .1em);
+                    
                 }
             }
         }
     }
 }
+
 .item-list {   
     ul, ol {
         padding-left: 0em; 

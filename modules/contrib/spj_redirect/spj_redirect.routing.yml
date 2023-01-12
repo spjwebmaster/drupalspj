@@ -1,0 +1,6 @@
+spjredirect.main:
+  path: '/pageredirect'
+  defaults:
+    _controller: 'Drupal\spj_redirect\Controller\SpjRedirectController::index'
+  requirements: 
+    _permission: 'access content'
