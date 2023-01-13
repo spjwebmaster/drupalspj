@@ -31,10 +31,15 @@ class CalendarBlock extends BlockBase  {
                 $eventstart = (string) $item->eventstart;
                 $eventend = (string) $item->eventend;
                 $link = (string) $item->link;
+                $eventstarttimepretty = (string) $item->eventstarttimepretty;
+                $eventendtimepretty = (string) $item->eventendtimepretty;
 
                 $markup .= "<div class='swiper-slide'>";
-                $markup .= "<a href='" . $link . "' target='_blank' ><strong>" . $eventstart  . "</strong><br />";
-                $markup .= $title . "</a></div>";
+                $markup .= "<a href='" . $link . "' target='_blank' ><strong>" . $eventstart  . "</strong></a><br />";
+                $markup .= "<h3><a href='" . $link . "' target='_blank' >" . $title . "</a></h3>";
+                $markup .= "<span class='time'>" . $eventstarttimepretty . " - " . $eventendtimepretty . "</p>";
+                //$markup .="<span class='calendar-description'><small>" . $description . "</small></span>";
+                $markup .="</div>";
             }
             $count++;
         }

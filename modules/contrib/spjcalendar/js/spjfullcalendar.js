@@ -9,7 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
         url: url,
         success: function(res){
             console.log(res);
-            
+
+            let filters = document.querySelector(".calendar_filters");
+            let filterval = filters.getAttribute("data-value");
+            let filterSplits = filterval.split("|");
+            let filterTags = filterSplits[0].split(":");
+            let filterTag = filterTags[1];
+            let filterCats = filterSplits[1].split(":");
+            let filterCat = filterCats[1];
+
+            console.log("filterTag", filterTag, "filterCat", filterCat)
+
             res.querySelectorAll("item").forEach(function(item){
                 let temp = {};
                 console.log("item", item)
@@ -19,20 +29,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 let eventendtime = item.querySelector("eventendtime").innerHTML;
                 let end = new Date(item.querySelector("eventend").innerHTML  + " " + eventendtime);
                 let desc = item.querySelector("description").innerHTML;
-                temp["id"] = item.querySelector("GUID").innerHTML,
-                temp["title"] = item.querySelector("title").innerHTML,
-                temp["start"] = start,
-                temp["end"] = end,
-                temp["url"] = item.querySelector("link").innerHTML,
-                temp["color"] = '#87A88C';
-                temp["extendedProps"] = {
-                    "description":desc
+                let cat = item.querySelector("category").innerHTML;
+                cat = cat.replaceAll(" ", "_").toLowerCase();
+
+                let addThisEntry = true;
+                if(filterCat!="" && filterCat!=null){
+                  addThisEntry = false;
+                  if(cat == filterCat){
+                    addThisEntry = true;
+                  }
                 }
-                events.push(temp);
+                
+                console.log("category is good? ", addThisEntry)
+                let tags = item.querySelector("tags").innerHTML;
+                let tagList = tags.split(",");
+                let newTagList = [];
+                tagList.forEach(function(t){
+                  let tag = t.replaceAll(" ", "_").toLowerCase();
+                  newTagList.push(tag);
+                })
+
+                if(addThisEntry==true){
+
+                  temp["id"] = item.querySelector("GUID").innerHTML,
+                  temp["title"] = item.querySelector("title").innerHTML.replaceAll("#039;", "'").replaceAll("&amp;", ""),
+                  temp["start"] = start,
+                  temp["end"] = end,
+                  temp["url"] = item.querySelector("link").innerHTML,
+                  temp["color"] = '#87A88C';
+                  temp["extendedProps"] = {
+                      "description":desc
+                  }
+
+                  
+                  events.push(temp);
+                }
             });
 
             console.log("events", events)
-            var calendarEl = document.getElementById('calendar');
+            var calendarEl = document.getElementById('spjcalendar');
             calendar = new FullCalendar.Calendar(calendarEl, {
               initialView: 'dayGridMonth',
               events: events,

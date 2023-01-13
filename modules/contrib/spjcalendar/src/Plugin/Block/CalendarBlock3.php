@@ -4,12 +4,12 @@ use Drupal\Core\Block\BlockBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * Provides a 'SPJ Events Double' block.
+ * Provides a 'SPJ Let's Do This Together Calendar' block.
  *
  * @Block(
  *  id = "spj_calendar_block3",
- *  label = "SPJ Calendar 3",
- *  admin_label = @Translation("SPJ Calendar 3"),
+ *  label = "SPJ Let's Do This Together Calendar",
+ *  admin_label = @Translation("SPJ Let's Do This Together Calendar"),
  * )
  */
 class CalendarBlock3 extends BlockBase  {
@@ -48,14 +48,14 @@ class CalendarBlock3 extends BlockBase  {
         $markup = "<p>Is your organization hosting an event you think would be of interest to journalists? Add it to our calendar!</p><div class='row'><div class='col-sm-2'><picture><img src='/sites/default/files/2022-04/t-spjheart-teal.jpg' alt='SPJ Heart' title='SPJ heart' style='width: 100%;' /></picture></div><div class='col-sm-6'>";
         $markup .= "<div class='item-list'><strong>Upcoming SPJ events</strong><br /><ul class='item-list'>";
         foreach($calRes as $cal){
-            $markup .= "<li>" . $cal['title'] . "</li>";
+            $markup .= "<li><a target='_blank' href='" . $cal['link'] . "'>" . $cal['title'] . "</a></li>";
         }
 
         $markup .= "</ul><p><br /></p><strong>General events</strong><br /><ul class='item-list'>";
         foreach($generalRes as $cal){
-            $markup .= "<li>" . $cal['title'] . "</li>";
+            $markup .= "<li><a  target='_blank'href='" . $cal['link'] . "'>" . $cal['title'] . "</a></li>";
         }
-        $markup .= "</ul>";
+        $markup .= "</ul><hr /><p><a href='/events'><strong>See all events</strong></a></p>";
         $markup .= "</div></div></div>";
        
        

@@ -36,7 +36,7 @@ var toc = {
     buildTOCoshell: function(){
         let page = window.location.href;
         let listClass = "normal";
-        if(page.indexOf("foi-az")>-1 || page.indexOf("foundation/grants")){
+        if(page.indexOf("foi-az")>-1 || page.indexOf("foundation/grants")>-1){
             listClass = "az";
         }
         console.log(listClass, "class")
