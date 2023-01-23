@@ -14,6 +14,39 @@
         }
     }
 
+    .block-field-blocknodeawardfield-deadline {
+        >div {
+            display: flex;
+
+            time {
+                margin-left: 1em;
+            }
+        }
+    }
+
+    .block-field-blocknodeawardfield-submission-form {
+        a {
+            display: inline-block;
+            background: $SPJblue;
+            color: #fff!important;
+            padding: .7em 1em;
+
+        }
+    }
+    .layout__region--first {
+        .block-field-blocknodeawardfield-submission-form {
+            margin: 1em 0;
+        }
+    }
+    .layout__region--second {
+        .block-field-blocknodeawardfield-submission-form {
+            margin-bottom: 1em;
+            border-bottom: 2px dashed #ddd;
+            padding-bottom: 1em;
+        }
+    }
+
+   
 
 }
 

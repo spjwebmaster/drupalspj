@@ -11930,6 +11930,26 @@ body .region-sidebar-second .block-spj-calendar-block-awards {
   width: 100%;
   max-width: 100%;
 }
+.page-node-type-award .block-field-blocknodeawardfield-deadline > div {
+  display: flex;
+}
+.page-node-type-award .block-field-blocknodeawardfield-deadline > div time {
+  margin-left: 1em;
+}
+.page-node-type-award .block-field-blocknodeawardfield-submission-form a {
+  display: inline-block;
+  background: #004990;
+  color: #fff !important;
+  padding: 0.7em 1em;
+}
+.page-node-type-award .layout__region--first .block-field-blocknodeawardfield-submission-form {
+  margin: 1em 0;
+}
+.page-node-type-award .layout__region--second .block-field-blocknodeawardfield-submission-form {
+  margin-bottom: 1em;
+  border-bottom: 2px dashed #ddd;
+  padding-bottom: 1em;
+}
 
 .block-views-blockbios-block-5 .view-id-bios li .views-field-title a {
   pointer-events: none;

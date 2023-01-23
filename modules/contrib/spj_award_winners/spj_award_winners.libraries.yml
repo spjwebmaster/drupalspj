@@ -1,0 +1,4 @@
+awardwinners:
+  js:
+      js/public/index.js: {}
+      js/public/awardwinners.js: {}
