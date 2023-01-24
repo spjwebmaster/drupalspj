@@ -1,10 +1,9 @@
 name: Form block
 description: Enables the presentation of node creation forms in blocks. This is particularly useful for including forms on Layout Builder & Panels.
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.4 || ^10
 type: module
 
-# Information added by Drupal.org packaging script on 2020-09-03
-version: '2.0.0-beta2'
+# Information added by Drupal.org packaging script on 2023-01-21
+version: '2.0.0-beta3'
 project: 'formblock'
-datestamp: 1599176368
+datestamp: 1674342113

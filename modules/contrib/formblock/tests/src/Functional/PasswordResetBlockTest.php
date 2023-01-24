@@ -11,7 +11,12 @@ namespace Drupal\Tests\formblock\Functional;
  */
 class PasswordResetBlockTest extends FormblockTestBase {
 
-  protected function setUp() {
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'olivero';
+
+  protected function setUp(): void {
     parent::setUp();
   }
 
@@ -21,7 +26,7 @@ class PasswordResetBlockTest extends FormblockTestBase {
   public function testPasswordResetForm() {
     $this->drupalGet('/admin/structure/block');
     $this->clickLink('Place block');
-    $this->assertSession()->linkByHrefExists('/admin/structure/block/add/formblock_user_password/classy', 0,
+    $this->assertSession()->linkByHrefExists('/admin/structure/block/add/formblock_user_password/olivero', 0,
       'Did not find the search block in block candidate list.');
 
     $block = $this->drupalPlaceBlock('formblock_user_password');

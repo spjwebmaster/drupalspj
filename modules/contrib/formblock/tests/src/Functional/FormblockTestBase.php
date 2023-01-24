@@ -14,7 +14,7 @@ abstract class FormblockTestBase extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['block', 'node', 'contact', 'user', 'formblock'];
+  protected static $modules = ['block', 'node', 'contact', 'user', 'formblock'];
 
   /**
    * A user with permission to administer blocks.
@@ -24,7 +24,7 @@ abstract class FormblockTestBase extends BrowserTestBase {
   public $adminUser;
 
 
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     // Log in as a user that can administer bocks.

@@ -11,7 +11,7 @@ use Drupal\Core\Cache\UncacheableDependencyTrait;
  *
  * @Block(
  *  id = "spj_award_winners_block",
- *  label = "SPJ Award Winners",
+ *  label = "Previous SPJ Award Winners",
  *  admin_label = @Translation("SPJ Award Winners"),
  * )
  */

@@ -1,0 +1,5 @@
+name: SPJ Datecheck
+description: Custom migration module to import data from various sources
+package: Migration
+type: module
+core_version_requirement: ^9
