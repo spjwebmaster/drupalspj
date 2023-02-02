@@ -7,9 +7,9 @@
 html.theme_default { 
     @import "themes/default";                                                                                             
 
-}  
+}
 
- 
+
 /* dark theme */ 
 html.theme_dark {     
     @import "themes/dark";                                                     
@@ -20,3 +20,6 @@ html.theme_dark {
 html.theme_light {   
     @import "themes/light";                               
 }
+
+
+

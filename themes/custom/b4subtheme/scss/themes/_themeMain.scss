@@ -12,6 +12,16 @@ body {
     }
 
 
+
+    .tabs-wrapper {
+        .nav-item {
+            &.active {
+                
+                    background-color: $sectionBG;
+                
+            }
+        }
+    }
     blockquote {
         margin: 1rem;
         border-left: 4px solid;
@@ -33,7 +43,8 @@ body {
         color: #fff;
 
         a {
-            color: $SPJgreen;
+            color:#caf627;
+            font-weight: bold;
         }
     }
 
@@ -44,6 +55,16 @@ body {
         &:hover {
             color: $linkHover;
         }
+    }
+
+    .card {
+        background-color:transparent;
+        border-color:$sectionBG;
+        .card-header, .card-footer {
+            background-color: $sectionBG;
+            border-color:$sectionBG;
+        }
+
     }
 
     .toolbar-tab {

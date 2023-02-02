@@ -80,9 +80,16 @@
 .view-id-related_content {
     .views-row {
         display: flex;
-
-        .views-field-nothing {
-            padding-left: 1em;
+        @include respond-below(md){
+            flex-wrap: wrap;
         }
+
+        @include respond-above(md){
+            .views-field-nothing {
+                padding-left: 1em;
+            }
+        }
+
+        
     }
 }

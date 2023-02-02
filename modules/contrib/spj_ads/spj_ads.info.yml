@@ -1,0 +1,5 @@
+name: SPJ Ads
+description: Showing SPJ ads in rotation by size/location
+package: Custom
+type: module
+core_version_requirement: ^9

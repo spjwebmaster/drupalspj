@@ -29,6 +29,7 @@ $slideShowMaxMobile: 210px;
 @import 'views/externalfeeds';    
 @import 'views/communities';
 @import 'views/awards'; 
+@import 'views/ethics'; 
 @import 'views/freelanceguide';      
 @import 'views/memberbenefit'; 
 @import 'views/landingpages';                                    
@@ -38,12 +39,13 @@ $slideShowMaxMobile: 210px;
 @import 'views/boardmeeting';                 
 @import 'views/documentation';  
 
+
 /* global */
 svg.svgSPJlogo {  
     margin: auto;
     max-width: 100px;  
 }
-   
+
 ol.breadcrumb {  
     background: transparent;
     padding: 0;
@@ -111,8 +113,6 @@ ol.breadcrumb {
 
 }
 
-
-
 .highlight_blue {  
     padding: 3em 1em;
     background: $SPJblue;
@@ -124,8 +124,6 @@ ol.breadcrumb {
         padding: 3em 11em;
     } 
 }
-
-
 
 .navbar-nav{
     .dropdown-menu {
@@ -142,7 +140,7 @@ ol.breadcrumb {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
 }
-navbar-n
+
 .layout--twocol-section {
  .layout__region {
     @include respond-above(md) {
@@ -152,7 +150,7 @@ navbar-n
      &.layout__region--second{
         padding-left: 1em;
 
-        
+
             .navbar-nav {
                 li {
                     a {
@@ -769,15 +767,12 @@ body {
             }
         }
 
-       
-
-        
-
-
+    
     } 
 
+
     .region-slideshow {   
-        margin-top: 124px;
+        margin-top: 140px;
         position: relative; 
        
         max-height: $slideShowMaxMobile;

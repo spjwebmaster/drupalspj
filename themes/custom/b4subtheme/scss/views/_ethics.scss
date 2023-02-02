@@ -1,0 +1,23 @@
+.code-of-ethics {
+    .card-body {
+        .btn {
+            margin-bottom: 5px;
+        }
+    }
+}
+.page-node-type-code-of-ethics-item {
+    .node__content {
+        li {
+            @include respond-below(md){
+                a {
+                    display: inline-block;
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        
+    }
+    
+}

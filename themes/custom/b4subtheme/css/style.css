@@ -23,6 +23,9 @@ body a, body a:link, body a:visited, body a:focus, body a:link.button-action {
 body a:hover {
   color: #336688;
 }
+body .tabs-wrapper .nav-item.active {
+  background-color: #eee;
+}
 body blockquote {
   margin: 1rem;
   border-left: 4px solid;
@@ -42,7 +45,8 @@ body .view-bluebox-by-page {
   color: #fff;
 }
 body .view-bluebox-by-page a {
-  color: #8bc63e;
+  color: #caf627;
+  font-weight: bold;
 }
 body a.wp-block-button__link {
   color: #004990;
@@ -50,6 +54,14 @@ body a.wp-block-button__link {
 }
 body a.wp-block-button__link:hover {
   color: #336688;
+}
+body .card {
+  background-color: transparent;
+  border-color: #eee;
+}
+body .card .card-header, body .card .card-footer {
+  background-color: #eee;
+  border-color: #eee;
 }
 body .toolbar-tab .toolbar-tray a, body .toolbar-tab .toolbar-tray a:link, body .toolbar-tab .toolbar-tray a:visited, body .toolbar-tab .toolbar-tray a:focus {
   color: #333;
@@ -11186,6 +11198,11 @@ body.path-frontpage .slideshow_wrapper .region-slideshow .swiper:not(.multi) .sw
   max-height: 650px;
   min-height: 500px;
 }
+@media (max-width: 991px) {
+  body.toolbar-vertical .region-slideshow {
+    margin-top: 103px;
+  }
+}
 @media (min-width: 992px) {
   body.toolbar-fixed .block.banner .view-slider .view-content {
     height: calc(100vh - 280px);
@@ -11466,8 +11483,15 @@ body .view-id-slider .views-slideshow-controls-bottom .views_slideshow_controls_
 .view-id-related_content .views-row {
   display: flex;
 }
-.view-id-related_content .views-row .views-field-nothing {
-  padding-left: 1em;
+@media (max-width: 991px) {
+  .view-id-related_content .views-row {
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 992px) {
+  .view-id-related_content .views-row .views-field-nothing {
+    padding-left: 1em;
+  }
 }
 
 .view-bluebox-by-page {
@@ -11999,6 +12023,19 @@ body:not(.testing-em-classplaceholdermoe-entry-em-webform) .webform-submission-m
   top: -999em;
 }
 
+.code-of-ethics .card-body .btn, .code-of-ethics .card-body a.button {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 991px) {
+  .page-node-type-code-of-ethics-item .node__content li a {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .page-node-type-freelance-guide .block-field-blocknodefreelance-guidebody {
   padding-right: 1em;
 }
@@ -12270,19 +12307,19 @@ ol.breadcrumb {
 }
 
 @media (min-width: 992px) {
-  navbar-n .layout--twocol-section .layout__region.layout__region--first {
+  .layout--twocol-section .layout__region.layout__region--first {
     padding-right: 1em;
   }
-  navbar-n .layout--twocol-section .layout__region.layout__region--second {
+  .layout--twocol-section .layout__region.layout__region--second {
     padding-left: 1em;
   }
-  navbar-n .layout--twocol-section .layout__region.layout__region--second .navbar-nav li a {
+  .layout--twocol-section .layout__region.layout__region--second .navbar-nav li a {
     white-space: break-spaces;
   }
-  navbar-n .layout--twocol-section .layout__region.layout__region--second .navigation .dropdown-menu.nope {
+  .layout--twocol-section .layout__region.layout__region--second .navigation .dropdown-menu.nope {
     display: none !important;
   }
-  navbar-n .layout--twocol-section .layout__region.layout__region--second .navigation .dropdown-toggle::after {
+  .layout--twocol-section .layout__region.layout__region--second .navigation .dropdown-toggle::after {
     content: none;
   }
 }
@@ -13041,7 +13078,7 @@ body header .region-nav-additional .nav-item a {
   font-weight: bold;
 }
 body .region-slideshow {
-  margin-top: 124px;
+  margin-top: 140px;
   position: relative;
   max-height: 210px;
   overflow: hidden;

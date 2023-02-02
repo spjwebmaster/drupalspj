@@ -23,6 +23,9 @@ html.theme_default body a, html.theme_default body a:link, html.theme_default bo
 html.theme_default body a:hover {
   color: #336688;
 }
+html.theme_default body .tabs-wrapper .nav-item.active {
+  background-color: #eee;
+}
 html.theme_default body blockquote {
   margin: 1rem;
   border-left: 4px solid;
@@ -42,7 +45,8 @@ html.theme_default body .view-bluebox-by-page {
   color: #fff;
 }
 html.theme_default body .view-bluebox-by-page a {
-  color: #8bc63e;
+  color: #caf627;
+  font-weight: bold;
 }
 html.theme_default body a.wp-block-button__link {
   color: #004990;
@@ -50,6 +54,14 @@ html.theme_default body a.wp-block-button__link {
 }
 html.theme_default body a.wp-block-button__link:hover {
   color: #336688;
+}
+html.theme_default body .card {
+  background-color: transparent;
+  border-color: #eee;
+}
+html.theme_default body .card .card-header, html.theme_default body .card .card-footer {
+  background-color: #eee;
+  border-color: #eee;
 }
 html.theme_default body .toolbar-tab .toolbar-tray a, html.theme_default body .toolbar-tab .toolbar-tray a:link, html.theme_default body .toolbar-tab .toolbar-tray a:visited, html.theme_default body .toolbar-tab .toolbar-tray a:focus {
   color: #333;
@@ -535,6 +547,9 @@ html.theme_dark body a, html.theme_dark body a:link, html.theme_dark body a:visi
 html.theme_dark body a:hover {
   color: #eee;
 }
+html.theme_dark body .tabs-wrapper .nav-item.active {
+  background-color: #444;
+}
 html.theme_dark body blockquote {
   margin: 1rem;
   border-left: 4px solid;
@@ -550,11 +565,12 @@ html.theme_dark body .cta {
   display: inline-block;
 }
 html.theme_dark body .view-bluebox-by-page {
-  background: #004990;
+  background: #242e52;
   color: #fff;
 }
 html.theme_dark body .view-bluebox-by-page a {
-  color: #8bc63e;
+  color: #caf627;
+  font-weight: bold;
 }
 html.theme_dark body a.wp-block-button__link {
   color: #ccc;
@@ -562,6 +578,14 @@ html.theme_dark body a.wp-block-button__link {
 }
 html.theme_dark body a.wp-block-button__link:hover {
   color: #eee;
+}
+html.theme_dark body .card {
+  background-color: transparent;
+  border-color: #444;
+}
+html.theme_dark body .card .card-header, html.theme_dark body .card .card-footer {
+  background-color: #444;
+  border-color: #444;
 }
 html.theme_dark body .toolbar-tab .toolbar-tray a, html.theme_dark body .toolbar-tab .toolbar-tray a:link, html.theme_dark body .toolbar-tab .toolbar-tray a:visited, html.theme_dark body .toolbar-tab .toolbar-tray a:focus {
   color: #333;
@@ -721,7 +745,7 @@ html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .eth
   background-color: rgba(255, 255, 255, 0.15);
 }
 html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_sidebar, html.theme_dark body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_sidebar {
-  border: 2px solid #004990;
+  border: 2px solid #242e52;
   border-radius: 10px;
   background-color: transparent !important;
 }
@@ -1050,6 +1074,9 @@ html.theme_light body a, html.theme_light body a:link, html.theme_light body a:v
 html.theme_light body a:hover {
   color: #336688;
 }
+html.theme_light body .tabs-wrapper .nav-item.active {
+  background-color: #eee;
+}
 html.theme_light body blockquote {
   margin: 1rem;
   border-left: 4px solid;
@@ -1069,7 +1096,8 @@ html.theme_light body .view-bluebox-by-page {
   color: #fff;
 }
 html.theme_light body .view-bluebox-by-page a {
-  color: #8bc63e;
+  color: #caf627;
+  font-weight: bold;
 }
 html.theme_light body a.wp-block-button__link {
   color: #004990;
@@ -1077,6 +1105,14 @@ html.theme_light body a.wp-block-button__link {
 }
 html.theme_light body a.wp-block-button__link:hover {
   color: #336688;
+}
+html.theme_light body .card {
+  background-color: transparent;
+  border-color: #eee;
+}
+html.theme_light body .card .card-header, html.theme_light body .card .card-footer {
+  background-color: #eee;
+  border-color: #eee;
 }
 html.theme_light body .toolbar-tab .toolbar-tray a, html.theme_light body .toolbar-tab .toolbar-tray a:link, html.theme_light body .toolbar-tab .toolbar-tray a:visited, html.theme_light body .toolbar-tab .toolbar-tray a:focus {
   color: #333;

@@ -103,8 +103,17 @@ body {
     }
 }
 
+
+&.toolbar-vertical {
+    .region-slideshow {
+        @include respond-below(md) {
+            margin-top: 103px;
+        }
+    }
+}
 /* banner */
 &.toolbar-fixed {
+   
     .block {
         &.banner {
 
