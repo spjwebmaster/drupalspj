@@ -37,10 +37,10 @@ class CalendarListBlock extends BlockBase  {
             $catString = \Drupal::request()->query->get('category');
         }
 
-        $calrss = "http://calendar.spjnetwork.org/feed.php?ex=";
+        $calrss = "https://calendar.spjnetwork.org/feed.php?ex=";
         $feed = simplexml_load_file($calrss);
 
-        $markup = "<div class='view spj_calendar_list'>";
+        $markup = "<div class='view spj_calendar_list item-list'><ul class='item-list'>";
         $max = 55;
         $count = 0;
         foreach ($feed->channel->item as $item) {
@@ -83,26 +83,29 @@ class CalendarListBlock extends BlockBase  {
 
                 if($processThisEntry==true){
 
-                $markup .= "<div class='views-row'><h3>" . $eventstarttimepretty . "</h3>";
-                $markup .= "<h2><a href='" . $link . "' target='_blank' >" .  $title . "</a></h2>";
-                $markup .= "<p>" . $eventstarttimepretty . " - " . $eventendtimepretty . "</p>";
+                $markup .= "<li class='item-list'><span>" . $eventstarttimepretty . "</span><br />";
+                $markup .= "<a href='" . $link . "' target='_blank' >" .  $title . "</a>";
+                //$markup .= "<p>" . $eventstarttimepretty . " - " . $eventendtimepretty . "</p>";
 
-                $catLink = trim(strtolower(str_replace(" ", "_", $category)));
-                $markup .= "<strong>Category:</strong><br /> <a class='badge bg-primary text-white' href='?category=" .$catLink . "'>" . $category . "</a> <br /> ";
-                $markup .= "<strong>Tags:</strong><br > "; 
+                //$catLink = trim(strtolower(str_replace(" ", "_", $category)));
+                //$markup .= "<strong>Category:</strong><br /> <a class='badge bg-primary text-white' href='?category=" .$catLink . "'>" . $category . "</a> <br /> ";
+                //$markup .= "<strong>Tags:</strong><br > "; 
+                /*
                 foreach($taglist as $taggy){
                     $url = str_replace(" ", "_", trim($taggy));
                     $url = strtolower($url);
                     $markup .= "<a href='?tag=" . $url. "' class='badge bg-success text-white mr-1'>" . $taggy . "</a>";
                 }
+                */
                 
-                $markup .= "<br /><strong>Link:</strong><br /><a href='" . $link . "' target='_blank' ><strong>Click here</strong></a><br /><strong>Description:</strong><br /><div class='calendar-description'>";
-                $markup .= $description . "</div></div>";
+                //$markup .= "<br /><strong>Link:</strong><br /><a href='" . $link . "' target='_blank' ><strong>Click here</strong></a><br /><strong>Description:</strong><br /><div class='calendar-description'>";
+                //$markup .= $description;
+                $markup .= "</li>";
                 }
             }
             $count++;
         }
-        $markup .= "</div>";
+        $markup .= "</ul><p><a href='/events'>Read More</a></p></div>";
 
 
         return [

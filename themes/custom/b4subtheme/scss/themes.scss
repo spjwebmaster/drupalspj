@@ -3,18 +3,19 @@
 
 
 
+
 /* default theme */
 html.theme_default { 
     @import "themes/default";                                                                                             
-
 }
 
 
 /* dark theme */ 
 html.theme_dark {     
-    @import "themes/dark";                                                     
+    @import "themes/dark";                                                           
 
 }
+
  
 /* light theme */
 html.theme_light {   

@@ -17,7 +17,7 @@ class CalendarBlock extends BlockBase  {
    
     public function build() {
 
-        $calrss = "http://calendar.spjnetwork.org/feed.php?ex=";
+        $calrss = "https://calendar.spjnetwork.org/feed.php?ex=";
         $feed = simplexml_load_file($calrss);
 
         $markup = "";

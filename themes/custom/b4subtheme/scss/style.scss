@@ -35,9 +35,11 @@ $slideShowMaxMobile: 210px;
 @import 'views/landingpages';                                    
 @import 'views/tools';    
 @import 'views/groups';       
-@import 'views/chapters';      
+@import 'views/chapters';    
+@import 'views/join';         
 @import 'views/boardmeeting';                 
-@import 'views/documentation';  
+@import 'views/documentation';   
+
 
 
 /* global */
@@ -78,6 +80,7 @@ ol.breadcrumb {
 }
 
 
+
 .dropdown-toggle {
     white-space: break-spaces;
     @include respond-above(md) {
@@ -88,6 +91,24 @@ ol.breadcrumb {
 
 
 .layout--twocol-section--75-25 {
+
+
+       
+    > .layout__region--first {
+        @include respond-below(md){
+            flex: 1 100%!important;
+            max-width: 100%;
+        }
+    }
+    > .layout__region--second {
+        @include respond-below(md){
+            flex: 1 100%!important;
+            max-width: 100%;
+        }
+    }
+            
+        
+    
 	.layout__region--first {
 		@include respond-above(md){
             padding-right: 2em; 
@@ -139,6 +160,22 @@ ol.breadcrumb {
 .interface-interface-skeleton__content {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
+}
+
+#spjcalendar {
+    .fc-header-toolbar {
+        .btn-group {
+            button {
+                svg {
+                    display: none;
+                    &:first-child {
+                        display: inline-block;
+                    }
+                }
+                
+            }
+        }
+    }
 }
 
 .layout--twocol-section {

@@ -25,6 +25,8 @@ function spjcalendar_theme() {
             $obj[$count]['eventstart'] = (string) $item->eventstart;
             $obj[$count]['eventend'] = (string) $item->eventend;
             $obj[$count]['link'] = (string) $item->link;
+            $obj[$count]['tags'] = (string) $item->tags;
+            $obj[$count]['category'] = (string) $item->category;
         }
         $count++;
     }

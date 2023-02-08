@@ -87,6 +87,7 @@
         "drupal/search_api_autocomplete": "^1.6",
         "drupal/search_autocomplete": "^2.0",
         "drupal/select_or_other": "4.0",
+        "drupal/shortcode": "2.0",
         "drupal/slick": "2.6",
         "drupal/slick_views": "2.6",
         "drupal/stage_file_proxy": "^1.2",

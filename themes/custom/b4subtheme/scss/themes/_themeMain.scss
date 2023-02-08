@@ -1,4 +1,5 @@
 @import '../mediaquery/mediafunctions';
+@import '../functions';
 @import 'partials/landing';
 body {
     background-color: $bodybg;
@@ -17,7 +18,7 @@ body {
         .nav-item {
             &.active {
                 
-                    background-color: $sectionBG;
+                    background-color: transparent;
                 
             }
         }
@@ -84,6 +85,42 @@ body {
 
     .flexSearch {
         background:  rgba(0,0,0,0.3);
+    }
+
+    #spjcalendar, #tabCalendar {
+        position: relative;
+        height: 100%;
+    }
+    #tabCalendar {
+
+        .badge {
+            &.category {
+                text-transform: capitalize;
+                font-size: 1em;
+                padding:7px;
+            }
+        }
+        
+    }
+    .calendarmodal {
+        box-shadow: 0 0 4px $bodytext;
+        padding: 1em;
+        position: absolute;
+        top: 70px;
+        left: 1em;
+        background: $bodybg;
+        z-index: 89;
+        overflow: auto;
+        max-height: calc(100% - 1em);
+        max-width: calc(100% - 2em);
+
+        .calendarmodal-header {
+            text-align: right;
+
+            h4 {
+                display: none;
+            }
+        }
     }
 
     #header {
@@ -248,6 +285,46 @@ body {
         }
     }
 
+    &.code-of-ethics {
+        .region-slideshow {
+            &:after {
+                @include bannerTriangle(1deg, 3deg, $bodybg);
+            }
+        }
+    }
+
+    &.join {
+
+        .region-slideshow {
+            &:after {
+                @include bannerTriangle(1deg, 3deg, $bodybg);
+            }
+        }
+       
+
+            .layout--twocol-section--50-50 {
+                background: $SPJblue;
+                color: $white;
+                a {
+                    color: $white;
+                }
+                &::before {
+                    @include bannerTriangle(-1deg, -3deg, $SPJblue);
+                    top: -19px;
+                    bottom: auto;
+
+                    @include respond-below(md){
+                        top:-35px;
+                        left: 0;
+                    }
+                }
+                &::after {
+                    @include bannerTriangle(1deg, 3deg, $SPJblue);
+                    
+                }
+            }
+    }
+
     &.page-node-type-freelance-guide, &.page-node-type-foi-subsite {
         .block-views-blockfreelance-guides-block-1 {
             background-color: #004990;
@@ -287,6 +364,18 @@ body {
         }
     }
     
+    
+    .block-spjcalendar {
+        .tabs-wrapper {
+            .nav-tabs {
+                .nav-link {
+                    &.active {
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
     
     #block-sdxdonate {
         background: $offsetBG;
@@ -390,7 +479,9 @@ body {
     }
 
     main {
+        /*
         box-shadow: inset 0 0 300px $mainShadow;
+        */
         &.landing {
             box-shadow: none;
         }

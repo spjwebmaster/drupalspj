@@ -24,7 +24,7 @@ class SpjCalendarController extends ControllerBase {
     }
     public function CalendarJson(){
 
-        $calrss = "http://calendar.spjnetwork.org/feed.php?ex=";
+        $calrss = "https://calendar.spjnetwork.org/feed.php?ex=";
     
         $calRes = readRSS($calrss, 5);
 

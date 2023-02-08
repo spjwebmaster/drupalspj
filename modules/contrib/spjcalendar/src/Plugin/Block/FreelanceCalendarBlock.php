@@ -17,7 +17,7 @@ class FreelanceCalendarBlock extends BlockBase  {
 
     public function build() {
 
-        $calrss = "http://feeds.feedburner.com/spjcalfreelance";
+        $calrss = "https://feeds.feedburner.com/spjcalfreelance";
     
         $data["data"] = readRSS($calrss, 5);
         //dpm($data);

@@ -24,7 +24,7 @@ html.theme_default body a:hover {
   color: #336688;
 }
 html.theme_default body .tabs-wrapper .nav-item.active {
-  background-color: #eee;
+  background-color: transparent;
 }
 html.theme_default body blockquote {
   margin: 1rem;
@@ -189,6 +189,9 @@ html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .
 html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media, html.theme_default body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media {
   background-color: #fff;
 }
+html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section, html.theme_default body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section {
+  background: #eee;
+}
 html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav, html.theme_default body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
   text-align: center;
   color: #fff;
@@ -203,7 +206,7 @@ html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
-  background-color: transparent;
+  background-color: transparent !important;
   margin: 2em auto;
 }
 html.theme_default body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item, html.theme_default body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item {
@@ -235,6 +238,33 @@ html.theme_default body.path--ethicsweek .bread, html.theme_default body.ethicse
 }
 html.theme_default body .flexSearch {
   background: rgba(0, 0, 0, 0.3);
+}
+html.theme_default body #spjcalendar, html.theme_default body #tabCalendar {
+  position: relative;
+  height: 100%;
+}
+html.theme_default body #tabCalendar .badge.category {
+  text-transform: capitalize;
+  font-size: 1em;
+  padding: 7px;
+}
+html.theme_default body .calendarmodal {
+  box-shadow: 0 0 4px #333;
+  padding: 1em;
+  position: absolute;
+  top: 70px;
+  left: 1em;
+  background: #fff;
+  z-index: 89;
+  overflow: auto;
+  max-height: calc(100% - 1em);
+  max-width: calc(100% - 2em);
+}
+html.theme_default body .calendarmodal .calendarmodal-header {
+  text-align: right;
+}
+html.theme_default body .calendarmodal .calendarmodal-header h4 {
+  display: none;
 }
 html.theme_default body #header {
   box-shadow: 0 0 5px -2px #000;
@@ -331,6 +361,97 @@ html.theme_default body #header .region-nav-additional .nav-item a {
 html.theme_default body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);
 }
+html.theme_default body.code-of-ethics .region-slideshow:after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_default body.code-of-ethics .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+html.theme_default body.join .region-slideshow:after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_default body.join .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+html.theme_default body.join .layout--twocol-section--50-50 {
+  background: #004990;
+  color: #fff;
+}
+html.theme_default body.join .layout--twocol-section--50-50 a {
+  color: #fff;
+}
+html.theme_default body.join .layout--twocol-section--50-50::before {
+  content: "";
+  background: #004990;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(-1deg);
+  top: -19px;
+  bottom: auto;
+}
+@media (max-width: 991px) {
+  html.theme_default body.join .layout--twocol-section--50-50::before {
+    transform: rotate(-3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+@media (max-width: 991px) {
+  html.theme_default body.join .layout--twocol-section--50-50::before {
+    top: -35px;
+    left: 0;
+  }
+}
+html.theme_default body.join .layout--twocol-section--50-50::after {
+  content: "";
+  background: #004990;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_default body.join .layout--twocol-section--50-50::after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
 html.theme_default body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, html.theme_default body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
   background-color: #004990;
   color: #fff;
@@ -358,6 +479,9 @@ html.theme_default body .google-marketing-training.row > div {
 html.theme_default body .google-marketing-training.row > div img {
   box-shadow: 0 0 19px -2px #333;
   border-radius: 5px;
+}
+html.theme_default body .block-spjcalendar .tabs-wrapper .nav-tabs .nav-link.active {
+  background: transparent;
 }
 html.theme_default body #block-sdxdonate {
   background: #ddd;
@@ -452,7 +576,9 @@ html.theme_default body .region-map .regionTextWrapper circle {
   display: none;
 }
 html.theme_default body main {
-  box-shadow: inset 0 0 300px #b7c7d2;
+  /*
+  box-shadow: inset 0 0 300px $mainShadow;
+  */
   /* main sidebar nav */
 }
 html.theme_default body main.landing {
@@ -548,7 +674,7 @@ html.theme_dark body a:hover {
   color: #eee;
 }
 html.theme_dark body .tabs-wrapper .nav-item.active {
-  background-color: #444;
+  background-color: transparent;
 }
 html.theme_dark body blockquote {
   margin: 1rem;
@@ -713,6 +839,9 @@ html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .eth
 html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media, html.theme_dark body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media {
   background-color: #fff;
 }
+html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section, html.theme_dark body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section {
+  background: #444;
+}
 html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav, html.theme_dark body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
   text-align: center;
   color: #fff;
@@ -727,7 +856,7 @@ html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .eth
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
-  background-color: transparent;
+  background-color: transparent !important;
   margin: 2em auto;
 }
 html.theme_dark body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item, html.theme_dark body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item {
@@ -759,6 +888,33 @@ html.theme_dark body.path--ethicsweek .bread, html.theme_dark body.ethicsethicsw
 }
 html.theme_dark body .flexSearch {
   background: rgba(0, 0, 0, 0.3);
+}
+html.theme_dark body #spjcalendar, html.theme_dark body #tabCalendar {
+  position: relative;
+  height: 100%;
+}
+html.theme_dark body #tabCalendar .badge.category {
+  text-transform: capitalize;
+  font-size: 1em;
+  padding: 7px;
+}
+html.theme_dark body .calendarmodal {
+  box-shadow: 0 0 4px #eee;
+  padding: 1em;
+  position: absolute;
+  top: 70px;
+  left: 1em;
+  background: #111;
+  z-index: 89;
+  overflow: auto;
+  max-height: calc(100% - 1em);
+  max-width: calc(100% - 2em);
+}
+html.theme_dark body .calendarmodal .calendarmodal-header {
+  text-align: right;
+}
+html.theme_dark body .calendarmodal .calendarmodal-header h4 {
+  display: none;
 }
 html.theme_dark body #header {
   box-shadow: 0 0 5px -2px #000;
@@ -855,6 +1011,97 @@ html.theme_dark body #header .region-nav-additional .nav-item a {
 html.theme_dark body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);
 }
+html.theme_dark body.code-of-ethics .region-slideshow:after {
+  content: "";
+  background: #111;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_dark body.code-of-ethics .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+html.theme_dark body.join .region-slideshow:after {
+  content: "";
+  background: #111;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_dark body.join .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+html.theme_dark body.join .layout--twocol-section--50-50 {
+  background: #242e52;
+  color: #fff;
+}
+html.theme_dark body.join .layout--twocol-section--50-50 a {
+  color: #fff;
+}
+html.theme_dark body.join .layout--twocol-section--50-50::before {
+  content: "";
+  background: #242e52;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(-1deg);
+  top: -19px;
+  bottom: auto;
+}
+@media (max-width: 991px) {
+  html.theme_dark body.join .layout--twocol-section--50-50::before {
+    transform: rotate(-3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+@media (max-width: 991px) {
+  html.theme_dark body.join .layout--twocol-section--50-50::before {
+    top: -35px;
+    left: 0;
+  }
+}
+html.theme_dark body.join .layout--twocol-section--50-50::after {
+  content: "";
+  background: #242e52;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_dark body.join .layout--twocol-section--50-50::after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
 html.theme_dark body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, html.theme_dark body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
   background-color: #004990;
   color: #fff;
@@ -882,6 +1129,9 @@ html.theme_dark body .google-marketing-training.row > div {
 html.theme_dark body .google-marketing-training.row > div img {
   box-shadow: 0 0 19px -2px #333;
   border-radius: 5px;
+}
+html.theme_dark body .block-spjcalendar .tabs-wrapper .nav-tabs .nav-link.active {
+  background: transparent;
 }
 html.theme_dark body #block-sdxdonate {
   background: #444;
@@ -976,7 +1226,9 @@ html.theme_dark body .region-map .regionTextWrapper circle {
   display: none;
 }
 html.theme_dark body main {
-  box-shadow: inset 0 0 300px #000;
+  /*
+  box-shadow: inset 0 0 300px $mainShadow;
+  */
   /* main sidebar nav */
 }
 html.theme_dark body main.landing {
@@ -1075,7 +1327,7 @@ html.theme_light body a:hover {
   color: #336688;
 }
 html.theme_light body .tabs-wrapper .nav-item.active {
-  background-color: #eee;
+  background-color: transparent;
 }
 html.theme_light body blockquote {
   margin: 1rem;
@@ -1240,6 +1492,9 @@ html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .et
 html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media, html.theme_light body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media {
   background-color: #fff;
 }
+html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section, html.theme_light body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section {
+  background: #eee;
+}
 html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav, html.theme_light body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
   text-align: center;
   color: #fff;
@@ -1254,7 +1509,7 @@ html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .et
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
-  background-color: transparent;
+  background-color: transparent !important;
   margin: 2em auto;
 }
 html.theme_light body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item, html.theme_light body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item {
@@ -1286,6 +1541,33 @@ html.theme_light body.path--ethicsweek .bread, html.theme_light body.ethicsethic
 }
 html.theme_light body .flexSearch {
   background: rgba(0, 0, 0, 0.3);
+}
+html.theme_light body #spjcalendar, html.theme_light body #tabCalendar {
+  position: relative;
+  height: 100%;
+}
+html.theme_light body #tabCalendar .badge.category {
+  text-transform: capitalize;
+  font-size: 1em;
+  padding: 7px;
+}
+html.theme_light body .calendarmodal {
+  box-shadow: 0 0 4px #333;
+  padding: 1em;
+  position: absolute;
+  top: 70px;
+  left: 1em;
+  background: #fff;
+  z-index: 89;
+  overflow: auto;
+  max-height: calc(100% - 1em);
+  max-width: calc(100% - 2em);
+}
+html.theme_light body .calendarmodal .calendarmodal-header {
+  text-align: right;
+}
+html.theme_light body .calendarmodal .calendarmodal-header h4 {
+  display: none;
 }
 html.theme_light body #header {
   box-shadow: 0 0 5px -2px #333;
@@ -1382,6 +1664,97 @@ html.theme_light body #header .region-nav-additional .nav-item a {
 html.theme_light body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);
 }
+html.theme_light body.code-of-ethics .region-slideshow:after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_light body.code-of-ethics .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+html.theme_light body.join .region-slideshow:after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_light body.join .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+html.theme_light body.join .layout--twocol-section--50-50 {
+  background: #004990;
+  color: #fff;
+}
+html.theme_light body.join .layout--twocol-section--50-50 a {
+  color: #fff;
+}
+html.theme_light body.join .layout--twocol-section--50-50::before {
+  content: "";
+  background: #004990;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(-1deg);
+  top: -19px;
+  bottom: auto;
+}
+@media (max-width: 991px) {
+  html.theme_light body.join .layout--twocol-section--50-50::before {
+    transform: rotate(-3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+@media (max-width: 991px) {
+  html.theme_light body.join .layout--twocol-section--50-50::before {
+    top: -35px;
+    left: 0;
+  }
+}
+html.theme_light body.join .layout--twocol-section--50-50::after {
+  content: "";
+  background: #004990;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  html.theme_light body.join .layout--twocol-section--50-50::after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
 html.theme_light body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, html.theme_light body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
   background-color: #004990;
   color: #fff;
@@ -1409,6 +1782,9 @@ html.theme_light body .google-marketing-training.row > div {
 html.theme_light body .google-marketing-training.row > div img {
   box-shadow: 0 0 19px -2px #333;
   border-radius: 5px;
+}
+html.theme_light body .block-spjcalendar .tabs-wrapper .nav-tabs .nav-link.active {
+  background: transparent;
 }
 html.theme_light body #block-sdxdonate {
   background: #eee;
@@ -1503,7 +1879,9 @@ html.theme_light body .region-map .regionTextWrapper circle {
   display: none;
 }
 html.theme_light body main {
-  box-shadow: inset 0 0 300px #fff;
+  /*
+  box-shadow: inset 0 0 300px $mainShadow;
+  */
   /* main sidebar nav */
 }
 html.theme_light body main.landing {

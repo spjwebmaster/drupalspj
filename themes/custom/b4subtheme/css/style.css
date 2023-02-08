@@ -24,7 +24,7 @@ body a:hover {
   color: #336688;
 }
 body .tabs-wrapper .nav-item.active {
-  background-color: #eee;
+  background-color: transparent;
 }
 body blockquote {
   margin: 1rem;
@@ -189,6 +189,9 @@ body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcany
 body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_whatcanyoudo .wp-block-media-text__media {
   background-color: #fff;
 }
+body.path--ethicsweek .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .wp-block-cloudblocks-g-section {
+  background: #eee;
+}
 body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav {
   text-align: center;
   color: #fff;
@@ -203,7 +206,7 @@ body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .nav
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
-  background-color: transparent;
+  background-color: transparent !important;
   margin: 2em auto;
 }
 body.path--ethicsweek .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody .ethicsweek_nav .navbar-nav li.nav-item {
@@ -235,6 +238,33 @@ body.path--ethicsweek .bread, body.ethicsethicsweekorder .bread {
 }
 body .flexSearch {
   background: rgba(0, 0, 0, 0.3);
+}
+body #spjcalendar, body #tabCalendar {
+  position: relative;
+  height: 100%;
+}
+body #tabCalendar .badge.category {
+  text-transform: capitalize;
+  font-size: 1em;
+  padding: 7px;
+}
+body .calendarmodal {
+  box-shadow: 0 0 4px #333;
+  padding: 1em;
+  position: absolute;
+  top: 70px;
+  left: 1em;
+  background: #fff;
+  z-index: 89;
+  overflow: auto;
+  max-height: calc(100% - 1em);
+  max-width: calc(100% - 2em);
+}
+body .calendarmodal .calendarmodal-header {
+  text-align: right;
+}
+body .calendarmodal .calendarmodal-header h4 {
+  display: none;
 }
 body #header {
   box-shadow: 0 0 5px -2px #000;
@@ -331,6 +361,97 @@ body #header .region-nav-additional .nav-item a {
 body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);
 }
+body.code-of-ethics .region-slideshow:after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  body.code-of-ethics .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+body.join .region-slideshow:after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  body.join .region-slideshow:after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+body.join .layout--twocol-section--50-50 {
+  background: #004990;
+  color: #fff;
+}
+body.join .layout--twocol-section--50-50 a {
+  color: #fff;
+}
+body.join .layout--twocol-section--50-50::before {
+  content: "";
+  background: #004990;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(-1deg);
+  top: -19px;
+  bottom: auto;
+}
+@media (max-width: 991px) {
+  body.join .layout--twocol-section--50-50::before {
+    transform: rotate(-3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
+@media (max-width: 991px) {
+  body.join .layout--twocol-section--50-50::before {
+    top: -35px;
+    left: 0;
+  }
+}
+body.join .layout--twocol-section--50-50::after {
+  content: "";
+  background: #004990;
+  display: block;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  bottom: -19px;
+  width: 100%;
+  transform: rotate(1deg);
+}
+@media (max-width: 991px) {
+  body.join .layout--twocol-section--50-50::after {
+    transform: rotate(3deg);
+    height: 60px;
+    bottom: -30px;
+    left: 0px;
+  }
+}
 body.page-node-type-freelance-guide .block-views-blockfreelance-guides-block-1, body.page-node-type-foi-subsite .block-views-blockfreelance-guides-block-1 {
   background-color: #004990;
   color: #fff;
@@ -358,6 +479,9 @@ body .google-marketing-training.row > div {
 body .google-marketing-training.row > div img {
   box-shadow: 0 0 19px -2px #333;
   border-radius: 5px;
+}
+body .block-spjcalendar .tabs-wrapper .nav-tabs .nav-link.active {
+  background: transparent;
 }
 body #block-sdxdonate {
   background: #ddd;
@@ -452,7 +576,9 @@ body .region-map .regionTextWrapper circle {
   display: none;
 }
 body main {
-  box-shadow: inset 0 0 300px #b7c7d2;
+  /*
+  box-shadow: inset 0 0 300px $mainShadow;
+  */
   /* main sidebar nav */
 }
 body main.landing {
@@ -12211,6 +12337,27 @@ body:not(.testing-em-classplaceholdermoe-entry-em-webform) .webform-submission-m
   font-size: 3em;
 }
 
+.join .layout--twocol-section--50-50 {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 3em;
+  margin-bottom: 5em;
+  max-width: 100vw;
+  width: calc(100vw - 10px);
+  padding: 2em 1em;
+}
+@media (min-width: 992px) {
+  .join .layout--twocol-section--50-50 {
+    padding: 4em 5em !important;
+  }
+}
+.join .layout--twocol-section--50-50 > * {
+  z-index: 5;
+}
+
 .board-meeting-list .views-row .views-field-field-replay-video iframe {
   max-width: 500px;
   height: 300px;
@@ -12265,6 +12412,18 @@ ol.breadcrumb {
   }
 }
 
+@media (max-width: 991px) {
+  .layout--twocol-section--75-25 > .layout__region--first {
+    flex: 1 100% !important;
+    max-width: 100%;
+  }
+}
+@media (max-width: 991px) {
+  .layout--twocol-section--75-25 > .layout__region--second {
+    flex: 1 100% !important;
+    max-width: 100%;
+  }
+}
 @media (min-width: 992px) {
   .layout--twocol-section--75-25 .layout__region--first {
     padding-right: 2em;
@@ -12304,6 +12463,13 @@ ol.breadcrumb {
 .interface-interface-skeleton__content {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
+}
+
+#spjcalendar .fc-header-toolbar .btn-group button svg {
+  display: none;
+}
+#spjcalendar .fc-header-toolbar .btn-group button svg:first-child {
+  display: inline-block;
 }
 
 @media (min-width: 992px) {
@@ -12561,6 +12727,10 @@ body.path-frontpage .region-slideshow .swiper-content .btn-info {
 }
 body.path-frontpage .region-slideshow .banner_wrapper_padding_bottom {
   padding-bottom: 3em;
+}
+body.path-frontpage #block-spjcalendarblock {
+  max-width: 1000px;
+  margin: auto;
 }
 body.path-frontpage #block-home-random-banner .views-field-field-slider-image img {
   width: 100%;

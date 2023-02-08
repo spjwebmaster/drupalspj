@@ -37,7 +37,7 @@ class CalendarBlock4 extends BlockBase  {
     }
     public function build() {
 
-        $calrss = "http://feeds.feedburner.com/spjcalendarawards";
+        $calrss = "https://feeds.feedburner.com/spjcalendarawards";
     
         $calRes = readRSS($calrss, 15);
         $markup = "<div class='bluebox'><div class='item-list'><ul>";
