@@ -5,3 +5,6 @@ fullcal:
   js:
       /libraries/fullcalendar/lib/main.js: {}
       js/spjfullcalendar.js: {}
+listCal:
+  js:
+    js/spjcalendarlistblock.js: {}
