@@ -273,6 +273,8 @@ body {
        
     }
 
+
+
     &.day-of-giving {
         .dayofgiving-header {
             .wp-block-image {
@@ -301,6 +303,36 @@ body {
                 }
             }
 
+        }
+    }
+    
+    &.home {
+        .block-spjslider {
+            .image-id-763 {
+                background-position: center bottom;
+                display: flex;
+                align-items: center;
+                >img {
+                    display: none;
+                }
+
+                .swiper-content {
+                    position: static;
+                    text-align: center;
+                }
+                .dog-banner {
+                    width: fit-content;
+                    padding: 1em;
+                    border-radius: 3em;
+                    background-color: #fff;
+                    margin: auto;
+                    
+                    a {
+                        display: block;
+
+                    };
+                }
+            }
         }
     }
 

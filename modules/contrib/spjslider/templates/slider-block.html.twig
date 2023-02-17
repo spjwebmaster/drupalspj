@@ -38,7 +38,7 @@
       
 
           {% for val in data %}
-            <div class='swiper-slide' style="background-image: url({{val.image}})">
+            <div class='swiper-slide page-path-{{val.field_page_path}} image-id-{{val.id}}'  style="background-image: url({{val.image}})">
 
               <img src="{{val.image}}" style="width: 100%" title="" class="swiperImage" />
               <div class="swiper-content banner-content">

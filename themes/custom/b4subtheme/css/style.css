@@ -379,6 +379,28 @@ body.day-of-giving .spjdogleaderboard {
 body.day-of-giving .spjdogleaderboard .table td {
   padding: 0.25em;
 }
+body.home .block-spjslider .image-id-763 {
+  background-position: center bottom;
+  display: flex;
+  align-items: center;
+}
+body.home .block-spjslider .image-id-763 > img {
+  display: none;
+}
+body.home .block-spjslider .image-id-763 .swiper-content {
+  position: static;
+  text-align: center;
+}
+body.home .block-spjslider .image-id-763 .dog-banner {
+  width: fit-content;
+  padding: 1em;
+  border-radius: 3em;
+  background-color: #fff;
+  margin: auto;
+}
+body.home .block-spjslider .image-id-763 .dog-banner a {
+  display: block;
+}
 body.foisunshinesunshine-week .block-spj-slider-block .banner, body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner, body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner, body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner, body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner, body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner, body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner {
   background-size: 800px;
   background-position: center center;
