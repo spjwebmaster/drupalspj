@@ -1,0 +1,5 @@
+name: SPJ DOG
+description: Showing SPJ Day of Giving Leaderboard
+package: Custom
+type: module
+core_version_requirement: ^9

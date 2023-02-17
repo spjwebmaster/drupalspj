@@ -40,17 +40,60 @@
 
 .page-node-type-convention-page, .path-convention {
 
-    h2 {
-        color: #8bb0d2;
-        font-weight: bold;
-        font-family: 'Libre Franklin', sans-serif;
-        font-size: 4em;
+    .content-content {
+        h2 {
+            color: #8bb0d2;
+            font-weight: bold;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 4em;
+        }
+    }
+   
+
+    &.toolbar-horizontal {
+        .region-breadcrumb {
+            .navigation {
+                top: 32em;
+            }
+        }
+    }
+    .region-breadcrumb {
+        .block-system-breadcrumb-block {
+            display: none;
+        }
+        .navigation  {
+            position: absolute;
+            
+            top: 28em;
+            background: #336688;
+            color: #fff;
+            padding: 1em;
+            border-radius: 3em;
+            width: 100%;
+            width: calc(100% - 16em);
+            left: 8em;
+            display: flex;
+
+            .navbar-nav {
+                display: flex;
+                margin: auto;
+
+                li {
+                    a {
+                        color: $white;
+                        display: block;
+                        
+                        &.active {
+                            border-bottom: 3px solid $white;
+                        }
+                    }
+                }
+            }
+        }
+        margin-top: 3em;
     }
     .banner {
-        background-size: contain;
-        background-position: left;
-        background-color: #26486c;
-        text-align: center;
+        
 
         @include respond-below(md){
             background-position: center;

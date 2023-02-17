@@ -358,6 +358,51 @@ html.theme_default body #header .region-nav-additional .nav-item:nth-child(1) a 
 html.theme_default body #header .region-nav-additional .nav-item a {
   color: #fff !important;
 }
+html.theme_default body.day-of-giving .dayofgiving-header .wp-block-image {
+  width: fit-content;
+  margin: auto;
+  padding: 1em;
+  border-radius: 3em;
+  box-shadow: 0 0 11px 4px #333;
+}
+html.theme_default body.day-of-giving h2 {
+  border-bottom: 5px solid #74b7f2;
+  padding: 0.5em 0;
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+html.theme_default body.day-of-giving .spjdogleaderboard {
+  background: burlywood;
+  padding: 1em;
+  font-size: 0.75em;
+}
+html.theme_default body.day-of-giving .spjdogleaderboard .table td {
+  padding: 0.25em;
+}
+html.theme_default body.foisunshinesunshine-week .block-spj-slider-block .banner, html.theme_default body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner, html.theme_default body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner, html.theme_default body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner, html.theme_default body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner, html.theme_default body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner, html.theme_default body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner {
+  background-size: 800px;
+  background-position: center center;
+  display: flex;
+  align-items: end;
+}
+html.theme_default body.foisunshinesunshine-week .block-spj-slider-block .banner .banner-content, html.theme_default body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner .banner-content, html.theme_default body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner .banner-content, html.theme_default body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner .banner-content, html.theme_default body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner .banner-content, html.theme_default body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner .banner-content, html.theme_default body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner .banner-content {
+  flex: 1 100%;
+  text-align: center;
+}
+html.theme_default body.foisunshinesunshine-week .block-spj-slider-block .banner .banner-content h3 strong, html.theme_default body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner .banner-content h3 strong, html.theme_default body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner .banner-content h3 strong, html.theme_default body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner .banner-content h3 strong, html.theme_default body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner .banner-content h3 strong, html.theme_default body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner .banner-content h3 strong, html.theme_default body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner .banner-content h3 strong {
+  color: #C68A2A;
+}
+html.theme_default body .banner.page-path-convention {
+  display: flex;
+}
+html.theme_default body .banner.page-path-convention .banner-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+html.theme_default body .banner.page-path-convention .banner-content > * {
+  flex: 1 auto;
+}
 html.theme_default body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -1007,6 +1052,51 @@ html.theme_dark body #header .region-nav-additional .nav-item:nth-child(1) a {
 }
 html.theme_dark body #header .region-nav-additional .nav-item a {
   color: #fff !important;
+}
+html.theme_dark body.day-of-giving .dayofgiving-header .wp-block-image {
+  width: fit-content;
+  margin: auto;
+  padding: 1em;
+  border-radius: 3em;
+  box-shadow: 0 0 11px 4px #333;
+}
+html.theme_dark body.day-of-giving h2 {
+  border-bottom: 5px solid #74b7f2;
+  padding: 0.5em 0;
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+html.theme_dark body.day-of-giving .spjdogleaderboard {
+  background: burlywood;
+  padding: 1em;
+  font-size: 0.75em;
+}
+html.theme_dark body.day-of-giving .spjdogleaderboard .table td {
+  padding: 0.25em;
+}
+html.theme_dark body.foisunshinesunshine-week .block-spj-slider-block .banner, html.theme_dark body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner, html.theme_dark body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner, html.theme_dark body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner, html.theme_dark body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner, html.theme_dark body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner, html.theme_dark body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner {
+  background-size: 800px;
+  background-position: center center;
+  display: flex;
+  align-items: end;
+}
+html.theme_dark body.foisunshinesunshine-week .block-spj-slider-block .banner .banner-content, html.theme_dark body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner .banner-content, html.theme_dark body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner .banner-content, html.theme_dark body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner .banner-content, html.theme_dark body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner .banner-content, html.theme_dark body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner .banner-content, html.theme_dark body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner .banner-content {
+  flex: 1 100%;
+  text-align: center;
+}
+html.theme_dark body.foisunshinesunshine-week .block-spj-slider-block .banner .banner-content h3 strong, html.theme_dark body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner .banner-content h3 strong, html.theme_dark body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner .banner-content h3 strong, html.theme_dark body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner .banner-content h3 strong, html.theme_dark body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner .banner-content h3 strong, html.theme_dark body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner .banner-content h3 strong, html.theme_dark body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner .banner-content h3 strong {
+  color: #C68A2A;
+}
+html.theme_dark body .banner.page-path-convention {
+  display: flex;
+}
+html.theme_dark body .banner.page-path-convention .banner-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+html.theme_dark body .banner.page-path-convention .banner-content > * {
+  flex: 1 auto;
 }
 html.theme_dark body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);
@@ -1660,6 +1750,51 @@ html.theme_light body #header .region-nav-additional .nav-item:nth-child(1) a {
 }
 html.theme_light body #header .region-nav-additional .nav-item a {
   color: #fff !important;
+}
+html.theme_light body.day-of-giving .dayofgiving-header .wp-block-image {
+  width: fit-content;
+  margin: auto;
+  padding: 1em;
+  border-radius: 3em;
+  box-shadow: 0 0 11px 4px #333;
+}
+html.theme_light body.day-of-giving h2 {
+  border-bottom: 5px solid #74b7f2;
+  padding: 0.5em 0;
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+html.theme_light body.day-of-giving .spjdogleaderboard {
+  background: burlywood;
+  padding: 1em;
+  font-size: 0.75em;
+}
+html.theme_light body.day-of-giving .spjdogleaderboard .table td {
+  padding: 0.25em;
+}
+html.theme_light body.foisunshinesunshine-week .block-spj-slider-block .banner, html.theme_light body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner, html.theme_light body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner, html.theme_light body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner, html.theme_light body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner, html.theme_light body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner, html.theme_light body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner {
+  background-size: 800px;
+  background-position: center center;
+  display: flex;
+  align-items: end;
+}
+html.theme_light body.foisunshinesunshine-week .block-spj-slider-block .banner .banner-content, html.theme_light body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner .banner-content, html.theme_light body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner .banner-content, html.theme_light body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner .banner-content, html.theme_light body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner .banner-content, html.theme_light body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner .banner-content, html.theme_light body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner .banner-content {
+  flex: 1 100%;
+  text-align: center;
+}
+html.theme_light body.foisunshinesunshine-week .block-spj-slider-block .banner .banner-content h3 strong, html.theme_light body.foisunshinesunshine-weekfoi-resources .block-spj-slider-block .banner .banner-content h3 strong, html.theme_light body.foisunshinesunshine-weekcampus-resource .block-spj-slider-block .banner .banner-content h3 strong, html.theme_light body.foisunshinesunshine-weekchapter-program-ideas .block-spj-slider-block .banner .banner-content h3 strong, html.theme_light body.foisunshinesunshine-weeknewsroom-activities .block-spj-slider-block .banner .banner-content h3 strong, html.theme_light body.foisunshinesunshine-weekcurriculum .block-spj-slider-block .banner .banner-content h3 strong, html.theme_light body.foisunshinesunshine-weekfoi-writing .block-spj-slider-block .banner .banner-content h3 strong {
+  color: #C68A2A;
+}
+html.theme_light body .banner.page-path-convention {
+  display: flex;
+}
+html.theme_light body .banner.page-path-convention .banner-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+html.theme_light body .banner.page-path-convention .banner-content > * {
+  flex: 1 auto;
 }
 html.theme_light body .banner .view-slider .view-content .views-field-title {
   background-color: rgba(255, 255, 255, 0.3);

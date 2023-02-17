@@ -106,14 +106,12 @@ ol.breadcrumb {
             max-width: 100%;
         }
     }
-            
+      
         
-    
 	.layout__region--first {
 		@include respond-above(md){
             padding-right: 2em; 
-        }
-			
+        }	
 		
 	}
 }
@@ -133,6 +131,7 @@ ol.breadcrumb {
     }
 
 }
+
 
 .highlight_blue {  
     padding: 3em 1em;

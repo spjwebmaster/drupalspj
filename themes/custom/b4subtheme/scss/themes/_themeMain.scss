@@ -273,7 +273,79 @@ body {
        
     }
 
+    &.day-of-giving {
+        .dayofgiving-header {
+            .wp-block-image {
+                width: fit-content;
+                margin: auto;
+                padding: 1em;
+                border-radius: 3em;
+                box-shadow: 0 0 11px 4px #333;
+            }
+
+        }
+        h2 {
+            border-bottom: 5px solid rgb(116, 183, 242);
+            padding: 0.5em 0;
+            font-size: 2em;
+            margin-bottom: 2em;
+        }
+        .spjdogleaderboard {
+            background: burlywood;
+            padding: 1em;
+            font-size: 0.75em;
+
+            .table {
+                td {
+                    padding: 0.25em;
+                }
+            }
+
+        }
+    }
+
+    &.foisunshinesunshine-week, 
+    &.foisunshinesunshine-weekfoi-resources,
+    &.foisunshinesunshine-weekcampus-resource,
+    &.foisunshinesunshine-weekchapter-program-ideas,
+    &.foisunshinesunshine-weeknewsroom-activities,
+    &.foisunshinesunshine-weekcurriculum,
+    &.foisunshinesunshine-weekfoi-writing {
+        .block-spj-slider-block {
+            .banner {
+                background-size: 800px;
+                background-position: center center;
+                display: flex;
+                align-items: end;
+
+                .banner-content {
+                    flex: 1 100%;
+                    text-align: center;
+
+                    h3 {
+                        strong {
+                            color:#C68A2A; 
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .banner {
+
+        &.page-path-convention {
+            display: flex;
+            .banner-content {
+                display: flex;
+                align-items: center;
+                width: 100%;
+
+                >* {
+                    flex: 1 auto;
+                }
+            }
+        }
 
         .view-slider {
 

@@ -32,7 +32,7 @@
 
 
 {% if data|length >  1 %}
-  <div class="block block-spjslider swiper">
+  <div class="block block-spjslider swiper page-path-{{val.field_page_path}}">
       <div class="swiper-wrapper">
 
       
@@ -59,7 +59,7 @@
  
 
     {% for val in data %}
-     <div class="banner" style="background-image:url({{val.image}})">
+     <div class="banner page-path-{{val.field_page_path}}" style="background-image:url({{val.image}})">
       
       <div class="banner-content">
         {% autoescape %}
