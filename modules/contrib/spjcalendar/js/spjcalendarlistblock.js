@@ -1,5 +1,6 @@
 let calendarlist = {
     data: [],
+    max: 6,
     getData: function(){
         let url = "https://calendar.spjnetwork.org/feed.php?ex=";
         jQuery.ajax({
@@ -7,6 +8,8 @@ let calendarlist = {
             success: function(res){
     
     
+              let count = 0;
+
               res.querySelectorAll("item").forEach(function(item){
                   let temp = {};
                   
@@ -36,7 +39,7 @@ let calendarlist = {
                   if (cat=="general_journalism") {thisColor="#C9665A";}
     
     
-                  if(addThisEntry==true){
+                  if(addThisEntry==true && count< calendarlist.max){
     
                     temp["id"] = item.querySelector("GUID").innerHTML,
                     temp["title"] = item.querySelector("title").innerHTML.replaceAll("#039;", "'").replaceAll("&amp;", ""),
@@ -50,6 +53,7 @@ let calendarlist = {
                         "category": cat,
                     }
                     calendarlist.data.push(temp);
+                    count++;
                   }
               });
 
@@ -61,14 +65,24 @@ let calendarlist = {
       init: function(){
         calendarlist.getData();
       },
+      buildReadMore: function(){
+        let listNodeParent = document.querySelector(".block-spjcalendar .view");
+        let linky = document.createElement("a");
+        linky.innerHTML = "Read More";
+        linky.setAttribute("href", "/events")
+        listNodeParent.append(linky)
+
+      },
       buildList: function(){
-        console.log("building ",calendarlist.data);
+
         let listNode = document.querySelector(".block-spjcalendar .view ul");
 
         calendarlist.data.forEach(function(row){
             let ret = calendarlist.buildListEntry(row);
             listNode.append(ret)
-          })
+          });
+
+          calendarlist.buildReadMore()
       },
       buildListEntry: function(row){
 
