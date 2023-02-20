@@ -114,6 +114,7 @@
         "drupal/webform_shs": "^1.0@alpha",
         "drupal/webform_views": "5.0",
         "drupal/xmlsitemap": "^1.2",
+        "drupal/yoast_seo": "1.8",
         "drush/drush": "^11.0",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
