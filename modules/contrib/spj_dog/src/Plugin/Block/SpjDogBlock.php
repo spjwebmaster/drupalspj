@@ -15,8 +15,49 @@ use Drupal\Core\Block\BlockBase;
 class SpjDogBlock extends BlockBase  {
     function build(){
 
+        $markup = '
+        <div id="dogLeaderboardWrapper">
+            
+            
+            <div class="searchWrapper">
+                <input class="search" placeholder="Search" />
+                <button class="searchClear">X</button>
+            </div>
+            
+            
+            <table class="table" id="myTable">
+                <thead>
+                  <tr>
+                  <th class="col">
+                    <button class="sort" data-sort="name">
+                        Name
+                      </button>
+        
+                  </th>
+                  <th class="col">
+                    <button class="sort" data-sort="donation">
+                        Donation
+                      </button>
+                  </th>
+                  <th class="col">
+                    <button class="sort" data-sort="code">
+                        Code
+                      </button>
+        
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardDOG" class="list">
+                
+        
+                </tbody>
+              </table>
+          
+          </div>';
+
+
         return [
-            '#markup' => '<div class="spjdog"></div>',
+            '#markup' => $markup,
             '#attached' => [
                 'library' => [
                   'spj_dog/leaderboard',
