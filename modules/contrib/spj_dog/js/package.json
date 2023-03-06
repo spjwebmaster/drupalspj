@@ -1,0 +1,18 @@
+{
+    "name": "listjs-demo",
+    "version": "1.0.0",
+    "description": "testing",
+    "main": "index.html",
+    "scripts": {
+      "start": "parcel index.html --open",
+      "build": "parcel build index.html"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/core": "^7.14.3",
+      "list.js": "^2.3.1",
+      "parcel-bundler": "^1.12.5"
+    }
+  }
+  
