@@ -57,7 +57,7 @@ class SpjDogBlock extends BlockBase  {
 
 
         return [
-            '#markup' => $markup,
+            '#markup' => '<div class="spjdogplaceholder"></div>',
             '#attached' => [
                 'library' => [
                   'spj_dog/leaderboard',

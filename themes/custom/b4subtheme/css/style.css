@@ -210,7 +210,7 @@ body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.desc::a
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.asc::after {
@@ -222,7 +222,7 @@ body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.asc::af
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
   transform: rotate(180deg);
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 body.day-of-giving #dogLeaderboardWrapper .table tbody a {
@@ -12580,6 +12580,11 @@ ol.breadcrumb {
   .dropdown-toggle {
     white-space: nowrap;
   }
+}
+
+.field--name-field-yoast-seo {
+  position: absolute;
+  top: -999em;
 }
 
 @media (max-width: 991px) {

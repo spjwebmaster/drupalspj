@@ -210,7 +210,7 @@ html.theme_default body.day-of-giving #dogLeaderboardWrapper .table thead tr th 
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 html.theme_default body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.asc::after {
@@ -222,7 +222,7 @@ html.theme_default body.day-of-giving #dogLeaderboardWrapper .table thead tr th 
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
   transform: rotate(180deg);
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 html.theme_default body.day-of-giving #dogLeaderboardWrapper .table tbody a {
@@ -1004,7 +1004,7 @@ html.theme_dark body.day-of-giving #dogLeaderboardWrapper .table thead tr th but
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 html.theme_dark body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.asc::after {
@@ -1016,7 +1016,7 @@ html.theme_dark body.day-of-giving #dogLeaderboardWrapper .table thead tr th but
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
   transform: rotate(180deg);
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 html.theme_dark body.day-of-giving #dogLeaderboardWrapper .table tbody a {
@@ -1801,7 +1801,7 @@ html.theme_light body.day-of-giving #dogLeaderboardWrapper .table thead tr th bu
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 html.theme_light body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.asc::after {
@@ -1813,7 +1813,7 @@ html.theme_light body.day-of-giving #dogLeaderboardWrapper .table thead tr th bu
   border-right: 5px solid transparent;
   border-bottom: 10px solid #333;
   transform: rotate(180deg);
-  top: 12px;
+  top: 23px;
   right: 0;
 }
 html.theme_light body.day-of-giving #dogLeaderboardWrapper .table tbody a {
