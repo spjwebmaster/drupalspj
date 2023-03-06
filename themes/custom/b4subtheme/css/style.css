@@ -156,6 +156,83 @@ body.path--gagged main .block-field-blocknodefoi-subsitebody .navigation .navbar
   transition: all 0.2s ease-in-out;
   text-decoration: line-through;
 }
+body.day-of-giving #dogLeaderboardWrapper {
+  background: #b37839;
+  color: #fff;
+  padding: 1em 0;
+  border-radius: 10px;
+  font-size: 0.7em;
+}
+body.day-of-giving #dogLeaderboardWrapper .searchWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 1em;
+}
+body.day-of-giving #dogLeaderboardWrapper .searchWrapper .search {
+  flex: 1 99%;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+body.day-of-giving #dogLeaderboardWrapper .searchWrapper .searchClear {
+  flex: 1 1%;
+  min-width: 44px;
+  background: #333;
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+body.day-of-giving #dogLeaderboardWrapper .table {
+  color: #fff;
+}
+body.day-of-giving #dogLeaderboardWrapper .table thead tr th.col {
+  white-space: nowrap;
+  width: auto;
+}
+body.day-of-giving #dogLeaderboardWrapper .table thead tr th button {
+  border: 0px solid #333;
+  background-color: transparent;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 4px 0;
+}
+body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.desc::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #333;
+  top: 12px;
+  right: 0;
+}
+body.day-of-giving #dogLeaderboardWrapper .table thead tr th button.sort.asc::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #333;
+  transform: rotate(180deg);
+  top: 12px;
+  right: 0;
+}
+body.day-of-giving #dogLeaderboardWrapper .table tbody a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: dotted;
+}
+body.day-of-giving #dogLeaderboardWrapper .table tfoot {
+  border-top: 2px solid #fff;
+}
 body.path--ethicsweek .block-field-blocknodefoi-subsitebody, body.ethicsethicsweekorder .block-field-blocknodefoi-subsitebody {
   width: 90%;
   margin: auto;

@@ -125,6 +125,104 @@
     }
 }
 
+&.day-of-giving {
+    #dogLeaderboardWrapper {
+        background: rgb(179, 120, 57);
+        color: #fff;
+        padding: 1em 0;
+        border-radius: 10px;
+        font-size: 0.7em;
+
+        .searchWrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            padding: 1em;
+
+            .search {
+                flex: 1 99%;
+                background-color: $bodybg;
+                color: $bodytext;
+                border: 1px solid #333;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            .searchClear {
+                flex: 1 1%;
+                min-width: 44px;
+                background: #333;
+                color: #fff;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+
+            
+        }
+
+        .table {
+            color: #fff;
+            thead {
+                tr {
+                    th.col {
+                        white-space: nowrap;
+                        width: auto;
+                    }
+                    th {
+                        button {
+                            border: 0px solid #333;
+                            background-color: transparent;
+                            text-decoration: underline;
+                            text-decoration-style: wavy;
+                            position: relative;
+                            display: block;
+                            width: 100%;
+                            text-align: left;
+                            padding: 4px 0;
+
+                            &.sort.desc::after {
+                                content: "";
+                                position: absolute;
+                                width: 0;
+                                height: 0;
+                                border-left: 5px solid transparent;
+                                border-right: 5px solid transparent;
+                                border-bottom: 10px solid #333;
+                                top: 23px;
+                                right: 0;
+                              }
+                              &.sort.asc::after {
+                                content: "";
+                                position: absolute;
+                                width: 0;
+                                height: 0;
+                                border-left: 5px solid transparent;
+                                border-right: 5px solid transparent;
+                                border-bottom: 10px solid #333;
+                                transform: rotate(180deg);
+                                top: 23px;
+                                right: 0;
+                              }
+                        }
+                    }
+                }
+            }
+            tbody {
+                a {
+                    color: #fff;
+                    font-weight: bold;
+                    text-decoration: dotted;
+                }
+            }
+
+
+            
+            tfoot {
+                border-top: 2px solid #fff;
+              
+              }
+        }
+    }
+}
+
 &.path--ethicsweek, &.ethicsethicsweekorder {
     .block-field-blocknodefoi-subsitebody {
         width: 90%;
