@@ -1,5 +1,6 @@
 # This View is used to collect the all the relevant nodes from the system, of
 # the type 'rest_example_test', and print them as json, so that we can use it
+# in our REST module.
 langcode: en
 status: true
 dependencies:
@@ -208,4 +209,3 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-# in or REST module.

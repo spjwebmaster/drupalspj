@@ -294,7 +294,7 @@ class RenderExampleController extends ControllerBase implements TrustedCallbackI
     // Properties that contain callbacks can also reference methods on a class
     // in addition to functions. See
     // \Drupal\render_example\Controller\RenderExampleController::preRender()
-    // @todo: This doesn't work, we need to fix it.
+    // @todo This doesn't work, we need to fix it.
     // https://www.drupal.org/project/examples/issues/2986435
     // $build['#pre_render'] = [static::class, 'preRender'];.
     // Caching is an important part of the Render API, converting an array to a
@@ -489,7 +489,7 @@ class RenderExampleController extends ControllerBase implements TrustedCallbackI
     $build = [
       'lazy_builder_time' => [
         '#markup' => '<p>' . \Drupal::translation()->translate('The current time is @time', [
-          '@time' => \Drupal::service('date.formatter')->format(REQUEST_TIME, 'long'),
+          '@time' => \Drupal::service('date.formatter')->format(\Drupal::time()->getRequestTime(), 'long'),
         ]) . '</p>',
       ],
     ];
@@ -530,6 +530,7 @@ class RenderExampleController extends ControllerBase implements TrustedCallbackI
    *
    * We need to wrap suffix in a Markup object.
    * Otherwise, style attribute will be removed by Xss
+   *
    * @see \Drupal\Component\Utility\Xss::filter()
    *
    * This function is used as a post render callback in

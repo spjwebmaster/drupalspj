@@ -2,7 +2,7 @@
 
 namespace Drupal\events_example\Event;
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Wraps a incident report event for event subscribers.

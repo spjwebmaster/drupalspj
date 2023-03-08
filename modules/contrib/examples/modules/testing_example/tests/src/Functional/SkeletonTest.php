@@ -78,7 +78,7 @@ class SkeletonTest extends BrowserTestBase {
    *
    * @var string[]
    */
-  public static $modules = [];
+  protected static $modules = [];
 
   /**
    * This test method fails, so we can be sure our test is discovered.

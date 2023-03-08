@@ -23,7 +23,7 @@ class AjaxExampleMenuTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * The installation profile to use with this test.
@@ -78,7 +78,8 @@ class AjaxExampleMenuTest extends BrowserTestBase {
       $this->drupalGet($url);
       $assertion->statusCodeEquals(200);
       foreach ($buttons as $button) {
-        $this->drupalPostForm($url, [], $button);
+        $this->drupalGet($url);
+        $this->submitForm([], $button);
         $assertion->statusCodeEquals(200);
       }
     }

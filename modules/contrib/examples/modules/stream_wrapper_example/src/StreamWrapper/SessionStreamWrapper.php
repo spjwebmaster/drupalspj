@@ -658,7 +658,7 @@ class SessionStreamWrapper implements StreamWrapperInterface {
    * @see drupal_dirname()
    */
   public function dirname($uri = NULL) {
-    list($scheme,) = explode('://', $uri, 2);
+    [$scheme] = explode('://', $uri, 2);
     $target = $this->getLocalPath($uri);
     if (strpos($target, '/')) {
       $dirname = preg_replace('@/[^/]*$@', '', $target);

@@ -16,6 +16,7 @@ use Drupal\commerce_payment\PaymentMethodTypeManager;
 use Drupal\commerce_payment\PaymentTypeManager;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OnsitePaymentGatewayBase;
 use Drupal\commerce_price\Price;
+use Drupal\commerce_stripe\Event\PaymentIntentEvent;
 use Drupal\commerce_stripe\Event\TransactionDataEvent;
 use Drupal\commerce_stripe\Event\StripeEvents;
 use Drupal\Component\Datetime\TimeInterface;
@@ -242,7 +243,21 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
     assert($order instanceof OrderInterface);
     $intent_id = $order->getData('stripe_intent');
     try {
-      $intent = PaymentIntent::retrieve($intent_id);
+      if (!empty($intent_id)) {
+        $intent = PaymentIntent::retrieve($intent_id);
+      }
+      else {
+        // If there is no payment intent, it means we are not in a checkout
+        // flow with the stripe review pane, so we should assume the
+        // customer is not available for SCA and create an immediate
+        // off_session payment intent.
+        $intent_attributes = [
+          'confirm'        => TRUE,
+          'off_session'    => TRUE,
+          'capture_method' => $capture ? 'automatic' : 'manual',
+        ];
+        $intent = $this->createPaymentIntent($order, $intent_attributes, $payment);
+      }
       if ($intent->status === PaymentIntent::STATUS_REQUIRES_CONFIRMATION) {
         $intent = $intent->confirm();
       }
@@ -258,7 +273,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
 
         if (is_object($intent->last_payment_error)) {
           $error = $intent->last_payment_error;
-          $decline_message = sprintf('%s: %s', $error->type, isset($error->message) ? $error->message : '');
+          $decline_message = sprintf('%s: %s', $error->type, $error->message ?? '');
         }
         else {
           $decline_message = $intent->last_payment_error;
@@ -266,7 +281,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
         throw new HardDeclineException($decline_message);
       }
       if (count($intent->charges->data) === 0) {
-        throw new HardDeclineException(sprintf('The payment intent %s did not have a charge object.', $intent_id));
+        throw new HardDeclineException(sprintf('The payment intent %s did not have a charge object.', $intent->id));
       }
       $next_state = $capture ? 'completed' : 'authorization';
       $payment->setState($next_state);
@@ -275,7 +290,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
 
       // Add metadata and extra transaction data where required.
       $event = new TransactionDataEvent($payment);
-      $this->eventDispatcher->dispatch(StripeEvents::TRANSACTION_DATA, $event);
+      $this->eventDispatcher->dispatch($event, StripeEvents::TRANSACTION_DATA);
 
       // Update the transaction data from additional information added through
       // the event.
@@ -520,6 +535,15 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
     }
 
     $intent_array = NestedArray::mergeDeep($default_intent_attributes, $intent_attributes);
+
+    // Add metadata and extra transaction data where required.
+    $event = new PaymentIntentEvent($order, $intent_array);
+    $this->eventDispatcher->dispatch($event, StripeEvents::PAYMENT_INTENT_CREATE);
+
+    // Alter or extend the intent array from additional information added
+    // through the event.
+    $intent_array = $event->getIntentAttributes();
+
     try {
       $intent = PaymentIntent::create($intent_array);
       $order->setData('stripe_intent', $intent->id)->save();

@@ -26,21 +26,20 @@ class WebformOptions {
    * @return array
    *   Form element.
    */
-  public static function process(&$element, FormStateInterface $form_state) {
-    //@todo fix this when Price* webform elements are working.
+  public static function process(array &$element, FormStateInterface $form_state) {
+    // @todo fix this when Price* webform elements are working.
     // Check for price_* elements, skip the check for Option definitions.
-//    if (method_exists($form_state->getFormObject(), 'getElement')) {
-//      $element_info = $form_state->getFormObject()->getElement();
-//
-//      // Only change the form of price_* webform elements.
-//      if (strpos($element_info['#type'], 'price_', 0) === FALSE) {
-//        return $element;
-//      }
-//    }
-//    else {
-//      return $element;
-//    }
-
+    //    if (method_exists($form_state->getFormObject(), 'getElement')) {
+    //      $element_info = $form_state->getFormObject()->getElement();
+    //
+    //      // Only change the form of price_* webform elements.
+    //      if (strpos($element_info['#type'], 'price_', 0) === FALSE) {
+    //        return $element;
+    //      }
+    //    }
+    //    else {
+    //      return $element;
+    //    }
     // For options with optgroup display a CodeMirror YAML editor.
     if (!empty($element['#yaml']) || (isset($element['#default_value']) && is_array($element['#default_value']) && static::hasOptGroup($element['#default_value']))) {
       $element['price'] = [
@@ -85,7 +84,10 @@ class WebformOptions {
 
     // WebFormOptions::convertValuesToOptions() destroys our values so do
     // something about that.
-    array_unshift($element['#element_validate'], [get_class(), 'convertToSettings']);
+    array_unshift($element['#element_validate'], [
+      get_class(),
+      'convertToSettings',
+    ]);
 
     return $element;
   }
@@ -98,7 +100,7 @@ class WebformOptions {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   From state.
    */
-  public static function convertToSettings($element, FormStateInterface $form_state) {
+  public static function convertToSettings(array $element, FormStateInterface $form_state) {
     $options = (is_string($element['options']['#value'])) ? Yaml::decode($element['options']['#value']) : $element['options']['#value'];
 
     if (isset($element['price'])) {
@@ -112,7 +114,7 @@ class WebformOptions {
       }
       $compositeItems = NestedArray::getValue($values, $parents);
 
-      // Search componenet delta:
+      // Search component delta:
       $delta = static::getCompositeDelta($element['#name']);
       $prices = WebFormProductFormHelper::getSetting($form_state, 'options');
       $price = (is_string($element['price']['#value'])) ? Yaml::decode($element['price']['#value']) : $element['price']['#value'];

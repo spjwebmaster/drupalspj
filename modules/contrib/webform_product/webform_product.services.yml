@@ -7,7 +7,7 @@ services:
     class: Drupal\webform_product\EventSubscriber\OrderEventSubscriber
     arguments: ['@entity_type.manager']
     tags:
-    - { name: event_subscriber }
+      - { name: event_subscriber }
 
   http_middleware.redirect_after_webform_submit:
     class: Drupal\webform_product\RedirectMiddleware

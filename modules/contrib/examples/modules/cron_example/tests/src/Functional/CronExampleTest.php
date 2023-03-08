@@ -25,12 +25,12 @@ class CronExampleTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['cron_example', 'node'];
+  protected static $modules = ['cron_example', 'node'];
 
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     // Create user. Search content permission granted for the search block to
     // be shown.
@@ -52,17 +52,18 @@ class CronExampleTest extends ExamplesBrowserTestBase {
 
     // Initial run should cause cron_example_cron() to fire.
     $post = [];
-    $this->drupalPostForm($cron_form, $post, 'Run cron now');
+    $this->drupalGet($cron_form);
+    $this->submitForm($post, 'Run cron now');
     $assert->pageTextContains('cron_example executed at');
 
     // Forcing should also cause cron_example_cron() to fire.
     $post['cron_reset'] = TRUE;
-    $this->drupalPostForm(NULL, $post, 'Run cron now');
+    $this->submitForm($post, 'Run cron now');
     $assert->pageTextContains('cron_example executed at');
 
     // But if followed immediately and not forced, it should not fire.
     $post['cron_reset'] = FALSE;
-    $this->drupalPostForm(NULL, $post, 'Run cron now');
+    $this->submitForm($post, 'Run cron now');
     $assert->statusCodeEquals(200);
     $assert->pageTextNotContains('cron_example executed at');
     $assert->pageTextContains('There are currently 0 items in queue 1 and 0 items in queue 2');
@@ -71,17 +72,18 @@ class CronExampleTest extends ExamplesBrowserTestBase {
       'num_items' => 5,
       'queue' => 'cron_example_queue_1',
     ];
-    $this->drupalPostForm(NULL, $post, 'Add jobs to queue');
+    $this->submitForm($post, 'Add jobs to queue');
     $assert->pageTextContains('There are currently 5 items in queue 1 and 0 items in queue 2');
 
     $post = [
       'num_items' => 100,
       'queue' => 'cron_example_queue_2',
     ];
-    $this->drupalPostForm(NULL, $post, 'Add jobs to queue');
+    $this->submitForm($post, 'Add jobs to queue');
     $assert->pageTextContains('There are currently 5 items in queue 1 and 100 items in queue 2');
 
-    $this->drupalPostForm($cron_form, [], 'Run cron now');
+    $this->drupalGet($cron_form);
+    $this->submitForm([], 'Run cron now');
     $assert->responseMatches('/Queue 1 worker processed item with sequence 5 /');
     $assert->responseMatches('/Queue 2 worker processed item with sequence 100 /');
   }

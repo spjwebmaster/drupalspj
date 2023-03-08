@@ -31,7 +31,6 @@ class ColorPickerWidget extends TextWidget {
         // Add Farbtastic color picker and javascript file to trigger the
         // colorpicker.
         'library' => [
-          'core/jquery.farbtastic',
           'field_example/colorpicker',
         ],
       ],

@@ -2,7 +2,7 @@ name: Webform Product
 type: module
 description: 'Setup a single webform as a product for Commerce.'
 package: Webform
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8.9 || ^9 || ^10
 interface translation project: webform_product
 interface translation server pattern: modules/custom/%project/translations/%project.%language.po
 dependencies:
@@ -28,7 +28,7 @@ test_dependencies:
   - webform:webform_ui
   - webform_product:webform_product
 
-# Information added by Drupal.org packaging script on 2022-04-15
-version: '3.0.1'
+# Information added by Drupal.org packaging script on 2023-01-24
+version: '3.0.4'
 project: 'webform_product'
-datestamp: 1650013254
+datestamp: 1674561430

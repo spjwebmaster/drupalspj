@@ -25,7 +25,7 @@ class PluginTypeExampleTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['plugin_type_example'];
+  protected static $modules = ['plugin_type_example'];
 
   /**
    * The installation profile to use with this test.
@@ -37,10 +37,10 @@ class PluginTypeExampleTest extends ExamplesBrowserTestBase {
   /**
    * Test the plugin manager can be loaded, and the plugins are registered.
    *
-   * @todo: https://www.drupal.org/project/examples/issues/2985705
+   * @todo https://www.drupal.org/project/examples/issues/2985705
    */
   public function testPluginExample() {
-    /* @var $manager \Drupal\plugin_type_example\SandwichPluginManager */
+    /** @var \Drupal\plugin_type_example\SandwichPluginManager $manager */
     $manager = $this->container->get('plugin.manager.sandwich');
 
     $sandwich_plugin_definitions = $manager->getDefinitions();
@@ -58,14 +58,14 @@ class PluginTypeExampleTest extends ExamplesBrowserTestBase {
 
     // Create a meatball sandwich so we can check it's special behavior on
     // Sundays.
-    /* @var $meatball \Drupal\plugin_type_example\SandwichInterface */
+    /** @var \Drupal\plugin_type_example\SandwichInterface $meatball */
     $meatball = $manager->createInstance('meatball_sandwich');
     // Set the $day property to 'Sun'.
     $ref_day = new \ReflectionProperty($meatball, 'day');
     $ref_day->setAccessible(TRUE);
     $ref_day->setValue($meatball, 'Sun');
     // Check the special description on Sunday.
-    $this->assertEqual($meatball->description(), 'Italian style meatballs drenched in irresistible marinara sauce, served on day old bread.');
+    $this->assertEquals($meatball->description(), 'Italian style meatballs drenched in irresistible marinara sauce, served on day old bread.');
   }
 
   /**
@@ -78,10 +78,12 @@ class PluginTypeExampleTest extends ExamplesBrowserTestBase {
     $assert->statusCodeEquals(200);
 
     // Check we see the plugin id.
-    $assert->pageTextContains('ham_sandwich', 'The plugin ID was not output.');
+    // The plugin ID was not output.
+    $assert->pageTextContains('ham_sandwich');
 
     // Check we see the plugin description.
-    $assert->pageTextContains('Ham, mustard, rocket, sun-dried tomatoes.', 'The plugin description was not output.');
+    // The plugin description was not output.
+    $assert->pageTextContains('Ham, mustard, rocket, sun-dried tomatoes.');
   }
 
 }

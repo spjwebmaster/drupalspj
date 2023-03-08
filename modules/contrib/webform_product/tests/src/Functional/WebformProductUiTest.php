@@ -21,7 +21,7 @@ class WebformProductUiTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'commerce',
     'commerce_cart',
     'commerce_checkout',
@@ -53,7 +53,7 @@ class WebformProductUiTest extends BrowserTestBase {
    *
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public function setUp() {
+  public function setUp(): void {
     parent::setUp();
 
     // Create the user and login.
@@ -151,8 +151,7 @@ class WebformProductUiTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains('1 (draft)');
     $this->assertSession()->responseContains('<td>1</td>');
     // Failed only drupal.org test bot:
-//    $this->assertSession()->pageTextContains('/admin/commerce/orders/1');
-
+    //    $this->assertSession()->pageTextContains('/admin/commerce/orders/1');
     // Continue checkout:
     $this->drupalGet($checkout_url);
     $this->submitForm(
@@ -173,8 +172,7 @@ class WebformProductUiTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains('1 (draft)');
     $this->assertSession()->responseContains('<td>1</td>');
     // Failed only drupal.org test bot:
-//    $this->assertSession()->pageTextContains('/admin/commerce/orders/1');
-
+    //    $this->assertSession()->pageTextContains('/admin/commerce/orders/1');
     // Continue checkout:
     $this->drupalGet($checkout_url);
     $this->submitForm(

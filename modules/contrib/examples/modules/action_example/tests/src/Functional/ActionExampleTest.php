@@ -3,7 +3,6 @@
 namespace Drupal\Tests\theming_example\Functional;
 
 use Drupal\Tests\examples\Functional\ExamplesBrowserTestBase;
-use Drupal\user\Entity\User;
 
 /**
  * Default test case for the action_example module.
@@ -21,7 +20,7 @@ class ActionExampleTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['action_example'];
+  protected static $modules = ['action_example'];
 
   /**
    * The installation profile to use with this test.

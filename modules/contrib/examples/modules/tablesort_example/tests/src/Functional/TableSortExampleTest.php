@@ -23,7 +23,7 @@ class TableSortExampleTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['tablesort_example', 'toolbar'];
+  protected static $modules = ['tablesort_example', 'toolbar'];
 
   /**
    * The installation profile to use with this test.

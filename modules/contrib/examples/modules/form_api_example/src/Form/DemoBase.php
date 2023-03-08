@@ -28,7 +28,7 @@ abstract class DemoBase extends FormBase {
     // Find out what was submitted.
     $values = $form_state->getValues();
     foreach ($values as $key => $value) {
-      $label = isset($form[$key]['#title']) ? $form[$key]['#title'] : $key;
+      $label = $form[$key]['#title'] ?? $key;
 
       // Many arrays return 0 for unselected values so lets filter that out.
       if (is_array($value)) {

@@ -1,12 +1,13 @@
 name: 'Shortcode Example'
 type: module
 description: 'Provides an example module illustrating how to implement your own shortcodes plugins.'
-core_version_requirement: ^9
+core: 8.x
+core_version_requirement: ^8 || ^9
 dependencies:
   - shortcode:shortcode
 package: 'Input filters'
 
-# Information added by Drupal.org packaging script on 2020-11-06
-version: '2.0.0'
+# Information added by Drupal.org packaging script on 2021-06-25
+version: '2.0.1'
 project: 'shortcode'
-datestamp: 1604699348
+datestamp: 1624649205

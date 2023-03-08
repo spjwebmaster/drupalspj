@@ -20,7 +20,7 @@ class AutotextfieldsTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test the user interactions for the Autotextfields example.
@@ -41,8 +41,9 @@ class AutotextfieldsTest extends WebDriverTestBase {
     $assert->fieldNotExists('first_name');
     $assert->fieldNotExists('last_name');
     // Submit the form. This tests what happens when there are no user
-    // interactions because drupalPostForm() reloads the form.
-    $this->drupalPostForm($form_url, [], 'Click Me');
+    // interactions because submitForm() reloads the form.
+    $this->drupalGet($form_url);
+    $this->submitForm([], 'Click Me');
     $assert->pageTextContains('Submit handler: First name: n/a Last name: n/a');
 
     // Ask for the first name.
@@ -51,7 +52,7 @@ class AutotextfieldsTest extends WebDriverTestBase {
     $assert->fieldExists('first_name');
     $assert->fieldNotExists('last_name');
     // Submit the form. We have to find the field and set its value rather than
-    // use drupalPostForm(), because when we post the form, it will be rebuilt.
+    // use submitForm(), because when we post the form, it will be rebuilt.
     // We are testing the form state after AJAX has modified it, so we must
     // preserve that.
     $page->fillField('first_name', 'Dries');

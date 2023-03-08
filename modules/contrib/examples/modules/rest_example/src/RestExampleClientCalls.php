@@ -22,10 +22,10 @@ class RestExampleClientCalls {
   protected $client;
 
   /**
-   * The header uses when sending HTTP request.
+   * The headers used when sending HTTP request.
    *
    * The headers are very important when communicating with the REST server.
-   * It's used by the server the verify that it supports the sent data
+   * They are used by the server the verify that it supports the sent data
    * (Content-Type) and that it supports the type of response that the client
    * wants.
    *
@@ -93,7 +93,7 @@ class RestExampleClientCalls {
    */
   public function index($node_id = NULL) {
 
-    // If the configurated URL is an empty string, return nothing.
+    // If the configured URL is an empty string, return nothing.
     if (empty($this->remoteUrl)) {
       return '';
     }
@@ -153,14 +153,14 @@ class RestExampleClientCalls {
 
     // Validate the response from the remote server.
     if ($response->getStatusCode() != 201) {
-      return new Response('An error occured while creating the node.', 500);
+      return new Response('An error occurred while creating the node.', 500);
     }
   }
 
   /**
    * Update (PATCH) a node on the remote server.
    *
-   * You are encuraged to read the code and the comments in
+   * You are encouraged to read the code and the comments in
    * RestExampleClientCalls::create() first.
    *
    * @param array $node
@@ -195,7 +195,7 @@ class RestExampleClientCalls {
     );
 
     if ($response->getStatusCode() != 204) {
-      return new Response('An error occured while patching the node.', 500);
+      return new Response('An error occurred while patching the node.', 500);
     }
   }
 
@@ -229,7 +229,7 @@ class RestExampleClientCalls {
     );
 
     if ($response->getStatusCode() != 204) {
-      return new Response('An error occured while patching the node.', 500);
+      return new Response('An error occurred while patching the node.', 500);
     }
   }
 

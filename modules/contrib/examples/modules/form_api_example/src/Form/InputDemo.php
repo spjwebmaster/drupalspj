@@ -260,7 +260,7 @@ class InputDemo extends FormBase {
     $form['image_button'] = [
       '#type' => 'image_button',
       '#value' => 'Image button',
-      '#src' => drupal_get_path('module', 'examples') . '/images/100x30.svg',
+      '#src' => \Drupal::service('extension.list.module')->getPath('examples') . '/images/100x30.svg',
       '#description' => $this->t('image file, #type = image_button'),
     ];
 
@@ -306,7 +306,7 @@ class InputDemo extends FormBase {
     // Find out what was submitted.
     $values = $form_state->getValues();
     foreach ($values as $key => $value) {
-      $label = isset($form[$key]['#title']) ? $form[$key]['#title'] : $key;
+      $label = $form[$key]['#title'] ?? $key;
 
       // Many arrays return 0 for unselected values so lets filter that out.
       if (is_array($value)) {

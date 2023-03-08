@@ -24,7 +24,7 @@ class DbtngExampleTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['dbtng_example'];
+  protected static $modules = ['dbtng_example'];
 
   /**
    * The installation profile to use with this test.
@@ -100,15 +100,8 @@ class DbtngExampleTest extends ExamplesBrowserTestBase {
 
     // Test the add tab.
     // Add the new entry.
-    $this->drupalPostForm(
-      '/examples/dbtng-example/add',
-      [
-        'name' => 'Some',
-        'surname' => 'Anonymous',
-        'age' => 33,
-      ],
-      'Add'
-    );
+    $this->drupalGet('/examples/dbtng-example/add');
+    $this->submitForm(['name' => 'Some', 'surname' => 'Anonymous', 'age' => 33], 'Add');
     // Now find the new entry.
     $this->drupalGet('/examples/dbtng-example');
     $assert->pageTextMatches('%Some[td/<>\w\s]+Anonymous%');
@@ -121,7 +114,8 @@ class DbtngExampleTest extends ExamplesBrowserTestBase {
     unset($entry->uid);
 
     $entry = ['name' => 'NewFirstName', 'age' => 22];
-    $this->drupalPostForm('/examples/dbtng-example/update', $entry, 'Update');
+    $this->drupalGet('/examples/dbtng-example/update');
+    $this->submitForm($entry, 'Update');
     // Now find the new entry.
     $this->drupalGet('/examples/dbtng-example');
     $assert->pageTextMatches('%NewFirstName[td/<>\w\s]+Anonymous%');
@@ -136,15 +130,8 @@ class DbtngExampleTest extends ExamplesBrowserTestBase {
 
     // Try to add an entry while logged out.
     $this->drupalLogout();
-    $this->drupalPostForm(
-      '/examples/dbtng-example/add',
-      [
-        'name' => 'Anonymous',
-        'surname' => 'UserCannotPost',
-        'age' => 'not a number',
-      ],
-      'Add'
-    );
+    $this->drupalGet('/examples/dbtng-example/add');
+    $this->submitForm(['name' => 'Anonymous', 'surname' => 'UserCannotPost', 'age' => 'not a number'], 'Add');
     $assert->pageTextContains('You must be logged in to add values to the database.');
     $assert->pageTextContains('Age needs to be a number');
   }

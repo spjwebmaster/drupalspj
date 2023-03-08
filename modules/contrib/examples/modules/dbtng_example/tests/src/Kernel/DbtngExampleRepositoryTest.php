@@ -34,7 +34,7 @@ class DbtngExampleRepositoryTest extends KernelTestBase {
    * Kernel tests do not invoke hook_schema() or hook_install(). Therefore we
    * have to do it if our tests expect them to have been run.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     // Install the schema we defined in hook_schema().
     $this->installSchema('dbtng_example', 'dbtng_example');
@@ -46,7 +46,7 @@ class DbtngExampleRepositoryTest extends KernelTestBase {
    * Tests several combinations, adding entries, updating and deleting.
    */
   public function testDbtngExampleStorage() {
-    /* @var $repository \Drupal\dbtng_example\DbtngExampleRepository */
+    /** @var \Drupal\dbtng_example\DbtngExampleRepository $repository */
     $repository = $this->container->get('dbtng_example.repository');
     // Create a new entry.
     $entry = [

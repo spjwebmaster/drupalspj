@@ -22,12 +22,12 @@ class ExampleFunctionalTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stable';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['node', 'user'];
+  protected static $modules = ['node', 'user'];
 
   /**
    * Fixture user with administrative powers.
@@ -49,8 +49,14 @@ class ExampleFunctionalTest extends ExamplesBrowserTestBase {
    * The setUp() method is run before every other test method, so commonalities
    * should go here.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
+
+    // We have to create a content type because testing uses the 'testing'
+    // profile, which has no content types by default.
+    // Although we could have visited admin pages and pushed buttons to create
+    // the content type, there happens to be function we can use in this case.
+    $this->createContentType(['type' => 'test_content_type']);
 
     // Create users.
     $this->adminUser = $this->drupalCreateUser([
@@ -59,14 +65,10 @@ class ExampleFunctionalTest extends ExamplesBrowserTestBase {
       'administer permissions',
       'administer nodes',
       'administer content types',
+      'create test_content_type content',
     ]);
     $this->authUser = $this->drupalCreateUser([], 'authuser');
 
-    // We have to create a content type because testing uses the 'testing'
-    // profile, which has no content types by default.
-    // Although we could have visited admin pages and pushed buttons to create
-    // the content type, there happens to be function we can use in this case.
-    $this->createContentType(['type' => 'test_content_type']);
   }
 
   /**
@@ -95,8 +97,8 @@ class ExampleFunctionalTest extends ExamplesBrowserTestBase {
       'body[0][value]' => 'Body of test node',
     ];
     // Tell Drupal to post our new content. We post to NULL for the URL which
-    // tells drupalPostForm() to use the current page.
-    $this->drupalPostForm(NULL, $edit, 'op');
+    // tells submitForm() to use the current page.
+    $this->submitForm($edit, 'op');
     // Check our expectations.
     $assert->statusCodeEquals(200);
     $assert->linkExists($nodeTitle);

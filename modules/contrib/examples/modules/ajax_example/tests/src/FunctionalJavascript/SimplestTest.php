@@ -20,7 +20,7 @@ class SimplestTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test AJAX behavior for the dropdown selector.

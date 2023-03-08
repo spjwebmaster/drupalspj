@@ -174,7 +174,7 @@ class ModalForm extends FormBase {
       // We don't want any messages that were added by submitForm().
       $this->messenger()->deleteAll();
       // We use FormattableMarkup to handle sanitizing the input.
-      // @todo: There's probably a better way to do this.
+      // @todo There's probably a better way to do this.
       $title = new FormattableMarkup(':title', [':title' => $form_state->getValue('title')]);
       // This will be the contents for the modal dialog.
       $content = [

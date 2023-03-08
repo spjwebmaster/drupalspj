@@ -13,6 +13,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Class OrderEventSubscriber.
  *
+ * Reacts on a validated transition to set the webform completed.
+ *
  * @package Drupal\webform_product\ProductEventSubscriber
  */
 class OrderEventSubscriber implements EventSubscriberInterface {

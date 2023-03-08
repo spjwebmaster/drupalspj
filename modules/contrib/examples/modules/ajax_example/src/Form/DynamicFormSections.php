@@ -106,7 +106,10 @@ class DynamicFormSections extends FormBase {
       '#open' => TRUE,
       // We set the ID of this fieldset to questions-fieldset-wrapper so the
       // AJAX command can replace it.
-      '#attributes' => ['id' => 'questions-fieldset-wrapper'],
+      '#attributes' => [
+        'id' => 'questions-fieldset-wrapper',
+        'class' => ['questions-wrapper'],
+      ],
     ];
 
     // When the AJAX request comes in, or when the user hit 'Submit' if there is

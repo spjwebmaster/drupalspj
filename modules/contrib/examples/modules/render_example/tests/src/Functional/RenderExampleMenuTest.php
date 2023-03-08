@@ -25,7 +25,7 @@ class RenderExampleMenuTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['render_example'];
+  protected static $modules = ['render_example'];
 
   /**
    * The installation profile to use with this test.
@@ -68,7 +68,8 @@ class RenderExampleMenuTest extends BrowserTestBase {
       $this->drupalGet($path);
       $assertion->statusCodeEquals(200);
       foreach ($buttons as $button) {
-        $this->drupalPostForm($path, [], $button);
+        $this->drupalGet($path);
+        $this->submitForm([], $button);
         $assertion->statusCodeEquals(200);
       }
     }

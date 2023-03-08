@@ -1,14 +1,13 @@
 <?php
 
-/**
- * @file
- */
-
 namespace Drupal\theming_example\Controller;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 
+/**
+ *
+ */
 class ThemingPageController {
 
   use StringTranslationTrait;
@@ -29,23 +28,23 @@ class ThemingPageController {
     $links[] = [
       '#type' => 'link',
       '#url' => Url::fromRoute('theming_example.list'),
-      '#title' => t('Simple page with a list'),
+      '#title' => $this->t('Simple page with a list'),
     ];
     $links[] = [
       '#type' => 'link',
       '#url' => Url::fromRoute('theming_example.form_select'),
-      '#title' => t('Simple form 1'),
+      '#title' => $this->t('Simple form 1'),
     ];
     $links[] = [
       '#type' => 'link',
       '#url' => Url::fromRoute('theming_example.form_text'),
-      '#title' => t('Simple form 2'),
+      '#title' => $this->t('Simple form 2'),
     ];
     $content = [
       '#theme' => 'item_list',
       '#theme_wrappers' => ['theming_example_content_array'],
       '#items' => $links,
-      '#title' => t('Some examples of pages and forms that are run through theme functions.'),
+      '#title' => $this->t('Some examples of pages and forms that are run through theme functions.'),
     ];
 
     return $content;
@@ -86,12 +85,12 @@ class ThemingPageController {
     // Now we'll create a render array which uses our own list formatter,
     // theme('theming_example_list').
     $title = $this->t("The same list rendered by theme('theming_example_list')");
-    $build['our_theme_function'] = array(
+    $build['our_theme_function'] = [
       '#theme' => 'theming_example_list',
       '#attached' => ['library' => ['theming_example/list']],
       '#title' => $title,
       '#items' => $items,
-    );
+    ];
     return $build;
   }
 

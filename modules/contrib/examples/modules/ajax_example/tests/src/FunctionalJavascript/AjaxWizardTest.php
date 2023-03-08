@@ -21,7 +21,7 @@ class AjaxWizardTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test that we can successfully submit the wizard following the steps.

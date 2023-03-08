@@ -29,12 +29,12 @@ class StreamWrapperTest extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = ['stream_wrapper_example', 'file', 'system'];
+  protected static $modules = ['stream_wrapper_example', 'file', 'system'];
 
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     // We use a mock session here so that our session-based stream wrapper is
     // able to operate. Kernel tests don't normally have a logged-in user, so
@@ -60,7 +60,7 @@ class StreamWrapperTest extends KernelTestBase {
 
     $uri = 'session://drupal.txt';
 
-    $this->assertFileNotExists($uri, "File $uri should not exist yet.");
+    $this->assertFileDoesNotExist($uri, "File $uri should not exist yet.");
     $handle = fopen($uri, 'wb');
     $this->assertNotEmpty($handle, "Handle for $uri should be non-empty.");
     $buffer = "Ain't seen nothin' yet!\n";
@@ -76,7 +76,7 @@ class StreamWrapperTest extends KernelTestBase {
     $result = fclose($handle);
     $this->assertNotFalse($result, "Closed $uri.");
     $this->assertFileExists($uri, "File $uri should now exist.");
-    $this->assertDirectoryNotExists($uri, "$uri is not a directory.");
+    $this->assertDirectoryDoesNotExist($uri, "$uri is not a directory.");
     $this->assertTrue(is_file($uri), "$uri is a file.");
 
     $contents = file_get_contents($uri);
@@ -97,7 +97,7 @@ class StreamWrapperTest extends KernelTestBase {
 
     $dir = dirname($dir_uri);
 
-    $this->assertFileNotExists($dir, "The outer dir $dir should not exist yet.");
+    $this->assertFileDoesNotExist($dir, "The outer dir $dir should not exist yet.");
     // We don't care about mode, since we don't support it.
     $worked = mkdir($dir);
     $this->assertDirectoryExists($dir, "Directory $dir was created.");
@@ -121,7 +121,7 @@ class StreamWrapperTest extends KernelTestBase {
     $this->assertSame($content, $got_back, 'Data in subdir made round trip.');
     $worked = unlink($file_in_sub);
     $this->assertTrue($worked, 'Deleted file in subdir.');
-    $this->assertFileNotExists($file_in_sub, 'File in subdir should not exist.');
+    $this->assertFileDoesNotExist($file_in_sub, 'File in subdir should not exist.');
   }
 
   /**

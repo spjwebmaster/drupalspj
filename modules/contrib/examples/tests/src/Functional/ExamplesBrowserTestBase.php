@@ -17,12 +17,12 @@ abstract class ExamplesBrowserTestBase extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['examples', 'block'];
+  protected static $modules = ['examples', 'block'];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     // Add the system menu blocks to appropriate regions.
     $this->setupExamplesMenus();

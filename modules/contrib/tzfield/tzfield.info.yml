@@ -5,7 +5,7 @@ core: 8.x
 package: Field types
 core_version_requirement: ^8 || ^9 || ^10
 
-# Information added by Drupal.org packaging script on 2022-04-19
-version: '8.x-1.6'
+# Information added by Drupal.org packaging script on 2023-01-12
+version: '8.x-1.7'
 project: 'tzfield'
-datestamp: 1650400288
+datestamp: 1673516098

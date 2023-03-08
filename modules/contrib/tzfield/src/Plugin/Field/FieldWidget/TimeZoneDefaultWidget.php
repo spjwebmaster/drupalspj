@@ -21,11 +21,26 @@ class TimeZoneDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $timezones = system_time_zones(!$element['#required'], TRUE);
+    if ($exclude = $this->getFieldSetting('exclude')) {
+      foreach ($timezones as $group_key => $timezone_group) {
+        foreach ($timezone_group as $timezone => $timezone_label) {
+          if (in_array($timezone, $exclude)) {
+            unset($timezones[$group_key][$timezone]);
+          }
+          if (empty($timezones[$group_key])) {
+            unset($timezones[$group_key]);
+          }
+        }
+      }
+    }
     $element['value'] = $element + [
       '#type' => 'select',
-      '#options' => system_time_zones(!$element['#required'], TRUE),
+      '#options' => $timezones,
       '#default_value' => $items[$delta]->value ?? NULL,
     ];
     return $element;

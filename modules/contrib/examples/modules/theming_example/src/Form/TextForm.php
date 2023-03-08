@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\theming_example\Form;
-
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;

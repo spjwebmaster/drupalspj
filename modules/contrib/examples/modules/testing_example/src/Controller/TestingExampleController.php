@@ -30,7 +30,7 @@ class TestingExampleController {
    *   A render array.
    */
   public function simpletestDescription() {
-    $template_file = drupal_get_path('module', 'testing_example') . '/templates/simpletest.description.html.twig';
+    $template_file = \Drupal::service('extension.list.module')->getPath('testing_example') . '/templates/simpletest.description.html.twig';
     $build = [
       'description' => [
         '#type' => 'inline_template',

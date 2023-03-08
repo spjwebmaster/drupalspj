@@ -27,7 +27,7 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['content_entity_example', 'block', 'field_ui'];
+  protected static $modules = ['content_entity_example', 'block', 'field_ui'];
 
   /**
    * Basic tests for Content Entity Example.
@@ -75,7 +75,7 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
       'first_name[0][value]' => 'test first name',
       'role' => 'administrator',
     ];
-    $this->drupalPostForm(NULL, $edit, 'Save');
+    $this->submitForm($edit, 'Save');
 
     // Entity listed.
     $assert->linkExists('Edit');
@@ -96,7 +96,7 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
 
     // Confirm deletion.
     $assert->linkExists('Cancel');
-    $this->drupalPostForm(NULL, [], 'Delete');
+    $this->submitForm([], 'Delete');
 
     // Back to list, must be empty.
     $assert->pageTextNotContains('test name');
@@ -245,7 +245,7 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
       'field_name' => $field_name,
     ];
 
-    $this->drupalPostForm(NULL, $edit, 'Save and continue');
+    $this->submitForm($edit, 'Save and continue');
     $expected_path = $this->buildUrl('admin/structure/' . $entity_name . '_settings/fields/' . $entity_name . '.' . $entity_name . '.field_' . $field_name . '/storage');
 
     // Fetch url without query parameters.
@@ -262,7 +262,7 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
 
     // Create a Contact entity object so that we can query it for it's annotated
     // properties. We don't need to save it.
-    /* @var $contact \Drupal\content_entity_example\Entity\Contact */
+    /** @var \Drupal\content_entity_example\Entity\Contact $contact */
     $contact = Contact::create();
 
     // Create an admin user and log them in. We use the entity annotation for
@@ -279,7 +279,8 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
       'first_name[0][value]' => 'Admin First Name',
       'role' => 'administrator',
     ];
-    $this->drupalPostForm($add_url, $edit, 'Save');
+    $this->drupalGet($add_url);
+    $this->submitForm($edit, 'Save');
     $assert->statusCodeEquals(200);
     $assert->pageTextContains('Test Admin Name');
 
@@ -297,7 +298,8 @@ class ContentEntityExampleTest extends ExamplesBrowserTestBase {
       'first_name[0][value]' => 'Mortal First Name',
       'role' => 'user',
     ];
-    $this->drupalPostForm($add_url, $edit, 'Save');
+    $this->drupalGet($add_url);
+    $this->submitForm($edit, 'Save');
     $assert->statusCodeEquals(200);
     $assert->pageTextContains('Mere Mortal Name');
 

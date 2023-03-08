@@ -86,7 +86,7 @@ class ContactListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\content_entity_example\Entity\Contact */
+    /** @var \Drupal\content_entity_example\Entity\Contact $entity */
     $row['id'] = $entity->id();
     $row['name'] = $entity->toLink()->toString();
     $row['first_name'] = $entity->first_name->value;

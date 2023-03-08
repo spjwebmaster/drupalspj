@@ -37,7 +37,8 @@ function cron_example_cron() {
   // We usually don't want to act every time cron runs (which could be every
   // minute) so keep a time for the next run in the site state.
   $next_execution = \Drupal::state()->get('cron_example.next_execution', 0);
-  if (REQUEST_TIME >= $next_execution) {
+  $request_time = \Drupal::time()->getRequestTime();
+  if ($request_time >= $next_execution) {
     // This is a silly example of a cron job.
     // It just makes it obvious that the job has run without
     // making any changes to your database.
@@ -46,7 +47,7 @@ function cron_example_cron() {
       \Drupal::messenger()->addMessage(t('cron_example executed at %time', ['%time' => date('c')]));
       \Drupal::state()->set('cron_example_show_status_message', FALSE);
     }
-    \Drupal::state()->set('cron_example.next_execution', REQUEST_TIME + $interval);
+    \Drupal::state()->set('cron_example.next_execution', $request_time + $interval);
   }
 }
 

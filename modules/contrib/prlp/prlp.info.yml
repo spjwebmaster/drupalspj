@@ -5,7 +5,7 @@ package: Administration
 description: Enhances the password reset landing page by letting user change their password on arrival via the password reset link
 configure: prlp.prlp_admin_settings
 
-# Information added by Drupal.org packaging script on 2022-10-21
-version: '8.x-1.8'
+# Information added by Drupal.org packaging script on 2023-02-06
+version: '8.x-1.10'
 project: 'prlp'
-datestamp: 1666370226
+datestamp: 1675714565

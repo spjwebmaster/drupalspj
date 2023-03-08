@@ -73,33 +73,33 @@ use Drupal\Core\Form\FormStateInterface;
  * examples for hook_menu().
  */
 function theming_example_menu() {
-  $items['examples/theming_example'] = array(
+  $items['examples/theming_example'] = [
     'title' => 'Theming Example',
     'description' => 'Some theming examples.',
     'page callback' => 'theming_example_page',
     'access callback' => TRUE,
-    'access arguments' => array('access content'),
-  );
-  $items['examples/theming_example/theming_example_list_page'] = array(
+    'access arguments' => ['access content'],
+  ];
+  $items['examples/theming_example/theming_example_list_page'] = [
     'title' => 'Theming a list',
     'page callback' => 'theming_example_list_page',
-    'access arguments' => array('access content'),
+    'access arguments' => ['access content'],
     'weight' => 1,
-  );
-  $items['examples/theming_example/theming_example_select_form'] = array(
+  ];
+  $items['examples/theming_example/theming_example_select_form'] = [
     'title' => 'Theming a form (select form)',
     'page callback'    => 'drupal_get_form',
-    'page arguments'   => array('theming_example_select_form'),
-    'access arguments' => array('access content'),
+    'page arguments'   => ['theming_example_select_form'],
+    'access arguments' => ['access content'],
     'weight' => 2,
-  );
-  $items['examples/theming_example/theming_example_text_form'] = array(
+  ];
+  $items['examples/theming_example/theming_example_text_form'] = [
     'title' => 'Theming a form (text form)',
     'page callback'    => 'drupal_get_form',
-    'page arguments'   => array('theming_example_text_form'),
-    'access arguments' => array('access content'),
+    'page arguments'   => ['theming_example_text_form'],
+    'access arguments' => ['access content'],
     'weight' => 3,
-  );
+  ];
 
   return $items;
 
@@ -111,21 +111,21 @@ function theming_example_menu() {
  * Defines the theming capabilities provided by this module.
  */
 function theming_example_theme($existing, $type, $theme, $path) {
-  return array(
-    'theming_example_content_array' => array(
+  return [
+    'theming_example_content_array' => [
       // We use 'render element' when the item to be passed is a self-describing
       // render array (it will have #theme_wrappers)
       'render element' => 'element',
-    ),
-    'theming_example_list' => array(
+    ],
+    'theming_example_list' => [
       // We use 'variables' when the item to be passed is an array whose
       // structure must be described here.
-      'variables' => array(
+      'variables' => [
         'title' => NULL,
         'items' => NULL,
-      ),
-    ),
-    'theming_example_text_form'  => array(
+      ],
+    ],
+    'theming_example_text_form'  => [
       'render element' => 'form',
       // In this one the rendering will be done by a template file
       // (theming-example-text-form.tpl.php) instead of being rendered by a
@@ -134,8 +134,8 @@ function theming_example_theme($existing, $type, $theme, $path) {
       // it may be determined automatically depending on the template engine
       // the site is using.
       'template' => 'theming-example-text-form',
-    ),
-  );
+    ],
+  ];
 }
 
 /**

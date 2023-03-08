@@ -248,7 +248,15 @@ class WebformProductWebformHandler extends WebformHandlerBase {
       '#markup' => '<p>' . $this->t('Select the total price field for a single order item. Select None to use individual webform elements with a Price field for each order item.') . '</p>',
     ];
 
-    $field_types = ['checkbox', 'hidden', 'radios', 'number', 'numeric', 'textfield', 'webform_computed_twig'];
+    $field_types = [
+      'checkbox',
+      'hidden',
+      'radios',
+      'number',
+      'numeric',
+      'textfield',
+      'webform_computed_twig',
+    ];
     $form['order_data'][self::ORDER_TOTAL] = [
       '#type' => 'select',
       '#title' => $this->t('Total price'),
@@ -486,7 +494,7 @@ class WebformProductWebformHandler extends WebformHandlerBase {
 
     $payment_status = $this->getSavedPaymentStatus($webform_submission);
 
-    // Create only an order for new webform submissions.
+    // Create an order only for new webform submissions.
     if ($payment_status != WebformProductController::PAYMENT_STATUS_NULL) {
       return [];
     }
@@ -580,15 +588,18 @@ class WebformProductWebformHandler extends WebformHandlerBase {
 
             // Option elements with price as option (checkboxes or radios).
             foreach ($price_options as $option) {
-              $orderItems[] = OrderItem::create([
-                'type' => $this->configuration[self::COMMERCE_ORDER_ITEM_TYPE],
-                'title' => $order_item_title . ' - ' . $element_title,
-                'quantity' => 1,
-                'unit_price' => [
-                  'number' => $price_fields[$key]['options'][$option],
-                  'currency_code' => $currencyCode,
-                ],
-              ]);
+              if (isset($price_fields[$key]['options'][$option]) && is_numeric($price_fields[$key]['options'][$option])) {
+                $value = (int) $price_fields[$key]['options'][$option];
+                $orderItems[] = OrderItem::create([
+                  'type' => $this->configuration[self::COMMERCE_ORDER_ITEM_TYPE],
+                  'title' => $order_item_title . ' - ' . $element_title,
+                  'quantity' => 1,
+                  'unit_price' => [
+                    'number' => $value,
+                    'currency_code' => $currencyCode,
+                  ],
+                ]);
+              }
             }
           }
 
@@ -649,7 +660,7 @@ class WebformProductWebformHandler extends WebformHandlerBase {
 
     // Let other modules alter the order_item list.
     $order_item_event = new OrderItemEvent($webform_submission, $orderItems, $this->configuration);
-    $this->eventDispatcher->dispatch(OrderItemEvent::EVENT_NAME, $order_item_event);
+    $this->eventDispatcher->dispatch($order_item_event, OrderItemEvent::EVENT_NAME);
 
     return $orderItems;
   }

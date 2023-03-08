@@ -72,7 +72,8 @@ trait DescriptionTemplateTrait {
    *   Path string.
    */
   protected function getDescriptionTemplatePath() {
-    return drupal_get_path('module', $this->getModuleName()) . "/templates/description.html.twig";
+    return \Drupal::service('extension.list.module')
+      ->getPath($this->getModuleName()) . '/templates/description.html.twig';
   }
 
 }

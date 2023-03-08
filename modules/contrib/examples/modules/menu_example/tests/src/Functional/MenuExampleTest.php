@@ -25,7 +25,7 @@ class MenuExampleTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['menu_example'];
+  protected static $modules = ['menu_example'];
 
   /**
    * The installation profile to use with this test.
@@ -39,7 +39,7 @@ class MenuExampleTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     // Always call the parent setUp().
     parent::setUp();
     // Add the main menu block, as provided by the Block module.

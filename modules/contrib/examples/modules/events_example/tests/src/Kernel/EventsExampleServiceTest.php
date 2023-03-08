@@ -18,7 +18,7 @@ class EventsExampleServiceTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['events_example'];
+  protected static $modules = ['events_example'];
 
   /**
    * Test for existence of 'events_example_subscriber' service.

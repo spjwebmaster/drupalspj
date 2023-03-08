@@ -28,7 +28,7 @@ class NodeTypeExampleTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['node', 'node_type_example'];
+  protected static $modules = ['node', 'node_type_example'];
 
   /**
    * The installation profile to use with this test.
@@ -92,8 +92,10 @@ class NodeTypeExampleTest extends ExamplesBrowserTestBase {
     // Get a list of content types.
     $this->drupalGet('/admin/structure/types');
     // Verify that these content types show up in the user interface.
-    $assert->pageTextContains('Example: Basic Content Type', 'Basic content type found.');
-    $assert->pageTextContains('Example: Locked Content Type', 'Locked content type found.');
+    // Basic content type found.
+    $assert->pageTextContains('Example: Basic Content Type');
+    // Locked content type found.
+    $assert->pageTextContains('Example: Locked Content Type');
 
     // Check for the locked status of our content types.
     // $nodeType will be of type Drupal\node\NodeTypeInterface.
@@ -116,7 +118,8 @@ class NodeTypeExampleTest extends ExamplesBrowserTestBase {
     $edit = [];
     $edit['title[0][value]'] = $this->randomMachineName(8);
     $edit['body[0][value]'] = $this->randomMachineName(16);
-    $this->drupalPostForm('/node/add/basic_content_type', $edit, 'Save');
+    $this->drupalGet('/node/add/basic_content_type');
+    $this->submitForm($edit, 'Save');
 
     // Check that the Basic page has been created.
     $assert->pageTextContains((string) new FormattableMarkup('@post @title has been created.', [
@@ -149,16 +152,18 @@ class NodeTypeExampleTest extends ExamplesBrowserTestBase {
     $edit['body[0][value]'] = $body;
 
     // Create a basic_content_type content.
-    $this->drupalPostForm('/node/add/basic_content_type', $edit, 'Save');
+    $this->drupalGet('/node/add/basic_content_type');
+    $this->submitForm($edit, 'Save');
     // Verify all fields and data of created content is shown.
-    $this->assertText($title);
-    $this->assertText($body);
+    $this->assertSession()->pageTextContains($title);
+    $this->assertSession()->pageTextContains($body);
 
     // Create a locked_content_type content.
-    $this->drupalPostForm('/node/add/locked_content_type', $edit, 'Save');
+    $this->drupalGet('/node/add/locked_content_type');
+    $this->submitForm($edit, 'Save');
     // Verify all fields and data of created content is shown.
-    $this->assertText($title);
-    $this->assertText($body);
+    $this->assertSession()->pageTextContains($title);
+    $this->assertSession()->pageTextContains($body);
   }
 
   /**

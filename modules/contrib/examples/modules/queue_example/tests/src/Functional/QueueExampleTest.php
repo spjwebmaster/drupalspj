@@ -22,7 +22,7 @@ class QueueExampleTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['queue_example'];
+  protected static $modules = ['queue_example'];
 
   /**
    * The installation profile to use with this test.
@@ -42,18 +42,18 @@ class QueueExampleTest extends BrowserTestBase {
     // Load the queue with 5 items.
     for ($i = 1; $i <= 5; $i++) {
       $edit = ['queue_name' => 'queue_example_first_queue', 'string_to_add' => 'boogie' . $i];
-      $this->drupalPostForm(NULL, $edit, 'Insert into queue');
-      $this->assertText((string) new FormattableMarkup('There are now @number items in the queue', ['@number' => $i]));
+      $this->submitForm($edit, 'Insert into queue');
+      $this->assertSession()->pageTextContains((string) new FormattableMarkup('There are now @number items in the queue', ['@number' => $i]));
     }
     // Claim each of the 5 items with a claim time of 0 seconds.
     for ($i = 1; $i <= 5; $i++) {
       $edit = ['queue_name' => 'queue_example_first_queue', 'claim_time' => 0];
-      $this->drupalPostForm(NULL, $edit, 'Claim the next item from the queue');
-      $this->assertPattern((string) new FormattableMarkup('%Claimed item id=.*string=@string for 0 seconds.%', ['@string' => 'boogie' . $i]));
+      $this->submitForm($edit, 'Claim the next item from the queue');
+      $this->assertSession()->responseMatches((string) new FormattableMarkup('%Claimed item id=.*string=@string for 0 seconds.%', ['@string' => 'boogie' . $i]));
     }
     $edit = ['queue_name' => 'queue_example_first_queue', 'claim_time' => 0];
-    $this->drupalPostForm(NULL, $edit, 'Claim the next item from the queue');
-    $this->assertText('There were no items in the queue available to claim');
+    $this->submitForm($edit, 'Claim the next item from the queue');
+    $this->assertSession()->pageTextContains('There were no items in the queue available to claim');
 
     // Sleep a second so we can make sure that the timeouts actually time out.
     // Local systems work fine with this but apparently the PIFR server is so
@@ -61,18 +61,18 @@ class QueueExampleTest extends BrowserTestBase {
     sleep(1);
 
     // Run cron to release expired items.
-    $this->drupalPostForm(NULL, [], 'Run cron manually to expire claims');
+    $this->submitForm([], 'Run cron manually to expire claims');
 
     // Claim and delete each of the 5 items which should now be available.
     for ($i = 1; $i <= 5; $i++) {
       $edit = ['queue_name' => 'queue_example_first_queue', 'claim_time' => 0];
-      $this->drupalPostForm(NULL, $edit, 'Claim the next item and delete it');
-      $this->assertPattern((string) new FormattableMarkup('%Claimed and deleted item id=.*string=@string for 0 seconds.%', ['@string' => 'boogie' . $i]));
+      $this->submitForm($edit, 'Claim the next item and delete it');
+      $this->assertSession()->responseMatches((string) new FormattableMarkup('%Claimed and deleted item id=.*string=@string for 0 seconds.%', ['@string' => 'boogie' . $i]));
     }
     // Verify that nothing is left to claim.
     $edit = ['queue_name' => 'queue_example_first_queue', 'claim_time' => 0];
-    $this->drupalPostForm(NULL, $edit, 'Claim the next item from the queue');
-    $this->assertText('There were no items in the queue available to claim');
+    $this->submitForm($edit, 'Claim the next item from the queue');
+    $this->assertSession()->pageTextContains('There were no items in the queue available to claim');
   }
 
 }

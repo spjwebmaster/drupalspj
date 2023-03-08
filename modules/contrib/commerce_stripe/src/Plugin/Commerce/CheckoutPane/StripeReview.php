@@ -44,6 +44,7 @@ class StripeReview extends CheckoutPaneBase {
     return [
       'button_id' => 'edit-actions-next',
       'auto_submit_review_form' => FALSE,
+      'setup_future_usage' => '',
     ] + parent::defaultConfiguration();
   }
 
@@ -51,16 +52,29 @@ class StripeReview extends CheckoutPaneBase {
    * {@inheritdoc}
    */
   public function buildConfigurationSummary() {
-    $summary = $this->t('Button id is @id', ['@id' => $this->configuration['button_id']]) . '<br>';
+    $summary[] = $this->t('Button id is @id', ['@id' => $this->configuration['button_id']]);
 
     if (empty($this->configuration['auto_submit_review_form'])) {
-      $summary .= $this->t('Auto submit: Off');
+      $summary[] = $this->t('Auto submit: Off');
     }
     else {
-      $summary .= $this->t('Auto submit: On');
+      $summary[] = $this->t('Auto submit: On');
     }
 
-    return $summary;
+    switch ($this->configuration['setup_future_usage']) {
+      case 'on_session':
+        $summary[] = $this->t('Setup future usage: On session');
+        break;
+
+      case 'off_session':
+        $summary[] = $this->t('Setup future usage: Off session');
+        break;
+
+      case '':
+        $summary[] = $this->t('Setup future usage: None');
+    }
+
+    return implode('<br>', $summary);
   }
 
   /**
@@ -83,6 +97,18 @@ class StripeReview extends CheckoutPaneBase {
       '#default_value' => $this->configuration['auto_submit_review_form'],
     ];
 
+    $form['setup_future_usage'] = [
+      '#type'          => 'select',
+      '#title'         => $this->t('Setup future usage'),
+      '#options'       => [
+        'on_session'  => 'On session',
+        'off_session' => 'Off session',
+      ],
+      '#empty_value'   => '',
+      '#default_value' => $this->getConfiguration()['setup_future_usage'],
+      '#description'   => 'The intended future usage of the provided payment method. See <a href="https://stripe.com/docs/payments/payment-intents#future-usage">Stripe documentation</a>.',
+    ];
+
     return $form;
   }
 
@@ -96,6 +122,7 @@ class StripeReview extends CheckoutPaneBase {
       $values = $form_state->getValue($form['#parents']);
       $this->configuration['button_id'] = $values['button_id'];
       $this->configuration['auto_submit_review_form'] = !empty($values['auto_submit_review_form']);
+      $this->configuration['setup_future_usage'] = $values['setup_future_usage'];
     }
   }
 
@@ -139,6 +166,9 @@ class StripeReview extends CheckoutPaneBase {
       $intent_attributes = [
         'capture_method' => $payment_process_pane->getConfiguration()['capture'] ? 'automatic' : 'manual',
       ];
+      if (!empty($this->getConfiguration()['setup_future_usage'])) {
+        $intent_attributes['setup_future_usage'] = $this->getConfiguration()['setup_future_usage'];
+      }
       $intent = $stripe_plugin->createPaymentIntent($this->order, $intent_attributes);
     }
     if ($intent->status === PaymentIntent::STATUS_REQUIRES_PAYMENT_METHOD) {
@@ -159,7 +189,7 @@ class StripeReview extends CheckoutPaneBase {
 
     $auto_submit = !empty($this->configuration['auto_submit_review_form']);
     if ($auto_submit) {
-      // Add a class to the checkout pane and the form actions
+      // Add a class to the checkout pane and the form actions.
       $class = 'stripe-review-autosubmit';
       $pane_form['#attributes']['class'][] = $class;
       $complete_form['actions']['#attributes']['class'][] = $class;
@@ -170,7 +200,6 @@ class StripeReview extends CheckoutPaneBase {
       // Disable the form submit button.
       $complete_form['actions']['next']['#attributes']['disabled'] = 'disabled';
     }
-
 
     $pane_form['#attached']['library'][] = 'commerce_stripe/stripe';
     $pane_form['#attached']['library'][] = 'commerce_stripe/checkout_review';

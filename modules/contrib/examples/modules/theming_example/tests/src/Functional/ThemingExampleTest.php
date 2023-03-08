@@ -22,7 +22,7 @@ class ThemingExampleTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['theming_example'];
+  protected static $modules = ['theming_example'];
 
   /**
    * The installation profile to use with this test.
@@ -33,6 +33,7 @@ class ThemingExampleTest extends ExamplesBrowserTestBase {
    * @var string
    */
   protected $profile = 'minimal';
+
   /**
    * Verify the functionality of the example module.
    */
@@ -41,14 +42,14 @@ class ThemingExampleTest extends ExamplesBrowserTestBase {
     // Check that the main page has been themed (first line with <b>) and has
     // content.
     $this->drupalGet('/examples/theming_example');
-    $this->assertRaw('Some examples of pages and forms that are run through theme functions.</h1>');
-    $this->assertRaw('examples/theming_example/form_select">Simple form 1</a>');
-    $this->assertRaw('examples/theming_example/form_text">Simple form 2</a>');
+    $this->assertSession()->responseContains('Some examples of pages and forms that are run through theme functions.</h1>');
+    $this->assertSession()->responseContains('examples/theming_example/form_select">Simple form 1</a>');
+    $this->assertSession()->responseContains('examples/theming_example/form_text">Simple form 2</a>');
 
     // Visit the list demonstration page and check that css gets loaded
     // and do some spot checks on how the two lists were themed.
     $this->drupalGet('/examples/theming_example/list');
-    // CSS should be always injected, because preprocess is set to false in *.libraries.yml
+    // CSS should be always injected, because preprocess is set to false in *.libraries.yml.
     $this->assertSession()->responseMatches('/<link rel="stylesheet".*theming_example.css/');
     $li_list = $this->xpath('//ul[contains(@class,"render-version-list")]/li');
     $this->assertTrue($li_list[0]->getText() == 'First item');
@@ -58,16 +59,16 @@ class ThemingExampleTest extends ExamplesBrowserTestBase {
     // Visit the select form page to do spot checks.
     $this->drupalGet('/examples/theming_example/form_select');
     // Choice element title should be output separately, as h3 header.
-    $this->assertRaw('<h3 data-drupal-selector="edit-title">Choose which ordering you want</h3>');
+    $this->assertSession()->responseContains('<h3 data-drupal-selector="edit-title">Choose which ordering you want</h3>');
     // Choice element should be wrapped with <strong> tag.
-    $this->assertRaw('<strong>Choose which ordering you want</strong>');
+    $this->assertSession()->responseContains('<strong>Choose which ordering you want</strong>');
     // Form elements should be wrapped with container-inline div.
     $this->assertSession()->responseMatches('/<div class="container-inline choice-wrapper"><div class="[a-zA-Z- ]* form-item-choice/');
     $this->assertSession()->responseNotMatches('/<link rel="stylesheet".*theming_example.css/');
 
     // Visit the text form page and do spot checks.
     $this->drupalGet('/examples/theming_example/form_text');
-    $this->assertText('Please input something!');
+    $this->assertSession()->pageTextContains('Please input something!');
   }
 
 }

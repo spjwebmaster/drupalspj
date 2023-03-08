@@ -24,7 +24,7 @@ class CacheExampleTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['cache_example'];
+  protected static $modules = ['cache_example'];
 
   /**
    * The installation profile to use with this test.
@@ -81,33 +81,40 @@ class CacheExampleTest extends BrowserTestBase {
     $assert->pageTextContains('Source: cached');
 
     // Now push the button to remove the count.
-    $this->drupalPostForm('examples/cache-example', [], 'Explicitly remove cached file count');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm([], 'Explicitly remove cached file count');
     $assert->pageTextContains('Source: actual file search');
 
     // Create a cached item. First make sure it doesn't already exist.
     $assert->pageTextContains('Cache item does not exist');
-    $this->drupalPostForm('examples/cache-example', ['expiration' => -10], 'Create a cache item with this expiration');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm(['expiration' => -10], 'Create a cache item with this expiration');
     // We should now have an already-expired item. Automatically invalid.
     $assert->pageTextContains('Cache_item is invalid');
     // Now do the expiration operation.
-    $this->drupalPostForm('examples/cache-example', ['cache_clear_type' => 'expire'], 'Clear or expire cache');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm(['cache_clear_type' => 'expire'], 'Clear or expire cache');
     // And verify that it was removed.
     $assert->pageTextContains('Cache item does not exist');
 
     // Create a cached item. This time we'll make it not expire.
-    $this->drupalPostForm('examples/cache-example', ['expiration' => 'never_remove'], 'Create a cache item with this expiration');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm(['expiration' => 'never_remove'], 'Create a cache item with this expiration');
     // We should now have an never-remove item.
     $assert->pageTextContains('Cache item exists and is set to expire at Never expires');
     // Now do the expiration operation.
-    $this->drupalPostForm('examples/cache-example', ['cache_clear_type' => 'expire'], 'Clear or expire cache');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm(['cache_clear_type' => 'expire'], 'Clear or expire cache');
     // And verify that it was not removed.
     $assert->pageTextContains('Cache item exists and is set to expire at Never expires');
     // Now do tag invalidation.
-    $this->drupalPostForm('examples/cache-example', ['cache_clear_type' => 'remove_tag'], 'Clear or expire cache');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm(['cache_clear_type' => 'remove_tag'], 'Clear or expire cache');
     // And verify that it was invalidated.
     $assert->pageTextContains('Cache_item is invalid');
     // Do the hard delete.
-    $this->drupalPostForm('examples/cache-example', ['cache_clear_type' => 'remove_all'], 'Clear or expire cache');
+    $this->drupalGet('examples/cache-example');
+    $this->submitForm(['cache_clear_type' => 'remove_all'], 'Clear or expire cache');
     // And verify that it was removed.
     $assert->pageTextContains('Cache item does not exist');
   }

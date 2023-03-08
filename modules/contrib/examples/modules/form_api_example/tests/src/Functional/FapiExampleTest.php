@@ -25,7 +25,7 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
    *
    * @var string[]
    */
-  public static $modules = ['form_api_example'];
+  protected static $modules = ['form_api_example'];
 
   /**
    * The installation profile to use with this test.
@@ -45,7 +45,6 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
   public function testFunctional() {
     // Please fail this one first.
     $this->doTestRoutes();
-
     $this->doTestAjaxAddMore();
     $this->doTestAjaxColorForm();
     $this->doTestBuildDemo();
@@ -93,7 +92,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
       $this->drupalGet($path);
       $assertion->statusCodeEquals(200);
       foreach ($buttons as $button) {
-        $this->drupalPostForm($path, [], $button);
+        $this->drupalGet($path);
+        $this->submitForm([], $button);
         $assertion->statusCodeEquals(200);
       }
     }
@@ -109,7 +109,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
     $edit = [
       'temperature' => 'warm',
     ];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.ajax_color_demo'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.ajax_color_demo'));
+    $this->submitForm($edit, 'Submit');
     $assert->statusCodeEquals(200);
     $assert->pageTextContains('Value for Temperature: warm');
   }
@@ -124,7 +125,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
     $edit = [
       'change' => '1',
     ];
-    $this->drupalPostForm($build_demo_url, $edit, 'Submit');
+    $this->drupalGet($build_demo_url);
+    $this->submitForm($edit, 'Submit');
 
     $assert->pageTextContains('1. __construct');
     $assert->pageTextContains('2. getFormId');
@@ -132,7 +134,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
     $assert->pageTextContains('4. submitForm');
 
     // Ensure the 'submit rebuild' action performs the rebuild.
-    $this->drupalPostForm($build_demo_url, $edit, 'Submit Rebuild');
+    $this->drupalGet($build_demo_url);
+    $this->submitForm($edit, 'Submit Rebuild');
     $assert->pageTextContains('4. rebuildFormSubmit');
   }
 
@@ -150,7 +153,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
       'publisher' => 'me',
       'diet' => 'vegan',
     ];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.container_demo'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.container_demo'));
+    $this->submitForm($edit, 'Submit');
     $assert->pageTextContains('Value for name: Dave');
     $assert->pageTextContains('Value for pen_name: DMan');
     $assert->pageTextContains('Value for title: My Book');
@@ -189,7 +193,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
       'subject' => 'Form test',
       'weight' => '3',
     ];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.input_demo'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.input_demo'));
+    $this->submitForm($edit, 'Submit');
     $assert->statusCodeEquals(200);
 
     $assert->pageTextContains('Value for What standardized tests did you take?');
@@ -224,7 +229,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
     $edit = [
       'title' => 'My Book',
     ];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.modal_form'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.modal_form'));
+    $this->submitForm($edit, 'Submit');
     $assert->pageTextContains('Submit handler: You specified a title of My Book.');
   }
 
@@ -236,7 +242,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
 
     // Post a title.
     $edit = ['title' => 'My Custom Title'];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.simple_form'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.simple_form'));
+    $this->submitForm($edit, 'Submit');
     $assert->pageTextContains('You specified a title of My Custom Title.');
   }
 
@@ -251,7 +258,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
       'needs_accommodation' => TRUE,
       'diet' => 'vegan',
     ];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.state_demo'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.state_demo'));
+    $this->submitForm($edit, 'Submit');
     $assert->pageTextContains('Dietary Restriction Requested: vegan');
   }
 
@@ -266,7 +274,8 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
       'name' => 'Dave',
       'publisher' => 'me',
     ];
-    $this->drupalPostForm(Url::fromRoute('form_api_example.container_demo'), $edit, 'Submit');
+    $this->drupalGet(Url::fromRoute('form_api_example.container_demo'));
+    $this->submitForm($edit, 'Submit');
     $assert->pageTextContains('Value for name: Dave');
     $assert->pageTextContains('Value for publisher: me');
   }
@@ -275,56 +284,49 @@ class FapiExampleTest extends ExamplesBrowserTestBase {
    * Test the Ajax Add More demo form.
    */
   public function doTestAjaxAddMore() {
-    // XPath for the remove button. We have to use contains() here because the
-    // ID will have a hash value at the end.
-    $button_xpath = '//input[contains(@id,"edit-names-fieldset-actions-remove-name")]';
-
     $ajax_addmore_url = Url::fromRoute('form_api_example.ajax_addmore');
 
     // Verify that anonymous can access the ajax_add_more page.
     $this->drupalGet($ajax_addmore_url);
-    $this->assertResponse(200);
+    $assert_session = $this->assertSession();
+    $assert_session->statusCodeEquals(200);
     // Verify that there is no remove button.
-    $this->assertEmpty($this->xpath($button_xpath));
+    $assert_session->buttonNotExists('Remove one');
 
     $name_one = 'John';
     $name_two = 'Smith';
 
     // Enter the value in field-1.
     // and click on 'Add one more' button.
-    $edit = [];
-    $edit['names_fieldset[name][0]'] = $name_one;
-    $this->drupalPostForm($ajax_addmore_url, $edit, 'Add one more');
+    $assert_session->fieldExists('names_fieldset[name][0]')->setValue($name_one);
+    $assert_session->buttonExists('Add one more')->press();
 
     // Verify field-2 gets added.
-    // and value of field-1 should retained.
-    $this->assertFieldsByValue($this->xpath('//input[@id = "edit-names-fieldset-name-0"]'), $name_one);
-    $this->assertNotEmpty($this->xpath('//input[@id = "edit-names-fieldset-name-1"]'));
-    // Verify that the remove button was added.
-    $this->assertNotEmpty($this->xpath($button_xpath));
+    // and value of field-1 should be retained.
+    $assert_session->fieldValueEquals('names_fieldset[name][0]', $name_one);
+    $assert_session->fieldValueEquals('names_fieldset[name][1]', '');
+    $assert_session->buttonExists('Remove one');
 
     // Enter the value in field-2
     // and click on 'Add one more' button.
-    $edit['names_fieldset[name][1]'] = $name_two;
-    $this->drupalPostForm(NULL, $edit, 'Add one more');
+    $assert_session->fieldExists('names_fieldset[name][1]')->setValue($name_two);
+    $assert_session->buttonExists('Add one more')->press();
 
     // Verify field-3 gets added.
     // and value of field-1 and field-2 are retained.
-    $this->assertFieldsByValue($this->xpath('//input[@id = "edit-names-fieldset-name-0"]'), $name_one);
-    $this->assertFieldsByValue($this->xpath('//input[@id = "edit-names-fieldset-name-1"]'), $name_two);
-    $this->assertNotEmpty($this->xpath('//input[@id = "edit-names-fieldset-name-2"]'));
+    $assert_session->fieldValueEquals('names_fieldset[name][0]', $name_one);
+    $assert_session->fieldValueEquals('names_fieldset[name][1]', $name_two);
+    $assert_session->fieldValueEquals('names_fieldset[name][2]', '');
 
     // Click on "Remove one" button to test remove button works.
     // and value of field-1 and field-2 are retained.
-    $this->drupalPostForm(NULL, NULL, 'Remove one');
-    $this->assertFieldsByValue($this->xpath('//input[@id = "edit-names-fieldset-name-0"]'), $name_one);
-    $this->assertFieldsByValue($this->xpath('//input[@id = "edit-names-fieldset-name-1"]'), $name_two);
-    $this->assertEmpty($this->xpath('//input[@id = "edit-names-fieldset-name-2"]'));
+    $assert_session->buttonExists('Remove one')->press();
+    $assert_session->fieldValueEquals('names_fieldset[name][0]', $name_one);
+    $assert_session->fieldValueEquals('names_fieldset[name][1]', $name_two);
 
     // Submit the form and verify the results.
-    $this->drupalPostForm(NULL, NULL, 'Submit');
-    $this->assertText('These people are coming to the picnic: ' . $name_one . ', ' . $name_two);
-
+    $assert_session->buttonExists('Submit')->press();
+    $assert_session->pageTextContains('These people are coming to the picnic: ' . $name_one . ', ' . $name_two);
   }
 
 }

@@ -22,7 +22,7 @@ class StateDemoTest extends WebDriverTestBase {
    *
    * @var string[]
    */
-  public static $modules = ['form_api_example'];
+  protected static $modules = ['form_api_example'];
 
   /**
    * Functional tests for the StateDemo example form.

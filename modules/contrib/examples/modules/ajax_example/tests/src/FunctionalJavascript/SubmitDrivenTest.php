@@ -20,7 +20,7 @@ class SubmitDrivenTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test the behavior of the submit-driven AJAX example.

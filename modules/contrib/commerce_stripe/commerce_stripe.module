@@ -11,18 +11,18 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function commerce_stripe_form_commerce_checkout_flow_alter( array &$form, FormStateInterface $form_state ) {
+function commerce_stripe_form_commerce_checkout_flow_alter(array &$form, FormStateInterface $form_state) {
   // Add a "data-stripe" attributes to any email fields found, to allow
   // javascript to collect customer email information for Stripe.
-  if ( isset( $form['contact_information']['email'] ) ) {
+  if (isset($form['contact_information']['email'])) {
     $form['contact_information']['email']['#attributes']['data-stripe'] = 'email';
   }
   // Also add an after-build callback to add "data-stripe" attributes to
   // shipping profile fields to use shipping address information, if present.
-  if ( isset( $form['shipping_information']['shipping_profile'] ) ) {
+  if (isset($form['shipping_information']['shipping_profile'])) {
     $form['shipping_information']['shipping_profile']['#after_build'][] = [
       PaymentMethodAddForm::class,
-      'addAddressAttributes'
+      'addAddressAttributes',
     ];
   }
 }

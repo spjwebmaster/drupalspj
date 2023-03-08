@@ -96,6 +96,7 @@ class PagerExamplePage extends ControllerBase {
     if (!$this->currentUser->hasPermission('bypass node access')) {
       $query->condition('status', 1);
     }
+    $query->accessCheck();
     $entity_ids = $query->execute();
 
     $nodes = $this->nodeStorage->loadMultiple($entity_ids);

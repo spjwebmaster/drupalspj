@@ -8,7 +8,7 @@ paypal_checkout:
     - core/drupalSettings
     - core/drupal
     - core/jquery
-    - core/jquery.once
+    - core/once
     - core/drupal.ajax
     - core/drupal.message
 
@@ -23,7 +23,7 @@ paypal_checkout_custom_card_fields:
     - core/drupalSettings
     - core/drupal
     - core/jquery
-    - core/jquery.once
+    - core/once
 
 credit_card_icons:
   version: VERSION

@@ -23,7 +23,7 @@ class PageExampleTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['page_example'];
+  protected static $modules = ['page_example'];
 
   /**
    * The installation profile to use with this test.

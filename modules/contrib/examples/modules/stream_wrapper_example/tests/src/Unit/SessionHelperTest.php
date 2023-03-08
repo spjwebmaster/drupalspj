@@ -32,7 +32,7 @@ class SessionHelperTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     // Mock the session service.

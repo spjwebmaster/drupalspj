@@ -25,7 +25,7 @@ class DependentDropdownTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test the dependent dropdown form without AJAX.
@@ -57,7 +57,8 @@ class DependentDropdownTest extends BrowserTestBase {
 
     foreach ($families as $family => $instruments) {
       // Post the form for the instrument family.
-      $this->drupalPostForm($dropdown_url, ['instrument_family_dropdown' => $family], 'Choose');
+      $this->drupalGet($dropdown_url);
+      $this->submitForm(['instrument_family_dropdown' => $family], 'Choose');
       // Get the instrument dropdown elements.
       $instrument_options = $page->findAll('css', '#edit-instrument-dropdown option');
       $this->assertCount(count($instruments), $instrument_options);
@@ -68,8 +69,9 @@ class DependentDropdownTest extends BrowserTestBase {
       // Post each instrument. We have to 'choose' again in order to unlock the
       // instrument dropdown.
       foreach ($instruments as $instrument) {
-        $this->drupalPostForm($dropdown_url, ['instrument_family_dropdown' => $family], 'Choose');
-        $this->drupalPostForm(NULL, ['instrument_dropdown' => $instrument], 'Submit');
+        $this->drupalGet($dropdown_url);
+        $this->submitForm(['instrument_family_dropdown' => $family], 'Choose');
+        $this->submitForm(['instrument_dropdown' => $instrument], 'Submit');
         $assert->pageTextContains("Your values have been submitted. Instrument family: $family, Instrument: $instrument");
       }
     }

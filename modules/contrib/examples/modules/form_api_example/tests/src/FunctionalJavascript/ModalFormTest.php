@@ -15,14 +15,14 @@ class ModalFormTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * Our module dependencies.
    *
    * @var string[]
    */
-  public static $modules = ['form_api_example'];
+  protected static $modules = ['form_api_example'];
 
   /**
    * Functional test of the modal form example.

@@ -20,12 +20,12 @@ class PagerExampleTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['pager_example', 'node'];
+  protected static $modules = ['pager_example', 'node'];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     // Log in a user to prevent caching from affecting the results.

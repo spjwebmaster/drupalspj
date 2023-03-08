@@ -1,7 +1,7 @@
 name: webform_product_test
 description: 'Webform product test helper module.'
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8.9 || ^9 || ^10
 dependencies:
   - drupal:link
   - drupal:field
@@ -17,7 +17,7 @@ dependencies:
   - webform:webform_ui
   - webform_product:webform_product
 
-# Information added by Drupal.org packaging script on 2022-04-15
-version: '3.0.1'
+# Information added by Drupal.org packaging script on 2023-01-24
+version: '3.0.4'
 project: 'webform_product'
-datestamp: 1650013254
+datestamp: 1674561430

@@ -23,25 +23,24 @@ class WebFormProductFormHelper {
    * @return array
    *   Form element.
    */
-  public static function processElementForm(&$element, FormStateInterface $form_state, &$complete_form) {
+  public static function processElementForm(array &$element, FormStateInterface $form_state, array &$complete_form) {
     $element_info = $form_state->getFormObject()->getElement();
     $webform = self::getWebformInFormState($form_state);
 
     $hasWebformProductHandler = FALSE;
 
     foreach ($webform->getHandlers() as $handler) {
-      if($handler->getPluginId() == 'webform_product' && $handler->isEnabled()) {
+      if ($handler->getPluginId() == 'webform_product' && $handler->isEnabled()) {
         $hasWebformProductHandler = TRUE;
       }
     }
 
     // @todo fix this when Price* webform elements are working.
-//    // Only change the form of price_* webform elements.
-//    if (strpos($element_info['#type'], 'price_', 0) === FALSE) {
-//      return $element;
-//    }
-
-    // TODO: Only add price field webform handler for product is enabled.
+    //   Only change the form of price_* webform elements.
+    //    if (strpos($element_info['#type'], 'price_', 0) === FALSE) {
+    //      return $element;
+    //    }
+    // @todo Only add price field webform handler for product is enabled.
     if ($hasWebformProductHandler) {
       $element['price'] = [
         '#type' => 'textfield',
@@ -65,7 +64,7 @@ class WebFormProductFormHelper {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   Form state.
    */
-  public static function saveTopPrice($element, FormStateInterface $form_state) {
+  public static function saveTopPrice(array $element, FormStateInterface $form_state) {
     static::setSetting($form_state, 'top', $element['#value']);
   }
 
@@ -88,7 +87,7 @@ class WebFormProductFormHelper {
       $setting = $webform->getThirdPartySetting('webform_product', $formObject->getKey());
     }
 
-    return isset($setting[$settingKey]) ? $setting[$settingKey] : NULL;
+    return $setting[$settingKey] ?? NULL;
   }
 
   /**
@@ -107,6 +106,17 @@ class WebFormProductFormHelper {
     if ($webform) {
       $formObject = $form_state->getFormObject();
       $elementKey = $formObject->getKey();
+      if (empty($elementKey)) {
+        // It could be a new element addition, then the getKey will be empty.
+        $form_values = $form_state->getValues();
+        if (!empty($form_values['key'])) {
+          $elementKey = $form_values['key'];
+        }
+        else {
+          // We should not proceed if the key is empty.
+          return;
+        }
+      }
       $setting = $webform->getThirdPartySetting('webform_product', $elementKey);
       $setting[$settingKey] = $value;
       $webform->setThirdPartySetting('webform_product', $elementKey, $setting);

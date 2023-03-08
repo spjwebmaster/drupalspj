@@ -130,7 +130,7 @@ function _examples_toolbar_routes() {
     'events_example' => 'events_example.description',
     'field_example' => 'field_example.description',
     'field_permission_example' => 'field_permission_example.description',
-    //'file_example' => 'file_example.fileapi',
+    // 'file_example' => 'file_example.fileapi',
     'form_api_example' => 'form_api_example.description',
     'hooks_example' => 'hooks_example.description',
     'js_example' => 'js_example.info',

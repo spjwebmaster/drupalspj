@@ -27,7 +27,7 @@ class EmailExampleTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['email_example'];
+  protected static $modules = ['email_example'];
 
   /**
    * The installation profile to use with this test.
@@ -56,12 +56,13 @@ class EmailExampleTest extends ExamplesBrowserTestBase {
     $assert->statusCodeEquals(200);
 
     // Verifiy email form has email & message fields.
-    $assert->fieldValueEquals('edit-email', NULL);
-    $assert->fieldValueEquals('edit-message', NULL);
+    $assert->fieldExists('edit-email');
+    $assert->fieldExists('edit-message');
 
     // Verifiy email form is submitted.
     $edit = ['email' => 'example@example.com', 'message' => 'test'];
-    $this->drupalPostForm('examples/email-example', $edit, 'Submit');
+    $this->drupalGet('examples/email-example');
+    $this->submitForm($edit, 'Submit');
     $assert->statusCodeEquals(200);
 
     // Verifiy comfirmation page.

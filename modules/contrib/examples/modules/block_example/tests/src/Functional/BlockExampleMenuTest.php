@@ -24,7 +24,7 @@ class BlockExampleMenuTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['block', 'block_example'];
+  protected static $modules = ['block', 'block_example'];
 
   /**
    * The installation profile to use with this test.
@@ -40,16 +40,16 @@ class BlockExampleMenuTest extends BrowserTestBase {
    */
   public function testBlockExampleLink() {
     $this->drupalGet('');
-    $this->assertLinkByHref('examples/block-example');
+    $this->assertSession()->linkByHrefExists('examples/block-example');
 
     $this->drupalGet('examples/block-example');
-    $this->assertResponse(200);
+    $this->assertSession()->statusCodeEquals(200);
 
     // Verify that the block admin page link works.
     $this->clickLink('the block admin page');
     // Since it links to the admin page, we should get a permissions error and
     // not 404.
-    $this->assertResponse(403);
+    $this->assertSession()->statusCodeEquals(403);
   }
 
 }

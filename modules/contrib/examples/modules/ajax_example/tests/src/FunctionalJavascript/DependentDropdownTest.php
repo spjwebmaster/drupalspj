@@ -22,7 +22,7 @@ class DependentDropdownTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test the dependent dropdown form with AJAX.
@@ -33,7 +33,7 @@ class DependentDropdownTest extends WebDriverTestBase {
     $page = $this->getSession()->getPage();
 
     // Get a URL object for the form, specifying AJAX.
-    $dropdown_url = Url::fromRoute('ajax_example.dependent_dropdown', ['nojs' => 'ajax']);
+    $dropdown_url = Url::fromRoute('ajax_example.dependent_dropdown');
 
     // Get the form.
     $this->drupalGet($dropdown_url);
@@ -68,9 +68,10 @@ class DependentDropdownTest extends WebDriverTestBase {
       // Post each instrument.
       foreach ($instruments as $instrument) {
         $this->drupalGet($dropdown_url);
-        $family_dropdown->setValue($family);
+        $assert->selectExists('instrument_family_dropdown')->selectOption($family);
         $assert->assertWaitOnAjaxRequest();
-        $this->drupalPostForm(NULL, ['instrument_dropdown' => $instrument], 'Submit');
+        $assert->selectExists('instrument_dropdown')->selectOption($instrument);
+        $assert->buttonExists('Submit')->press();
         $assert->pageTextContains("Your values have been submitted. Instrument family: $family, Instrument: $instrument");
       }
     }

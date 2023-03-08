@@ -26,7 +26,7 @@ class EventsExampleTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['events_example'];
+  protected static $modules = ['events_example'];
 
   /**
    * {@inheritdoc}
@@ -57,7 +57,8 @@ class EventsExampleTest extends BrowserTestBase {
       'incident_type' => 'stolen_princess',
       'incident' => $this->randomString(),
     ];
-    $this->drupalPostForm($events_example_form, $values, 'Submit');
+    $this->drupalGet($events_example_form);
+    $this->submitForm($values, 'Submit');
     $this->assertSession()->pageTextContains('Mario has been alerted. Thank you.');
 
     // Fill out the form again, this time testing that the
@@ -66,7 +67,8 @@ class EventsExampleTest extends BrowserTestBase {
       'incident_type' => 'joker',
       'incident' => $this->randomString(),
     ];
-    $this->drupalPostForm($events_example_form, $values, 'Submit');
+    $this->drupalGet($events_example_form);
+    $this->submitForm($values, 'Submit');
     $this->assertSession()->pageTextContains('Batman has been alerted. Thank you.');
 
     // Fill out the form again, this time testing that our default handler
@@ -75,7 +77,8 @@ class EventsExampleTest extends BrowserTestBase {
       'incident_type' => 'cat',
       'incident' => $this->randomString(),
     ];
-    $this->drupalPostForm($events_example_form, $values, 'Submit');
+    $this->drupalGet($events_example_form);
+    $this->submitForm($values, 'Submit');
     $this->assertSession()->pageTextContains('notifyDefault()');
   }
 

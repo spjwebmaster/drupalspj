@@ -17,12 +17,12 @@ class DynamicFormSectionsTest extends WebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test the dependent dropdown form with AJAX.
@@ -38,7 +38,7 @@ class DynamicFormSectionsTest extends WebDriverTestBase {
     // Get the form.
     $this->drupalGet($dropdown_url);
     // Check for the initial state.
-    $this->assertEmpty($page->findAll('css', 'div.details-wrapper *'));
+    $this->assertEmpty($page->findAll('css', 'questions-wrapper *'));
 
     // Cycle through the other dropdown values.
     $question_styles = [
@@ -48,23 +48,22 @@ class DynamicFormSectionsTest extends WebDriverTestBase {
     ];
 
     // Check expectations against the details wrapper.
-    $question_type_dropdown = $page->findField('question_type_select');
     foreach ($question_styles as $question_style) {
-      $question_type_dropdown->setValue($question_style);
+      $assert->selectExists('question_type_select')->selectOption($question_style);
       $assert->assertWaitOnAjaxRequest();
-      $this->assertNotEmpty($page->findAll('css', 'div.details-wrapper *'));
+      $this->assertNotEmpty($page->findAll('css', '.questions-wrapper *'));
     }
     // Prompt to choose question should remove the question.
-    $question_type_dropdown->setValue('Choose question style');
+    $assert->selectExists('question_type_select')->selectOption('Choose question style');
     $assert->assertWaitOnAjaxRequest();
-    $this->assertEmpty($page->findAll('css', 'div.details-wrapper *'));
+    $this->assertEmpty($page->findAll('css', 'questions-wrapper *'));
 
     // Submit the correct answers.
     foreach ($question_styles as $question_style) {
       $this->drupalGet($dropdown_url);
-      $question_type_dropdown->setValue($question_style);
+      $assert->selectExists('question_type_select')->selectOption($question_style);
       $assert->assertWaitOnAjaxRequest();
-      $this->drupalPostForm(NULL, ['question' => 'George Washington'], 'Submit your answer');
+      $this->submitForm(['question' => 'George Washington'], 'Submit your answer');
       $assert->pageTextContains('You got the right answer: George Washington');
     }
   }

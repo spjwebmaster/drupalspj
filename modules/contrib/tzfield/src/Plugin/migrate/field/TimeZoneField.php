@@ -22,6 +22,9 @@ class TimeZoneField extends FieldPluginBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @return string[]
+   *   Field formatter map.
    */
   public function getFieldFormatterMap() {
     return [
@@ -32,6 +35,9 @@ class TimeZoneField extends FieldPluginBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @return string[]
+   *   Field formatter map.
    */
   public function getFieldWidgetMap() {
     // By default, use the plugin ID for the widget types.
@@ -43,8 +49,10 @@ class TimeZoneField extends FieldPluginBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
-  public function processFieldValues(MigrationInterface $migration, $field_name, $data) {
+  public function defineValueProcessPipeline(MigrationInterface $migration, $field_name, $data) {
     $process = [
       'plugin' => 'sub_process',
       'source' => $field_name,

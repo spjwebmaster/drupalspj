@@ -90,7 +90,10 @@ class WebformProductController extends ControllerBase {
 
     // Load confirmation page settings.
     $confirmation_type = $webform_submission->getWebform()->getSetting('confirmation_type');
-    $has_confirmation_url = in_array($confirmation_type, [WebformInterface::CONFIRMATION_URL, WebformInterface::CONFIRMATION_URL_MESSAGE]);
+    $has_confirmation_url = in_array($confirmation_type, [
+      WebformInterface::CONFIRMATION_URL,
+      WebformInterface::CONFIRMATION_URL_MESSAGE,
+    ]);
     $has_confirmation_message = !in_array($confirmation_type, [WebformInterface::CONFIRMATION_URL]);
 
     $redirect_url = $webform_submission->getSourceUrl();

@@ -2,6 +2,7 @@
 
 namespace Drupal\cron_example\Form;
 
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\CronInterface;
 use Drupal\Core\Form\ConfigFormBase;
@@ -31,7 +32,7 @@ class CronExampleForm extends ConfigFormBase {
   protected $cron;
 
   /**
-   * The queue object.
+   * The queue factory.
    *
    * @var \Drupal\Core\Queue\QueueFactory
    */
@@ -45,15 +46,35 @@ class CronExampleForm extends ConfigFormBase {
   protected $state;
 
   /**
-   * {@inheritdoc}
+   * The time service.
+   *
+   * @var \Drupal\Component\Datetime\TimeInterface
    */
-  public function __construct(ConfigFactoryInterface $config_factory, AccountInterface $current_user, CronInterface $cron, QueueFactory $queue, StateInterface $state) {
+  protected $time;
+
+  /**
+   * Constructs new CronExampleForm object.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
+   * @param \Drupal\Core\CronInterface $cron
+   *   The cron service.
+   * @param \Drupal\Core\Queue\QueueFactory $queue
+   *   The queue factory.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state keyvalue collection.
+   * @param \Drupal\Component\Datetime\TimeInterface $time
+   *   The time service.
+   */
+  public function __construct(ConfigFactoryInterface $config_factory, AccountInterface $current_user, CronInterface $cron, QueueFactory $queue, StateInterface $state, TimeInterface $time) {
     parent::__construct($config_factory);
     $this->currentUser = $current_user;
     $this->cron = $cron;
     $this->queue = $queue;
     $this->state = $state;
-
+    $this->time = $time;
   }
 
   /**
@@ -65,7 +86,8 @@ class CronExampleForm extends ConfigFormBase {
       $container->get('current_user'),
       $container->get('cron'),
       $container->get('queue'),
-      $container->get('state')
+      $container->get('state'),
+      $container->get('datetime.time')
     );
     $form->setMessenger($container->get('messenger'));
     return $form;
@@ -95,11 +117,12 @@ class CronExampleForm extends ConfigFormBase {
     ];
 
     $next_execution = $this->state->get('cron_example.next_execution');
-    $next_execution = !empty($next_execution) ? $next_execution : REQUEST_TIME;
+    $request_time = $this->time->getRequestTime();
+    $next_execution = !empty($next_execution) ? $next_execution : $request_time;
 
     $args = [
       '%time' => date('c', $this->state->get('cron_example.next_execution')),
-      '%seconds' => $next_execution - REQUEST_TIME,
+      '%seconds' => $next_execution - $request_time,
     ];
     $form['status']['last'] = [
       '#type' => 'item',
@@ -216,11 +239,12 @@ class CronExampleForm extends ConfigFormBase {
     // @see \Drupal\cron_example\Plugin\QueueWorker\ReportWorkerOne
     $queue = $this->queue->get($values['queue']);
 
+    $request_time = $this->time->getRequestTime();
     for ($i = 1; $i <= $num_items; $i++) {
       // Create a new item, a new data object, which is passed to the
       // QueueWorker's processItem() method.
       $item = new \stdClass();
-      $item->created = REQUEST_TIME;
+      $item->created = $request_time;
       $item->sequence = $i;
       $queue->createItem($item);
     }

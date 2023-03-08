@@ -15,7 +15,7 @@ class DescriptionTraitTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['examples', 'examples_description_test'];
+  protected static $modules = ['examples', 'examples_description_test'];
 
   /**
    * Make sure that the trait finds the template file and renders it.

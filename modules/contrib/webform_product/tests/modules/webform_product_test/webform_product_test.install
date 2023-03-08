@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * @file
+ *
+ * Adds test data.
+ */
+
+use Drupal\commerce_store\Entity\Store;
+
+/**
  * Implements hook_install().
  */
 function webform_product_test_install() {
@@ -15,7 +23,7 @@ function webform_product_test_install() {
   // The currency code.
   $currency = 'EUR';
 
-  $store = \Drupal\commerce_store\Entity\Store::create([
+  $store = Store::create([
     'type' => 'custom_store_type',
     'uid' => 1,
     'name' => 'Test store',
@@ -25,7 +33,6 @@ function webform_product_test_install() {
     'billing_countries' => ['EUR'],
   ]);
   $store->save();
-
 
   // If needed, this sets the store as the default store.
   $store_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_store');

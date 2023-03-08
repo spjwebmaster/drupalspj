@@ -30,6 +30,8 @@ class TimeZoneFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $element = [];
@@ -47,6 +49,8 @@ class TimeZoneFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public static function defaultSettings() {
     return [
@@ -56,6 +60,8 @@ class TimeZoneFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $form = parent::settingsForm($form, $form_state);

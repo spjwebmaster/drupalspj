@@ -103,7 +103,7 @@ class ContrivedControllerTest extends UnitTestCase {
     $controller = $this->getMockBuilder(ContrivedController::class)
       ->setConstructorArgs([$this->getStringTranslationStub()])
       // Specify that we'll also mock add().
-      ->setMethods(['add'])
+      ->onlyMethods(['add'])
       ->getMock();
 
     // Mock add() so that it returns our $sum when it's called with (0,0).
@@ -114,7 +114,6 @@ class ContrivedControllerTest extends UnitTestCase {
 
     // Use reflection to make handCount() public.
     $ref_hand_count = new \ReflectionMethod($controller, 'handCount');
-    $ref_hand_count->setAccessible(TRUE);
 
     // Invoke handCount().
     $message = (string) $ref_hand_count->invokeArgs($controller, [0, 0]);

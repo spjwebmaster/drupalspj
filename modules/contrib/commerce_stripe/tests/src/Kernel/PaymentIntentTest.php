@@ -33,10 +33,28 @@ class PaymentIntentTest extends StripeIntegrationTestBase {
    *   The initial payment intent status.
    * @param string $confirmed_status
    *   The confirmed payment intent status.
+   * @param bool $payment_received
+   *   WHether the payment is received.
    *
    * @dataProvider dataProviderCreatePaymentIntent
    */
-  public function testCreatePaymentIntent($payment_method_token, $capture, $initial_status, $confirmed_status) {
+  public function testCreatePaymentIntent(string $payment_method_token, bool $capture, string $initial_status, string $confirmed_status, bool $payment_received) {
+    $passed_payment = NULL;
+    $payment_passed_id = 'pm_card_visa';
+    $payment_amount = new Price('15.00', 'USD');
+    if ($payment_received) {
+      $passed_payment = $this->prophesize(PaymentInterface::class);
+      $passed_payment_method = $this->prophesize(PaymentMethodInterface::class);
+
+      $passed_payment_method->getRemoteId()->willReturn($payment_passed_id);
+      $passed_payment->getPaymentMethod()->willReturn($passed_payment_method->reveal());
+      $passed_payment->getAmount()->willReturn($payment_amount);
+      $passed_payment = $passed_payment->reveal();
+    }
+    // As we are really calling the API, we need a hack to assert if it was
+    // called with the right params. Let's abuse metadata for that.
+    $metadata = ['used_payment_method_remote_id' => $payment_received ? $payment_passed_id : $payment_method_token];
+
     $gateway = $this->generateGateway();
     $plugin = $gateway->getPlugin();
     assert($plugin instanceof StripeInterface);
@@ -47,18 +65,25 @@ class PaymentIntentTest extends StripeIntegrationTestBase {
     $order->get('payment_method')->willReturn((object) [
       'entity' => $payment_method->reveal(),
     ]);
-    $order->getTotalPrice()->willReturn(new Price('15.00', 'USD'));
+    $order->getTotalPrice()->willReturn($payment_amount);
     $order->getStoreId()->willReturn(1111);
     $order->id()->willReturn(9999);
     $order->getCustomer()->willReturn(User::getAnonymousUser());
     $order->setData('stripe_intent', Argument::containingString('pi_'))->willReturn($order->reveal());
     $order->save()->willReturn(NULL);
 
-    $intent = $plugin->createPaymentIntent($order->reveal(), $capture);
+    $intent = $plugin->createPaymentIntent($order->reveal(), ['capture_method' => $capture ? 'automatic' : 'manual', 'metadata' => $metadata], $passed_payment);
     $this->assertEquals($capture ? 'automatic' : 'manual', $intent->capture_method);
     $this->assertEquals($initial_status, $intent->status);
     $this->assertEquals($intent->currency, 'usd');
     $this->assertEquals($intent->amount, 1500);
+
+    if ($payment_received) {
+      $this->assertEquals($intent->metadata->used_payment_method_remote_id, $payment_passed_id);
+    }
+    else {
+      $this->assertEquals($intent->metadata->used_payment_method_remote_id, $payment_method_token);
+    }
 
     $intent = $intent->confirm();
     $this->assertEquals($confirmed_status, $intent->status);
@@ -247,14 +272,16 @@ class PaymentIntentTest extends StripeIntegrationTestBase {
    */
   public function dataProviderCreatePaymentIntent() {
     // 3DS 2 authentication must be completed for the payment to be successful.
-    yield ['pm_card_threeDSecure2Required', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_REQUIRES_ACTION];
-    yield ['pm_card_threeDSecure2Required', FALSE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_REQUIRES_ACTION];
+    yield ['pm_card_threeDSecure2Required', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_REQUIRES_ACTION, FALSE];
+    yield ['pm_card_threeDSecure2Required', FALSE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_REQUIRES_ACTION, FALSE];
     // 3DS authentication may still be performed, but is not required.
-    yield ['pm_card_threeDSecureOptional', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED];
+    yield ['pm_card_threeDSecureOptional', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED, FALSE];
     // 3DS is supported for this card, but this card is not enrolled in 3D Secure
-    yield ['pm_card_visa', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED];
+    yield ['pm_card_visa', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED, FALSE];
     // 3DS is not supported on this card and cannot be invoked.
-    yield ['pm_card_amex_threeDSecureNotSupported', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED];
+    yield ['pm_card_amex_threeDSecureNotSupported', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED, FALSE];
+    // A payment was passed, so we use that payment gateway token instead.
+    yield ['pm_card_amex_threeDSecureNotSupported', TRUE, PaymentIntent::STATUS_REQUIRES_CONFIRMATION, PaymentIntent::STATUS_SUCCEEDED, TRUE];
   }
 
   /**

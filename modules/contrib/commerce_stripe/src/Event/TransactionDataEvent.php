@@ -3,10 +3,13 @@
 namespace Drupal\commerce_stripe\Event;
 
 use Drupal\commerce_payment\Entity\PaymentInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Drupal\Component\EventDispatcher\Event;
 
 /**
  * Defines the transaction data event.
+ *
+ * @deprecated Will be removed in 2.x.
+ * Use Drupal\commerce_stripe\Event\PaymentIntentEvent.
  *
  * This enables other modules to add transaction data and metadata to the
  * transaction that will be sent to Stripe.

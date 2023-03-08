@@ -24,7 +24,7 @@ class JsExampleTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['js_example', 'node'];
+  protected static $modules = ['js_example', 'node'];
 
   /**
    * Test all the paths defined by our module.

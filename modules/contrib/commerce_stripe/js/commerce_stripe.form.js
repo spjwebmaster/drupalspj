@@ -36,7 +36,7 @@
       if (!drupalSettings.commerceStripe || !drupalSettings.commerceStripe.publishableKey) {
         return;
       }
-      $('.stripe-form', context).once('stripe-processed').each(function () {
+      $(once('stripe-processed', '.stripe-form', context)).each(function () {
         var $form = $(this).closest('form');
 
         // Create a Stripe client.

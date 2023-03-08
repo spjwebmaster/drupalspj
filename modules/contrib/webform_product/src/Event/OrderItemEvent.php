@@ -3,10 +3,12 @@
 namespace Drupal\webform_product\Event;
 
 use Drupal\webform\WebformSubmissionInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Drupal\Component\EventDispatcher\Event;
 
 /**
  * Class OrderItemEvent.
+ *
+ * Provides an event to let other modules alter the order_item list.
  *
  * @package Drupal\webform_product\Event
  */

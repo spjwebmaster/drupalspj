@@ -86,7 +86,7 @@ class PrlpController extends UserController {
       // if it does apply the password change and update the redirect
       // destination.
       if ($response_route && $response_route->getRouteName() == 'entity.user.edit_form') {
-        if ($request->request->has('pass') && $passwords = $request->request->get('pass')) {
+        if ($request->request->has('pass') && $passwords = $request->request->all('pass')) {
           // $passwords should be an array, if that's not the case nothing
           // should be done to the user.
           $pass = is_array($passwords) ? reset($passwords) : NULL;
@@ -107,7 +107,7 @@ class PrlpController extends UserController {
         if (substr($login_destination, 0, 1) !== '/') {
           $login_destination = '/' . $login_destination;
         }
-        $internal_redirect_url = Url::fromUri('internal:' . $login_destination );
+        $internal_redirect_url = Url::fromUri('internal:' . $login_destination);
 
         return new RedirectResponse($internal_redirect_url->toString());
       }

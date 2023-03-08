@@ -159,7 +159,12 @@ class MultistepForm extends FormBase {
       '#required' => TRUE,
       '#default_value' => $form_state->getValue('color', ''),
     ];
-    $form['back'] = [
+
+    $form['actions'] = [
+      '#type' => 'actions',
+    ];
+
+    $form['actions']['back'] = [
       '#type' => 'submit',
       '#value' => $this->t('Back'),
       // Custom submission handler for 'Back' button.
@@ -168,7 +173,8 @@ class MultistepForm extends FormBase {
       // have to come back to this page to submit anyway.
       '#limit_validation_errors' => [],
     ];
-    $form['submit'] = [
+
+    $form['actions']['submit'] = [
       '#type' => 'submit',
       '#button_type' => 'primary',
       '#value' => $this->t('Submit'),

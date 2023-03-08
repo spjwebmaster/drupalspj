@@ -7,11 +7,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * A trait to expose a mock session type to PHPUnit tests.
  */
 trait MockSessionTrait {
+
+  use ProphecyTrait;
 
   /**
    * We'll use this array to back our mock session.

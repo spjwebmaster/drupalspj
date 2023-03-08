@@ -24,7 +24,7 @@ class ExamplesTest extends ExamplesBrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['examples', 'toolbar'];
+  protected static $modules = ['examples', 'toolbar'];
 
   /**
    * Verify that the toolbar tab and tray are showing and functioning.
@@ -48,7 +48,7 @@ class ExamplesTest extends ExamplesBrowserTestBase {
     // Assert that the toolbar tray registered by examples is present.
     $this->assertNotEmpty($this->xpath('//nav/div/div[@data-toolbar-tray="toolbar-item-examples-tray"]'));
 
-    /* @var $module_installer \Drupal\Core\Extension\ModuleInstallerInterface */
+    /** @var \Drupal\Core\Extension\ModuleInstallerInterface $module_installer */
     $module_installer = $this->container->get('module_installer');
 
     // Loop through all the routes. Check that they are not present in the

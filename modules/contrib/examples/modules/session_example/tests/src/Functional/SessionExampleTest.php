@@ -23,12 +23,12 @@ class SessionExampleTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['session_example', 'block'];
+  protected static $modules = ['session_example', 'block'];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     // Place our blocks.
     $this->drupalPlaceBlock('local_tasks_block', ['region' => 'content']);
@@ -68,7 +68,8 @@ class SessionExampleTest extends BrowserTestBase {
       $this->drupalGet($url);
       $assert->statusCodeEquals(200);
       foreach ($buttons as $button) {
-        $this->drupalPostForm($url, [], $button);
+        $this->drupalGet($url);
+        $this->submitForm([], $button);
         $assert->statusCodeEquals(200);
       }
     }
@@ -81,9 +82,9 @@ class SessionExampleTest extends BrowserTestBase {
     $assert = $this->assertSession();
     // Get the form and verify that it has placeholders.
     $this->drupalGet(Url::fromRoute('session_example.form'));
-    $assert->responseContains('placeholder="Your name."', 'Name placeholder contains Your name');
-    $assert->responseContains('placeholder="Your email address."', 'Email placeholder contains Your email address.');
-    $assert->responseContains('placeholder="What is your quest?"', 'Quest placeholder contains What is your quest?');
+    $assert->responseContains('placeholder="Your name."');
+    $assert->responseContains('placeholder="Your email address."');
+    $assert->responseContains('placeholder="What is your quest?"');
 
     // Get the report and verify that it doesn't show any session information.
     $this->clickLink('View');
@@ -93,7 +94,8 @@ class SessionExampleTest extends BrowserTestBase {
     $assert->pageTextContains('No color');
 
     // Save an empty session submission.
-    $this->drupalPostForm(Url::fromRoute('session_example.form'), [], 'Save');
+    $this->drupalGet(Url::fromRoute('session_example.form'));
+    $this->submitForm([], 'Save');
     $assert->pageTextContains('The session has been saved successfully.');
 
     // Make sure an empty session submission still has no reported information.
@@ -109,7 +111,8 @@ class SessionExampleTest extends BrowserTestBase {
       'quest' => 'To seek the Grail',
       'color' => 'blue',
     ];
-    $this->drupalPostForm(Url::fromRoute('session_example.form'), $form_data, 'Save');
+    $this->drupalGet(Url::fromRoute('session_example.form'));
+    $this->submitForm($form_data, 'Save');
 
     // Check that the report shows our information.
     $this->clickLink('Check here');
@@ -118,7 +121,8 @@ class SessionExampleTest extends BrowserTestBase {
     }
 
     // Clear the session.
-    $this->drupalPostForm(Url::fromRoute('session_example.form'), [], 'Clear Session');
+    $this->drupalGet(Url::fromRoute('session_example.form'));
+    $this->submitForm([], 'Clear Session');
     $assert->pageTextContains('Session is cleared.');
 
     // Verify that the session information doesn't show Sir Lancelot (or anyone
@@ -141,7 +145,8 @@ class SessionExampleTest extends BrowserTestBase {
       'quest' => 'To seek the Grail',
       'color' => 'blue',
     ];
-    $this->drupalPostForm(Url::fromRoute('session_example.form'), $form_data, 'Save');
+    $this->drupalGet(Url::fromRoute('session_example.form'));
+    $this->submitForm($form_data, 'Save');
 
     // Check that the report shows our information.
     $this->clickLink('Check here');

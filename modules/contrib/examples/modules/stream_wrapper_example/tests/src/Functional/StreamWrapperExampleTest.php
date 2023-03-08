@@ -23,7 +23,7 @@ class StreamWrapperExampleTest extends ExamplesBrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['stream_wrapper_example'];
+  protected static $modules = ['stream_wrapper_example'];
 
   /**
    * Make sure all the public routes behave the way they should.

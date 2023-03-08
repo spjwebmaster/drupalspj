@@ -8,11 +8,22 @@ namespace Drupal\commerce_stripe\Event;
 class StripeEvents {
 
   /**
+   * Name of the event fired before the PaymentIntent is created.
+   *
+   * This allows subscribers to add or modify intent attributes and metadata.
+   *
+   * @Event
+   *
+   * @see https://stripe.com/docs/api/payment_intents/create
+   * @see \Drupal\commerce_stripe\Event\PaymentIntentEvent
+   */
+  const PAYMENT_INTENT_CREATE = 'commerce_stripe.payment_intent_create';
+
+  /**
    * Name of the event fired to add additional transaction data.
    *
-   * This event is triggered when a Charge transaction is going
-   * to be created. It allows subscribers to add additional
-   * transaction data and metadata about the transaction.
+   * @deprecated Will be removed in 2.x. Use StripeEvents::PAYMENT_INTENT_CREATE
+   * to modify the payment intent attributes.
    *
    * @Event
    *

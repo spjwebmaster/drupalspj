@@ -8,5 +8,5 @@
 /**
  * Cache rebuild due to renamed classes.
  */
-function tzfield_post_update_renamed_classes() {
+function tzfield_post_update_renamed_classes(): void {
 }

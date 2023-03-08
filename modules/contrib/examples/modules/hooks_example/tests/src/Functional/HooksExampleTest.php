@@ -22,7 +22,7 @@ class HooksExampleTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['help', 'hooks_example'];
+  protected static $modules = ['help', 'hooks_example'];
 
   /**
    * {@inheritdoc}
@@ -32,7 +32,7 @@ class HooksExampleTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->createContentType(['type' => 'page']);

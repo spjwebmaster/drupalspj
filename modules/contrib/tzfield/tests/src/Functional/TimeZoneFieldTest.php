@@ -24,7 +24,7 @@ class TimeZoneFieldTest extends BrowserTestBase {
   /**
    * Functional tests for tzfield.
    */
-  public function testTimeZoneField() {
+  public function testTimeZoneField(): void {
     $this->drupalCreateContentType(['type' => 'article', 'name' => 'Article']);
     $adminUser = $this->drupalCreateUser([
       'administer node fields',
@@ -43,6 +43,11 @@ class TimeZoneFieldTest extends BrowserTestBase {
     $this->drupalGet('node/add/article');
     $option = $this->assertSession()->selectExists('edit-field-time-zone-0-value')->find('css', 'option[value=UTC]');
     $this->assertSame('(UTC+00:00) UTC', $option->getText());
+    $this->drupalGet('admin/structure/types/manage/article/fields/node.article.field_time_zone');
+    $this->submitForm(['settings[exclude][]' => ['UTC']], 'Save settings');
+    $this->drupalGet('node/add/article');
+    $option = $this->assertSession()->selectExists('edit-field-time-zone-0-value')->find('css', 'option[value=UTC]');
+    $this->assertNull($option);
   }
 
 }

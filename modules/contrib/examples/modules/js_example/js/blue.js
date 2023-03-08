@@ -14,7 +14,7 @@
     attach: function (context, settings) {
       var weight = drupalSettings.js_example.js_weights.blue;
       var newDiv = $('<div></div>').css('color', 'blue').html('I have a weight of ' + weight);
-      $('#js-weights').append(newDiv);
+      $('#js-weights', context).append(newDiv);
     }
   };
 })(jQuery, Drupal, drupalSettings);

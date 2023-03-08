@@ -37,20 +37,18 @@
 #   body:       The body of the tip. HTML markup is allowed.
 #   weight:     Tips within a tour are ordered by weight, beginning with the
 #               lowest number. Negative values are acceptable.
-#   location:   Defines the location of the tip, relative to its target.
-#               Acceptable values include: top, bottom, left, & right. If the
-#               location is not defined, the default value (bottom) will be
-#               used.
-#   attributes: Attributes provdied to the tip for various purposes. Use the
-#               following attributes to control the placement of the tip:
+#   position:   Defines the position of the tip, relative to its target.
+#               Acceptable values include: 'auto', 'auto-start', 'auto-end', 
+#               'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 
+#               'bottom-end', 'right', 'right-start', 'right-end', 'left', 
+#               'left-start', 'left-end'. Default: auto.
+#   selector:   The HTML element you want to attach the tip to.  You can use 
+#               classes (.class-name), ID's (#id-name), a combination of both, 
+#               and even complex elements like (.action-links 
+#               a[href="/admin/structure/forum/add/forum"])
 #
-#                 data-id:      Places this tip on the DOM element containing
-#                               this ID.
-#                 data-class:   Places this tip on the DOM element containing
-#                               this class.
-#
-#               If you omit both the .data-id and .data-class, the tip will be
-#               shown as modal instead of being targeted to an element.
+#               If you omit, the tip will be shown as modal instead of being 
+#               targeted to an element.
 #
 id: tour-example
 module: tour_example
@@ -71,33 +69,29 @@ tips:
     label: 'First Item'
     body: 'Tours are helpful for walking users through an unfamiliar admin interface.'
     weight: 2
-    location: bottom
-    attributes:
-      data-id: tour-target-1
+    position: bottom
+    selector: '#tour-target-1'
   second-item:
     id: second-item
     plugin: text
     label: 'Second Item'
     body: 'Individual tips can be positioned anywhere on the page.'
     weight: 3
-    location: top
-    attributes:
-      data-id: tour-target-2
+    position: top
+    selector: '#tour-target-2'
   third-item:
     id: third-item
     plugin: text
     label: 'Third Item'
     body: 'You can click the X in the top right corner of this box to close the tour at any time.'
     weight: 4
-    location: bottom
-    attributes:
-      data-id: tour-target-3
+    position: bottom
+    selector: '#tour-target-3'
   fourth-item:
     id: fourth-item
     plugin: text
     label: 'Fourth Item'
     body: 'When the tour is over, click "End Tour".'
     weight: 5
-    location: left
-    attributes:
-      data-id: tour-target-4
+    position: left
+    selector: '#tour-target-4'

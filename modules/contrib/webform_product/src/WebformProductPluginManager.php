@@ -10,6 +10,8 @@ use Drupal\Core\Plugin\DefaultPluginManager;
 /**
  * Class WebformProductPluginManager.
  *
+ * Defining the Webform Product Plugin Manager.
+ *
  * @package Drupal\webform_product
  */
 class WebformProductPluginManager extends DefaultPluginManager {

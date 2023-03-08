@@ -5,6 +5,7 @@ namespace Drupal\tzfield\Plugin\Field\FieldType;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
@@ -22,6 +23,8 @@ class TimeZoneItem extends FieldItemBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     return [
@@ -55,6 +58,8 @@ class TimeZoneItem extends FieldItemBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public function getConstraints() {
     $constraint_manager = \Drupal::typedDataManager()->getValidationConstraintManager();
@@ -78,10 +83,42 @@ class TimeZoneItem extends FieldItemBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
     $values['value'] = array_rand(system_time_zones());
     return $values;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
+   */
+  public static function defaultFieldSettings() {
+    return ['exclude' => []] + parent::defaultFieldSettings();
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @phpstan-ignore-next-line Core has not yet documented this method properly.
+   */
+  public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
+    $element = parent::fieldSettingsForm($form, $form_state);
+
+    $element['exclude'] = [
+      '#title' => $this->t('Time zones to be excluded from the option list'),
+      '#type' => 'select',
+      '#multiple' => TRUE,
+      '#options' => system_time_zones(FALSE, TRUE),
+      '#default_value' => $this->getSetting('exclude'),
+      '#size' => 20,
+      '#description' => $this->t('Any time zones selected here will be excluded from the allowed values.'),
+    ];
+
+    return $element;
   }
 
 }

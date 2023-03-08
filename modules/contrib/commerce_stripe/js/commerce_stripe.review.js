@@ -4,7 +4,7 @@
       if (!drupalSettings.commerceStripe || !drupalSettings.commerceStripe.publishableKey) {
         return;
       }
-      $("[id^=" + drupalSettings.commerceStripe.buttonId + "]", context).once("stripe-processed").each(function (k, el) {
+      $(once('stripe-processed', '#' + drupalSettings.commerceStripe.buttonId, context)).each(function (k, el) {
         var $form = $(el).closest("form");
         var stripe = Stripe(drupalSettings.commerceStripe.publishableKey, {
           betas: ["payment_intent_beta_3"]

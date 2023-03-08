@@ -25,7 +25,7 @@ class DynamicFormSectionsTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['ajax_example'];
+  protected static $modules = ['ajax_example'];
 
   /**
    * Test the dynamic sections form without AJAX.
@@ -46,9 +46,10 @@ class DynamicFormSectionsTest extends BrowserTestBase {
 
     // Go through the dropdown options. First outlier is 'Choose question style'
     // which should have an empty details section.
-    $this->drupalPostForm($dropdown_url, ['question_type_select' => 'Choose question style'], 'Choose');
+    $this->drupalGet($dropdown_url);
+    $this->submitForm(['question_type_select' => 'Choose question style'], 'Choose');
     $detail_children = $page->findAll('css', 'div.details-wrapper *');
-    $this->assertEqual(count($detail_children), 0);
+    $this->assertEquals(count($detail_children), 0);
 
     // Cycle through the other dropdown values.
     $question_styles = [
@@ -58,17 +59,19 @@ class DynamicFormSectionsTest extends BrowserTestBase {
     ];
     // These all add stuff to the details wrapper.
     foreach ($question_styles as $question_style) {
-      $this->drupalPostForm($dropdown_url, ['question_type_select' => $question_style], 'Choose');
+      $this->drupalGet($dropdown_url);
+      $this->submitForm(['question_type_select' => $question_style], 'Choose');
       $detail_children = $page->findAll('css', 'div.details-wrapper *');
-      $this->assertNotEqual($this->count($detail_children), 0);
-      $this->drupalPostForm(NULL, ['question' => 'George Washington'], 'Submit your answer');
+      $this->assertNotEquals($this->count($detail_children), 0);
+      $this->submitForm(['question' => 'George Washington'], 'Submit your answer');
       $assert->pageTextContains('You got the right answer: George Washington');
     }
     // One wrong answer to exercise that code path.
-    $this->drupalPostForm($dropdown_url, ['question_type_select' => 'Multiple Choice'], 'Choose');
+    $this->drupalGet($dropdown_url);
+    $this->submitForm(['question_type_select' => 'Multiple Choice'], 'Choose');
     $detail_children = $page->findAll('css', 'div.details-wrapper *');
-    $this->assertNotEqual($this->count($detail_children), 0);
-    $this->drupalPostForm(NULL, ['question' => 'Abraham Lincoln'], 'Submit your answer');
+    $this->assertNotEquals($this->count($detail_children), 0);
+    $this->submitForm(['question' => 'Abraham Lincoln'], 'Submit your answer');
     $assert->pageTextContains('Sorry, your answer (Abraham Lincoln) is wrong');
   }
 

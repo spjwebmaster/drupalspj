@@ -15,7 +15,7 @@ use Drupal\events_example\Event\IncidentReportEvent;
  * The submitForm() method of this class demonstrates using the event dispatcher
  * service to dispatch an event.
  *
- * @see \Drupal\events_exampl\Event\IncidentEvents
+ * @see \Drupal\events_example\Event\IncidentEvents
  * @see \Drupal\events_example\Event\IncidentReportEvent
  * @see \Symfony\Component\EventDispatcher\EventDispatcherInterface
  * @see \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher
@@ -124,7 +124,7 @@ class EventsExampleForm extends FormBase {
     // to represent the event being dispatched. The constant serves as a
     // location for documentation of the event, and ensures your code is future
     // proofed against event name changes.
-    $this->eventDispatcher->dispatch(IncidentEvents::NEW_REPORT, $event);
+    $this->eventDispatcher->dispatch($event, IncidentEvents::NEW_REPORT);
   }
 
 }
