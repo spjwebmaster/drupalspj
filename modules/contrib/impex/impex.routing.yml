@@ -1,5 +1,5 @@
 impex.redirect:
-  path: '/membershipredirect'
+  path: '/membership'
   defaults:
     _controller: Drupal\impex\Controller\ImpexController::membershipredirect
     _title: 'Membership'

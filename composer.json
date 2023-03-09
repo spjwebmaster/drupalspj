@@ -58,6 +58,7 @@
         "drupal/gutenberg": "^2.4",
         "drupal/honeypot": "^2.0",
         "drupal/hook_post_action": "1.1",
+        "drupal/htmlmail": "^3.0@alpha",
         "drupal/imagemagick": "^3.3",
         "drupal/jsonapi_extras": "3.21",
         "drupal/jsonapi_hypermedia": "^1.7",
