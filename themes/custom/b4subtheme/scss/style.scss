@@ -382,8 +382,33 @@ ol.breadcrumb {
         margin-bottom: 1em;
     }
     .view-filters {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
         padding: 1em;
+
+        &.form-hidden {
+            padding: 0 1em;
+            .form--inline {
+                display: none;
+            }
+        }
+
+        .views-exposed-form {
+            position: relative;
+            .form-filter-toggle {
+                position: absolute;
+                top: -4em;
+                right: -1em;
+            }
+           
+        }
+
+
+        .form-actions {
+            @include respond-below(md){
+                margin-top: 1em!important;
+            }
+        }
+
 
         .form--inline {
             display: flex;
@@ -397,6 +422,10 @@ ol.breadcrumb {
             .form-item {
                 display: flex;
                 align-items: center;
+                @include respond-below(md){
+                    flex: 1 100%;
+                }
+               
 
                 label {
                     white-space: nowrap;

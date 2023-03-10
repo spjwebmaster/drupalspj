@@ -53,6 +53,21 @@
       })
       
 
+      //views filter
+      document.querySelectorAll(".view-id-news .form-filter-toggle").forEach(element=>{
+        element.addEventListener("click", function(e){
+          e.preventDefault();
+          let self = e.target;
+          let par = self.closest(".view-filters");
+          let sib = par.querySelector(".form--inline");
+          if(par.classList.contains("form-hidden")){
+            par.classList.remove("form-hidden")
+          } else {
+            par.classList.add("form-hidden")
+          }
+
+        })
+      })
 
 
       //edit-actions

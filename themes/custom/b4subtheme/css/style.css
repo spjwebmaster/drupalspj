@@ -12798,8 +12798,27 @@ ol.breadcrumb {
   margin-bottom: 1em;
 }
 .view .view-filters {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   padding: 1em;
+}
+.view .view-filters.form-hidden {
+  padding: 0 1em;
+}
+.view .view-filters.form-hidden .form--inline {
+  display: none;
+}
+.view .view-filters .views-exposed-form {
+  position: relative;
+}
+.view .view-filters .views-exposed-form .form-filter-toggle {
+  position: absolute;
+  top: -4em;
+  right: -1em;
+}
+@media (max-width: 991px) {
+  .view .view-filters .form-actions {
+    margin-top: 1em !important;
+  }
 }
 .view .view-filters .form--inline {
   display: flex;
@@ -12815,6 +12834,11 @@ ol.breadcrumb {
 .view .view-filters .form--inline .form-item {
   display: flex;
   align-items: center;
+}
+@media (max-width: 991px) {
+  .view .view-filters .form--inline .form-item {
+    flex: 1 100%;
+  }
 }
 .view .view-filters .form--inline .form-item label {
   white-space: nowrap;
