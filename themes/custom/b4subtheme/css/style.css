@@ -13072,6 +13072,11 @@ body.path-frontpage .region-content > .block {
   display: none;
 }
 
+.view-id-donation_funds .field--name-field-donation-logo img {
+  width: 100%;
+  height: auto;
+}
+
 .language-switcher-language-url {
   height: 35px;
   margin-left: 10px;
@@ -13340,14 +13345,13 @@ body header .menu--account .nav .nav-item .nav-link {
   padding: 0;
   line-height: 35px;
   margin: 0 5px;
+  position: relative;
+  margin-left: 35px;
 }
 @media (min-width: 768px) {
   body header .menu--account .nav .nav-item .nav-link {
     line-height: 41px;
   }
-}
-body header .menu--account .nav .nav-item [data-drupal-link-system-path=user] {
-  font-size: 0;
 }
 body header .menu--account .nav .nav-item [data-drupal-link-system-path=user]::before {
   content: "";
@@ -13358,14 +13362,13 @@ body header .menu--account .nav .nav-item [data-drupal-link-system-path=user]::b
   height: 25px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  margin-top: 9px;
   -webkit-mask: url(../images/icon/user.svg);
   mask: url(../images/icon/user.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
-}
-body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/logout"] {
-  font-size: 0;
+  position: absolute;
+  top: 9px;
+  left: -34px;
 }
 body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/logout"]::before {
   content: "";
@@ -13376,32 +13379,30 @@ body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/lo
   height: 25px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  margin-top: 9px;
+  position: absolute;
+  top: 9px;
+  left: -34px;
   -webkit-mask: url(../images/icon/logout.svg);
   mask: url(../images/icon/logout.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
-}
-body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/login"] {
-  font-size: 0;
 }
 body header .menu--account .nav .nav-item [data-drupal-link-system-path="user/login"]::before {
   content: "";
   margin-left: 0.25rem;
   display: inline-block;
   background-color: #fff;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  margin-top: 9px;
+  position: absolute;
+  top: 12px;
+  left: -34px;
   -webkit-mask: url(../images/icon/login.svg);
   mask: url(../images/icon/login.svg);
   -webkit-mask-size: cover;
   mask-size: cover;
-}
-body header .menu--account .nav .show-user-name-only {
-  font-size: 0;
 }
 body header .menu--account .nav .show-user-name-only::before {
   content: "";
@@ -13413,6 +13414,7 @@ body header .menu--account .nav .show-user-name-only::before {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-top: 6px;
+  left: -34px;
   -webkit-mask: url(../images/icon/user.svg);
   mask: url(../icon/user.svg);
   -webkit-mask-size: cover;

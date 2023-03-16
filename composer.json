@@ -89,17 +89,13 @@
         "drupal/search_autocomplete": "^2.0",
         "drupal/select_or_other": "4.0",
         "drupal/shortcode": "2.0",
-        "drupal/slick": "2.6",
-        "drupal/slick_views": "2.6",
         "drupal/smtp": "^1.2",
         "drupal/stage_file_proxy": "^1.2",
         "drupal/stripe_api": "^1.0",
         "drupal/subrequests": "^3.0",
         "drupal/super_login": "^1.7",
-        "drupal/superfish": "^1.4",
         "drupal/svg_image": "^1.15",
         "drupal/svg_image_field": "2.0.0-beta1",
-        "drupal/tb_megamenu": "1.6",
         "drupal/timefield": "1.0",
         "drupal/twig_debugger": "1.1",
         "drupal/tzfield": "1.5",
@@ -108,8 +104,6 @@
         "drupal/views_slideshow": "^4.8",
         "drupal/views_taxonomy_parent_id_from_term": "1.5",
         "drupal/views_templates": "1.1",
-        "drupal/votingapi": "^3.0@beta",
-        "drupal/we_megamenu": "^1.13",
         "drupal/webform": "^6.1",
         "drupal/webform_product": "3.0",
         "drupal/webform_query": "^2.0@alpha",
@@ -147,6 +141,7 @@
                 "modules/contrib/webform/composer.libraries.json"
             ]
         },
+        
         
         "installer-paths": {
             "core": [

@@ -29,10 +29,13 @@ function buildBanner($path){
         $paths = explode("/",$path);
         $last = $paths[count($paths)-1];
 
-        $query = \Drupal::entityQuery('node');
-        $query->condition('status', 1);
-        $query->condition('type', 'slider_slide');
-        $query->condition('field_page_path', $last);
+        $query = \Drupal::entityQuery('node')
+        ->condition('status', 1)
+        ->condition('type', 'slider_slide')
+        ->condition('field_page_path', $last)
+        ->sort('field_weight' , 'ASC'); 
+
+            
         $ids = $query->execute();
 
         $nodes = Node::loadMultiple($ids);
@@ -43,6 +46,7 @@ function buildBanner($path){
                 $body = $node->get('body')->value;
                 $imageID = $node->get("field_slider_image")->target_id;
                 $field_page_path = $node->get("field_page_path")->value;
+                $order = $node->get("field_weight")->value;
                 
                 $file = File::load($imageID);
                 if($file){
@@ -52,7 +56,8 @@ function buildBanner($path){
                         "image" => $file_url,
                         "body" => $body,
                         "id" => $imageID,
-                        "field_page_path" => $field_page_path
+                        "field_page_path" => $field_page_path,
+                        "order"=> $order
                     ];
                     $data[] = $temp;
                 }
@@ -80,13 +85,15 @@ function buildBanner($path){
                     $field_page_path = $node->get("field_page_path")->value;
 
                     $file = File::load($imageID);
+                    $order = $node->get("field_weight")->value;
                     
                     $file_url = $file->createFileUrl();
                     $temp = [
                         "image" => $file_url,
                         "body" => $body,
                         "id" => $imageID,
-                        "field_page_path" => $field_page_path
+                        "field_page_path" => $field_page_path,
+                        "order"=>$order
                     ];
                     $data[] = $temp;
                 }
@@ -122,7 +129,8 @@ function buildBanner($path){
                             "image" => $file_url,
                             "body" => $body,
                             "id" => $imageID,
-                            "field_page_path" => $field_page_path
+                            "field_page_path" => $field_page_path,
+                            "order"=>0
                         ];
                         $data[] = $temp;
                         
@@ -135,7 +143,8 @@ function buildBanner($path){
                             "image" => "https://picsum.photos/1000/500",
                             "body" => "",
                             "id" => "123",
-                            "field_page_path" => $field_page_path
+                            "field_page_path" => $field_page_path,
+                            "order"=>0
                         ];
                         $data[] = $temp;
                     }

@@ -40,6 +40,7 @@ class SliderBlock extends BlockBase  {
             '#attached' => [
                 'library' => [
                     'spjswiper/swiper',
+                    'spjswiper/json'
                 ],
             ]
         ];

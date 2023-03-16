@@ -14,7 +14,7 @@ use Drupal\filter\Plugin\FilterBase;
  *   module = "shortcode",
  *   title = @Translation("Shortcodes"),
  *   description = @Translation("Provides WP like shortcodes to text formats."),
- *   type = Drupal\filter\Plugin\FilterInterface::TYPE_MARKUP_LANGUAGE,
+ *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
  * )
  */
 class Shortcode extends FilterBase {

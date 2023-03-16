@@ -467,7 +467,7 @@ ol.breadcrumb {
 
 
 @import 'views/front';  
-@import 'components/donate';     
+@import 'components/donate';      
 @import 'components/languageswitch';   
 @import 'components/themeswitch';   
 body {
@@ -707,6 +707,8 @@ body {
                         padding: 0;
                         line-height: 35px;
                         margin: 0 5px;
+                        position: relative;
+                        margin-left: 35px;
                         @include respond-above(sm){
                             line-height: 41px;
                         }
@@ -714,7 +716,7 @@ body {
                     }
 
                     [data-drupal-link-system-path="user"]{
-                        font-size: 0;
+                        
 
                         &::before {
                             content: '';
@@ -725,17 +727,19 @@ body {
                             height: 25px;
                             -webkit-transition: all 0.2s ease-in-out;
                             transition: all 0.2s ease-in-out;
-                            margin-top: 9px;
     
                             -webkit-mask: url(../images/icon/user.svg);
                             mask: url(../images/icon/user.svg);
                             -webkit-mask-size: cover;
                             mask-size: cover;
+                            position: absolute;
+                            top: 9px;
+                            left: -34px;
                         }
                     }
 
                     [data-drupal-link-system-path="user/logout"]{
-                        font-size: 0;
+                        
 
                         &::before {
                             content: '';
@@ -746,7 +750,10 @@ body {
                             height: 25px;
                             -webkit-transition: all 0.2s ease-in-out;
                             transition: all 0.2s ease-in-out;
-                            margin-top: 9px;
+   
+                            position: absolute;
+                            top: 9px;
+                            left: -34px;
     
                             -webkit-mask: url(../images/icon/logout.svg);
                             mask: url(../images/icon/logout.svg);
@@ -756,18 +763,19 @@ body {
                     }
 
                     [data-drupal-link-system-path="user/login"]{
-                        font-size: 0;
 
                         &::before {
                             content: '';
                             margin-left: .25rem;
                             display: inline-block;
                             background-color: #fff;
-                            width: 25px;
-                            height: 25px;
+                            width: 20px;
+                            height: 20px;
                             -webkit-transition: all 0.2s ease-in-out;
                             transition: all 0.2s ease-in-out;
-                            margin-top: 9px;
+                            position: absolute;
+                            top: 12px;
+                            left: -34px;
     
                             -webkit-mask: url(../images/icon/login.svg);
                             mask: url(../images/icon/login.svg);
@@ -778,7 +786,7 @@ body {
                 }  
 
                 .show-user-name-only {
-                    font-size: 0;
+                    
                     &::before {
                         content: '';
                         margin-left: .25rem;
@@ -789,6 +797,7 @@ body {
                         -webkit-transition: all 0.2s ease-in-out;
                         transition: all 0.2s ease-in-out;
                         margin-top: 6px;
+                        left: -34px;
 
                         -webkit-mask: url(../images/icon/user.svg);
                         mask: url(../icon/user.svg);
