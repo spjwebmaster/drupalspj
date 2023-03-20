@@ -36,25 +36,6 @@ class BlockShortcode extends ShortcodeBase {
 
     if ($attributes['id']) {
 
-      $thistid = $attributes['id'];
-      $query = \Drupal::entityQuery('node');
-                $query->condition('type', "bio");
-                $query->condition('field_role.entity.tid',$thistid);
-        $bios = $query->execute();
-      
-        $ret = "";
-        foreach($bios as $bio){
-          $node = Node::load($bio);
-          $title= $node->get("title")->value;
-          $ret .= $title;
-        }
-              
-     
-      return $ret;
-
-      
-      
-      /*
       $block_entity = BlockContent::load($attributes['id']);
       if ($block_entity) {
         $block_view = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block_entity, $attributes['view']);
@@ -67,10 +48,10 @@ class BlockShortcode extends ShortcodeBase {
 
         $custom_block = \Drupal::entityTypeManager()->getStorage('block_content')->load($attributes['id']);
         
-        dpm($custom_block);
+        //dpm($custom_block);
         return t("cant found");
       }
-      */
+      
     }
   }
 

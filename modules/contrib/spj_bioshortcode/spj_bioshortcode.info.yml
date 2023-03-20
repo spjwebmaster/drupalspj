@@ -1,5 +1,7 @@
-name: SPJ Ads
-description: Showing SPJ ads in rotation by size/location
-package: Custom
+name: 'SPJ Bio Shortcode'
+description: Showing bios via a shortcode
+package: 'Input filters'
 type: module
 core_version_requirement: ^9
+dependencies:
+  - shortcode:shortcode
