@@ -39,10 +39,10 @@ class SpjImpexCreds {
         define("APP_NAME", $dat["APP_NAME"]);
         define("APP_KEY", $dat["APP_KEY"]);
 
-        define("APP_ID", "SPJLIVE");
-        define("APP_PASSWORD", "C9IZ7Ib3gUJYgxTG");
-        define("APP_USER_EMAIL", "SPJ_Integration@hq.spj.org");
-        define("APP_USER_PASSWORD", "B9YAUs7abd9yJwBV");
+        define("APP_ID", $dat["APP_ID"]);
+        define("APP_PASSWORD",  $dat["APP_PASSWORD"]);
+        define("APP_USER_EMAIL",  $dat["APP_USER_EMAIL"]);
+        define("APP_USER_PASSWORD",  $dat["APP_USER_PASSWORD"]);
         define("CURRENT_USER_EMAIL", "");
         define("CURRENT_USER_PASSWORD", "");
     }
