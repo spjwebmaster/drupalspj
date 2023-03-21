@@ -1,0 +1,3 @@
+services:
+  spj_impexium.creds:
+    class: Drupal\spj_impexium\SpjImpexCreds

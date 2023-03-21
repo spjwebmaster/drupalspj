@@ -1,0 +1,14 @@
+spj_impexium.creds:
+  path: '/admin/config/impex-cred-configuration'
+  defaults:
+    _form: Drupal\spj_impexium\Form\SpjImpexCredsConfigurationForm
+    _title: 'Impexium Credentials Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+spj_impexium.data:
+  path: '/api/impexium/get/'
+  defaults:
+    _controller: Drupal\spj_impexium\Controller\SpjImpexController::index
+  requirements:
+    _permission: 'access content'
