@@ -9,8 +9,8 @@ use Drupal\Core\Block\BlockBase;
  *
  * @Block(
  *  id = "spj_impex_block",
- *  label = "SPJ Bios",
- *  admin_label = @Translation("SPJ Bios"),
+ *  label = "SPJ Impexium Block",
+ *  admin_label = @Translation("SPJ Impexium Block"),
  * )
  */
 class SpjImpexBlock extends BlockBase  {

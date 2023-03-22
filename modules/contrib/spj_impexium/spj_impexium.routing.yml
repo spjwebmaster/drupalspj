@@ -12,3 +12,10 @@ spj_impexium.data:
     _controller: Drupal\spj_impexium\Controller\SpjImpexController::index
   requirements:
     _permission: 'access content'
+  
+spj_impexium.import:
+  path: '/api/impexium/import'
+  defaults:
+    _controller: Drupal\spj_impexium\Controller\SpjImpexController::import
+  requirements:
+    _permission: 'administer site configuration'

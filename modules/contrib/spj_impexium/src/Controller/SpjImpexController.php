@@ -6,6 +6,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -122,6 +123,100 @@ class SpjImpexController extends ControllerBase {
 
         return new JsonResponse([ 'data' => $this->getData($request), 'method' => 'GET', 'status'=> 200]);
         //return "hello " . $method;
+    }
+
+    private function createNode($data, $type){
+
+        $machineType = $type;
+        $id = "tomake";
+        return  $id;
+
+    }
+
+    private function getNodes($type){
+
+        $temp = "";
+            $nodes = \Drupal::entityTypeManager()
+                ->getStorage('node')->getQuery();
+            $nodes->condition('type', $type);
+            $nids = $nodes->execute();
+
+            /*
+            $urlToload = "https://spj.org/CommitteesChapters.csv";
+            $CSVfp = fopen($urlToload, "r");
+            $count = 0;
+            $counter = 1;
+
+            
+            if($CSVfp !== FALSE) {
+                while(! feof($CSVfp)) {
+                    
+                    $data = fgetcsv($CSVfp, 1000, ",");
+                    
+                    if($count>0){
+                        $id = $data[7];
+                        $code = $data[9];
+                        if($code!=null && $code!=" "){
+                            $temp .= $id . " to load " . $code . "<br />";
+
+                            $tnode = Node::load($id);
+                            $tnode->field_committee_code->value = $code;
+                            $tnode->save();
+                        } else {
+                            $temp .= $id . " <code>no code</code><br />";
+                        }
+                        
+
+
+                        
+                    }
+                    $count++;
+                }
+            }
+            fclose($CSVfp);
+            */
+
+                                    
+            foreach($nids as $nid){
+                $tnode = Node::load($nid);
+                $temp .= "<h3>" . $tnode->get("title")->value . "</h3>";
+                
+                $committeeId = $tnode->get("field_committee_code")->value;
+                if( $committeeId!=null && $committeeId!=""){
+                    $temp .= "<div>" . $committeeId . "</div>";
+
+                    /*
+                    $url  = "https://support.spjnetwork.org/getData.php?c=" . $committeeId;
+                    $json = file_get_contents($url);
+                    $temp .= "<pre>" . $json . "</pre>";
+                    */
+
+                } else {
+                    $temp .= "<code>NO COMMITTEE FOUND</code>";
+                }
+                
+                $temp .= "<hr />";
+                //$tnode->save();
+                //$temp .= $nid . ", ";
+            }
+                
+            return $temp;
+        
+    }
+
+    public function import(Request $request){
+
+        $ret = $this->getNodes("chapter");
+
+        return [
+            '#markup' => 'Import Page<br />' . $ret,
+            '#attached' => [
+                'library' => [
+                  'spj_impexium/api',
+                ]
+            ],
+        ];
+        
     }
 
 
