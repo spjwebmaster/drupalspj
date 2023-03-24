@@ -14,12 +14,29 @@ var spjimpex = {
 
                 let code = row.querySelector(".field-content");
                 let codeId = code.innerHTML;
-                console.log(codeId)
+ 
                 spjimpex.getData(codeId, row);
             })
         }
+
+        spjimpex.accordionify();
         
 
+    },
+    accordionify: function(){
+        document.querySelectorAll(".view-region-detail .view-grouping-header").forEach(function(el){
+            el.addEventListener("click", function(e){
+                alert("click")
+                let tar = e.target;
+                let par = tar.closest(".view-grouping");
+                let content = par.querySelector(".view-grouping-content");
+                if(content.classList.contains("hidden")){
+                    content.classList.remove("hidden")
+                } else {
+                    content.classList.add("hidden")
+                }
+            })
+        })
     },
     createRow: function(element, type, node){
   
@@ -85,7 +102,6 @@ var spjimpex = {
                 spjimpex.createRow(posArr["adv"], "Adviser", node);
             }
 
-            console.log("data for this row", data)
             } else {
                 let nope = document.createElement("code");
                 nope.innerHTML = "nothing found";
@@ -106,4 +122,6 @@ var spjimpex = {
     }
 }
 
-spjimpex.init();
+window.addEventListener("DOMContentLoaded", (event) => {
+    spjimpex.init();
+});

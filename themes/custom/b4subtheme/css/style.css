@@ -12507,6 +12507,16 @@ body:not(.testing-em-classplaceholdermoe-entry-em-webform) .webform-submission-m
   font-size: 3em;
 }
 
+.view-region-detail .views-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.view-region-detail .views-row .views-field-title,
+.view-region-detail .views-row .views-field-title,
+.view-region-detail .views-row .views-field-field-active- {
+  flex: 1 100%;
+}
+
 .join .layout--twocol-section--50-50 {
   position: relative;
   left: 50%;

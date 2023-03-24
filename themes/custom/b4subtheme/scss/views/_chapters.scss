@@ -14,3 +14,17 @@
         }
     }
 }
+
+.view-region-detail {
+    .views-row {
+        display: flex;
+        flex-wrap: wrap;
+
+        .views-field-title,
+        .views-field-title,
+        .views-field-field-active- {
+            flex: 1 100%;
+        }
+
+    }
+}
