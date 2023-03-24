@@ -24,17 +24,25 @@ var spjimpex = {
 
     },
     accordionify: function(){
-        document.querySelectorAll(".view-region-detail .view-grouping-header").forEach(function(el){
+        console.log("accordify")
+        document.querySelectorAll(".view-region-detail .view-grouping-content h3").forEach(function(el){
+            console.log(el);
+            let toggler = document.createElement("a");
+            toggler.setAttribute("href", "#");
+            toggler.classList.add("accordionify")
+            //el.append(toggler)
             el.addEventListener("click", function(e){
-                alert("click")
+                console.log("try to find the related rows to toggle")
+                //alert("click")
+                /*
                 let tar = e.target;
-                let par = tar.closest(".view-grouping");
-                let content = par.querySelector(".view-grouping-content");
-                if(content.classList.contains("hidden")){
-                    content.classList.remove("hidden")
+                let content = tar.closest(".view-grouping-content");
+                if(content.classList.contains("hiddenV")){
+                    content.classList.remove("hiddenV")
                 } else {
                     content.classList.add("hidden")
                 }
+                */
             })
         })
     },
