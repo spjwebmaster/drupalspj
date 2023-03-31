@@ -36,6 +36,7 @@
         "drupal/commerce_webform_order": "^2.0@beta",
         "drupal/components": "^2.4",
         "drupal/conditional_fields": "^4.0@alpha",
+        "drupal/config_batch_export": "^1.0@beta",
         "drupal/core-composer-scaffold": "^9.3",
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
