@@ -1,0 +1,44 @@
+#spjcalendar {
+    .fc-header-toolbar {
+        .btn-group {
+            button {
+                svg {
+                    display: none;
+                    &:first-child {
+                        display: inline-block;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+.block-spjcalendar{
+    max-width: 1000px;
+    margin: auto;
+    @include respond-below(md) {
+        margin: 0 -1.5em;
+
+
+        .tabs-wrapper.is-collapsible .nav-item:not(.active) {
+            display: block;
+        }
+
+        .fc-header-toolbar {
+            flex-wrap: wrap;
+            display: flex;
+            text-align: center;
+            
+            .fc-toolbar-chunk {
+                flex:1 100%;
+            }
+
+        }
+
+        #tabList {
+            padding: 1em;
+        }
+    }
+}

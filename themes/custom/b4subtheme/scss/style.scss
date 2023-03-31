@@ -19,6 +19,7 @@ $slideShowMaxMobile: 210px;
 @import 'components/paragraphs';            
 @import 'components/search';   
 @import 'components/slider';         
+@import 'components/calendar';
 @import 'components/chaptersearch';     
 @import 'components/related';      
 @import 'components/bluebox';               
@@ -39,6 +40,7 @@ $slideShowMaxMobile: 210px;
 @import 'views/join';         
 @import 'views/boardmeeting';                 
 @import 'views/documentation';   
+
 
 
 
@@ -89,8 +91,8 @@ ol.breadcrumb {
 }
  
 .field--name-field-yoast-seo {
-    position: absolute;
-    top: -999em;
+    position: absolute;   
+    top: -999em;  
 }
 
 .layout--twocol-section--75-25 {
@@ -164,21 +166,7 @@ ol.breadcrumb {
     font-size: 1.2em;
 }
 
-#spjcalendar {
-    .fc-header-toolbar {
-        .btn-group {
-            button {
-                svg {
-                    display: none;
-                    &:first-child {
-                        display: inline-block;
-                    }
-                }
-                
-            }
-        }
-    }
-}
+
 
 .layout--twocol-section {
  .layout__region {
