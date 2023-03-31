@@ -4,6 +4,7 @@ namespace Drupal\commerce_api\EventSubscriber;
 
 use Drupal\commerce_cart\CartSessionInterface;
 use Drupal\commerce_api\CartTokenSession;
+use Drupal\Core\TempStore\SharedTempStore;
 use Drupal\Core\TempStore\SharedTempStoreFactory;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -26,29 +27,21 @@ use Symfony\Component\HttpKernel\KernelEvents;
 final class CartTokenSubscriber implements EventSubscriberInterface {
 
   /**
-   * The cart session.
-   *
-   * @var \Drupal\commerce_cart\CartSessionInterface
-   */
-  private $cartSession;
-
-  /**
    * The tempstore service.
    *
-   * @var \Drupal\Core\TempStore\SharedTempStoreFactory
+   * @var \Drupal\Core\TempStore\SharedTempStore
    */
-  private $tempStore;
+  private SharedTempStore $tempStore;
 
   /**
    * Constructs a new CartTokenSubscriber object.
    *
-   * @param \Drupal\commerce_cart\CartSessionInterface $cart_session
+   * @param \Drupal\commerce_cart\CartSessionInterface $cartSession
    *   The cart session.
    * @param \Drupal\Core\TempStore\SharedTempStoreFactory $temp_store_factory
    *   The temp store factory.
    */
-  public function __construct(CartSessionInterface $cart_session, SharedTempStoreFactory $temp_store_factory) {
-    $this->cartSession = $cart_session;
+  public function __construct(private CartSessionInterface $cartSession, SharedTempStoreFactory $temp_store_factory) {
     $this->tempStore = $temp_store_factory->get('commerce_api_tokens');
   }
 
@@ -93,7 +86,7 @@ final class CartTokenSubscriber implements EventSubscriberInterface {
    *   The response event.
    */
   public function onResponse(ResponseEvent $event) {
-    if (!$event->isMasterRequest()) {
+    if (!$event->isMainRequest()) {
       return;
     }
     $request = $event->getRequest();

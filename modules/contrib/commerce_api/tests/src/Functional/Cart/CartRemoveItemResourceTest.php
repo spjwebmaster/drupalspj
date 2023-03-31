@@ -103,7 +103,7 @@ final class CartRemoveItemResourceTest extends CartResourceTestBase {
     $this->cartManager->addEntity($cart, $this->variation, 2);
     $this->cartManager->addEntity($cart, $this->variation2, 5);
     $this->assertEquals(count($cart->getItems()), 2);
-    list($order_item, $order_item2) = $cart->getItems();
+    [$order_item, $order_item2] = $cart->getItems();
 
     // Request for order item that does not exist in the cart should fail.
     $url = Url::fromRoute('commerce_api.carts.remove_item', [
@@ -164,10 +164,12 @@ final class CartRemoveItemResourceTest extends CartResourceTestBase {
     $this->assertResponseCode(409, $response);
     $this->toggleOrderVersionMismatch();
     $response = $this->request('DELETE', $url, $request_options);
-    $this->assertResponseCode(204, $response);
-    $this->assertEquals(NULL, (string) $response->getBody());
+    $this->assertResponseCode(200, $response);
+    $data = Json::decode((string) $response->getBody());
     $this->container->get('entity_type.manager')->getStorage('commerce_order')->resetCache([$cart->id()]);
     $cart = Order::load($cart->id());
+    $this->assertEquals('order--default', $data['data']['type']);
+    $this->assertEquals($cart->uuid(), $data['data']['id']);
 
     $this->assertEquals(count($cart->getItems()), 1);
     $items = $cart->getItems();
@@ -187,8 +189,10 @@ final class CartRemoveItemResourceTest extends CartResourceTestBase {
       ],
     ]);
     $response = $this->request('DELETE', $url, $request_options);
-    $this->assertResponseCode(204, $response);
-    $this->assertEquals(NULL, (string) $response->getBody());
+    $this->assertResponseCode(200, $response);
+    $data = Json::decode((string) $response->getBody());
+    $this->assertEquals('order--default', $data['data']['type']);
+    $this->assertEquals($cart->uuid(), $data['data']['id']);
     $this->container->get('entity_type.manager')->getStorage('commerce_order')->resetCache([$cart->id()]);
     $cart = Order::load($cart->id());
 

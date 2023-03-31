@@ -30,7 +30,6 @@ final class CartClearResourceTest extends CartResourceTestBase {
       'commerce_order_item:1',
       'commerce_product:1',
       'commerce_product_variation:1',
-      'commerce_product_variation_view',
       'http_response',
     ], explode(' ', $response->getHeader('X-Drupal-Cache-Tags')[0]));
 
@@ -175,12 +174,6 @@ final class CartClearResourceTest extends CartResourceTestBase {
                 'required' => [
                   'detail' => 'This value should not be null.',
                   'source' => ['pointer' => 'billing_profile'],
-                ],
-              ],
-              [
-                'required' => [
-                  'detail' => 'This value should not be null.',
-                  'source' => ['pointer' => 'order_items'],
                 ],
               ],
               [

@@ -23,14 +23,14 @@ final class EnhancedResourceObjectNormalizer extends ResourceObjectNormalizer {
    *
    * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
    */
-  private $eventDispatcher;
+  private EventDispatcherInterface $eventDispatcher;
 
   /**
    * The renderer.
    *
    * @var \Drupal\Core\Render\RendererInterface
    */
-  private $renderer;
+  private RendererInterface $renderer;
 
   /**
    * Set the event dispatcher.
@@ -55,7 +55,7 @@ final class EnhancedResourceObjectNormalizer extends ResourceObjectNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($object, $format = NULL, array $context = []) {
+  public function normalize($object, $format = NULL, array $context = []): array|string|int|float|bool|\ArrayObject|NULL {
     $parent_normalization = parent::normalize($object, $format, $context);
     assert($parent_normalization instanceof CacheableNormalization);
     $altered_normalization = $parent_normalization->getNormalization();

@@ -20,7 +20,7 @@ final class ResourceTypeBuildSubscriber implements EventSubscriberInterface {
    *
    * @var \ICanBoogie\Inflector
    */
-  private $inflector;
+  private Inflector $inflector;
 
   /**
    * Constructs a new ResourceTypeBuildSubscriber object.

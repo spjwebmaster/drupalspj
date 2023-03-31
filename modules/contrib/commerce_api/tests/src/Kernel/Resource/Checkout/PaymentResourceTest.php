@@ -456,7 +456,7 @@ final class PaymentResourceTest extends CheckoutResourceTestBase {
       'offsite',
       NULL,
       TRUE,
-      400,
+      422,
       'completed',
     ];
     // Offsite with stored payment method support, no payment method.

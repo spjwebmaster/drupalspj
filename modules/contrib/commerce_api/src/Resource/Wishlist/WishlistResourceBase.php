@@ -18,41 +18,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class WishlistResourceBase extends EntityResourceBase implements ContainerInjectionInterface {
 
   /**
-   * The wishlist manager.
-   *
-   * @var \Drupal\commerce_wishlist\WishlistManagerInterface
-   */
-  protected $wishlistManager;
-
-  /**
-   * The wishlist provider.
-   *
-   * @var \Drupal\commerce_wishlist\WishlistProviderInterface
-   */
-  protected $wishlistProvider;
-
-  /**
-   * The JSON:API controller.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  protected $inner;
-
-  /**
    * Constructs a new WishlistResourceBase object.
    *
-   * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlist_manager
+   * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlistManager
    *   The wishlist manager.
-   * @param \Drupal\commerce_wishlist\WishlistProviderInterface $wishlist_provider
+   * @param \Drupal\commerce_wishlist\WishlistProviderInterface $wishlistProvider
    *   The wishlist provider.
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
    */
-  public function __construct(WishlistManagerInterface $wishlist_manager, WishlistProviderInterface $wishlist_provider, EntityResourceShim $jsonapi_controller) {
-    $this->wishlistManager = $wishlist_manager;
-    $this->wishlistProvider = $wishlist_provider;
-    $this->inner = $jsonapi_controller;
-  }
+  public function __construct(protected WishlistManagerInterface $wishlistManager, protected WishlistProviderInterface $wishlistProvider, protected EntityResourceShim $inner) {}
 
   /**
    * {@inheritdoc}

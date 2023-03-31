@@ -69,7 +69,7 @@ abstract class CheckoutApiResourceTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $factory = PhpUnitComparatorFactory::getInstance();

@@ -5,7 +5,6 @@ namespace Drupal\commerce_api\Routing;
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Drupal\jsonapi\Routing\Routes;
 use ICanBoogie\Inflector;
-use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -19,7 +18,7 @@ final class CrossBundlesRouteSubscriber extends RouteSubscriberBase {
    *
    * @var \ICanBoogie\Inflector
    */
-  private $inflector;
+  private Inflector $inflector;
 
   /**
    * Constructs a new CrossBundlesRouteSubscriber object.
@@ -37,7 +36,7 @@ final class CrossBundlesRouteSubscriber extends RouteSubscriberBase {
       if (!$route->hasDefault(Routes::JSON_API_ROUTE_FLAG_KEY) || !$route->hasDefault(Routes::RESOURCE_TYPE_KEY)) {
         continue;
       }
-      if ($route->getDefault(RouteObjectInterface::CONTROLLER_NAME) !== Routes::CONTROLLER_SERVICE_NAME . ':getCollection') {
+      if ($route->getDefault('_controller') !== Routes::CONTROLLER_SERVICE_NAME . ':getCollection') {
         continue;
       }
       $resource_type = $route->getDefault(Routes::RESOURCE_TYPE_KEY);

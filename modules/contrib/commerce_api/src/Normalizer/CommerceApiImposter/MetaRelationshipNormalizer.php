@@ -18,14 +18,14 @@ final class MetaRelationshipNormalizer extends RelationshipNormalizer {
    *
    * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
    */
-  private $eventDispatcher;
+  private EventDispatcherInterface $eventDispatcher;
 
   /**
    * The renderer.
    *
    * @var \Drupal\Core\Render\RendererInterface
    */
-  private $renderer;
+  private RendererInterface $renderer;
 
   /**
    * Set the event dispatcher.
@@ -50,7 +50,7 @@ final class MetaRelationshipNormalizer extends RelationshipNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($object, $format = NULL, array $context = []) {
+  public function normalize($object, $format = NULL, array $context = []): array|string|int|float|bool|\ArrayObject|NULL {
     assert($object instanceof Relationship);
     $parent_normalization = parent::normalize($object, $format, $context);
     assert($parent_normalization instanceof CacheableNormalization);

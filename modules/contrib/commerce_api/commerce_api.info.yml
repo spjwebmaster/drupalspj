@@ -1,7 +1,7 @@
 name: 'Commerce API'
 type: module
 description: 'Provides an HTTP interface to interact with Drupal Commerce.'
-core_version_requirement: ^9.2 || ^10
+core_version_requirement: ^9.4 || ^10
 package: 'Commerce (web services)'
 dependencies:
   - commerce:commerce
@@ -11,7 +11,7 @@ dependencies:
   - jsonapi_resources:jsonapi_resources
   - jsonapi_hypermedia:jsonapi_hypermedia
 
-# Information added by Drupal.org packaging script on 2022-04-07
-version: '8.x-1.0-beta10'
+# Information added by Drupal.org packaging script on 2023-02-23
+version: '8.x-1.0-rc1'
 project: 'commerce_api'
-datestamp: 1649317428
+datestamp: 1677156261

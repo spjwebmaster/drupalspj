@@ -30,41 +30,16 @@ final class ShippingMethodsResource extends ResourceBase implements ContainerInj
   use TypedDataTrait;
 
   /**
-   * The shipment manager.
-   *
-   * @var \Drupal\commerce_shipping\ShipmentManagerInterface
-   */
-  private $shipmentManager;
-
-  /**
-   * The shipping order manager.
-   *
-   * @var \Drupal\commerce_shipping\ShippingOrderManagerInterface
-   */
-  private $shippingOrderManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  private $renderer;
-
-  /**
    * Constructs a new ShippingMethodsResource object.
    *
-   * @param \Drupal\commerce_shipping\ShipmentManagerInterface $shipment_manager
+   * @param \Drupal\commerce_shipping\ShipmentManagerInterface $shipmentManager
    *   The shipment manager.
-   * @param \Drupal\commerce_shipping\ShippingOrderManagerInterface $shipping_order_manager
+   * @param \Drupal\commerce_shipping\ShippingOrderManagerInterface $shippingOrderManager
    *   The shipping order manager.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    */
-  public function __construct(ShipmentManagerInterface $shipment_manager, ShippingOrderManagerInterface $shipping_order_manager, RendererInterface $renderer) {
-    $this->shipmentManager = $shipment_manager;
-    $this->shippingOrderManager = $shipping_order_manager;
-    $this->renderer = $renderer;
-  }
+  public function __construct(private ShipmentManagerInterface $shipmentManager, private ShippingOrderManagerInterface $shippingOrderManager, private RendererInterface $renderer) {}
 
   /**
    * {@inheritdoc}

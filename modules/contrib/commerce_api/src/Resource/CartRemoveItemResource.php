@@ -22,35 +22,19 @@ use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 final class CartRemoveItemResource extends CartResourceBase {
 
   /**
-   * The database connection.
-   *
-   * @var \Drupal\Core\Database\Connection
-   */
-  protected $connection;
-
-  /**
-   * The JSON:API controller shim.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  protected $inner;
-
-  /**
    * Constructs a new CartRemoveItemResource object.
    *
-   * @param \Drupal\commerce_cart\CartProviderInterface $cart_provider
+   * @param \Drupal\commerce_cart\CartProviderInterface $cartProvider
    *   The cart provider.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
+   * @param \Drupal\commerce_cart\CartManagerInterface $cartManager
    *   The cart manager.
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
    * @param \Drupal\Core\Database\Connection $connection
    *   The database connection.
    */
-  public function __construct(CartProviderInterface $cart_provider, CartManagerInterface $cart_manager, EntityResourceShim $jsonapi_controller, Connection $connection) {
-    parent::__construct($cart_provider, $cart_manager);
-    $this->inner = $jsonapi_controller;
-    $this->connection = $connection;
+  public function __construct(protected CartProviderInterface $cartProvider, CartManagerInterface $cartManager, protected EntityResourceShim $inner, protected Connection $connection) {
+    parent::__construct($cartProvider, $cartManager);
   }
 
   /**
@@ -115,7 +99,8 @@ final class CartRemoveItemResource extends CartResourceBase {
       }
     }
 
-    return new ResourceResponse(NULL, 204);
+    $top_level_data = $this->createIndividualDataFromEntity($commerce_order);
+    return $this->createJsonapiResponse($top_level_data, $request);
   }
 
 }

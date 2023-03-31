@@ -3,6 +3,7 @@
 namespace Drupal\commerce_api;
 
 use Drupal\commerce_cart\CartSessionInterface;
+use Drupal\Core\TempStore\SharedTempStore;
 use Drupal\Core\TempStore\SharedTempStoreFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -16,39 +17,23 @@ final class CartTokenSession implements CartSessionInterface {
   const QUERY_NAME = 'cartToken';
 
   /**
-   * The inner cart session service.
-   *
-   * @var \Drupal\commerce_cart\CartSessionInterface
-   */
-  private $inner;
-
-  /**
-   * Request stack service.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  private $requestStack;
-
-  /**
    * The tempstore service.
    *
-   * @var \Drupal\Core\TempStore\SharedTempStoreFactory
+   * @var \Drupal\Core\TempStore\SharedTempStore
    */
-  private $tempStore;
+  private SharedTempStore $tempStore;
 
   /**
    * Constructs a new CartTokenSession object.
    *
    * @param \Drupal\commerce_cart\CartSessionInterface $inner
    *   The decorated cart session.
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.
    * @param \Drupal\Core\TempStore\SharedTempStoreFactory $temp_store_factory
    *   The temp store factory.
    */
-  public function __construct(CartSessionInterface $inner, RequestStack $request_stack, SharedTempStoreFactory $temp_store_factory) {
-    $this->inner = $inner;
-    $this->requestStack = $request_stack;
+  public function __construct(private CartSessionInterface $inner, private RequestStack $requestStack, SharedTempStoreFactory $temp_store_factory) {
     $this->tempStore = $temp_store_factory->get('commerce_api_tokens');
   }
 

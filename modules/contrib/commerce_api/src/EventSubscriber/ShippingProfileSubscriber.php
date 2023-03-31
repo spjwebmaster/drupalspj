@@ -12,34 +12,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class ShippingProfileSubscriber implements EventSubscriberInterface {
 
   /**
-   * The shipping order manager.
-   *
-   * @var \Drupal\commerce_shipping\ShippingOrderManagerInterface
-   */
-  protected $shippingOrderManager;
-
-  /**
-   * The profile storage.
-   *
-   * @var \Drupal\profile\ProfileStorageInterface
-   */
-  protected $profileStorage;
-
-  /**
    * Constructs a new ShippingProfileSubscriber object.
    *
-   * @param \Drupal\commerce_shipping\ShippingOrderManagerInterface $shipping_order_manager
+   * @param \Drupal\commerce_shipping\ShippingOrderManagerInterface $shippingOrderManager
    *   The shipping order manager.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function __construct(ShippingOrderManagerInterface $shipping_order_manager, EntityTypeManagerInterface $entity_type_manager) {
-    $this->shippingOrderManager = $shipping_order_manager;
-    $this->profileStorage = $entity_type_manager->getStorage('profile');
-  }
+  public function __construct(protected ShippingOrderManagerInterface $shippingOrderManager, protected EntityTypeManagerInterface $entityTypeManager) {}
 
   /**
    * {@inheritdoc}
@@ -64,7 +44,8 @@ class ShippingProfileSubscriber implements EventSubscriberInterface {
 
       $shipping_profile = NULL;
       if ($shipping_profile_id !== NULL) {
-        $shipping_profile = $shipping_profile = $this->profileStorage->load($shipping_profile_id);
+        $profile_storage = $this->entityTypeManager->getStorage('profile');
+        $shipping_profile = $profile_storage->load($shipping_profile_id);
       }
       elseif ($order->getData('shipping_profile')) {
         $shipping_profile = $order->getData('shipping_profile');

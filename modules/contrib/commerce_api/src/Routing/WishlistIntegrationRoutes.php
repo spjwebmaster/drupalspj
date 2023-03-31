@@ -5,7 +5,6 @@ namespace Drupal\commerce_api\Routing;
 use Drupal\commerce\PurchasableEntityInterface;
 use Drupal\commerce_api\Resource\Wishlist\WishlistAddResource;
 use Drupal\commerce_api\Resource\Wishlist\WishlistRemoveItemResource;
-use Drupal\jsonapi\Routing\Routes as JsonapiRoutes;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -21,10 +20,6 @@ final class WishlistIntegrationRoutes extends RouteProviderBase {
 
     $routes->add('commerce_api.wishlists.add', $this->wishlistAdd());
     $routes->add('commerce_api.wishlists.remove_item', $this->wishlistRemoveItem());
-
-    // Set a resource type so entity UUID parameter conversion works.
-    // This also will upcast the resource type and allow for OpenAPI support.
-    $routes->addDefaults([JsonapiRoutes::RESOURCE_TYPE_KEY => 'wishlist-items--virtual']);
   }
 
   /**
@@ -63,7 +58,6 @@ final class WishlistIntegrationRoutes extends RouteProviderBase {
       ->addDefaults([
         '_jsonapi_resource' => WishlistRemoveItemResource::class,
         '_wishlist_item_resource_types' => $this->getResourceTypeNames($wishlist_item_resource_types),
-        JsonapiRoutes::RESOURCE_TYPE_KEY => 'wishlists--virtual',
       ])
       ->setMethods(['DELETE'])
       ->setRequirement('_entity_access', 'commerce_wishlist.update');

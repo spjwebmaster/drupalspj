@@ -17,7 +17,7 @@ final class WishlistRemoveItemResourceTest extends WishlistResourceTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->account = $this->createUser(['update own default commerce_wishlist']);
@@ -113,7 +113,7 @@ final class WishlistRemoveItemResourceTest extends WishlistResourceTestBase {
     $this->wishlistManager->addEntity($wishlist, $this->variation, 2);
     $this->wishlistManager->addEntity($wishlist, $this->variation2, 5);
     $this->assertEquals(count($wishlist->getItems()), 2);
-    list($wishlist_item, $wishlist_item2) = $wishlist->getItems();
+    [$wishlist_item, $wishlist_item2] = $wishlist->getItems();
 
     // Request for wishlist item that does not exist in the wishlist should fail.
     $url = Url::fromRoute('commerce_api.wishlists.remove_item', [

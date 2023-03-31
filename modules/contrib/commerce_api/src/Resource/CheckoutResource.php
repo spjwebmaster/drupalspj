@@ -22,31 +22,14 @@ final class CheckoutResource extends EntityResourceBase implements ContainerInje
   use OrderValidationTrait;
 
   /**
-   * The event dispatcher.
-   *
-   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
-   */
-  private $eventDispatcher;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  private $renderer;
-
-  /**
    * Constructs a new CheckoutResource object.
    *
-   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
    *   The event dispatcher.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    */
-  public function __construct(EventDispatcherInterface $event_dispatcher, RendererInterface $renderer) {
-    $this->eventDispatcher = $event_dispatcher;
-    $this->renderer = $renderer;
-  }
+  public function __construct(private EventDispatcherInterface $eventDispatcher, private RendererInterface $renderer) {}
 
   /**
    * {@inheritdoc}

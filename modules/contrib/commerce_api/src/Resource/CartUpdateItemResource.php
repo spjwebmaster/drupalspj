@@ -28,25 +28,17 @@ final class CartUpdateItemResource extends CartResourceBase {
   use EntityValidationTrait;
 
   /**
-   * The JSON:API controller shim.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  protected $inner;
-
-  /**
    * Constructs a new CartUpdateItemResource object.
    *
-   * @param \Drupal\commerce_cart\CartProviderInterface $cart_provider
+   * @param \Drupal\commerce_cart\CartProviderInterface $cartProvider
    *   The cart provider.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
+   * @param \Drupal\commerce_cart\CartManagerInterface $cartManager
    *   The cart manager.
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
    */
-  public function __construct(CartProviderInterface $cart_provider, CartManagerInterface $cart_manager, EntityResourceShim $jsonapi_controller) {
-    parent::__construct($cart_provider, $cart_manager);
-    $this->inner = $jsonapi_controller;
+  public function __construct(protected CartProviderInterface $cartProvider, protected CartManagerInterface $cartManager, protected EntityResourceShim $inner) {
+    parent::__construct($cartProvider, $cartManager);
   }
 
   /**
@@ -103,7 +95,7 @@ final class CartUpdateItemResource extends CartResourceBase {
 
       $parsed_field_item = $parsed_entity->get($field_name);
       $original_field_item = $commerce_order_item->get($field_name);
-      if ($this->inner->checkPatchFieldAccess($parsed_field_item, $original_field_item)) {
+      if ($this->inner->checkPatchFieldAccess($original_field_item, $parsed_field_item)) {
         $commerce_order_item->set($field_name, $parsed_field_item->getValue());
       }
       $field_names[] = $field_name;

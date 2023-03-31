@@ -27,7 +27,6 @@ use Drupal\jsonapi_resources\Unstable\Value\NewResourceObject;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
@@ -39,61 +38,20 @@ final class PaymentResource extends EntityResourceBase implements ContainerInjec
   use ResourceObjectToEntityMapperAwareTrait;
 
   /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  private $renderer;
-
-  /**
-   * The JSON:API controller shim.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  protected $inner;
-
-  /**
-   * The payment order updater.
-   *
-   * @var \Drupal\commerce_payment\PaymentOrderUpdaterInterface
-   */
-  protected $paymentOrderUpdater;
-
-  /**
-   * The logger.
-   *
-   * @var \Psr\Log\LoggerInterface
-   */
-  protected $logger;
-
-  /**
-   * The database connection.
-   *
-   * @var \Drupal\Core\Database\Connection
-   */
-  protected $connection;
-
-  /**
    * Constructs a new PaymentResource object.
    *
    * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The render.
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   *   The renderer.
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
-   * @param \Drupal\commerce_payment\PaymentOrderUpdaterInterface $payment_order_updater
+   * @param \Drupal\commerce_payment\PaymentOrderUpdaterInterface $paymentOrderUpdater
    *   The order update manager.
    * @param \Psr\Log\LoggerInterface $logger
    *   The logger.
    * @param \Drupal\Core\Database\Connection $connection
    *   The database connection.
    */
-  public function __construct(RendererInterface $renderer, EntityResourceShim $jsonapi_controller, PaymentOrderUpdaterInterface $payment_order_updater, LoggerInterface $logger, Connection $connection) {
-    $this->renderer = $renderer;
-    $this->inner = $jsonapi_controller;
-    $this->paymentOrderUpdater = $payment_order_updater;
-    $this->logger = $logger;
-    $this->connection = $connection;
-  }
+  public function __construct(private RendererInterface $renderer, protected EntityResourceShim $inner, protected PaymentOrderUpdaterInterface $paymentOrderUpdater, protected LoggerInterface $logger, protected Connection $connection) {}
 
   /**
    * {@inheritdoc}
@@ -166,21 +124,25 @@ final class PaymentResource extends EntityResourceBase implements ContainerInjec
     }
 
     if ($order->get('payment_gateway')->isEmpty()) {
-      throw new BadRequestHttpException('A payment gateway is not set for this order.');
+      throw new UnprocessableEntityHttpException('A payment gateway is not set for this order.');
     }
     $payment_gateway = $order->get('payment_gateway')->entity;
     if (!$payment_gateway instanceof PaymentGatewayInterface) {
-      throw new BadRequestHttpException('A payment gateway is not set for this order.');
+      throw new UnprocessableEntityHttpException('A payment gateway is not set for this order.');
     }
 
     $payment_gateway_plugin = $payment_gateway->getPlugin();
     if (!$payment_gateway_plugin instanceof ManualPaymentGatewayInterface && !$payment_gateway_plugin instanceof SupportsStoredPaymentMethodsInterface) {
-      throw new BadRequestHttpException(sprintf('The payment gateway for the order does not implement %s or %s', ManualPaymentGatewayInterface::class, SupportsStoredPaymentMethodsInterface::class));
+      throw new UnprocessableEntityHttpException(sprintf('The payment gateway for the order does not implement %s or %s', ManualPaymentGatewayInterface::class, SupportsStoredPaymentMethodsInterface::class));
     }
 
     $data = $document->getData();
     if ($data->getCardinality() !== 1) {
       throw new UnprocessableEntityHttpException("The request document's primary data must not be an array.");
+    }
+    // Ensure the "place" transition is allowed before creating a payment.
+    if (!$order->getState()->isTransitionAllowed('place')) {
+      throw new UnprocessableEntityHttpException('The "place" transition is not allowed.');
     }
 
     $resource_object = $data->getIterator()->current();

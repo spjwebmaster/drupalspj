@@ -25,6 +25,11 @@ services:
     tags:
       - { name: event_subscriber }
 
+  commerce_api.entity_accessible_availability_checker:
+    class: Drupal\commerce_api\EntityAccessibleAvailabilityChecker
+    tags:
+      - { name: commerce_order.availability_checker }
+
   commerce_api.store_header_resolver:
     class: Drupal\commerce_api\Resolvers\CurrentStoreHeaderResolver
     arguments: ['@request_stack', '@entity.repository']

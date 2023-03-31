@@ -1,0 +1,9 @@
+{
+    "name": "drupal/config_batch_export",
+    "type": "drupal-module",
+    "description": "This small module allows to download configs archive on slow VPS or hostings with time http timeouts.",
+    "license": "GPL-2.0+",
+    "require": {
+        "drupal/core": "^8 || ^9"
+    }
+}

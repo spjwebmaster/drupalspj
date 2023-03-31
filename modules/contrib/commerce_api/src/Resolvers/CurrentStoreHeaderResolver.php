@@ -10,31 +10,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
 final class CurrentStoreHeaderResolver implements StoreResolverInterface {
 
   /**
-   * The request stack.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  private $requestStack;
-
-  /**
-   * The entity repository.
-   *
-   * @var \Drupal\Core\Entity\EntityRepositoryInterface
-   */
-  private $entityRepository;
-
-  /**
    * Constructs a new CurrentStoreHeaderResolver object.
    *
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entityRepository
    *   The entity repository.
    */
-  public function __construct(RequestStack $request_stack, EntityRepositoryInterface $entity_repository) {
-    $this->requestStack = $request_stack;
-    $this->entityRepository = $entity_repository;
-  }
+  public function __construct(private RequestStack $requestStack, private EntityRepositoryInterface $entityRepository) {}
 
   /**
    * {@inheritdoc}

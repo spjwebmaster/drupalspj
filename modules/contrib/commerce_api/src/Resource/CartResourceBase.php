@@ -19,31 +19,14 @@ abstract class CartResourceBase extends EntityResourceBase implements ContainerI
   use FixIncludeTrait;
 
   /**
-   * The cart provider.
-   *
-   * @var \Drupal\commerce_cart\CartProvider
-   */
-  protected $cartProvider;
-
-  /**
-   * The cart manager.
-   *
-   * @var \Drupal\commerce_cart\CartManager
-   */
-  protected $cartManager;
-
-  /**
    * Constructs a new CartResourceBase object.
    *
-   * @param \Drupal\commerce_cart\CartProviderInterface $cart_provider
+   * @param \Drupal\commerce_cart\CartProviderInterface $cartProvider
    *   The cart provider.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
+   * @param \Drupal\commerce_cart\CartManagerInterface $cartManager
    *   The cart manager.
    */
-  public function __construct(CartProviderInterface $cart_provider, CartManagerInterface $cart_manager) {
-    $this->cartProvider = $cart_provider;
-    $this->cartManager = $cart_manager;
-  }
+  public function __construct(protected CartProviderInterface $cartProvider, protected CartManagerInterface $cartManager) {}
 
   /**
    * {@inheritdoc}

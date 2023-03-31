@@ -56,7 +56,7 @@ final class JsonapiHypermediaLinkCollectionNormalizer extends LinkCollectionNorm
   /**
    * {@inheritdoc}
    */
-  public function normalize($link_collection, $format = NULL, array $context = []) {
+  public function normalize($link_collection, $format = NULL, array $context = []): array|string|int|float|bool|\ArrayObject|NULL {
     assert($link_collection instanceof LinkCollection);
     // @todo: remove this render context once https://www.drupal.org/project/drupal/issues/3055889 lands.
     $render_context = new RenderContext();

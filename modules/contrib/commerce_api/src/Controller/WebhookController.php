@@ -14,21 +14,12 @@ use Symfony\Component\HttpFoundation\Request;
 final class WebhookController implements ContainerInjectionInterface {
 
   /**
-   * The event dispatcher.
-   *
-   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
-   */
-  private $eventDispatcher;
-
-  /**
    * Constructs a new WebhookController object.
    *
-   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
    *   The event dispatcher.
    */
-  public function __construct(EventDispatcherInterface $event_dispatcher) {
-    $this->eventDispatcher = $event_dispatcher;
-  }
+  public function __construct(private EventDispatcherInterface $eventDispatcher) {}
 
   /**
    * {@inheritdoc}

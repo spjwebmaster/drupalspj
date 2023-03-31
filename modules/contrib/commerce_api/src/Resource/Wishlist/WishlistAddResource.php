@@ -27,20 +27,6 @@ final class WishlistAddResource extends WishlistResourceBase {
   use ResourceTypeHelperTrait;
 
   /**
-   * The config factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected $configFactory;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\Renderer|object|null
-   */
-  protected $renderer;
-
-  /**
    * Constructs a new WishlistAddResource object.
    *
    * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlist_manager
@@ -49,19 +35,15 @@ final class WishlistAddResource extends WishlistResourceBase {
    *   The wishlist provider.
    * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
    *   The JSON:API controller shim.
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The config factory.
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entityRepository
    *   The entity repository.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    */
-  public function __construct(WishlistManagerInterface $wishlist_manager, WishlistProviderInterface $wishlist_provider, EntityResourceShim $jsonapi_controller, ConfigFactoryInterface $config_factory, EntityRepositoryInterface $entity_repository, RendererInterface $renderer) {
+  public function __construct(WishlistManagerInterface $wishlist_manager, WishlistProviderInterface $wishlist_provider, EntityResourceShim $jsonapi_controller, protected ConfigFactoryInterface $configFactory, protected EntityRepositoryInterface $entityRepository, protected RendererInterface $renderer) {
     parent::__construct($wishlist_manager, $wishlist_provider, $jsonapi_controller);
-
-    $this->configFactory = $config_factory;
-    $this->entityRepository = $entity_repository;
-    $this->renderer = $renderer;
   }
 
   /**

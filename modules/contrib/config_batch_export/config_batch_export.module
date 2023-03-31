@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Allows to download configs archive in batch.
+ */
+
+use Drupal\config_batch_export\Controller\ConfigBatchExportController;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function config_batch_export_form_config_export_form_alter(&$form, FormStateInterface $form_state) {
+  $form['export-batch'] = [
+    '#type' => 'button',
+    '#value' => t('Export in batch'),
+    '#button_id' => 'export_batch_btn',
+    '#executes_submit_callback' => TRUE,
+    '#submit' => [
+      '_config_batch_export_export_button_callback',
+    ],
+    '#disabled' => ConfigBatchExportController::isLocked(),
+  ];
+
+}
+
+/**
+ * Submit callback for a button.
+ */
+function _config_batch_export_export_button_callback($form, FormStateInterface $form_state) {
+  if (ConfigBatchExportController::isLocked()) {
+    \Drupal::messenger()->addError(t('The operation is locked. Config file is in progress of generation'));
+  }
+  else {
+    $form_state->setRedirect('config_batch_export.export_download');
+  }
+}
+
+/**
+ * Implements hook_file_download().
+ */
+function config_batch_export_file_download($uri) {
+  $routeMatch = \Drupal::routeMatch();
+
+  /** @var \Drupal\file\FileStorageInterface $file_storage */
+  $file_storage = \Drupal::entityTypeManager()->getStorage('file');
+  if (
+    ($fid = $routeMatch->getRawParameter('file')) &&
+    ($files = $file_storage->loadByProperties(['uri' => $uri])) &&
+    ($file = reset($files)) &&
+    ($file->id() == $fid) &&
+    \Drupal::currentUser()->hasPermission('export configuration')
+    ) {
+    $request = \Drupal::request();
+    $date = DateTime::createFromFormat('U', $request->server->get('REQUEST_TIME'));
+    $date_string = $date->format('Y-m-d-H-i');
+    $hostname = str_replace('.', '-', $request->getHttpHost());
+    $filename = 'config-' . $hostname . '-' . $date_string . '.tar';
+
+    $ext = pathinfo($uri, PATHINFO_EXTENSION);
+    if ($ext == 'gz') {
+      $filename .= '.gz';
+    }
+
+    $disposition = 'attachment; filename="' . $filename . '"';
+    return [
+      'Content-disposition' => $disposition,
+    ];
+  }
+
+  return NULL;
+}

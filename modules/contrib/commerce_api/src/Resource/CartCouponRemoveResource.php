@@ -17,21 +17,12 @@ use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 final class CartCouponRemoveResource extends EntityResourceBase implements ContainerInjectionInterface {
 
   /**
-   * The JSON:API controller shim.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  protected $inner;
-
-  /**
    * Constructs a new CartCouponAddResource object.
    *
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
    */
-  public function __construct(EntityResourceShim $jsonapi_controller) {
-    $this->inner = $jsonapi_controller;
-  }
+  public function __construct(protected EntityResourceShim $inner) {}
 
   /**
    * {@inheritdoc}

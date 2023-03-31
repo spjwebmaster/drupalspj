@@ -8,6 +8,7 @@ use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Entity\ContentEntityType;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\TypedData\EntityDataDefinition;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataReferenceDefinition;
@@ -45,11 +46,9 @@ final class OrderProfile extends FieldItemBase {
     $fields = $entity_field_manager->getFieldDefinitions('profile', $profile_type);
 
     // Exclude keys, revision keys, and other base fields.
-    $excluded_fields = array_merge(
-      array_values($entity_type->getKeys()),
-      array_values($entity_type->getRevisionMetadataKeys()),
-      ['is_default', 'data', 'created', 'changed'],
-    );
+    $fields = array_filter($fields, function ($item) {
+      return !($item instanceof BaseFieldDefinition);
+    });
 
     foreach ($fields as $field) {
       if ($field->getType() === 'address') {
@@ -59,9 +58,6 @@ final class OrderProfile extends FieldItemBase {
       elseif ($field->getType() === 'commerce_tax_number') {
         $data_definition = TaxNumberDataDefinition::create('tax_number')
           ->setLabel(t('Tax number'));
-      }
-      elseif (in_array($field->getName(), $excluded_fields, TRUE)) {
-        continue;
       }
       else {
         $data_definition = $field->getItemDefinition();

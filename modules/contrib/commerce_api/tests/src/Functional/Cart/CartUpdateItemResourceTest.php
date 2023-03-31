@@ -239,7 +239,7 @@ final class CartUpdateItemResourceTest extends CartResourceTestBase {
     $this->cartManager->addEntity($cart, $this->variation, 2);
     $this->cartManager->addEntity($cart, $this->variation2, 5);
     $this->assertEquals(count($cart->getItems()), 2);
-    list($order_item, $order_item_2) = $cart->getItems();
+    [$order_item, $order_item_2] = $cart->getItems();
     $this->assertEquals($order_item->getQuantity(), 2);
     $this->assertEquals($order_item_2->getQuantity(), 5);
 
@@ -312,6 +312,7 @@ final class CartUpdateItemResourceTest extends CartResourceTestBase {
             'currency_code' => 'USD',
             'formatted' => '$500.00',
           ],
+          'locked' => FALSE,
         ],
         'relationships' => [
           'order_id' => [

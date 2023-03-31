@@ -13,25 +13,11 @@ use Drupal\jsonapi\JsonApiResource\Relationship;
 final class CollectRelationshipMetaEvent extends Event {
 
   /**
-   * The relationship.
-   *
-   * @var \Drupal\jsonapi\JsonApiResource\Relationship
-   */
-  private $relationship;
-
-  /**
-   * The context.
-   *
-   * @var array
-   */
-  private $context;
-
-  /**
    * The meta data.
    *
    * @var array
    */
-  private $meta = [];
+  private array $meta = [];
 
   /**
    * Constructs a new CollectRelationshipMetaEvent object.
@@ -41,10 +27,7 @@ final class CollectRelationshipMetaEvent extends Event {
    * @param array $context
    *   The context.
    */
-  public function __construct(Relationship $relationship, array $context) {
-    $this->relationship = $relationship;
-    $this->context = $context;
-  }
+  public function __construct(private Relationship $relationship, private array $context) {}
 
   /**
    * Get the relationship.

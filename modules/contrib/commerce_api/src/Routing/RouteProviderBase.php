@@ -13,50 +13,34 @@ use Symfony\Component\Routing\RouteCollection;
 abstract class RouteProviderBase implements ContainerInjectionInterface {
 
   /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
-   * The JSON:API resource type repository.
-   *
-   * @var \Drupal\jsonapi\ResourceType\ResourceTypeRepositoryInterface
-   */
-  protected $resourceTypeRepository;
-
-  /**
    * List of providers.
    *
    * @var string[]
    */
-  protected $providerIds;
+  protected array $providerIds;
 
   /**
    * The JSON:API base path.
    *
    * @var string
    */
-  protected $jsonApiBasePath;
+  protected string $jsonApiBasePath;
 
-  private $entityTypeResourceTypes = [];
+  private array $entityTypeResourceTypes = [];
 
   /**
    * Instantiates a Routes object.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
-   * @param \Drupal\jsonapi\ResourceType\ResourceTypeRepositoryInterface $resource_type_repository
+   * @param \Drupal\jsonapi\ResourceType\ResourceTypeRepositoryInterface $resourceTypeRepository
    *   The JSON:API resource type repository.
    * @param string[] $authentication_providers
    *   The authentication providers, keyed by ID.
    * @param string $jsonapi_base_path
    *   The JSON:API base path.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ResourceTypeRepositoryInterface $resource_type_repository, array $authentication_providers, $jsonapi_base_path) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->resourceTypeRepository = $resource_type_repository;
+  public function __construct(protected EntityTypeManagerInterface $entityTypeManager, protected ResourceTypeRepositoryInterface $resourceTypeRepository, array $authentication_providers, $jsonapi_base_path) {
     $this->providerIds = array_keys($authentication_providers);
     $this->jsonApiBasePath = $jsonapi_base_path;
   }

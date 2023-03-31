@@ -29,62 +29,37 @@ class CollectResourceObjectMetaSubscriber implements EventSubscriberInterface {
   use TypedDataTrait;
 
   /**
-   * The entity repository.
-   *
-   * @var \Drupal\Core\Entity\EntityRepositoryInterface
-   */
-  protected $entityRepository;
-
-  /**
    * The payment options builder.
    *
    * @var \Drupal\commerce_payment\PaymentOptionsBuilderInterface $payment_options_builder
    */
-  protected $paymentOptionsBuilder;
-
-  /**
-   * The route match.
-   *
-   * @var \Drupal\Core\Routing\RouteMatchInterface
-   */
-  protected $routeMatch;
-
-  /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
+  protected PaymentOptionsBuilderInterface $paymentOptionsBuilder;
 
   /**
    * The shipping order manager.
    *
    * @var \Drupal\commerce_shipping\ShippingOrderManagerInterface
    */
-  protected $shippingOrderManager;
+  protected ShippingOrderManagerInterface $shippingOrderManager;
 
   /**
    * The shipment manager.
    *
    * @var \Drupal\commerce_shipping\ShipmentManagerInterface
    */
-  protected $shipmentManager;
+  protected ShipmentManagerInterface $shipmentManager;
 
   /**
    * Constructs a new CollectResourceObjectMetaSubscriber object.
    *
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entityRepository
    *   The entity repository.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The route match.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
    */
-  public function __construct(EntityRepositoryInterface $entity_repository, RouteMatchInterface $route_match, EntityTypeManagerInterface $entity_type_manager) {
-    $this->entityRepository = $entity_repository;
-    $this->routeMatch = $route_match;
-    $this->entityTypeManager = $entity_type_manager;
-  }
+  public function __construct(protected EntityRepositoryInterface $entityRepository, protected RouteMatchInterface $routeMatch, protected EntityTypeManagerInterface $entityTypeManager) {}
 
   /**
    * Sets the payment options builder.
@@ -231,7 +206,7 @@ class CollectResourceObjectMetaSubscriber implements EventSubscriberInterface {
    *   The array of shipments.
    */
   protected function getOrderShipments(OrderInterface $order): array {
-    if (!$shipments = $order->hasField('shipments')) {
+    if (!$order->hasField('shipments')) {
       return [];
     }
     /** @var \Drupal\commerce_shipping\Entity\ShipmentInterface[] $shipments */

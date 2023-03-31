@@ -2,6 +2,7 @@
 
 namespace Drupal\commerce_api\Resource;
 
+use Drupal\commerce\Context;
 use Drupal\commerce\PurchasableEntityInterface;
 use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
@@ -36,72 +37,31 @@ final class CartAddResource extends CartResourceBase {
   use ResourceTypeHelperTrait;
 
   /**
-   * The JSON:API controller.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  private $inner;
-
-  /**
-   * The current store.
-   *
-   * @var \Drupal\commerce_store\CurrentStoreInterface
-   */
-  private $currentStore;
-
-  /**
-   * The chain order type resolver.
-   *
-   * @var \Drupal\commerce_order\Resolver\ChainOrderTypeResolverInterface
-   */
-  private $chainOrderTypeResolver;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\Renderer|object|null
-   */
-  private $renderer;
-
-  /**
-   * The database connection.
-   *
-   * @var \Drupal\Core\Database\Connection
-   */
-  private $connection;
-
-  /**
    * Constructs a new CartAddResource object.
    *
-   * @param \Drupal\commerce_cart\CartProviderInterface $cart_provider
+   * @param \Drupal\commerce_cart\CartProviderInterface $cartProvider
    *   The cart provider.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
+   * @param \Drupal\commerce_cart\CartManagerInterface $cartManager
    *   The cart manager.
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
-   * @param \Drupal\commerce_order\Resolver\ChainOrderTypeResolverInterface $chain_order_type_resolver
+   * @param \Drupal\commerce_order\Resolver\ChainOrderTypeResolverInterface $chainOrderTypeResolver
    *   The chain order type resolver.
-   * @param \Drupal\commerce_store\CurrentStoreInterface $current_store
+   * @param \Drupal\commerce_store\CurrentStoreInterface $currentStore
    *   The current store.
-   * @param \Drupal\commerce_price\Resolver\ChainPriceResolverInterface $chain_price_resolver
+   * @param \Drupal\commerce_price\Resolver\ChainPriceResolverInterface $chainPriceResolver
    *   The chain price resolver.
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entityRepository
    *   The entity repository.
-   * @param \Drupal\Core\Session\AccountInterface $account
-   *   The current user account.
+   * @param \Drupal\Core\Session\AccountInterface $currentUser
+   *   The current user.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    * @param \Drupal\Core\Database\Connection $connection
    *   The database connection.
    */
-  public function __construct(CartProviderInterface $cart_provider, CartManagerInterface $cart_manager, EntityResourceShim $jsonapi_controller, ChainOrderTypeResolverInterface $chain_order_type_resolver, CurrentStoreInterface $current_store, ChainPriceResolverInterface $chain_price_resolver, EntityRepositoryInterface $entity_repository, AccountInterface $account, RendererInterface $renderer, Connection $connection) {
-    parent::__construct($cart_provider, $cart_manager);
-    $this->inner = $jsonapi_controller;
-    $this->chainOrderTypeResolver = $chain_order_type_resolver;
-    $this->currentStore = $current_store;
-    $this->entityRepository = $entity_repository;
-    $this->renderer = $renderer;
-    $this->connection = $connection;
+  public function __construct(protected CartProviderInterface $cartProvider, protected CartManagerInterface $cartManager, private EntityResourceShim $inner, private ChainOrderTypeResolverInterface $chainOrderTypeResolver, private CurrentStoreInterface $currentStore, private ChainPriceResolverInterface $chainPriceResolver, protected EntityRepositoryInterface $entityRepository, private AccountInterface $currentUser, private RendererInterface $renderer, private Connection $connection) {
+    parent::__construct($cartProvider, $cartManager);
   }
 
   /**
@@ -158,6 +118,12 @@ final class CartAddResource extends CartResourceBase {
         }
         $store = $this->selectStore($purchased_entity);
         $order_item = $order_item_storage->createFromPurchasableEntity($purchased_entity, ['quantity' => $meta['quantity'] ?? 1]);
+        // Populate and resolve price.
+        if (!$order_item->isUnitPriceOverridden()) {
+          $context = new Context($this->currentUser, $store);
+          $resolved_price = $this->chainPriceResolver->resolve($purchased_entity, $order_item->getQuantity(), $context);
+          $order_item->setUnitPrice($resolved_price);
+        }
         // @todo If processing multiple items, this could fail halfway through.
         // Determine if we should collect a grouping of errors and return them.
         // We set the order_id to the cart object for any constraint validators.

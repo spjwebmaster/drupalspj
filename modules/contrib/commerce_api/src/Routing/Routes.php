@@ -15,7 +15,6 @@ use Drupal\commerce_api\Resource\Checkout\PaymentResource;
 use Drupal\commerce_api\Resource\CheckoutResource;
 use Drupal\commerce_api\Resource\PaymentGateway\PaymentApproveResource;
 use Drupal\commerce_api\Resource\ShippingMethodsResource;
-use Drupal\jsonapi\Routing\Routes as JsonapiRoutes;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -57,9 +56,6 @@ class Routes extends RouteProviderBase {
       $bc_route->setPath('/checkout/{commerce_order}/payment/return');
       $routes->add('commerce_api.checkout.payment_gateway_return', $bc_route);
     }
-    // Set a resource type so entity UUID parameter conversion works.
-    // This also will upcast the resource type and allow for OpenAPI support.
-    $routes->addDefaults([JsonapiRoutes::RESOURCE_TYPE_KEY => 'orders--virtual']);
   }
 
   /**
@@ -143,11 +139,13 @@ class Routes extends RouteProviderBase {
    */
   protected function cartRemoveItem() {
     $order_item_resource_types = $this->getResourceTypesForEntityType('commerce_order_item');
+    $order_resource_types = $this->getResourceTypesForEntityType('commerce_order');
 
     $route = new Route('/carts/{commerce_order}/items');
     $route->addDefaults([
       '_jsonapi_resource' => CartRemoveItemResource::class,
       '_order_item_resource_types' => $this->getResourceTypeNames($order_item_resource_types),
+      '_jsonapi_resource_types' => $this->getResourceTypeNames($order_resource_types),
     ]);
     $route->setMethods(['DELETE']);
     static::addRouteParameter($route, 'commerce_order', ['type' => 'entity:commerce_order']);

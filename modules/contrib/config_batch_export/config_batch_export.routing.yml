@@ -1,0 +1,17 @@
+config_batch_export.export_download:
+  path: '/admin/config/development/configuration/full/export-download-batch'
+  defaults:
+    _controller: '\Drupal\config_batch_export\Controller\ConfigBatchExportController::downloadExport'
+  requirements:
+    _permission: 'export configuration'
+config_batch_export.export_download_file:
+  path: '/admin/config/development/configuration/full/export-download-batch-file/{file}'
+  defaults:
+    _controller: '\Drupal\config_batch_export\Controller\ConfigBatchExportController::downloadExportFile'
+  requirements:
+    file: \d+
+    _permission: 'export configuration'
+  options:
+    parameters:
+      file:
+        type: entity:file

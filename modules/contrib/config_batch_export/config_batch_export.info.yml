@@ -1,0 +1,17 @@
+name: 'Configuration Batch Export'
+type: module
+description: 'Allows administrators export configuration using batch'
+package: Core
+# version: VERSION
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: config.sync
+dependencies:
+  - drupal:config
+  - drupal:file
+  - drupal:datetime
+
+# Information added by Drupal.org packaging script on 2021-03-03
+version: '8.x-1.0-beta7'
+project: 'config_batch_export'
+datestamp: 1614809737

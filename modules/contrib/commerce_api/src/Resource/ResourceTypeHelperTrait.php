@@ -2,6 +2,7 @@
 
 namespace Drupal\commerce_api\Resource;
 
+use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\jsonapi\JsonApiResource\ResourceIdentifierInterface;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
@@ -17,7 +18,7 @@ trait ResourceTypeHelperTrait {
    *
    * @var \Drupal\Core\Entity\EntityRepositoryInterface
    */
-  protected $entityRepository;
+  protected EntityRepositoryInterface $entityRepository;
 
   /**
    * Get an entity from a resource identifier.

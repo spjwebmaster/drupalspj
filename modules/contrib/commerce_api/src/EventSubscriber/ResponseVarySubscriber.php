@@ -12,7 +12,7 @@ final class ResponseVarySubscriber implements EventSubscriberInterface {
    * Adds Commerce API headers to the Vary header.
    */
   public function setVaryHeader(ResponseEvent $event) {
-    if (!$event->isMasterRequest()) {
+    if (!$event->isMainRequest()) {
       return;
     }
     $response = $event->getResponse();

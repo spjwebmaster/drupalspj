@@ -177,6 +177,7 @@ final class CartCollectionResourceTest extends CartResourceTestBase {
               'currency_code' => 'USD',
               'formatted' => '$5,000.00',
             ],
+            'locked' => FALSE,
           ],
           'relationships' => [
             'order_id' => [

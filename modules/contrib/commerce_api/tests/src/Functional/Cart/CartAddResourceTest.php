@@ -67,6 +67,7 @@ final class CartAddResourceTest extends CartResourceTestBase {
               'currency_code' => 'USD',
               'formatted' => '$1,000.00',
             ],
+            'locked' => FALSE,
           ],
           'relationships' => [
             'order_id' => [

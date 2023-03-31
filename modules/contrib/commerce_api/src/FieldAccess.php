@@ -12,21 +12,12 @@ use Drupal\Core\Session\AccountInterface;
 class FieldAccess implements FieldAccessInterface {
 
   /**
-   * The route match.
-   *
-   * @var \Drupal\Core\Routing\RouteMatchInterface
-   */
-  protected $routeMatch;
-
-  /**
    * Constructs a new FieldAccess object.
    *
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The route match.
    */
-  public function __construct(RouteMatchInterface $route_match) {
-    $this->routeMatch = $route_match;
-  }
+  public function __construct(protected RouteMatchInterface $routeMatch) {}
 
   /**
    * {@inheritdoc}
@@ -129,6 +120,7 @@ class FieldAccess implements FieldAccessInterface {
         'order_item_id',
         'uuid',
         'purchased_entity',
+        'locked',
         'title',
         // Allow after https://www.drupal.org/project/commerce/issues/2916252.
         // 'adjustments',

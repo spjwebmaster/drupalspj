@@ -24,31 +24,14 @@ use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 final class CartCouponAddResource extends EntityResourceBase implements ContainerInjectionInterface {
 
   /**
-   * The JSON:API controller shim.
-   *
-   * @var \Drupal\commerce_api\EntityResourceShim
-   */
-  protected $inner;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\Renderer|object|null
-   */
-  private $renderer;
-
-  /**
    * Constructs a new CartCouponAddResource object.
    *
-   * @param \Drupal\commerce_api\EntityResourceShim $jsonapi_controller
+   * @param \Drupal\commerce_api\EntityResourceShim $inner
    *   The JSON:API controller shim.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    */
-  public function __construct(EntityResourceShim $jsonapi_controller, RendererInterface $renderer) {
-    $this->inner = $jsonapi_controller;
-    $this->renderer = $renderer;
-  }
+  public function __construct(protected EntityResourceShim $inner, private RendererInterface $renderer) {}
 
   /**
    * {@inheritdoc}
