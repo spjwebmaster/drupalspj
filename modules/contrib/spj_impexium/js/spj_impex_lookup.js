@@ -87,7 +87,7 @@ var spjimpex = {
             if(posArr["adv"]){
                 spjimpex.createRow(posArr["adv"], "Adviser", addition);
             }
-            data.data.forEach(element => {
+            posArr.forEach(element => {
                 let entry  = document.createElement("div");
 
             

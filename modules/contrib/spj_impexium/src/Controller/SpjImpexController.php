@@ -163,29 +163,33 @@ class SpjImpexController extends ControllerBase {
             $nodes->condition('type', $type);
             $nids = $nodes->execute();
 
-            /*
+            
             $urlToload = "https://spj.org/CommitteesChapters.csv";
             $CSVfp = fopen($urlToload, "r");
             $count = 0;
             $counter = 1;
 
-            
+            $idArr = [];
+            $activeArr = [];
             if($CSVfp !== FALSE) {
                 while(! feof($CSVfp)) {
                     
                     $data = fgetcsv($CSVfp, 1000, ",");
                     
                     if($count>0){
-                        $id = $data[7];
+                        $id = str_replace("&", "&amp;", $data[7]);
                         $code = $data[9];
+                        $active = $data[10];
                         if($code!=null && $code!=" "){
-                            $temp .= $id . " to load " . $code . "<br />";
-
-                            $tnode = Node::load($id);
-                            $tnode->field_committee_code->value = $code;
-                            $tnode->save();
+                            //$temp .= $id . " to load " . $code . "<br />";
+                            $idArr[$id] = $code;
+                            $activeArr[$id] = $active;
+                            //$tnode = Node::load($id);
+                            //$tnode->field_committee_code->value = $code;
+                            //$tnode->save();
                         } else {
-                            $temp .= $id . " <code>no code</code><br />";
+                            $idArr[$id] = "null";
+                            //$temp .= $id . " <code>no code</code><br />";
                         }
                         
 
@@ -196,16 +200,33 @@ class SpjImpexController extends ControllerBase {
                 }
             }
             fclose($CSVfp);
-            */
+            
 
                                     
             foreach($nids as $nid){
                 $tnode = Node::load($nid);
-                $temp .= "<h3>" . $tnode->get("title")->value . "</h3>";
+                $activeClass= "disabled btn d-block text-left btn-outline-danger";
+                if(isset($activeArr[$nid])){
+                    if($activeArr[$nid]!="#N/A"){
+                        $activeClass = "btn d-block text-left btn-outline-success";
+                    }
+                   
+                }
+                $temp .= "<div class='". $activeClass . "'><h3>" . $tnode->get("title")->value . " <small>" . $nid . "</small></h3>";
                 
                 $committeeId = $tnode->get("field_committee_code")->value;
+                $checkCode = "null";
+                if(isset($idArr[$nid])){
+                    $checkCode = $idArr[$nid];
+                }
                 if( $committeeId!=null && $committeeId!=""){
+                    
+                    
                     $temp .= "<div>" . $committeeId . "</div>";
+                    $temp .= "<code>". $checkCode . "</code>";
+                    if($committeeId!==$checkCode){
+                        $temp .= "<div class='alert alert-danger'>Mismatch</div>";
+                    }
 
                     /*
                     $url  = "https://support.spjnetwork.org/getData.php?c=" . $committeeId;
@@ -214,10 +235,12 @@ class SpjImpexController extends ControllerBase {
                     */
 
                 } else {
-                    $temp .= "<code>NO COMMITTEE FOUND</code>";
+                   
+                    $temp .= "<div class='alert alert-warning'>NO COMMITTEE FOUND</div>";
+                    $temp .= "<code>". $checkCode . "</code>";
                 }
                 
-                $temp .= "<hr />";
+                $temp .= "</div><hr />";
                 //$tnode->save();
                 //$temp .= $nid . ", ";
             }
