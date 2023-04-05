@@ -84,7 +84,7 @@ class SpjImpexController extends ControllerBase {
 
         $msg = "loaded " . $credArr['ACCESS_END_POINT'] . " | ". $credArr['APP_KEY'];
         $data = $this->spj_impex_send_request($credArr['ACCESS_END_POINT'], $dataAr);
-        
+        $dat = null;
         
         if($data!=null){
             
@@ -105,18 +105,40 @@ class SpjImpexController extends ControllerBase {
             'accesstoken: ' . $accessToken,
             ));
 
+
+            $appToken = $dat->appToken;
+            $userToken = $dat->userToken;
+
+
+            $committeeID = "02b2269e-f3a7-4e1d-b269-91b8ab0632d5";
+            if($request->get("id")){
+                $committeeID = $request->get("id");
+            } 
+
+            $baseUri = "https://my.spj.org/api/v1/";
+            $urlFetch = "/Committees" . "/" . $committeeID . "/Members/1";
+
+            $commdata = $this->spj_impex_send_request($baseUri . $urlFetch, null, array(
+                'usertoken: ' . $userToken,
+                'apptoken: ' . $appToken,
+            ));
+ 
+
             $msg .= "|yay!";
             //dd($dat);
 
             
+            return [$commdata, "obj"=>$method, "msg"=>$msg];
 
         } else {
             $msg .= "|Cannot found";
+
+            return [$dat, "obj"=>$method, "msg"=>$msg];
         }
  
             
         //dd($credArr);
-        return ["hi"=>"there", "obj"=>$method, "msg"=>$msg];
+        
     }
    
     public function index(Request $request){

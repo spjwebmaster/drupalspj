@@ -7,7 +7,7 @@ spj_impexium.creds:
     _permission: 'administer site configuration'
 
 spj_impexium.data:
-  path: '/api/impexium/get/'
+  path: '/api/impexium/list'
   defaults:
     _controller: Drupal\spj_impexium\Controller\SpjImpexController::index
   requirements:

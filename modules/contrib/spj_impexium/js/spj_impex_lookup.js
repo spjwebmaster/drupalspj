@@ -1,8 +1,11 @@
 //https://support.spjnetwork.org/getData.php?c=CHICAGO_PRO
 var spjimpex = {
     url: "https://support.spjnetwork.org/getData.php?c=",
+    newurl: "/api/impexium/list?type=committee&id=",
+    whichUrl: null,
     type: "single",
     init: function(){
+        spjimpex.whichUrl = spjimpex.newurl;
 
         if(document.querySelector(".field--name-field-committee-code")){
             let code = document.querySelector(".field--name-field-committee-code .field__item").innerHTML;
@@ -24,9 +27,9 @@ var spjimpex = {
 
     },
     accordionify: function(){
-        console.log("accordify")
+
         document.querySelectorAll(".view-region-detail .view-grouping-content h3").forEach(function(el){
-            console.log(el);
+
             let toggler = document.createElement("a");
             toggler.setAttribute("href", "#");
             toggler.classList.add("accordionify")
@@ -57,14 +60,19 @@ var spjimpex = {
         node.append(d)
 
     },
-    buildList: function(data, node){
-
+    buildListNew: function(data, node){
+        console.log("getting new data,", data)
         let posArr = [];
-        data.data.forEach(element => {
-            posArr[element.positioncode.toLowerCase()] = element
-        });
+        if(data!=null){
+            data.forEach(element=> {
+                posArr[element.positionCode.toLowerCase()] = element
+            })
+        }
 
-
+        spjimpex.buildRow(posArr, node)
+        
+    },
+    buildRow: function(posArr, node){
         if(spjimpex.type=="single"){
             let par = document.querySelector(".field--name-field-committee-code");
        
@@ -97,18 +105,18 @@ var spjimpex = {
             par.append(addition);
 
         } else {
-   
-            if(data.data.length){
+            console.log("posArr pass", typeof posArr, posArr)
+            if(Object.keys(posArr).length){
             //node.innerHTML = "working"
-            if(posArr["p"]){
-                spjimpex.createRow(posArr["p"], "President", node);
-            }
-            if(posArr["vp"]){
-                spjimpex.createRow(posArr["vp"], "Vice President", node);
-            }
-            if(posArr["adv"]){
-                spjimpex.createRow(posArr["adv"], "Adviser", node);
-            }
+                if(posArr["p"]){
+                    spjimpex.createRow(posArr["p"], "President", node);
+                }
+                if(posArr["vp"]){
+                    spjimpex.createRow(posArr["vp"], "Vice President", node);
+                }
+                if(posArr["adv"]){
+                    spjimpex.createRow(posArr["adv"], "Adviser", node);
+                }
 
             } else {
                 let nope = document.createElement("code");
@@ -118,15 +126,45 @@ var spjimpex = {
             
         }
     },
-    getData: function(code, node){
-        let newurl = spjimpex.url + code;
+    buildList: function(data, node){
 
-        fetch(newurl)
+
+
+        let posArr = [];
+        data.data.forEach(element => {
+            posArr[element.positioncode.toLowerCase()] = element
+        });
+
+        spjimpex.buildRow(posArr, node)
+
+
+        
+    },
+    getData: function(code, node){
+        let newurl = spjimpex.whichUrl + code;
+        if(spjimpex.whichUrl == spjimpex.url){
+            fetch(newurl)
             .then(resp=>resp.json())
             .then(data=>{
 
                 spjimpex.buildList(data, node);
-            })
+            });
+        } else {
+            fetch(newurl)
+            .then(resp=>resp.json())
+            .then(data=>{
+
+               let newdat = data.data[0];
+               
+               let passOnData = (newdat!==null? newdat.dataList: null);
+
+               spjimpex.buildListNew(passOnData, node);
+            });
+        }
+        
+    
+
+        
     }
 }
 
