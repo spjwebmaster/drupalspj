@@ -1,138 +1,113 @@
-#block-conventionheader {
-    .topBrandingMediaFest {
-        background-color: #26486c;
-        background-image: url(https://spj.org/images/convention/2022/flag.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: left;
-    }
-
-    #topmenuitems {
-        display: flex;
-        text-align: center;
-
-        .navbar-nav {
-            flex-direction: row;
-            margin: auto;
-        }
-    }
-
-    a:link.hashtag {
-        color:#f1626a;
-    }
-    
-}
-
-.view-contention-sub-pages {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    .view-content {
-        display: table;
-        margin: 10px auto;
-        div {
-            display: table-cell;
-            padding: 1em;
-        }
-    }
-}
 
 
 .page-node-type-convention-page, .path-convention {
 
-    .content-content {
-        h2 {
-            color: #8bb0d2;
-            font-weight: bold;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 4em;
+    text-align: center;
+
+    ol.breadcrumb {
+        display: none;
+    }
+
+    .page-title.text-left {
+        text-align: center!important;
+    }
+    .node__content {
+        .block-inline-blockbasic {
+            max-width: 1000px;
+            background: #000;
+            border: 4px solid #22baef;
+            color:  #22baef;
+            padding: 2em;
+            margin: 3em 0;
+            margin: auto;
         }
     }
-   
 
-    &.toolbar-horizontal {
-        .region-breadcrumb {
-            .navigation {
-                top: 32em;
-            }
-        }
-    }
-    .region-breadcrumb {
-        .block-system-breadcrumb-block {
-            display: none;
-        }
-        .navigation  {
-            position: absolute;
-            
-            top: 28em;
-            background: #336688;
-            color: #fff;
-            padding: 1em;
-            border-radius: 3em;
-            width: 100%;
-            width: calc(100% - 16em);
-            left: 8em;
-            display: flex;
+    .region-breadcrumb .navbar-nav {
+        position: relative;
+        border-radius: 30px;
+        display: inline-flex;
+        margin: auto;
+        top: -1em;
+        background: #000!important;
+        border: 4px solid #22baef;
+        padding: 10px;
 
-            .navbar-nav {
-                display: flex;
-                margin: auto;
+        li {
+            margin: .5em;
+            a {
+                color: #22baef;
+                position: relative;
+                padding: 0.5em;
+                display: block;
 
-                li {
-                    a {
-                        color: $white;
-                        display: block;
-                        
-                        &.active {
-                            border-bottom: 3px solid $white;
-                        }
-                    }
+                &.is-active {
+                    background: #dc098c;
+                    border-radius: 10px;
+                    color: #fff;
+                }
+
+                &::after {
+                    content: ".";
+                    display: inline-block;
+                    position: absolute;
+                    right: 0px;
+                    top: 10px;
+                    color: #dc098c;
+                    border-right: 2px solid #dc098c;
+                    font-size: 0;
                 }
             }
         }
-        margin-top: 3em;
-    }
-    .banner {
         
+    }
 
-        @include respond-below(md){
-            background-position: center;
-            background-size: cover;
-        }
+    .banner.page-path-convention {
+        background-position: bottom;
+        border-bottom: 4px solid #000;
+    }
 
-        .banner-content {
-            text-align: center;
+    .view-convention-replays {
+        margin: 3em auto; 
+        max-width: 1100px;
+
+        .views-row {
             display: flex;
-            height: 100%;
+            flex-wrap: wrap;
 
-
-            a {
-                display: flex;
-                width: 100%;
-
-                
+            .views-field-title {
+                flex: 1 100%;
+            }
+            .views-field-body {
+                flex: 1 80%;
+                order: 1;
+                text-align: left;
+            }
+            .views-field-field-thumb {
+                flex: 1 20%;
 
                 img {
-                    margin: auto;
-                    width: 90%;
-                    max-width: 1000px;
-
-                    @include respond-below(md){
-                        background-color: #333;
-                        border-radius: 10px;
-                    }
-
-    
+                    width: 100%;
                 }
             }
-            
         }
     }
 
+    /*
     #header {
         .navbar {
             background-color: rgba(255,255,255,0.7)!important;
             backdrop-filter: blur(6px) saturate(58%);
+        }
+    }
+    */
+
+    #header {
+        .navbar {
+            /*
+            background-color: rgba(0,0,0,1)!important;
+            color: #eee;
+            */
         }
     }
 }

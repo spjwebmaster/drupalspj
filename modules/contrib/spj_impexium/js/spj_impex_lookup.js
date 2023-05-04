@@ -5,7 +5,7 @@ var spjimpex = {
     whichUrl: null,
     type: "single",
     init: function(){
-        spjimpex.whichUrl = spjimpex.newurl;
+        spjimpex.whichUrl = spjimpex.url;
 
         if(document.querySelector(".field--name-field-committee-code")){
             let code = document.querySelector(".field--name-field-committee-code .field__item").innerHTML;
@@ -61,7 +61,7 @@ var spjimpex = {
 
     },
     buildListNew: function(data, node){
-        console.log("getting new data,", data)
+   
         let posArr = [];
         if(data!=null){
             data.forEach(element=> {
@@ -105,7 +105,6 @@ var spjimpex = {
             par.append(addition);
 
         } else {
-            console.log("posArr pass", typeof posArr, posArr)
             if(Object.keys(posArr).length){
             //node.innerHTML = "working"
                 if(posArr["p"]){
@@ -146,7 +145,7 @@ var spjimpex = {
             fetch(newurl)
             .then(resp=>resp.json())
             .then(data=>{
-
+                console.log(data)
                 spjimpex.buildList(data, node);
             });
         } else {
@@ -155,7 +154,7 @@ var spjimpex = {
             .then(data=>{
 
                let newdat = data.data[0];
-               
+               console.log(newdat)
                let passOnData = (newdat!==null? newdat.dataList: null);
 
                spjimpex.buildListNew(passOnData, node);
@@ -169,5 +168,8 @@ var spjimpex = {
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
-    spjimpex.init();
+    window.setTimeout(function(){
+        spjimpex.init();
+    }, 2000)
+    
 });

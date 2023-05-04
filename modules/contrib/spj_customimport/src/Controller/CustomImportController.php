@@ -5,6 +5,8 @@ use Drupal\node\Entity\Node;
 use \Drupal\Core\File\FileSystemInterface;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
+use Drupal\Core\Datetime\Element;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\taxonomy\Entity\Term;
 
 class CustomImportController extends ControllerBase {
@@ -522,6 +524,7 @@ class CustomImportController extends ControllerBase {
             case "newsawards": $urlToload = "https://www.spj.org/rss_news.asp?T=A"; break;
             case "newsinet": $urlToload = "https://www.spj.org/newsImportXml.xml"; break;
             case "inetdiff":  $isScrape = true; $urlToload = "https://www.spj.org/InetImport.csv"; break;
+            case "boardmeetings":  $isScrape = true; $urlToload = "https://www.spj.org/csv/boardmeetings.csv"; break;
             case "leads": $urlToload = "https://spj.org/rss_spjleads.asp?T=S"; break;
             case "ldf": $isScrape = true; $showSubmit=false; $urlToload = "https://www.spj.org/ldf-a.asp"; break;
             case "calendar": $urlToload = "http://calendar.spjnetwork.org/feed.php?ex="; break;
@@ -598,7 +601,168 @@ class CustomImportController extends ControllerBase {
         
             if($isScrape){
                 $pageResult = "";
-                    if($type=="inetdiff"){
+                    if($type=="boardmeetings"){
+
+                        $csvData = [];
+                        $CSVfp = fopen($urlToload, "r");
+                        $count = 0;
+                        $counter = 1;
+
+                        $ret .= "<hr />";
+
+                        if($CSVfp !== FALSE) {
+                            while(! feof($CSVfp)) {
+                                
+                                $data = fgetcsv($CSVfp, 1000, ",");
+                                
+                                if($count>0){
+
+
+                                    
+                                    $time = strtotime($data[0]);
+                                    $newformat = date('M d, Y',$time);
+                                    
+                                    $name = "";
+                                    $minutesName = $data[4];
+                                    $materialsName = $data[2];
+                                    $youtubeName = $data[6];
+                                    $name = $minutesName;
+                                    if($minutesName=="#N/A"){
+                                        $name = $materialsName;
+                                        if($materialsName=="#N/A"){
+                                            $name = $youtubeName;
+                                        }
+                                    }
+                                    $termId = ["1115"];
+                                    //SPJ Board default 
+
+                                    //Foundation
+                                    if(strpos($name, "Foundation")!==false){
+                                        $termId = ["1117"];
+                                    }
+                                    if(strpos($name, "House")!==false){
+                                        $termId = ["1117"];
+                                    }
+                                    if(strpos($name, "SDX")!==false){
+                                        $termId = ["1117"];
+                                    }
+                                    if($name=="All"){
+                                        $termId = [
+                                            "1115",
+                                            "1117"
+                                        ];
+                                        $name = "Combined Materials";
+                                    }
+
+                                    if(strpos($newformat, "1969")==false){
+
+                                    
+                                    $default_timezone = new \DateTimeZone(date_default_timezone_get());
+                                    // Set some date/time objects
+                                    $datetime = new \DateTime($newformat, $default_timezone);
+                                    //$datetime = DateTime::create($newformat . " 12:00:00 PM");
+
+                                    $postData = [];
+                                    $postData["date"] = $newformat;
+                                    $postData['datetime'] = $datetime;
+                                    
+                                    $postData["materials"] = ($data[1]!=="#N/A"? $data[1]: "");
+                                    $postData["minutes"] = ($data[3]!=="#N/A"? $data[3]: "");
+                                    $postData["video"] = ($data[5]!=="#N/A"? $data[5]: "");
+                                    $postData['name'] = $name;
+                                    $postData['term'] = $termId;
+
+                                    $csvData[$newformat] = $postData;
+                                    
+
+                                    $dataArray = array(
+                                        'type' => "board_meeting",
+                                        'title' => $name . " - " . $newformat,
+                                        'langcode' => 'en',
+                                         //'uid' => $node->post_id,
+                                        'status' => 1,
+                                        'field_meeting_type' => array(
+                                            'target_id' => $termId
+                                        ),
+                                        'field_meeting_time' => $datetime,
+                                        'field_replay_video' => trim($postData["video"]),
+                                        
+                                        
+                                    
+                                    );
+                                    if($postData["minutes"]!=""){
+                                        $dataArray['field_meeting_minutes'] = array(
+                                            'uri' => $postData["minutes"],
+                                            'title' => $minutesName
+                                        );
+                                    }
+                                    if($postData["materials"]!=""){
+                                        $dataArray['field_meeting_materials'] = array(
+                                            'uri' => $postData["materials"],
+                                            'title' => $materialsName
+                                        );
+                                    }
+                        
+                        
+                                    //$node = Node::create($dataArray);
+                                    //$node->save();
+                                    //$nid = $node->id();
+
+                                    $ret .=  "<div class='alert'><pre>" . print_r($dataArray, true) . "";
+                                    $ret .=  "</pre></div>";
+                                    }
+                                }
+                                $count++;
+                            }
+                        }
+                        fclose($CSVfp);
+                        $ret .= "</tbody></table>";
+
+
+
+                        $nodes = \Drupal::entityTypeManager()
+                        ->getStorage('node')->getQuery();
+
+                            $nodes->condition('type', 'board_meeting');
+                            $nodes->sort('field_meeting_time', 'DESC');
+                            $nids = $nodes->execute();
+                            
+                            $count=1;
+                            foreach($nids as $nid){
+                                if($nid){
+                                    $tnode = Node::load($nid);
+
+                                    $date = strtotime($tnode->field_meeting_time->date->format('F j, Y'));
+                                    $formatted_date = date('M d, Y',$date);
+
+                                    $classy = "";
+                                    if(isset($csvData[$formatted_date])){
+                                        $classy = "bg-success text-white";
+                                    }
+                                    $ret  .= "<div class='card " . $classy . "'><div class='card-body'>" . $tnode->title->value . "(" . $nid . ")<br />";
+                                    $ret .= "Date: " . $tnode->field_meeting_time->value . " <strong>(" . $formatted_date . ")</strong><br />";
+                                    $ret .= "Meeting link: " . $tnode->field_meeting_link->uri . "<br>";
+                                    $ret .= "Video: " . $tnode->field_replay_video->value . "<br>";
+                                    $types = $tnode->field_meeting_type->referencedEntities();
+                                    $ret .= "<br />Types: ";
+                                    foreach($types as $type){
+                                        $ret .= $type->getName() . "|";
+                                    }
+                                    //$ret .= $tnode->field_meeting_type->target_id . "<br>";
+                                    $ret .= "</div></div><hr />";
+                                }
+                            }
+                        
+                        $ret .= "<br /><hr />Load csv " . $urlToload;
+
+                        
+                        
+
+
+
+
+                    }
+                    else if($type=="inetdiff"){
 
 
                         
@@ -860,6 +1024,7 @@ class CustomImportController extends ControllerBase {
                             $ret .= "<li><a href='/customimport/newsawards'>Old News</a></li>";
                             $ret .= "<li><a href='/customimport/newsinet'>Old News Inet</a></li>";
                             $ret .= "<li><a href='/customimport/inetdiff'>Inet dups</a></li>";
+                            $ret .= "<li><a href='/customimport/boardmeetings'>Board Meetings</a></li>";
                             $ret .= "<li><a href='/customimport/leads'>LEADS</a></li>";
                             $ret .= "<li><a href='/customimport/hq'>Hq Bios</a></li>";
                             $ret .= "<li><a href='/customimport/whistle'>Whistleblower Bios</a></li>";

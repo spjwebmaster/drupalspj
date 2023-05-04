@@ -11799,106 +11799,97 @@ body .view-id-slider .views-slideshow-controls-bottom .views_slideshow_controls_
   padding: 0.75em;
 }
 
-#block-conventionheader .topBrandingMediaFest {
-  background-color: #26486c;
-  background-image: url(https://spj.org/images/convention/2022/flag.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left;
-}
-#block-conventionheader #topmenuitems {
-  display: flex;
+.page-node-type-convention-page, .path-convention {
   text-align: center;
+  /*
+  #header {
+      .navbar {
+          background-color: rgba(255,255,255,0.7)!important;
+          backdrop-filter: blur(6px) saturate(58%);
+      }
+  }
+  */
 }
-#block-conventionheader #topmenuitems .navbar-nav {
-  flex-direction: row;
-  margin: auto;
-}
-#block-conventionheader a:link.hashtag {
-  color: #f1626a;
-}
-
-.view-contention-sub-pages {
-  display: flex;
-  align-items: center;
-  align-content: center;
-}
-.view-contention-sub-pages .view-content {
-  display: table;
-  margin: 10px auto;
-}
-.view-contention-sub-pages .view-content div {
-  display: table-cell;
-  padding: 1em;
-}
-
-.page-node-type-convention-page .content-content h2, .path-convention .content-content h2 {
-  color: #8bb0d2;
-  font-weight: bold;
-  font-family: "Libre Franklin", sans-serif;
-  font-size: 4em;
-}
-.page-node-type-convention-page.toolbar-horizontal .region-breadcrumb .navigation, .path-convention.toolbar-horizontal .region-breadcrumb .navigation {
-  top: 32em;
-}
-.page-node-type-convention-page .region-breadcrumb, .path-convention .region-breadcrumb {
-  margin-top: 3em;
-}
-.page-node-type-convention-page .region-breadcrumb .block-system-breadcrumb-block, .path-convention .region-breadcrumb .block-system-breadcrumb-block {
+.page-node-type-convention-page ol.breadcrumb, .path-convention ol.breadcrumb {
   display: none;
 }
-.page-node-type-convention-page .region-breadcrumb .navigation, .path-convention .region-breadcrumb .navigation {
-  position: absolute;
-  top: 28em;
-  background: #336688;
-  color: #fff;
-  padding: 1em;
-  border-radius: 3em;
-  width: 100%;
-  width: calc(100% - 16em);
-  left: 8em;
-  display: flex;
+.page-node-type-convention-page .page-title.text-left, .path-convention .page-title.text-left {
+  text-align: center !important;
 }
-.page-node-type-convention-page .region-breadcrumb .navigation .navbar-nav, .path-convention .region-breadcrumb .navigation .navbar-nav {
-  display: flex;
+.page-node-type-convention-page .node__content .block-inline-blockbasic, .path-convention .node__content .block-inline-blockbasic {
+  max-width: 1000px;
+  background: #000;
+  border: 4px solid #22baef;
+  color: #22baef;
+  padding: 2em;
+  margin: 3em 0;
   margin: auto;
 }
-.page-node-type-convention-page .region-breadcrumb .navigation .navbar-nav li a, .path-convention .region-breadcrumb .navigation .navbar-nav li a {
-  color: #fff;
+.page-node-type-convention-page .region-breadcrumb .navbar-nav, .path-convention .region-breadcrumb .navbar-nav {
+  position: relative;
+  border-radius: 30px;
+  display: inline-flex;
+  margin: auto;
+  top: -1em;
+  background: #000 !important;
+  border: 4px solid #22baef;
+  padding: 10px;
+}
+.page-node-type-convention-page .region-breadcrumb .navbar-nav li, .path-convention .region-breadcrumb .navbar-nav li {
+  margin: 0.5em;
+}
+.page-node-type-convention-page .region-breadcrumb .navbar-nav li a, .path-convention .region-breadcrumb .navbar-nav li a {
+  color: #22baef;
+  position: relative;
+  padding: 0.5em;
   display: block;
 }
-.page-node-type-convention-page .region-breadcrumb .navigation .navbar-nav li a.active, .path-convention .region-breadcrumb .navigation .navbar-nav li a.active {
-  border-bottom: 3px solid #fff;
+.page-node-type-convention-page .region-breadcrumb .navbar-nav li a.is-active, .path-convention .region-breadcrumb .navbar-nav li a.is-active {
+  background: #dc098c;
+  border-radius: 10px;
+  color: #fff;
 }
-@media (max-width: 991px) {
-  .page-node-type-convention-page .banner, .path-convention .banner {
-    background-position: center;
-    background-size: cover;
-  }
+.page-node-type-convention-page .region-breadcrumb .navbar-nav li a::after, .path-convention .region-breadcrumb .navbar-nav li a::after {
+  content: ".";
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  color: #dc098c;
+  border-right: 2px solid #dc098c;
+  font-size: 0;
 }
-.page-node-type-convention-page .banner .banner-content, .path-convention .banner .banner-content {
-  text-align: center;
+.page-node-type-convention-page .banner.page-path-convention, .path-convention .banner.page-path-convention {
+  background-position: bottom;
+  border-bottom: 4px solid #000;
+}
+.page-node-type-convention-page .view-convention-replays, .path-convention .view-convention-replays {
+  margin: 3em auto;
+  max-width: 1100px;
+}
+.page-node-type-convention-page .view-convention-replays .views-row, .path-convention .view-convention-replays .views-row {
   display: flex;
-  height: 100%;
+  flex-wrap: wrap;
 }
-.page-node-type-convention-page .banner .banner-content a, .path-convention .banner .banner-content a {
-  display: flex;
+.page-node-type-convention-page .view-convention-replays .views-row .views-field-title, .path-convention .view-convention-replays .views-row .views-field-title {
+  flex: 1 100%;
+}
+.page-node-type-convention-page .view-convention-replays .views-row .views-field-body, .path-convention .view-convention-replays .views-row .views-field-body {
+  flex: 1 80%;
+  order: 1;
+  text-align: left;
+}
+.page-node-type-convention-page .view-convention-replays .views-row .views-field-field-thumb, .path-convention .view-convention-replays .views-row .views-field-field-thumb {
+  flex: 1 20%;
+}
+.page-node-type-convention-page .view-convention-replays .views-row .views-field-field-thumb img, .path-convention .view-convention-replays .views-row .views-field-field-thumb img {
   width: 100%;
 }
-.page-node-type-convention-page .banner .banner-content a img, .path-convention .banner .banner-content a img {
-  margin: auto;
-  width: 90%;
-  max-width: 1000px;
-}
-@media (max-width: 991px) {
-  .page-node-type-convention-page .banner .banner-content a img, .path-convention .banner .banner-content a img {
-    background-color: #333;
-    border-radius: 10px;
-  }
-}
 .page-node-type-convention-page #header .navbar, .path-convention #header .navbar {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(6px) saturate(58%);
+  /*
+  background-color: rgba(0,0,0,1)!important;
+  color: #eee;
+  */
 }
 
 .regional-conferences main, .page-node-type-regional-conference main {
