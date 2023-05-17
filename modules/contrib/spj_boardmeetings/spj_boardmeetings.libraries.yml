@@ -1,0 +1,4 @@
+board:
+  js:
+      js/public/index.js: {}
+      js/public/boardmeetings.js: {}

@@ -621,6 +621,7 @@ class CustomImportController extends ControllerBase {
                                     
                                     $time = strtotime($data[0]);
                                     $newformat = date('M d, Y',$time);
+                                    $lookupDateFormate = date('m-d-Y',$time);
                                     
                                     $name = "";
                                     $minutesName = $data[4];
@@ -666,18 +667,19 @@ class CustomImportController extends ControllerBase {
                                     $postData["date"] = $newformat;
                                     $postData['datetime'] = $datetime;
                                     
-                                    $postData["materials"] = ($data[1]!=="#N/A"? $data[1]: "");
-                                    $postData["minutes"] = ($data[3]!=="#N/A"? $data[3]: "");
+                                    $postData["minutes"] = ($data[1]!=="#N/A"? $data[1]: "");
+                                    $postData["materials"] = ($data[3]!=="#N/A"? $data[3]: "");
                                     $postData["video"] = ($data[5]!=="#N/A"? $data[5]: "");
                                     $postData['name'] = $name;
                                     $postData['term'] = $termId;
 
                                     $csvData[$newformat] = $postData;
                                     
-
+                                    $title = $name . " - " . $lookupDateFormate;
+                                    
                                     $dataArray = array(
                                         'type' => "board_meeting",
-                                        'title' => $name . " - " . $newformat,
+                                        'title' => $title,
                                         'langcode' => 'en',
                                          //'uid' => $node->post_id,
                                         'status' => 1,
@@ -686,30 +688,77 @@ class CustomImportController extends ControllerBase {
                                         ),
                                         'field_meeting_time' => $datetime,
                                         'field_replay_video' => trim($postData["video"]),
-                                        
+                                        'field_meeting_minutes' => array(
+                                            'uri' => $postData["minutes"],
+                                            'title' => "Minutes [PDF]"
+                                        ),
+                                        'field_meeting_materials' => array(
+                                            'uri' => $postData["materials"],
+                                            'title' => "View Meeting Materials"
+                                        )
                                         
                                     
                                     );
+                                    
                                     if($postData["minutes"]!=""){
                                         $dataArray['field_meeting_minutes'] = array(
                                             'uri' => $postData["minutes"],
-                                            'title' => $minutesName
+                                            'title' => "Minutes [PDF]"
                                         );
                                     }
                                     if($postData["materials"]!=""){
                                         $dataArray['field_meeting_materials'] = array(
                                             'uri' => $postData["materials"],
-                                            'title' => $materialsName
+                                            'title' => "View Meeting Materials"
                                         );
                                     }
+                                    if($postData["video"]!=""){
+                                        $dataArray['field_meeting_materials'] = $postData["video"];
+                                    }
                         
+                                    // get the existing one by title
+                                    //$ret .= "searching for " . $title . "<br />";
+                                    $nodes = \Drupal::entityTypeManager()
+                                    ->getStorage('node')->getQuery();
+
+                                        $nodes->condition('type', 'board_meeting');
+                                        $nodes->condition('title', $title, "=");
+                                        //$nodes->sort('field_meeting_time', 'DESC');
+                                        $nids = $nodes->execute();
+                                        if(count($nids)>0){
+                                        foreach($nids as $nid){
+                                            if($nid){
+                                                $tnode = Node::load($nid);
+
+                                                if($postData["minutes"]!=""){
+                                                    $tnode->field_meeting_minutes = array(
+                                                        'uri' => $postData["minutes"],
+                                                        'title' => "Minutes [PDF]"
+                                                    );
+                                                }
+                                                if($postData["materials"]!=""){
+                                                    $tnode->field_meeting_materials = array(
+                                                        'uri' => $postData["materials"],
+                                                        'title' => "View Meeting Materials"
+                                                    );
+                                                }
+                                                if($postData["video"]!=""){
+                                                    $tnode->field_meeting_materials = $postData["video"];
+                                                }
+                                                $ret .= "<code>updating "  . $title . "</code><br />";
+                                                //$ret .=  "<div class='alert'><pre>" . print_r($dataArray, true) . "";
+                                               // $ret .=  "</pre></div>";
+                                            }
+                                        }
+                                    } else {
+                                        $ret .= "Need to create " . $title . "<br/>";
+                                    }
                         
                                     //$node = Node::create($dataArray);
                                     //$node->save();
                                     //$nid = $node->id();
 
-                                    $ret .=  "<div class='alert'><pre>" . print_r($dataArray, true) . "";
-                                    $ret .=  "</pre></div>";
+                                    
                                     }
                                 }
                                 $count++;
@@ -719,7 +768,7 @@ class CustomImportController extends ControllerBase {
                         $ret .= "</tbody></table>";
 
 
-
+                        /*
                         $nodes = \Drupal::entityTypeManager()
                         ->getStorage('node')->getQuery();
 
@@ -752,6 +801,7 @@ class CustomImportController extends ControllerBase {
                                     $ret .= "</div></div><hr />";
                                 }
                             }
+                            */
                         
                         $ret .= "<br /><hr />Load csv " . $urlToload;
 
