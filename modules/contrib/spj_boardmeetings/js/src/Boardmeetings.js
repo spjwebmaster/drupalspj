@@ -23,7 +23,7 @@ function Boardmeetings(){
 
     useEffect(() => {
         setLoading(true)
-        let baseUrl = "http://drupal:8080/jsonapi/views/board_meeting_list/block_1/";
+        let baseUrl = "https://drupal.spjnetwork.org/jsonapi/views/board_meeting_list/block_1/";
         baseUrl += "?page=" + page;
         if(type!="all"){
             baseUrl += "&views-filter[tid][0]=" + type;
@@ -44,6 +44,7 @@ function Boardmeetings(){
     return (
         <div className="outer-container"> 
             <Filter type={type} handleType={handleType} />
+            <br />
             <Paging total={total} page={page} handlePage={handlePage} />
             <hr />
             <div className="contentArea">
@@ -78,7 +79,7 @@ function Boardmeetings(){
                         ytID = "https://www.youtube.com/embed/"+ytID;
                     }
                     videoCode = `
-                    <iframe width="560" height="315" src="${ytID}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+                    <iframe width="560" style="width: 100%; height: 300px;" height="315" src="${ytID}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
                 }
 
                 return(
@@ -90,41 +91,39 @@ function Boardmeetings(){
 
                                 <div className="row">
 
-                                    <div className="col-sm-4">
+                                    <div className="col-lg-12">
                                         <strong>Meeting Link:</strong>
                                     </div>
-                                    <div className="col-sm-8">
+                                    <div className="col-lg-12">
                                     {(item.attributes.field_meeting_link!==null? (<><a href={item.attributes.field_meeting_link}>Zoom link</a><br /></>): "N/A")}
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-sm-4">
+                                    <div className="col-lg-12">
                                         <strong><label>Meeting Materials:</label></strong>
                                     </div>
-                                    <div className="col-sm-8">
+                                    <div className="col-lg-12">
                                 {(item.attributes.field_meeting_materials?<><a href={item.attributes.field_meeting_materials.uri}>{item.attributes.field_meeting_materials.title}</a></>: "N/A")}
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-sm-4">
+                                    <div className="col-lg-12">
                                         <strong><label>Meeting Minutes:</label></strong>
                                     </div>
-                                    <div className="col-sm-8">
+                                    <div className="col-lg-12">
                                     {(item.attributes.field_meeting_minutes?<><a href={item.attributes.field_meeting_minutes.uri}>{item.attributes.field_meeting_minutes.title}</a></>: "N/A")}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-sm-6">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        {((item.attributes.field_replay_video!=""&&item.attributes.field_replay_video!=null)?<strong>Replay</strong>:"")}
-                                        <br />
-                                        <div 
-                                            className="replay"
-                                            dangerouslySetInnerHTML={{__html: videoCode}}>
-                                        </div>
-                                    </div>
+                                
+                                {((item.attributes.field_replay_video!=""&&item.attributes.field_replay_video!=null)?<strong>Replay</strong>:"")}
+                                <br />
+                                <div 
+                                    className="replay"
+                                    dangerouslySetInnerHTML={{__html: videoCode}}>
                                 </div>
+                                  
                             </div>
                         </div>
                     </div>

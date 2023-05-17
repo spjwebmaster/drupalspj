@@ -2,7 +2,7 @@
   "name": "boardmeeting",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://drupal:8080",
+  "proxy": "https://drupal.spjnetwork.org",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
