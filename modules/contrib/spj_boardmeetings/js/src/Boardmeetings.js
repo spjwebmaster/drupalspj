@@ -89,29 +89,29 @@ function Boardmeetings(){
                         <div className="row">
                             <div className="col-sm-6">
 
-                                <div className="row">
+                                <div className="row pb-3">
 
                                     <div className="col-lg-12">
                                         <strong>Meeting Link:</strong>
                                     </div>
                                     <div className="col-lg-12">
-                                    {(item.attributes.field_meeting_link!==null? (<><a href={item.attributes.field_meeting_link}>Zoom link</a><br /></>): "N/A")}
+                                    {(item.attributes.field_meeting_link!==null? (<><a target="_blank" href={item.attributes.field_meeting_link.uri}>Zoom link</a><br /></>): "N/A")}
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="row pb-3">
                                     <div className="col-lg-12">
                                         <strong><label>Meeting Materials:</label></strong>
                                     </div>
                                     <div className="col-lg-12">
-                                {(item.attributes.field_meeting_materials?<><a href={item.attributes.field_meeting_materials.uri}>{item.attributes.field_meeting_materials.title}</a></>: "N/A")}
+                                {(item.attributes.field_meeting_materials?<><a target="_blank" href={item.attributes.field_meeting_materials.uri}>{item.attributes.field_meeting_materials.title}</a></>: "N/A")}
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="row pb-3">
                                     <div className="col-lg-12">
                                         <strong><label>Meeting Minutes:</label></strong>
                                     </div>
                                     <div className="col-lg-12">
-                                    {(item.attributes.field_meeting_minutes?<><a href={item.attributes.field_meeting_minutes.uri}>{item.attributes.field_meeting_minutes.title}</a></>: "N/A")}
+                                    {(item.attributes.field_meeting_minutes?<><a target="_blank" href={item.attributes.field_meeting_minutes.uri}>{item.attributes.field_meeting_minutes.title}</a></>: "N/A")}
                                     </div>
                                 </div>
                             </div>
@@ -123,6 +123,7 @@ function Boardmeetings(){
                                     className="replay"
                                     dangerouslySetInnerHTML={{__html: videoCode}}>
                                 </div>
+                                <div>{(item.attributes.field_replay_video!=null?<a href={item.attributes.field_replay_video} target="_blank">{item.attributes.field_replay_video}</a>:"")}</div>
                                   
                             </div>
                         </div>
