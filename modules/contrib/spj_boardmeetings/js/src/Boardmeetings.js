@@ -42,7 +42,7 @@ function Boardmeetings(){
 
 
     return (
-        <div className="p-4"> 
+        <div className="outer-container"> 
             <Filter type={type} handleType={handleType} />
             <Paging total={total} page={page} handlePage={handlePage} />
             <hr />
@@ -83,7 +83,7 @@ function Boardmeetings(){
 
                 return(
                 <div className="entry card mb-4" key={item.id}>
-                    <h3 className="card-header">{typeName} - {meetingDateFormat} {(meetingTime!=""?<span className='badge bg-info'>{meetingTime}</span>:"")}</h3>
+                    <h3 className="card-header">{typeName} - {meetingDateFormat} {(meetingTime!=""?<span className='badge text-white bg-info'>{meetingTime}</span>:"")}</h3>
                     <div className="card-body">
                         <div className="row">
                             <div className="col-sm-6">

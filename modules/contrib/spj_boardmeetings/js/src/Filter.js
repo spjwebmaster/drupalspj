@@ -8,7 +8,7 @@ function Filter(props){
             <option value="1115">SPJ Board Meeting</option>
             <option value="1117">Foundation Board Meeting</option>
         </select>
-        <hr />
+
     </div>
     )
 }
