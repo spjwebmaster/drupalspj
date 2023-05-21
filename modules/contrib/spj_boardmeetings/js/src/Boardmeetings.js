@@ -49,7 +49,7 @@ function Boardmeetings(){
             <hr />
             <div className="contentArea">
                 {(loading?<div className="loader">Loading</div>:"")}
-            {data.map(item=>{
+                {data.map(item=>{
 
                 let typeNameId = item.relationships.field_meeting_type.data[0].meta.drupal_internal__target_id;
                 let typeName = "";
@@ -84,7 +84,7 @@ function Boardmeetings(){
 
                 return(
                 <div className="entry card mb-4" key={item.id}>
-                    <h3 className="card-header">{typeName} - {meetingDateFormat} {(meetingTime!=""?<span className='badge text-white bg-info'>{meetingTime}</span>:"")}</h3>
+                    <h3 className="card-header">{typeName} - {meetingDateFormat} {(meetingTime!=""?<span className='badge text-white bg-info meetingTime' style={{position:"relative", top: "-2px", marginLeft: "5px"}}>{meetingTime}</span>:"")}</h3>
                     <div className="card-body">
                         <div className="row">
                             <div className="col-sm-6">
@@ -131,7 +131,9 @@ function Boardmeetings(){
                 </div>
                 )
             })}
-        </div>
+            </div>
+            <Paging total={total} page={page} handlePage={handlePage} />
+        <hr />
         </div>
     )
 }
