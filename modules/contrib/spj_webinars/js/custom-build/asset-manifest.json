@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/myapp.js",
+    "main.css": "/static/css/main.68841a8d.css",
+    "static/js/787.de47c5ce.chunk.js": "/static/js/787.de47c5ce.chunk.js",
+    "logo512.png": "/logo512.png",
+    "logo192.png": "/logo192.png",
+    "favicon.ico": "/favicon.ico",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "robots.txt": "/robots.txt",
+    "index.js": "/index.js",
+    "webinars.js": "/webinars.js",
+    "myapp.js.map": "/myapp.js.map",
+    "main.68841a8d.css.map": "/static/css/main.68841a8d.css.map",
+    "787.de47c5ce.chunk.js.map": "/static/js/787.de47c5ce.chunk.js.map"
+  },
+  "entrypoints": [
+    "myapp.js",
+    "static/css/main.68841a8d.css"
+  ]
+}

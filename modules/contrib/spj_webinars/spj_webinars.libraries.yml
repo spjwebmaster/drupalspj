@@ -1,0 +1,4 @@
+webinar:
+  js:
+      js/public/index.js: {}
+      js/public/webinars.js: {}

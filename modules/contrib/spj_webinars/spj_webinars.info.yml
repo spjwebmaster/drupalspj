@@ -1,0 +1,5 @@
+name: SPJ Webinars List React
+description: Showing SPJ Webinars List
+package: Custom
+type: module
+core_version_requirement: ^9
