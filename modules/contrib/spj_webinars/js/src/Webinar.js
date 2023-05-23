@@ -70,6 +70,7 @@ function Webinar(props){
                         <a href="#" onClick={event=>{actionLink(event,item)}} data-id={item.id}>{item.attributes.title}</a>
                         :item.attributes.title)}
                     </h3>
+                    {tagId}
                 </div>
                 <div className="card-body">
                 {(tagId!=""?

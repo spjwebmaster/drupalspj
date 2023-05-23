@@ -31,7 +31,7 @@ function Webinars(){
 
     useEffect(() => {
         setLoading(true)
-        let baseUrl = "http://drupal:8080/jsonapi/node/webinar?sort=-created&include=field_thumb,field_tag";
+        let baseUrl = "https://drupal.spjnetwork.org/jsonapi/node/webinar?sort=-created&include=field_thumb,field_tag";
         
         let url = window.location.href;
         let webbyId = "";
