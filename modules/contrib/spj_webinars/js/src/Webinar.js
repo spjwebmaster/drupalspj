@@ -70,19 +70,16 @@ function Webinar(props){
                         <a href="#" onClick={event=>{actionLink(event,item)}} data-id={item.id}>{item.attributes.title}</a>
                         :item.attributes.title)}
                     </h3>
-                    {tagId}
+                
                 </div>
                 <div className="card-body">
-                {(tagId!=""?
-                    <><span className="badge bg-info text-white">
-                    {tagName}
-                </span><br /></>:"")}
-
+                
 
                     <div className="row">
                         <div className={(type=="list"?"col-sm-8":"col-sm-12")}>
                             <div dangerouslySetInnerHTML={{__html: item.attributes.body.value}}></div>
                         </div>
+                        
 
                         {(type=="list"?
                             <div className="col-sm-4">
