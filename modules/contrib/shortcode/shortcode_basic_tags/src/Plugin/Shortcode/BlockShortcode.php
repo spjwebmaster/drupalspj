@@ -5,7 +5,6 @@ namespace Drupal\shortcode_basic_tags\Plugin\Shortcode;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Language\Language;
 use Drupal\shortcode\Plugin\ShortcodeBase;
-use Drupal\node\Entity\Node;
 
 /**
  * Insert div or span around the text with some css classes.
@@ -31,27 +30,14 @@ class BlockShortcode extends ShortcodeBase {
       $attributes
     );
 
-
-
-
-    if ($attributes['id']) {
-
+    if ((int) $attributes['id']) {
       $block_entity = BlockContent::load($attributes['id']);
       if ($block_entity) {
         $block_view = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block_entity, $attributes['view']);
         if ($block_view) {
           return \Drupal::service('renderer')->render($block_view);
-        } else {
-          return t("not found");
         }
-      } else {
-
-        $custom_block = \Drupal::entityTypeManager()->getStorage('block_content')->load($attributes['id']);
-        
-        //dpm($custom_block);
-        return t("cant found");
       }
-      
     }
   }
 

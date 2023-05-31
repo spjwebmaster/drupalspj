@@ -123,9 +123,10 @@ class FieldablePathBasicTest extends BrowserTestBase {
       'title[0][value]' => $this->randomMachineName(),
       'path[0][alias]' => $pathAlias,
     ];
+    $this->drupalGet('node/add/article');
 
     // Create a new node with path alias set.
-    $this->drupalPostForm('node/add/article', $edit, 'Save');
+    $this->submitForm($edit, 'Save');
     $this->assertSession()->statusCodeEquals(200);
 
     // Make sure field formatter works properly and displays
@@ -140,12 +141,12 @@ class FieldablePathBasicTest extends BrowserTestBase {
 
     // Make sure path field widget shows the right value.
     $this->drupalGet($editPage);
-    $this->assertFieldByName($this->fieldName . '[0][value]', $pathAlias);
+    $this->assertSession()->fieldValueEquals($this->fieldName . '[0][value]', $pathAlias);
 
     // Make sure field widget does not let anyone edit the field.
     $xpath = $this->xpath('//input[@name=\'' . $this->fieldName . '[0][value]\']');
     $disabledValue = (string) $xpath[0]->getAttribute('disabled');
-    $this->assertEqual($disabledValue, 'disabled');
+    $this->assertEquals($disabledValue, 'disabled');
 
     /*
      * Test updating of path alias.
@@ -154,11 +155,12 @@ class FieldablePathBasicTest extends BrowserTestBase {
     // Set the new value to the path alias.
     $pathAlias = '/' . $this->randomMachineName();
     $edit = ['path[0][alias]' => $pathAlias];
-    $this->drupalPostForm($editPage, $edit, 'Save');
+    $this->drupalGet($editPage);
+    $this->submitForm($edit, 'Save');
 
     // Make sure path field got the right value.
     $this->drupalGet($editPage);
-    $this->assertFieldByName($this->fieldName . '[0][value]', $pathAlias);
+    $this->assertSession()->fieldValueEquals($this->fieldName . '[0][value]', $pathAlias);
 
     /*
      * Test deletion of path alias.
@@ -166,11 +168,12 @@ class FieldablePathBasicTest extends BrowserTestBase {
 
     // Set the new value to the path alias.
     $edit = ['path[0][alias]' => ''];
-    $this->drupalPostForm($editPage, $edit, 'Save');
+    $this->drupalGet($editPage);
+    $this->submitForm($edit, 'Save');
 
     // Make sure path field has empty value.
     $this->drupalGet($editPage);
-    $this->assertFieldByName($this->fieldName . '[0][value]', '');
+    $this->assertSession()->fieldValueEquals($this->fieldName . '[0][value]', '');
   }
 
 }

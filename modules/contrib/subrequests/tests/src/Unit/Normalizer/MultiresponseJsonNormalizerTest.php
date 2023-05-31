@@ -53,8 +53,12 @@ class MultiresponseJsonNormalizerTest extends UnitTestCase {
     ];
     $actual = $this->sut->normalize($data, NULL, ['sub-content-type' => $sub_content_type]);
     $this->assertSame(
-      'application/json; type=' . $sub_content_type,
+      'application/json',
       $actual['headers']['Content-Type']
+    );
+    $this->assertSame(
+      $sub_content_type,
+      $actual['headers']['X-Sub-Content-Type']
     );
     $parsed = Json::decode($actual['content']);
     $this->assertSame('Foo!', $parsed['f']['body']);

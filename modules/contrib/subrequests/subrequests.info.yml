@@ -7,7 +7,7 @@ dependencies:
   - drupal:serialization
 package: Web services
 
-# Information added by Drupal.org packaging script on 2022-09-29
-version: '3.0.6'
+# Information added by Drupal.org packaging script on 2023-04-27
+version: '3.0.7'
 project: 'subrequests'
-datestamp: 1664452855
+datestamp: 1682600734

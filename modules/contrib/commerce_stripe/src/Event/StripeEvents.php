@@ -33,4 +33,20 @@ class StripeEvents {
    */
   const TRANSACTION_DATA = 'commerce_stripe.transaction_data';
 
+  /**
+   * Name of the event fired when a payment method is about to be created.
+   *
+   * This event is triggered by commerce_stripe.form.js when the checkout
+   * payment information form submit button is clicked. It is dispatched
+   * before any Drupal form submit handlers run, before the remote payment
+   * method is created at Stripe, and before the local Commerce payment method
+   * entity is saved. Subscribers may use this event to customise the remote
+   * payment method setup at Stripe.
+   *
+   * @Event
+   *
+   * @see \Drupal\commerce_stripe\Event\PaymentMethodCreateEvent
+   */
+  const PAYMENT_METHOD_CREATE = 'commerce_stripe.payment_method_create';
+
 }

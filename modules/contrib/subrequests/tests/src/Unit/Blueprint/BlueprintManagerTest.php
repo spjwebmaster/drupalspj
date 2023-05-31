@@ -66,8 +66,8 @@ class BlueprintManagerTest extends UnitTestCase {
    */
   public function testCombineResponses() {
     $responses = [
-      Response::create('foo', 200, ['lorem' => 'ipsum', 'Content-Type' => 'sparrow']),
-      Response::create('bar', 201, ['dolor' => 'sid', 'Content-Type' => 'sparrow']),
+      new Response('foo', 200, ['lorem' => 'ipsum', 'Content-Type' => 'sparrow']),
+      new Response('bar', 201, ['dolor' => 'sid', 'Content-Type' => 'sparrow']),
     ];
     $combined = $this->sut->combineResponses($responses, 'multipart-related');
     $this->assertInstanceOf(CacheableResponse::class, $combined);

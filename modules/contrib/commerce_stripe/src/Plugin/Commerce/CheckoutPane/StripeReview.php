@@ -134,6 +134,11 @@ class StripeReview extends CheckoutPaneBase {
     if ($gateway->isEmpty() || empty($gateway->entity)) {
       return FALSE;
     }
+    if ($this->order->isPaid() || $this->order->getTotalPrice()->isZero()) {
+      // The order total might have been changed to zero, do not add the review
+      // pane as that might lead to an incorrect payment confirmation.
+      return FALSE;
+    }
     return $gateway->entity->getPlugin() instanceof StripeInterface;
   }
 

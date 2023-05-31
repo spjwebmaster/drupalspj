@@ -311,12 +311,15 @@ function bootstrap4_form_system_theme_settings_subtheme_submit($form, FormStateI
       $fs->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
       $files = $fs->scanDirectory(
-        \Drupal::service('extension.list.theme')->getPath('bootstrap4') . DIRECTORY_SEPARATOR . $subforder . DIRECTORY_SEPARATOR, '/.*/');
+        \Drupal::service('extension.list.theme')
+          ->getPath('bootstrap4') . DIRECTORY_SEPARATOR . $subforder . DIRECTORY_SEPARATOR, '/.*css/', [
+        'recurse' => FALSE,
+      ]);
       foreach ($files as $file) {
-        //dump($file);
         $fileName = $file->filename;
         $fs->copy(
-          \Drupal::service('extension.list.theme')->getPath('bootstrap4') . DIRECTORY_SEPARATOR . $subforder . DIRECTORY_SEPARATOR . $fileName,
+          \Drupal::service('extension.list.theme')
+            ->getPath('bootstrap4') . DIRECTORY_SEPARATOR . $subforder . DIRECTORY_SEPARATOR . $fileName,
           $themePath . DIRECTORY_SEPARATOR . $subforder . DIRECTORY_SEPARATOR . $fileName, TRUE);
       }
     }

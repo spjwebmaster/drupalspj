@@ -13,9 +13,10 @@ use Drupal\Core\Entity\EntityInterface;
 function hook_post_action_example_entity_postsave(EntityInterface $entity, $op) {
   $id = $entity->id();
   $entity_type = $entity->getEntityTypeId();
+  $op_past_tense = _hook_post_action_example_op_past_tense($op);
 
   \Drupal::logger('hook_post_action_test')
-    ->info("The {$op}d entity {$entity_type} id is {$id} from " . __FUNCTION__);
+    ->info("The {$op_past_tense} entity {$entity_type} id is {$id} from " . __FUNCTION__);
 }
 
 /**
@@ -57,9 +58,10 @@ function hook_post_action_example_entity_postdelete(EntityInterface $entity) {
 function hook_post_action_example_node_postsave(EntityInterface $entity, $op) {
   $id = $entity->id();
   $bundle = $entity->bundle();
+  $op_past_tense = _hook_post_action_example_op_past_tense($op);
 
   \Drupal::logger('hook_post_action_test')
-    ->info("The {$op}d node {$bundle} id is {$id} from " . __FUNCTION__);
+    ->info("The {$op_past_tense} node {$bundle} id is {$id} from " . __FUNCTION__);
 }
 
 /**
@@ -93,4 +95,26 @@ function hook_post_action_example_node_postdelete(EntityInterface $entity) {
 
   \Drupal::logger('hook_post_action_test')
     ->info("The deleted node {$bundle} id is {$id} from " . __FUNCTION__);
+}
+
+/**
+ * Helper function to get the past tense of a given operation.
+ *
+ * @param string $op
+ *   Operation on an entity.
+ *
+ * @return string
+ *   The best match for the past tense of the given operation.
+ */
+function _hook_post_action_example_op_past_tense(string $op): string {
+  switch ($op) {
+    case 'insert':
+      return 'inserted';
+    case 'update':
+      return 'updated';
+    case 'delete':
+      return 'deleted';
+    default:
+      return 'saved';
+  }
 }

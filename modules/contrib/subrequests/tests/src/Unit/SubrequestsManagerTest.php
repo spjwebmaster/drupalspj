@@ -34,7 +34,7 @@ class SubrequestsManagerTest extends UnitTestCase {
     $http_kernel
       ->handle(Argument::type(Request::class), HttpKernelInterface::MASTER_REQUEST)
       ->will(function ($args) {
-        return Response::create($args[0]->getPathInfo());
+        return new Response($args[0]->getPathInfo());
       });
     $denormalizer = $this->prophesize(JsonSubrequestDenormalizer::class);
     $denormalizer

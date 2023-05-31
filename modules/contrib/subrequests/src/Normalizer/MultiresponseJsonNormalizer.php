@@ -16,8 +16,7 @@ class MultiresponseJsonNormalizer implements NormalizerInterface {
    */
   public function normalize($object, $format = NULL, array $context = []) {
     // Prepare the root content type header.
-    $headers = ['Content-Type' => 'application/json'];
-    $headers = ['X-Sub-Content-Type' => $context['sub-content-type']];
+    $headers = ['X-Sub-Content-Type' => $context['sub-content-type'], 'Content-Type' => 'application/json'];
 
     // Join the content responses as a JSON object with the separator.
     $output = array_reduce((array) $object, function ($carry, Response $part_response) {

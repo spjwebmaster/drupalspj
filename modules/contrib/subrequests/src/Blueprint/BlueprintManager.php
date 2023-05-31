@@ -55,7 +55,7 @@ class BlueprintManager {
     ];
     // Set the content.
     $normalized = $this->serializer->normalize($responses, $format, $context);
-    $response = CacheableResponse::create($normalized['content'], 207, $normalized['headers']);
+    $response = new CacheableResponse($normalized['content'], 207, $normalized['headers']);
     // Set the cacheability metadata.
     $cacheable_responses = array_filter($responses, function ($response) {
       return $response instanceof CacheableResponseInterface;

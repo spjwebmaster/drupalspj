@@ -18,6 +18,7 @@ use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OnsitePaymentGatewayB
 use Drupal\commerce_price\Price;
 use Drupal\commerce_stripe\Event\PaymentIntentEvent;
 use Drupal\commerce_stripe\Event\TransactionDataEvent;
+use Drupal\commerce_stripe\Event\PaymentMethodCreateEvent;
 use Drupal\commerce_stripe\Event\StripeEvents;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Component\Utility\NestedArray;
@@ -471,6 +472,10 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
         throw new InvalidRequestException(sprintf('$payment_details must contain the %s key.', $required_key));
       }
     }
+
+    // Allow alteration of the payment method before remote creation.
+    $event = new PaymentMethodCreateEvent($payment_method, $payment_details);
+    $this->eventDispatcher->dispatch($event, StripeEvents::PAYMENT_METHOD_CREATE);
 
     $remote_payment_method = $this->doCreatePaymentMethod($payment_method, $payment_details);
     $payment_method->card_type = $this->mapCreditCardType($remote_payment_method['brand']);

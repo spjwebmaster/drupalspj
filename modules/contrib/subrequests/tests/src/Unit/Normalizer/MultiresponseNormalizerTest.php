@@ -33,11 +33,11 @@ class MultiresponseNormalizerTest extends UnitTestCase {
 
   public function dataProviderSupportsNormalization() {
     return [
-      [[Response::create('')], 'multipart-related', TRUE],
+      [[new Response('')], 'multipart-related', TRUE],
       [[], 'multipart-related', TRUE],
-      [[Response::create('')], 'fail', FALSE],
+      [[new Response('')], 'fail', FALSE],
       [NULL, 'multipart-related', FALSE],
-      [[Response::create(''), NULL], 'multipart-related', FALSE],
+      [[new Response(''), NULL], 'multipart-related', FALSE],
     ];
   }
 
@@ -46,7 +46,7 @@ class MultiresponseNormalizerTest extends UnitTestCase {
    */
   public function testNormalize() {
     $sub_content_type = $this->getRandomGenerator()->string();
-    $data = [Response::create('Foo!'), Response::create('Bar')];
+    $data = [new Response('Foo!'), new Response('Bar')];
     $actual = $this->sut->normalize($data, NULL, ['sub-content-type' => $sub_content_type]);
     $parts = explode('; ', $actual['headers']['Content-Type']);
     parse_str($parts[1], $parts);

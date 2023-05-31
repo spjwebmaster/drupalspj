@@ -46,10 +46,10 @@ class JsonPathReplacerTest extends UnitTestCase {
       'body' => 'bar',
       'waitFor' => ['foo'],
     ]);
-    $response = Response::create('{"things":["what","keep","talking"],"stuff":42}');
+    $response = new Response('{"things":["what","keep","talking"],"stuff":42}');
     $response->headers->set('Content-ID', '<foo>');
     $responses[] = $response;
-    $response = Response::create('{"things":["the","plane","is"],"stuff":"delayed"}');
+    $response = new Response('{"things":["the","plane","is"],"stuff":"delayed"}');
     $response->headers->set('Content-ID', '<bar>');
     $responses[] = $response;
     $actual = $this->sut->replaceBatch($batch, $responses);
@@ -87,10 +87,10 @@ class JsonPathReplacerTest extends UnitTestCase {
       'body' => ['answer' => '{{foo.body@$.stuff}}'],
       'waitFor' => ['foo'],
     ]);
-    $response = Response::create('{"things":[{"id":"what"},{"id":"keep"},{"id":"talking"}],"stuff":42}');
+    $response = new Response('{"things":[{"id":"what"},{"id":"keep"},{"id":"talking"}],"stuff":42}');
     $response->headers->set('Content-ID', '<foo#0>');
     $responses[] = $response;
-    $response = Response::create('{"things":[{"id":"the"},{"id":"plane"}],"stuff":"delayed"}');
+    $response = new Response('{"things":[{"id":"the"},{"id":"plane"}],"stuff":"delayed"}');
     $response->headers->set('Content-ID', '<foo#1>');
     $responses[] = $response;
     $actual = $this->sut->replaceBatch($batch, $responses);
@@ -134,7 +134,7 @@ class JsonPathReplacerTest extends UnitTestCase {
       'waitFor' => ['foo'],
     ]);
 
-    $response = Response::create('{"Number":6, "Location":"In the village", "Two":false, "Who":1, "Feigenbaum":4.6692}');
+    $response = new Response('{"Number":6, "Location":"In the village", "Two":false, "Who":1, "Feigenbaum":4.6692}');
     $response->headers->set('Content-ID', '<foo>');
     $responses[] = $response;
 
