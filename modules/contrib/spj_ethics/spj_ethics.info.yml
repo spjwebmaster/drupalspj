@@ -1,0 +1,5 @@
+name: SPJ Ethics Code Modal
+description: Loads Ethics Code items in a modal
+package: Custom
+type: module
+core_version_requirement: ^9
